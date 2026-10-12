@@ -11,5 +11,12 @@ export const Footer = () => (
     </p>
 
     <ContactLinks emailLabel="short" className="mt-6" />
+
+    <p className="text-on-pitch-muted mt-7 text-sm">
+      Говорят, на этом сайте работает чит-код из старых приставок.{' '}
+      <span aria-label="Вверх, вверх, вниз, вниз, влево, вправо, влево, вправо, B, A">
+        ↑ ↑ ↓ ↓ ← → ← → B A
+      </span>
+    </p>
   </footer>
 )

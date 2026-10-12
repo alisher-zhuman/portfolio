@@ -1,4 +1,4 @@
-import { Hero, MatchSection, PlayerSection, ProjectsSection } from '@widgets/home'
+import { Hero, MatchSection, PlayerSection, ProjectsSection, SectionWhistle } from '@widgets/home'
 
 const HomePage = () => (
   <main id="main">
@@ -9,6 +9,8 @@ const HomePage = () => (
     <MatchSection />
 
     <ProjectsSection />
+
+    <SectionWhistle />
   </main>
 )
 

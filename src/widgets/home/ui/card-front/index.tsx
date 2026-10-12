@@ -8,15 +8,23 @@ export const CardFront = () => {
   return (
     <article
       aria-label="Лицевая сторона карточки"
-      className="card-notched card-front-surface text-kit-foreground absolute inset-0 flex flex-col p-5 backface-hidden"
+      className="card-notched card-front-surface text-kit-foreground group-data-[legend=true]:card-front-legend group-data-[legend=true]:text-navy absolute inset-0 flex flex-col p-5 backface-hidden"
     >
       <div className="flex items-start justify-between">
         <p className="grid leading-none">
-          <span className="font-display text-6xl font-extrabold tracking-tighter">{rating}</span>
-          <span className="font-display text-sun mt-1.5 text-sm font-bold">{position}</span>
+          {/* Both ratings are in the HTML; the cheat code only swaps which one is displayed. */}
+          <span className="font-display text-6xl font-extrabold tracking-tighter group-data-[legend=true]:hidden">
+            {rating}
+          </span>
+          <span className="font-display hidden text-6xl font-extrabold tracking-tighter group-data-[legend=true]:inline">
+            99
+          </span>
+          <span className="font-display text-sun group-data-[legend=true]:text-navy mt-1.5 text-sm font-bold">
+            {position}
+          </span>
         </p>
 
-        <Crest className="text-sun size-9.5" />
+        <Crest className="text-sun group-data-[legend=true]:text-navy size-9.5" />
       </div>
 
       <div className="relative mx-auto -mt-3 grid aspect-6/5 w-4/5 place-items-end">
@@ -29,12 +37,12 @@ export const CardFront = () => {
 
       <dl className="mt-1.5 flex justify-center gap-4 text-sm">
         <div className="flex gap-1.5">
-          <dt className="text-kit-foreground/80">Клуб</dt>
+          <dt className="opacity-80">Клуб</dt>
           <dd className="font-semibold">{club}</dd>
         </div>
 
         <div className="flex gap-1.5">
-          <dt className="text-kit-foreground/80">Родной город</dt>
+          <dt className="opacity-80">Родной город</dt>
           <dd className="font-semibold">{hometown}</dd>
         </div>
       </dl>
@@ -53,7 +61,10 @@ export const CardFront = () => {
               className="bg-kit-foreground/20 mt-1.5 block h-1 w-full rounded-sm"
             >
               {/* Width is data, not design — the one inline style on the card. */}
-              <span className="bg-sun block h-full rounded-sm" style={{ width: `${value}%` }} />
+              <span
+                className="bg-sun group-data-[legend=true]:bg-navy block h-full rounded-sm"
+                style={{ width: `${value}%` }}
+              />
             </span>
           </li>
         ))}

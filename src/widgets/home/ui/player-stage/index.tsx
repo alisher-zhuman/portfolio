@@ -2,6 +2,7 @@
 
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 
+import { playKick } from '@shared/audio'
 import { useInView } from '@shared/hooks'
 
 interface Props {
@@ -75,7 +76,10 @@ export const PlayerStage = ({ children }: Props) => {
       aria-label="Футболист чеканит мяч. Нажмите, чтобы он отпраздновал"
       data-paused={!inView}
       data-celebrating={celebrating}
-      onClick={() => setCelebrating(true)}
+      onClick={() => {
+        setCelebrating(true)
+        playKick(0.8)
+      }}
       className="relative grid w-3/5 max-w-75 cursor-pointer justify-items-center rounded-full lg:w-full lg:max-w-85"
     >
       {children}

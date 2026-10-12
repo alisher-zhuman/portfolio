@@ -3,6 +3,9 @@ import { Golos_Text, Unbounded } from 'next/font/google'
 
 import { Footer, Header, Touchline } from '@widgets/layout'
 
+import { CheatCodeListener } from '@features/cheat-code'
+import { BallLoader } from '@features/kick-ball'
+
 import { getThemeInitScript } from '@shared/helpers'
 import { InlineScript, SkipLink, ThemeSync, Toaster } from '@shared/ui'
 
@@ -58,6 +61,10 @@ const RootLayout = ({ children }: LayoutProps<'/'>) => (
       <Footer />
 
       <Touchline />
+
+      <BallLoader />
+
+      <CheatCodeListener />
 
       <Toaster />
     </body>

@@ -2,6 +2,8 @@
 
 import { type ReactNode, useState } from 'react'
 
+import { useLegendStore } from '@features/cheat-code'
+
 interface Props {
   front: ReactNode
   back: ReactNode
@@ -13,6 +15,8 @@ interface Props {
 //   is still over the card leaves it showing the back until the pointer leaves — hover still holds.
 export const CardFlip = ({ front, back }: Props) => {
   const [pinned, setPinned] = useState(false)
+  // The cheat code's gold edition; the faces restyle themselves off data-legend.
+  const legend = useLegendStore((state) => state.active)
 
   const toggle = () => setPinned((value) => !value)
 
@@ -23,6 +27,7 @@ export const CardFlip = ({ front, back }: Props) => {
       <div
         onClick={toggle}
         data-flipped={pinned}
+        data-legend={legend}
         className="group aspect-2/3 w-full cursor-pointer perspective-distant"
       >
         <div className="relative size-full transition-transform duration-700 ease-out transform-3d group-hover:rotate-y-180 group-data-[flipped=true]:rotate-y-180 motion-reduce:transition-none">

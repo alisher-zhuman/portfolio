@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Crest } from '@shared/ui'
 
 import { Nav } from '../nav'
+import { SoundToggle } from '../parts/sound-toggle'
 import { ThemeSwitcher } from '../parts/theme-switcher'
 
 export const Header = () => (
@@ -21,6 +22,8 @@ export const Header = () => (
       <Nav />
 
       <div className="ml-auto flex items-center gap-2">
+        <SoundToggle />
+
         <ThemeSwitcher />
       </div>
     </div>

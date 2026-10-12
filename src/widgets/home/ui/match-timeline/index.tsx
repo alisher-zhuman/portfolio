@@ -4,6 +4,8 @@ import { type ReactNode, useEffect, useRef } from 'react'
 
 import { careerEvents } from '@entities/career'
 
+import { playGoal, playWhistle } from '@shared/audio'
+import { fireConfetti } from '@shared/effects'
 import { useInView } from '@shared/hooks'
 import { useToastStore } from '@shared/stores'
 
@@ -58,9 +60,13 @@ export const MatchTimeline = ({ children, className }: Props) => {
 
         if (bigGoal && minute === bigGoal.minute && !celebratedRef.current) {
           celebratedRef.current = true
+          playGoal()
+          fireConfetti()
           useToastStore
             .getState()
             .showToast(`ГОЛ! ${bigGoal.minute}-я минута: ${bigGoal.title}.`, 'goal')
+        } else {
+          playWhistle([0.15])
         }
       }, GOAL_CONFIRM_MS)
     }

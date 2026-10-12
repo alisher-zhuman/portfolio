@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { profile } from '@entities/profile'
 
+import { playBoo, playWhistle } from '@shared/audio'
 import { cn } from '@shared/helpers'
 import { useToastStore } from '@shared/stores'
 
@@ -36,6 +37,10 @@ export const Scoreboard = () => {
     const foul = FOULS[Math.min(fouls, FOULS.length - 1)]
 
     if (foul) showToast(foul.text, foul.kind)
+
+    playWhistle([0.12, 0.12])
+
+    if (foul?.kind === 'red') playBoo()
 
     setFouls((count) => count + 1)
   }

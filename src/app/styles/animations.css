@@ -300,3 +300,12 @@
     display: none;
   }
 }
+
+/* Foil sheen for the gold legend card (utilities.css, card-front-legend). */
+@keyframes card-foil {
+  to {
+    background-position:
+      -250% 0,
+      0 0;
+  }
+}

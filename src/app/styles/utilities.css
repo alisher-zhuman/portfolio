@@ -68,3 +68,17 @@
   );
   mask: radial-gradient(closest-side, #000 60%, transparent 100%);
 }
+
+/* The cheat code's gold edition: a gold face with a foil sheen sweeping across it. Navy text sits
+   on it (set by the caller); the sweep is still under reduced motion. */
+@utility card-front-legend {
+  background:
+    linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.45) 45%, transparent 60%) 0 0 /
+      250% 100%,
+    linear-gradient(180deg, #f6c343, #c9941a);
+  animation: card-foil 2.4s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
