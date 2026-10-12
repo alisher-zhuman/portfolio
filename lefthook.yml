@@ -1,0 +1,12 @@
+pre-push:
+  parallel: true
+  commands:
+    typecheck:
+      run: pnpm typecheck
+    lint:
+      run: pnpm lint
+    steiger:
+      run: pnpm steiger
+    # --check, а не --write: хук не должен оставлять неотслеживаемые правки после push.
+    format:
+      run: pnpm format:check
