@@ -3,6 +3,7 @@
 /* Split for readability, not bundling — Tailwind v4 resolves @import itself. Order matters:
    theme.css defines the colour variables and the @theme mapping that utilities.css consumes. */
 @import './theme.css';
+@import './animations.css';
 @import './utilities.css';
 
 @custom-variant dark (&:where(.dark, .dark *));

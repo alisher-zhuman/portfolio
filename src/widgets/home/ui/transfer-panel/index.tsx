@@ -1,0 +1,44 @@
+import { profile } from '@entities/profile'
+
+import { LiveDot } from '@shared/ui'
+
+export const TransferPanel = () => {
+  const { from, to, status } = profile.transfer
+
+  return (
+    <div className="relative mt-5 max-w-md">
+      <dl className="grid grid-cols-2 gap-x-14 gap-y-2">
+        <div className="border-chalk min-w-0 rounded-md border-2 px-3 py-2.5">
+          <dt className="text-on-pitch-muted text-sm">Откуда</dt>
+          <dd className="font-display text-lg font-bold sm:text-xl">{from}</dd>
+        </div>
+
+        <div className="border-sun min-w-0 rounded-md border-2 px-3 py-2.5">
+          <dt className="text-on-pitch-muted text-sm">Куда</dt>
+          <dd className="font-display text-lg font-bold sm:text-xl">{to}</dd>
+        </div>
+
+        <div className="col-span-2 flex items-baseline gap-2.5">
+          <dt className="text-on-pitch-muted text-sm">Статус</dt>
+          <dd className="font-semibold">
+            <LiveDot />
+            {status}
+          </dd>
+        </div>
+      </dl>
+
+      {/* Sits in the gap between the two boxes. Outside the <dl>, which may only hold dt/dd groups. */}
+      <svg
+        viewBox="0 0 80 20"
+        aria-hidden="true"
+        strokeWidth={3}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeDasharray="8 6"
+        className="stroke-sun animate-dash-flow absolute top-7 left-1/2 w-10 -translate-x-1/2 fill-none"
+      >
+        <path d="M2 10h70M62 3l10 7-10 7" />
+      </svg>
+    </div>
+  )
+}

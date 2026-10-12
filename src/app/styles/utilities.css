@@ -16,3 +16,55 @@
     @apply bg-on-pitch text-pitch font-semibold;
   }
 }
+
+/* Shared shell for every homepage section after the hero: content width, vertical rhythm, and the
+   chalk halfway line that separates one zone of the pitch from the next. */
+@utility section-shell {
+  @apply container-page border-chalk border-t-2 py-16 sm:py-20;
+}
+
+/* Pill buttons and links. Base is the outlined chalk pill; btn-primary is the sun-yellow CTA. */
+@utility btn {
+  @apply border-chalk text-on-pitch inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border-2 px-4.5 py-2.5 text-sm font-semibold transition-colors hover:bg-on-pitch/10 active:translate-y-px motion-reduce:transition-none;
+}
+
+@utility btn-primary {
+  @apply btn bg-sun text-sun-foreground border-sun hover:bg-sun hover:brightness-105;
+}
+
+/* Small outlined tag in a stack list. Inherits its colour, so it works on grass and on panels. */
+@utility tag {
+  @apply rounded-full border border-current px-2.5 py-0.5 text-sm font-medium;
+}
+
+/* The collectible card's cut corners. A notch instead of a radius sets the card apart from every
+   other panel on the page. Applied per face, not on the rotating parent: clip-path on the parent
+   would flatten the 3D flip. */
+@utility card-notched {
+  clip-path: polygon(
+    18px 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    18px 100%,
+    0 calc(100% - 18px),
+    0 18px
+  );
+}
+
+/* Two-tone kit red: the darker lower band holds the name and the stats. */
+@utility card-front-surface {
+  background: linear-gradient(180deg, transparent 56%, rgb(0 0 0 / 0.28) 56%), var(--kit);
+}
+
+/* The sun from the flag — 40 rays, 9° each — faded out at the edge with a radial mask. */
+@utility sun-rays {
+  border-radius: 9999px;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgb(246 195 67 / 0.55) 0 4.5deg,
+    transparent 4.5deg 9deg
+  );
+  mask: radial-gradient(closest-side, #000 60%, transparent 100%);
+}

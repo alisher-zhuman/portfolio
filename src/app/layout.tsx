@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Golos_Text, Unbounded } from 'next/font/google'
 
-import { Header } from '@widgets/layout'
+import { Footer, Header } from '@widgets/layout'
 
 import { getThemeInitScript } from '@shared/helpers'
 import { InlineScript, SkipLink, ThemeSync } from '@shared/ui'
@@ -52,6 +52,8 @@ const RootLayout = ({ children }: LayoutProps<'/'>) => (
       <Header />
 
       {children}
+
+      <Footer />
     </body>
   </html>
 )

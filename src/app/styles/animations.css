@@ -1,0 +1,215 @@
+/* Keyframes and their classes, each followed by its own prefers-reduced-motion answer — kept next
+   to the animation it disables so neither can change without the other in view. */
+
+/* Commentary ticker. The track holds the list twice, so -50% lands exactly where it started. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Live status dot ("Переговоры идут", "В процессе…"). */
+@keyframes live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(212 40 66 / 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgb(212 40 66 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(212 40 66 / 0);
+  }
+}
+
+/* The dashed transfer arrow Frontend → Backend. */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -14;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-live-pulse,
+  .animate-dash-flow {
+    animation: none;
+  }
+}
+
+/* ---- The juggling player (entities/profile/ui/player-figure) ----
+   All transforms use view-box coordinates, so each pivot is a fixed point in the drawing (the hip
+   at 114,182, the shoulders at 80,104 and 132,104) whatever size the SVG renders at. The ball and
+   the kicking leg share one 1s cycle: the foot meets the ball at 0% and 100%. */
+
+.player-figure * {
+  transform-box: view-box;
+}
+
+.player-figure__kick-leg {
+  transform-origin: 114px 182px;
+  animation: player-kick 1s infinite;
+}
+
+.player-figure__ball {
+  animation: player-juggle 1s infinite;
+}
+
+.player-figure__ball-spin {
+  transform-origin: 182px 234px;
+  animation: player-spin 1s linear infinite;
+}
+
+.player-figure__body {
+  animation: player-bob 1s infinite;
+}
+
+.player-figure__arm-back {
+  transform-origin: 80px 104px;
+  animation: player-arm-back 1s ease-in-out infinite;
+}
+
+.player-figure__arm-front {
+  transform-origin: 132px 104px;
+  animation: player-arm-front 1s ease-in-out infinite;
+}
+
+.player-figure__shadow {
+  transform-origin: 108px 284px;
+  animation: player-shadow 1s infinite;
+}
+
+/* Head tilt and eyes follow the cursor through custom properties set by a client component. */
+.player-figure__head {
+  transform-origin: 106px 86px;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.2s;
+}
+
+.player-figure__eyes {
+  transform: translate(var(--eye-x, 0px), var(--eye-y, 0px));
+}
+
+/* Paused while the hero is off screen; set by a client component. */
+.player-figure[data-paused='true'] * {
+  animation-play-state: paused;
+}
+
+@keyframes player-kick {
+  0%,
+  100% {
+    transform: rotate(-44deg);
+    animation-timing-function: ease-out;
+  }
+  22%,
+  80% {
+    transform: rotate(-6deg);
+    animation-timing-function: ease-in;
+  }
+}
+
+/* Up with deceleration, down with acceleration — reads as gravity without any JS. */
+@keyframes player-juggle {
+  0%,
+  100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.2, 0.6, 0.4, 1);
+  }
+  50% {
+    transform: translateY(-112px);
+    animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4);
+  }
+}
+
+@keyframes player-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes player-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes player-arm-back {
+  0%,
+  100% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(-6deg);
+  }
+}
+
+@keyframes player-arm-front {
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes player-shadow {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.94);
+  }
+}
+
+/* Reduced motion: the player stands still at the moment of the kick, foot under the ball — the
+   leg's resting transform is straight down, which would leave the ball hanging in mid-air. */
+@media (prefers-reduced-motion: reduce) {
+  .player-figure * {
+    animation: none !important;
+  }
+
+  .player-figure__kick-leg {
+    transform: rotate(-44deg);
+  }
+}
+
+/* ---- Commentary ticker (widgets/home/ui/commentary-ticker) ---- */
+
+.commentary-ticker:hover .commentary-ticker__track,
+.commentary-ticker:focus-within .commentary-ticker__track,
+.commentary-ticker[data-paused='true'] .commentary-ticker__track {
+  animation-play-state: paused;
+}
+
+/* Reduced motion: no scrolling at all — the lines wrap into a short scrollable list. */
+@media (prefers-reduced-motion: reduce) {
+  .commentary-ticker {
+    max-height: 7.5em;
+    overflow-y: auto;
+  }
+
+  .commentary-ticker__track {
+    width: auto;
+  }
+
+  .commentary-ticker__track ul {
+    flex-wrap: wrap;
+  }
+
+  .commentary-ticker__track ul[aria-hidden='true'] {
+    display: none;
+  }
+
+  .commentary-ticker__track li {
+    white-space: normal;
+  }
+
+  .commentary-ticker__track li::after {
+    content: none;
+  }
+}

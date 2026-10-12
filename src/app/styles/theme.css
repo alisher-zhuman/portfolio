@@ -10,6 +10,15 @@
   --kit-foreground: #ffffff;
   --sun: #f6c343;
   --sun-foreground: #13233a;
+  --navy: #13233a;
+
+  /* The drawn character. Same in both themes — he doesn't change skin under floodlights. */
+  --skin: #d9a57a;
+  --hair: #1b1b22;
+  --mouth: #6b3a22;
+  --sock: #f3f7f1;
+  --ball: #ffffff;
+  --ground-shadow: rgb(0 0 0 / 0.22);
 
   /* Daytime match. */
   --pitch: #22703c;
@@ -68,6 +77,13 @@
   --color-kit-ink: var(--kit-ink);
   --color-sun: var(--sun);
   --color-sun-foreground: var(--sun-foreground);
+  --color-navy: var(--navy);
+  --color-skin: var(--skin);
+  --color-hair: var(--hair);
+  --color-mouth: var(--mouth);
+  --color-sock: var(--sock);
+  --color-ball: var(--ball);
+  --color-ground-shadow: var(--ground-shadow);
   --color-pitch: var(--pitch);
   --color-on-pitch: var(--on-pitch);
   --color-on-pitch-muted: var(--on-pitch-muted);
@@ -83,4 +99,8 @@
 
   --font-sans: var(--font-golos);
   --font-display: var(--font-unbounded);
+
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-live-pulse: live-pulse 1.6s infinite;
+  --animate-dash-flow: dash-flow 1s linear infinite;
 }

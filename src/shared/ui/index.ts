@@ -1,4 +1,7 @@
 export { Crest } from './crest'
 export { InlineScript } from './inline-script'
+export { LiveDot } from './live-dot'
+export { SectionHeading } from './section-heading'
 export { SkipLink } from './skip-link'
+export { TagList } from './tag-list'
 export { ThemeSync } from './theme-sync'
