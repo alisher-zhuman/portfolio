@@ -43,7 +43,15 @@
   }
 }
 
+/* The 404 net bulges when the ball goes in. */
+@keyframes net-ripple {
+  30% {
+    transform: scale(1.03, 1.06);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .animate-net-ripple,
   .animate-marquee,
   .animate-live-pulse,
   .animate-dash-flow,

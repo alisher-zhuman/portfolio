@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { href: '/#card', label: 'Игрок' },
   { href: '/#match', label: 'Карьера' },
   { href: '/#projects', label: 'Проекты' },
+  { href: '/#rate', label: 'Оценка' },
 ] as const
 
 export const Nav = () => (

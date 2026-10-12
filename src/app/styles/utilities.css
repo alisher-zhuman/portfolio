@@ -82,3 +82,12 @@
     animation: none;
   }
 }
+
+/* Goal net for the 404 penalty: two diagonal chalk weaves over a slightly darker mouth. */
+@utility goal-net {
+  background:
+    repeating-linear-gradient(45deg, rgb(255 255 255 / 0.28) 0 1.5px, transparent 1.5px 14px),
+    repeating-linear-gradient(-45deg, rgb(255 255 255 / 0.28) 0 1.5px, transparent 1.5px 14px),
+    rgb(0 0 0 / 0.12);
+  transform-origin: 50% 0;
+}
