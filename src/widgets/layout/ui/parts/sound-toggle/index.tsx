@@ -5,8 +5,10 @@ import { useEffect } from 'react'
 import { cn } from '@shared/helpers'
 import { useSoundStore } from '@shared/stores'
 
-// Off by default on every visit. The label stays visible from sm up so the control is obvious;
-// on the narrowest screens the icon carries it and aria-label keeps the full name.
+// Off by default on every visit. The accessible name is just «Звук» and the on/off state is
+// aria-pressed — so the name stays stable and is contained in the visible text «Звук выкл.»
+// (WCAG 2.5.3, Label in Name: a voice-control user can say what they see). On the narrowest
+// screens «Звук» is visually hidden but still names the button.
 export const SoundToggle = () => {
   const enabled = useSoundStore((state) => state.enabled)
   const toggle = useSoundStore((state) => state.toggle)
@@ -23,7 +25,6 @@ export const SoundToggle = () => {
     <button
       type="button"
       aria-pressed={enabled}
-      aria-label={enabled ? 'Выключить звук' : 'Включить звук'}
       onClick={() => void toggle()}
       className={cn(
         'border-sun inline-flex min-h-10 cursor-pointer items-center gap-1.5 rounded-full border-2 px-2.5 text-sm font-semibold sm:px-3',
@@ -46,8 +47,10 @@ export const SoundToggle = () => {
         )}
       </svg>
 
-      <span aria-hidden="true" className="max-sm:hidden">
-        {enabled ? 'Звук вкл.' : 'Звук выкл.'}
+      <span className="max-sm:sr-only">Звук</span>
+
+      <span aria-hidden="true" className="-ml-1 max-sm:hidden">
+        {enabled ? 'вкл.' : 'выкл.'}
       </span>
     </button>
   )

@@ -2,6 +2,8 @@
 
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 
+import { profile } from '@entities/profile'
+
 import { playKick } from '@shared/audio'
 import { useInView } from '@shared/hooks'
 
@@ -73,7 +75,9 @@ export const PlayerStage = ({ children }: Props) => {
     <button
       ref={ref}
       type="button"
-      aria-label="Футболист чеканит мяч. Нажмите, чтобы он отпраздновал"
+      // Includes the shirt number: it is visible text inside the drawing, and WCAG 2.5.3 wants
+      // visible text to be part of the accessible name.
+      aria-label={`Футболист с номером ${profile.shirtNumber} чеканит мяч. Нажмите, чтобы он отпраздновал`}
       data-paused={!inView}
       data-celebrating={celebrating}
       onClick={() => {

@@ -2,10 +2,11 @@
 
 import { type RefObject, useEffect, useState } from 'react'
 
-// Whether the element intersects the viewport (grown by rootMargin). Starts as true so nothing
-// server-rendered is paused before the observer has had a chance to report.
-export const useInView = (ref: RefObject<Element | null>, rootMargin = '0px') => {
-  const [inView, setInView] = useState(true)
+// Whether the element intersects the viewport (grown by rootMargin). `initial` is the answer before
+// the observer first reports: true (the default) for pausing animations, so nothing server-rendered
+// starts out paused; false for deferring work, so nothing loads until the element is actually near.
+export const useInView = (ref: RefObject<Element | null>, rootMargin = '0px', initial = true) => {
+  const [inView, setInView] = useState(initial)
 
   useEffect(() => {
     const element = ref.current

@@ -11,6 +11,7 @@ export const Header = () => (
     <div className="container-page flex h-15 items-center gap-3">
       <Link
         href="/#top"
+        prefetch={false}
         aria-label="Алишер, к началу страницы"
         className="font-display flex items-center gap-2.5 font-bold"
       >

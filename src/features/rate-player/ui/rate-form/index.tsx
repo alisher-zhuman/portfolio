@@ -1,12 +1,13 @@
 'use client'
 
-import { type FormEvent, useEffect, useState } from 'react'
+import { type FormEvent, useEffect, useRef, useState } from 'react'
 
-import { getRating, type RatingSummary, submitRating } from '@entities/rating'
+import { type RatingSummary } from '@entities/rating'
 
 import { playBoo, playGoal } from '@shared/audio'
 import { fireConfetti } from '@shared/effects'
 import { cn, pluralRu } from '@shared/helpers'
+import { useInView } from '@shared/hooks'
 import { useToastStore } from '@shared/stores'
 
 const SCALE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -14,6 +15,11 @@ const SCALE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 type Status = { kind: 'idle' } | { kind: 'sending' } | { kind: 'sent' | 'error'; message: string }
 
 const formatAverage = (average: number) => average.toFixed(1).replace('.', ',')
+
+// The rating API carries zod, which would otherwise ride in the first-load bundle for a section at
+// the very bottom of the page. Loaded on demand instead — see the effect below. Type imports above
+// are erased at build time and don't pull it in.
+const loadRatingApi = () => import('@entities/rating')
 
 // The extremes get a reaction from the stands.
 const react = (value: number) => {
@@ -35,11 +41,20 @@ export const RateForm = () => {
   const [loadFailed, setLoadFailed] = useState(false)
   const [selected, setSelected] = useState<number | null>(null)
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
+  const ref = useRef<HTMLDivElement>(null)
+  // Start fetching a screen or so before the section scrolls into view.
+  const near = useInView(ref, '600px 0px', false)
+  const [requested, setRequested] = useState(false)
+
+  if (near && !requested) setRequested(true)
 
   useEffect(() => {
+    if (!requested) return
+
     let cancelled = false
 
-    getRating()
+    loadRatingApi()
+      .then(({ getRating }) => getRating())
       .then((result) => {
         if (cancelled) return
 
@@ -53,7 +68,7 @@ export const RateForm = () => {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [requested])
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -67,6 +82,8 @@ export const RateForm = () => {
     setStatus({ kind: 'sending' })
 
     try {
+      const { submitRating } = await loadRatingApi()
+
       setSummary(await submitRating(selected))
       setStatus({ kind: 'sent', message: `Оценка ${selected} принята. Спасибо!` })
       react(selected)
@@ -81,7 +98,7 @@ export const RateForm = () => {
   const hasVoted = summary?.myVote != null
 
   return (
-    <div className="flex flex-col gap-7 md:flex-row md:items-start md:gap-12">
+    <div ref={ref} className="flex flex-col gap-7 md:flex-row md:items-start md:gap-12">
       <form onSubmit={(event) => void handleSubmit(event)} noValidate className="min-w-0 md:flex-1">
         <fieldset>
           <legend className="sr-only">Ваша оценка от 1 до 10</legend>
