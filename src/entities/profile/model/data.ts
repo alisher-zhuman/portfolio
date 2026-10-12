@@ -3,6 +3,11 @@ import { type Profile } from './types'
 // Contacts and the resume are placeholders until the real ones are provided.
 export const profile: Profile = {
   name: 'Алишер',
+  brandName: 'Alisher Zhuman',
+  nameVariants: ['Алишер Жуманов', 'Алишер Жуманов Бакирович', 'Alizher Zhuman'],
+  givenName: 'Alisher',
+  familyName: 'Zhuman',
+  city: 'Бишкек',
   role: 'Middle Frontend Developer',
   club: 'Түндүк',
   hometown: 'Талас',

@@ -1,11 +1,16 @@
 import type { Metadata, Viewport } from 'next'
 import { Golos_Text, Unbounded } from 'next/font/google'
 
+import { SITE_DESCRIPTION } from '@app/helpers'
+
 import { Footer, Header, Touchline } from '@widgets/layout'
 
 import { CheatCodeListener } from '@features/cheat-code'
 import { BallLoader } from '@features/kick-ball'
 
+import { profile } from '@entities/profile'
+
+import { SITE_URL } from '@shared/constants'
 import { getThemeInitScript } from '@shared/helpers'
 import { InlineScript, SkipLink, ThemeSync, Toaster } from '@shared/ui'
 
@@ -23,9 +28,43 @@ const golos = Golos_Text({
   variable: '--font-golos',
 })
 
+// Site-wide defaults. The canonical URL is set per page (see page.tsx), not here — a layout-level
+// canonical would also be stamped onto the 404.
 export const metadata: Metadata = {
-  title: 'Алишер — портфолио',
-  description: 'Middle Frontend Developer. Переход в бэкенд.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${profile.brandName} — ${profile.role}`,
+    template: `%s — ${profile.brandName}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: profile.brandName,
+  authors: [{ name: profile.brandName, url: SITE_URL }],
+  creator: profile.brandName,
+  keywords: [
+    profile.brandName,
+    ...profile.nameVariants,
+    profile.role,
+    'Frontend',
+    'Backend',
+    'React',
+    'Next.js',
+    'TypeScript',
+    profile.city,
+  ],
+  openGraph: {
+    type: 'profile',
+    locale: 'ru_RU',
+    siteName: profile.brandName,
+    title: `${profile.brandName} — ${profile.role}`,
+    description: SITE_DESCRIPTION,
+    firstName: profile.givenName,
+    lastName: profile.familyName,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${profile.brandName} — ${profile.role}`,
+    description: SITE_DESCRIPTION,
+  },
 }
 
 // Follows the OS, not the in-page toggle: theme-color is read before any script runs.

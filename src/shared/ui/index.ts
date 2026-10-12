@@ -1,5 +1,6 @@
 export { Crest } from './crest'
 export { InlineScript } from './inline-script'
+export { JsonLd } from './json-ld'
 export { LiveDot } from './live-dot'
 export { OffscreenPause } from './offscreen-pause'
 export { SectionHeading } from './section-heading'

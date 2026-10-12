@@ -13,7 +13,15 @@ export interface Contacts {
 }
 
 export interface Profile {
+  // How the site addresses him in copy: «Алишер».
   name: string
+  // The public brand, used in titles, previews and structured data.
+  brandName: string
+  // Other spellings people search for; feed JSON-LD alternateName.
+  nameVariants: string[]
+  givenName: string
+  familyName: string
+  city: string
   role: string
   club: string
   hometown: string
