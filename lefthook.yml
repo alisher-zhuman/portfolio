@@ -7,6 +7,7 @@ pre-push:
       run: pnpm lint
     steiger:
       run: pnpm steiger
-    # --check, а не --write: хук не должен оставлять неотслеживаемые правки после push.
+    # --check, not --write: a hook that rewrites files would leave unstaged changes behind
+    # after the push it just approved. Fails loudly instead; `pnpm format` is the fix.
     format:
       run: pnpm format:check

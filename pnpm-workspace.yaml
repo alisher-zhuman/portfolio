@@ -1,14 +1,16 @@
-# Пакеты моложе 14 дней не ставятся: свежие релизы чаще всего оказываются скомпрометированными.
+# Refuse any package published less than 14 days ago: freshly published releases are where
+# compromised versions usually surface, before the registry pulls them.
 minimumReleaseAge: 20160
-# Исключение: патч безопасности Next.js 16.3.8 (SSRF в Image Optimization и др.), согласован вручную.
+# Exception, approved by hand: Next.js 16.3.8 is a security-only patch on the 16.3 line
+# (SSRF in Image Optimization, metadata image route disclosure, cache poisoning).
 minimumReleaseAgeExclude:
   - next@16.3.8
   - eslint-config-next@16.3.8
   - '@next/*'
 
-# Скрипты установки запрещены, пока не разрешены явно.
+# Install scripts stay blocked unless allowed here explicitly.
 allowBuilds:
-  # postinstall только вызывает `lefthook install` (ставит git-хуки).
+  # postinstall only runs `lefthook install`, which writes the git hooks.
   lefthook: true
   sharp: false
   unrs-resolver: false

@@ -9,7 +9,7 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
 
-  // Строгий слой поверх eslint-config-next.
+  // Strict layer on top of eslint-config-next.
   {
     files: ['**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}'],
     plugins: {
@@ -26,10 +26,10 @@ const eslintConfig = defineConfig([
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' },
       ],
       '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
-      // Формы объектов через interface; type — для union, intersection и кортежей.
+      // Object shapes as `interface`; `type` stays for unions, intersections and tuples.
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-      // Порядок импортов по слоям FSD: react/next, внешние пакеты,
-      // app -> widgets -> features -> entities -> shared, затем относительные и стили.
+      // FSD layer order: react/next, external packages, then app -> widgets -> features ->
+      // entities -> shared, then relative imports and stylesheets.
       'simple-import-sort/imports': [
         'error',
         {
@@ -54,7 +54,7 @@ const eslintConfig = defineConfig([
     },
   },
 
-  // Правила, которым нужны типы проекта.
+  // Type-aware rules — need the TS project to resolve types.
   {
     files: ['**/*.{ts,tsx,mts,cts}'],
     languageOptions: {
@@ -73,7 +73,7 @@ const eslintConfig = defineConfig([
     },
   },
 
-  // Должен идти последним: отключает правила, конфликтующие с Prettier.
+  // Must stay last: turns off formatting rules that would conflict with Prettier.
   prettierConfig,
 
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),

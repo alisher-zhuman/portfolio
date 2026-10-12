@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next'
 
-// Сайт статический: внешних встраиваний и форм на чужие домены нет,
-// поэтому CSP закрывает clickjacking, подмену base URL и плагины.
+// The site is static with no third-party embeds or cross-origin forms, so the CSP only closes
+// clickjacking, base-URL hijacking and plugins without touching resource loading.
 const SECURITY_HEADERS = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
@@ -20,7 +20,7 @@ const SECURITY_HEADERS = [
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
-  // Не раскрываем фреймворк и его версию в каждом ответе.
+  // Don't advertise the framework and its version on every response.
   poweredByHeader: false,
   headers: async () => [{ source: '/:path*', headers: SECURITY_HEADERS }],
 }

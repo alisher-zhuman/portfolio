@@ -5,10 +5,10 @@ export default defineConfig([
   ...fsd.configs.recommended,
   {
     rules: {
-      // Сегменты называем по назначению кода (types, constants, helpers, hooks),
-      // а не только официальным набором ui/api/lib/model/config.
+      // Segment names follow what the code is (types, constants, helpers, hooks, stores)
+      // rather than the official ui/api/lib/model/config set — same convention as kca.
       'fsd/segments-by-purpose': 'off',
-      // Сущность может жить своим слайсом, даже если пока используется в одном месте.
+      // A domain entity may be its own slice before it has a second consumer.
       'fsd/insignificant-slice': 'off',
     },
   },
