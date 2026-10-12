@@ -53,7 +53,7 @@ export const CareerEvent = ({ event, children }: Props) => {
       <div className="min-w-0 flex-1">
         <h3
           className={cn(
-            'font-display font-bold break-words hyphens-auto',
+            'font-display font-bold wrap-break-word hyphens-auto',
             kind === 'big-goal' ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'
           )}
         >
