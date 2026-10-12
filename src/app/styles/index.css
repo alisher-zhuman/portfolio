@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+
+/* Split for readability, not bundling — Tailwind v4 resolves @import itself. Order matters:
+   theme.css defines the colour variables and the @theme mapping that utilities.css consumes. */
+@import './theme.css';
+@import './utilities.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* The page is a football pitch: horizontal mowing stripes, chalk-white text on grass. The stripe
+   height is a fixed length rather than a share of the page so the rhythm survives any page
+   length. */
+body {
+  background-color: var(--pitch);
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--pitch) 0 140px,
+    var(--pitch-stripe) 140px 280px
+  );
+  color: var(--on-pitch);
+  font-family: var(--font-sans);
+}
+
+/* Floodlights for the evening match: a fixed layer, so it composites once instead of repainting
+   on scroll. --glow is transparent in the light theme, which makes this a no-op there. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60vmax 45vmax at 0% 0%, var(--glow), transparent 70%),
+    radial-gradient(60vmax 45vmax at 100% 0%, var(--glow), transparent 70%);
+}
+
+/* One focus ring for the whole site: the sun yellow reads on grass, on panels and on the red kit. */
+:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}

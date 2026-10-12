@@ -1,0 +1,18 @@
+/* The @utility recipes: class combinations repeated across components, extracted so a second
+   caller cannot drift from the first. Utilities rather than components because they land on
+   different semantic elements (header, nav, main, section). */
+
+/* Centered, width-capped container — the site's single source of truth for content width. */
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-8;
+}
+
+/* Pill-shaped segment inside a bordered track (theme switcher, later the sound toggle). The
+   pressed state is a nested selector so base and active live in one place. */
+@utility pill-segment {
+  @apply text-on-pitch-muted hover:text-on-pitch rounded-full px-3 py-1.5 text-sm font-medium;
+
+  &[aria-pressed='true'] {
+    @apply bg-on-pitch text-pitch font-semibold;
+  }
+}

@@ -1,0 +1,86 @@
+/* Design tokens: the two palettes, the transition suppression that hides the swap, and the
+   @theme mapping that turns each variable into a Tailwind colour utility.
+
+   A value identical in both themes is declared once in :root and never repeated under .dark —
+   custom properties inherit, so .dark only overrides what actually differs. */
+
+:root {
+  /* Shared by both themes: the kit and the sun come from the flag and never change. */
+  --kit: #c8102e;
+  --kit-foreground: #ffffff;
+  --sun: #f6c343;
+  --sun-foreground: #13233a;
+
+  /* Daytime match. */
+  --pitch: #22703c;
+  --pitch-stripe: #1d6535;
+  --on-pitch: #ffffff;
+  --on-pitch-muted: #d9eedd;
+  --chalk: rgb(255 255 255 / 0.6);
+  --header: #1b5f33;
+  --glow: transparent;
+
+  --panel: #f3f7f1;
+  --panel-foreground: #13233a;
+  --panel-muted: #4a5a6b;
+  --panel-edge: #cfdccd;
+  /* Kit red as INK on a panel. Same as --kit here; diverges under .dark, where red text has to
+     get lighter to stay legible while the red FILL (--kit) must stay dark under white text. */
+  --kit-ink: #b00d28;
+
+  --board: #13233a;
+  --board-foreground: #ffffff;
+  --board-ink: #f6c343;
+}
+
+.dark {
+  /* Evening match under floodlights. */
+  --pitch: #103322;
+  --pitch-stripe: #0d2c1d;
+  --on-pitch: #eef4fb;
+  --on-pitch-muted: #b8cbbf;
+  --chalk: rgb(230 240 250 / 0.4);
+  --header: #0b2517;
+  --glow: rgb(205 225 255 / 0.16);
+
+  --panel: #16283d;
+  --panel-foreground: #e8eef6;
+  --panel-muted: #a9b8c9;
+  --panel-edge: #26405c;
+  --kit-ink: #ff8595;
+
+  --board: #0a1626;
+  --board-ink: #ffd35c;
+}
+
+/* useResolvedTheme adds this to <html> for exactly one frame while flipping .dark, so colours
+   snap to the new palette instead of animating across from the old one. */
+.theme-changing,
+.theme-changing *,
+.theme-changing *::before,
+.theme-changing *::after {
+  transition: none !important;
+}
+
+@theme inline {
+  --color-kit: var(--kit);
+  --color-kit-foreground: var(--kit-foreground);
+  --color-kit-ink: var(--kit-ink);
+  --color-sun: var(--sun);
+  --color-sun-foreground: var(--sun-foreground);
+  --color-pitch: var(--pitch);
+  --color-on-pitch: var(--on-pitch);
+  --color-on-pitch-muted: var(--on-pitch-muted);
+  --color-chalk: var(--chalk);
+  --color-header: var(--header);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --color-panel-muted: var(--panel-muted);
+  --color-panel-edge: var(--panel-edge);
+  --color-board: var(--board);
+  --color-board-foreground: var(--board-foreground);
+  --color-board-ink: var(--board-ink);
+
+  --font-sans: var(--font-golos);
+  --font-display: var(--font-unbounded);
+}
