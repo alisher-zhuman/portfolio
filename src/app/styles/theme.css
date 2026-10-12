@@ -11,6 +11,7 @@
   --sun: #f6c343;
   --sun-foreground: #13233a;
   --navy: #13233a;
+  --card-red: #e11d3a;
 
   /* The drawn character. Same in both themes — he doesn't change skin under floodlights. */
   --skin: #d9a57a;
@@ -78,6 +79,7 @@
   --color-sun: var(--sun);
   --color-sun-foreground: var(--sun-foreground);
   --color-navy: var(--navy);
+  --color-card-red: var(--card-red);
   --color-skin: var(--skin);
   --color-hair: var(--hair);
   --color-mouth: var(--mouth);
@@ -103,4 +105,6 @@
   --animate-marquee: marquee 60s linear infinite;
   --animate-live-pulse: live-pulse 1.6s infinite;
   --animate-dash-flow: dash-flow 1s linear infinite;
+  --animate-toast-in: toast-in 0.35s cubic-bezier(0.3, 1.5, 0.5, 1);
+  --animate-score-flash: score-flash 0.25s steps(1) 6;
 }

@@ -8,7 +8,7 @@ export const PlayerSection = () => (
     <SectionHeading
       id="card-title"
       title="Карточка игрока"
-      lead="Наведите курсор на карточку, чтобы перевернуть её."
+      lead="Наведите курсор или нажмите на карточку, чтобы перевернуть её."
     />
 
     <div className="flex flex-col items-center gap-10 md:flex-row md:items-start md:gap-16">

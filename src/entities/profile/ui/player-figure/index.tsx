@@ -7,9 +7,9 @@ interface Props {
 }
 
 // The drawn character juggling a ball, animated entirely in CSS (styles/animations.css). Rendered
-// on the server so it is part of the first paint; the cursor-following eyes and the pause when off
-// screen are layered on by a client component that sets data-paused and the --eye-x/--eye-y/--tilt
-// custom properties. Decorative: the surrounding button carries the accessible name.
+// on the server so it is part of the first paint. Interactivity lives in the widget that wraps it:
+// it sets --eye-x/--eye-y/--tilt (inherited), data-paused and data-celebrating on an ancestor.
+// Decorative: that wrapper carries the accessible name.
 export const PlayerFigure = ({ className }: Props) => (
   <svg
     viewBox="0 0 220 300"

@@ -1,6 +1,7 @@
 import { ContactLinks, PlayerFigure } from '@entities/profile'
 
 import { InsiderQuote } from '../insider-quote'
+import { PlayerStage } from '../player-stage'
 import { TransferPanel } from '../transfer-panel'
 
 export const Hero = () => (
@@ -38,9 +39,13 @@ export const Hero = () => (
         className="border-chalk absolute top-1/2 left-1/2 aspect-square w-full max-w-90 -translate-x-1/2 -translate-y-1/2 rounded-full border-2"
       />
 
-      <PlayerFigure className="relative w-3/5 max-w-75 lg:w-full lg:max-w-85" />
+      <PlayerStage>
+        <PlayerFigure className="w-full" />
+      </PlayerStage>
 
-      <p className="text-on-pitch-muted relative text-sm">Разминается у бровки.</p>
+      <p className="text-on-pitch-muted relative text-sm">
+        Разминается у бровки. Нажмите на игрока.
+      </p>
     </div>
   </section>
 )

@@ -28,12 +28,34 @@
   }
 }
 
+/* Toast entrance: a short springy rise, like a referee pulling out a card. */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+}
+
+/* The score blinks white a few times when a goal goes in. */
+@keyframes score-flash {
+  50% {
+    color: var(--board-foreground);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-live-pulse,
-  .animate-dash-flow {
+  .animate-dash-flow,
+  .animate-toast-in,
+  .animate-score-flash {
     animation: none;
   }
+}
+
+/* OffscreenPause (shared/ui) sets this while its block is out of the viewport. */
+[data-paused='true'] * {
+  animation-play-state: paused !important;
 }
 
 /* ---- The juggling player (entities/profile/ui/player-figure) ----
@@ -87,11 +109,6 @@
 
 .player-figure__eyes {
   transform: translate(var(--eye-x, 0px), var(--eye-y, 0px));
-}
-
-/* Paused while the hero is off screen; set by a client component. */
-.player-figure[data-paused='true'] * {
-  animation-play-state: paused;
 }
 
 @keyframes player-kick {
@@ -166,6 +183,32 @@
   }
 }
 
+/* Celebration on click: two jumps with both arms up. Arms are a transform, not an animation, so
+   they still go up under reduced motion — the jump is the only part that moves. */
+[data-celebrating='true'] .player-figure__body {
+  animation: player-celebrate 0.6s 2 ease-out;
+}
+
+[data-celebrating='true'] .player-figure__arm-back {
+  animation: none;
+  transform: rotate(140deg);
+}
+
+[data-celebrating='true'] .player-figure__arm-front {
+  animation: none;
+  transform: rotate(-140deg);
+}
+
+@keyframes player-celebrate {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-26px);
+  }
+}
+
 /* Reduced motion: the player stands still at the moment of the kick, foot under the ball — the
    leg's resting transform is straight down, which would leave the ball hanging in mid-air. */
 @media (prefers-reduced-motion: reduce) {
@@ -181,8 +224,7 @@
 /* ---- Commentary ticker (widgets/home/ui/commentary-ticker) ---- */
 
 .commentary-ticker:hover .commentary-ticker__track,
-.commentary-ticker:focus-within .commentary-ticker__track,
-.commentary-ticker[data-paused='true'] .commentary-ticker__track {
+.commentary-ticker:focus-within .commentary-ticker__track {
   animation-play-state: paused;
 }
 
@@ -211,5 +253,50 @@
 
   .commentary-ticker__track li::after {
     content: none;
+  }
+}
+
+/* ---- Touchline scroll progress (widgets/layout/ui/touchline) ----
+   Bar and runner are both transforms of one --progress value set on scroll. */
+
+.touchline__bar {
+  transform: scaleX(var(--progress, 0));
+}
+
+.touchline__runner {
+  transform: translateX(calc(var(--progress, 0) * (100vw - 24px)));
+}
+
+.touchline[data-direction='back'] .touchline__runner {
+  scale: -1 1;
+}
+
+.touchline__runner path {
+  transform-box: view-box;
+  transform-origin: 11px 18px;
+}
+
+.touchline[data-running='true'] .touchline__leg-a {
+  animation: runner-stride 0.3s linear infinite alternate;
+}
+
+.touchline[data-running='true'] .touchline__leg-b {
+  animation: runner-stride 0.3s linear infinite alternate-reverse;
+}
+
+@keyframes runner-stride {
+  from {
+    transform: rotate(-35deg);
+  }
+  to {
+    transform: rotate(35deg);
+  }
+}
+
+/* Reduced motion: keep the progress bar (it moves only with the user's own scroll), drop the
+   runner entirely. */
+@media (prefers-reduced-motion: reduce) {
+  .touchline__runner {
+    display: none;
   }
 }

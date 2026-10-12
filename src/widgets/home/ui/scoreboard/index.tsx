@@ -1,10 +1,44 @@
-import { careerEvents, getFinalScore } from '@entities/career'
+'use client'
+
+import { useState } from 'react'
+
 import { profile } from '@entities/profile'
 
-// Server-rendered at full time (every event played). The scroll clock rewinds and replays it on
-// the client; this is what crawlers and no-JS visitors get.
+import { cn } from '@shared/helpers'
+import { useToastStore } from '@shared/stores'
+
+import { useMatchStore } from '../../stores'
+
+// What the referee says on each click on «Баги». The last line repeats once they are off.
+const FOULS = [
+  {
+    text: 'Жёлтая карточка команде «Баги» за симуляцию: «на моей машине работает».',
+    kind: 'yellow',
+  },
+  {
+    text: 'Вторая жёлтая — красная! Баги удалены с поля. До следующего релиза.',
+    kind: 'red',
+  },
+  { text: 'Баги уже в раздевалке. Судья просит не беспокоить.', kind: 'info' },
+] as const
+
+// The store starts at full time, so the first render matches the server HTML exactly.
 export const Scoreboard = () => {
-  const { home, away, minute } = getFinalScore(careerEvents)
+  const minute = useMatchStore((state) => state.minute)
+  const home = useMatchStore((state) => state.home)
+  const goalFlash = useMatchStore((state) => state.goalFlash)
+  const showToast = useToastStore((state) => state.showToast)
+  const [fouls, setFouls] = useState(0)
+
+  const sentOff = fouls >= 2
+
+  const book = () => {
+    const foul = FOULS[Math.min(fouls, FOULS.length - 1)]
+
+    if (foul) showToast(foul.text, foul.kind)
+
+    setFouls((count) => count + 1)
+  }
 
   return (
     <div
@@ -16,11 +50,30 @@ export const Scoreboard = () => {
         {profile.name}
       </span>
 
-      <span className="text-board-ink min-w-16 text-center text-2xl font-extrabold tabular-nums sm:text-4xl">
-        {home}:{away}
+      {/* Keyed on goalFlash so each goal remounts the span and replays the flash. */}
+      <span
+        key={goalFlash}
+        className={cn(
+          'text-board-ink min-w-16 text-center text-2xl font-extrabold tabular-nums sm:text-4xl',
+          goalFlash > 0 && 'animate-score-flash'
+        )}
+      >
+        {home}:0
       </span>
 
-      <span className="min-w-0 flex-1 truncate text-sm font-bold sm:text-base">Баги</span>
+      <span className="min-w-0 flex-1">
+        <button
+          type="button"
+          onClick={book}
+          title={sentOff ? 'Удалены с поля' : 'Не трогайте баги'}
+          className={cn(
+            '-ml-2 cursor-pointer rounded-md px-2 py-0.5 text-sm font-bold hover:bg-board-foreground/10 sm:text-base',
+            sentOff && 'line-through opacity-60'
+          )}
+        >
+          Баги
+        </button>
+      </span>
 
       <span className="bg-kit text-kit-foreground min-w-13 rounded-md px-2.5 py-1 text-center text-sm font-bold tabular-nums sm:text-base">
         {minute}′

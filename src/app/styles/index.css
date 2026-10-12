@@ -8,6 +8,18 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Anchor jumps land below the sticky header (h-15) instead of under it. Smooth only when the
+   visitor hasn't asked for reduced motion. */
+html {
+  scroll-padding-top: calc(var(--spacing) * 18);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 /* The page is a football pitch: horizontal mowing stripes, chalk-white text on grass. The stripe
    height is a fixed length rather than a share of the page so the rhythm survives any page
    length. */

@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Golos_Text, Unbounded } from 'next/font/google'
 
-import { Footer, Header } from '@widgets/layout'
+import { Footer, Header, Touchline } from '@widgets/layout'
 
 import { getThemeInitScript } from '@shared/helpers'
-import { InlineScript, SkipLink, ThemeSync } from '@shared/ui'
+import { InlineScript, SkipLink, ThemeSync, Toaster } from '@shared/ui'
 
 import './styles/index.css'
 
@@ -36,6 +36,8 @@ export const viewport: Viewport = {
 const RootLayout = ({ children }: LayoutProps<'/'>) => (
   <html
     lang="ru"
+    // Lets Next turn smooth scrolling off during route transitions and back on afterwards.
+    data-scroll-behavior="smooth"
     className={`${unbounded.variable} ${golos.variable} antialiased`}
     suppressHydrationWarning
   >
@@ -54,6 +56,10 @@ const RootLayout = ({ children }: LayoutProps<'/'>) => (
       {children}
 
       <Footer />
+
+      <Touchline />
+
+      <Toaster />
     </body>
   </html>
 )
