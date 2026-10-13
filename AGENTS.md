@@ -1,3 +1,6 @@
+Personal portfolio of Alisher Zhuman, styled as a football matchday. See @CLAUDE.md for the full
+project context: FSD architecture, conventions, decisions, gotchas.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 ## This is NOT the Next.js you know

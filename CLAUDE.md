@@ -6,7 +6,11 @@ timeline. Russian-language site. Ported from a plain HTML/CSS/JS prototype to Ne
 is no longer in the repo.
 
 For Next.js specifics read @AGENTS.md first: it points to `node_modules/next/dist/docs/`, the docs
-for the exact installed version. Don't answer Next.js questions from memory. The conventions below
+for the exact installed version. Don't answer Next.js questions from memory. kca uses the older
+`.next-docs/` copy made by `npx @next/codemod agents-md`; Next 16.3 bundles the docs in the package
+and calls that block legacy (`next dev` strips it on upgrade), so don't copy it from kca.
+`AGENTS.md` and this file stay **tracked** in git (unlike kca, which untracks them) — decided
+2026-10-13 so the context survives a lost machine or chat. The conventions below
 deliberately mirror `~/Desktop/kca-frontend-public` (the user's reference project) — when in doubt,
 look at how kca does it.
 
@@ -137,7 +141,8 @@ If the folder is missing (another machine), ask the user — don't invent data.
 
 ## Verifying changes
 
-There are no automated tests yet. Verify against a production build in a real browser:
+There are no automated tests yet — the kca-style Vitest + Testing Library (later Playwright)
+setup is a separate stage after the real content is in (decided 2026-10-13). Verify against a production build in a real browser:
 `pnpm build && pnpm start -p 3456`, then headless Chrome driven over CDP
 (`--remote-debugging-port`): check the console for errors and hydration warnings, emulate mobile
 (`Emulation.setDeviceMetricsOverride`) and `prefers-reduced-motion`, take screenshots of both themes.
