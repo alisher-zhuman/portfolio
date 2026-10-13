@@ -38,7 +38,7 @@ look at how kca does it.
 ## Commands
 
 Setup: Node 24.17.0 (`.nvmrc`), pnpm 11. `pnpm install`, then `cp .env.example .env.local` and set
-`NEXT_PUBLIC_SITE_URL` if real absolute URLs are needed (otherwise the fallback is used).
+`NEXT_PUBLIC_SITE_URL` only to override the production domain (the fallback).
 
 | Command                                  | Does                                                        |
 | ---------------------------------------- | ----------------------------------------------------------- |
@@ -171,7 +171,7 @@ smallest possible islands layered on top.
 - `opengraph-image.tsx` (next/og, built statically). Satori can't use next/font's WOFF2, so static
   TTFs live in `assets/fonts/` with their OFL licences.
 - `sitemap.ts`, `robots.ts`, Person JSON-LD via `JsonLd` (escapes `<` per Next's guide).
-- Origin from `NEXT_PUBLIC_SITE_URL` (`.env.example`), fallback `https://alisher.example`.
+- Origin from `NEXT_PUBLIC_SITE_URL` (`.env.example`), fallback `https://alisher-zhuman.vercel.app` (the production domain).
 - `birthPlace: Талас` is an interpretation of «родом из Таласа» — not confirmed by the user.
 
 ## Lighthouse (2026-10-12, Lighthouse 13.5.0, production build)
@@ -208,8 +208,9 @@ smallest possible islands layered on top.
 
 ## Deferred — decide later
 
-- **Deploy: Vercel** — the repo is connected (2026-10-13), push to `main` deploys. Still to do:
-  set `NEXT_PUBLIC_SITE_URL` in the project settings once the domain is known.
+- **Deploy: Vercel** — the repo is connected (2026-10-13), push to `main` deploys to
+  https://alisher-zhuman.vercel.app (also the `SITE_URL` fallback, so no env var is needed there).
+  On a custom domain, change the fallback or set `NEXT_PUBLIC_SITE_URL` in the project settings.
 - Rating backend: replace the bodies of `getRating`/`submitRating` in
   `entities/rating/api/rating.ts` (the fetch version is in the comment there). Not via Next route
   handlers without agreement.
