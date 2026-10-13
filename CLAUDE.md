@@ -110,6 +110,13 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 **To change texts, contacts or projects, edit `src/entities/*/model/data.ts` only.** Contacts,
 resume (`public/resume.pdf`) and most texts are still placeholders.
 
+**Real data about Alisher lives in `docs/private/` (gitignored — the repo is public):**
+`dossier.md` (career, every project with stack/URL/commit counts, metrics, contacts, site ideas,
+and a list of conflicting facts to confirm before publishing) and `linkedin-raw.md` (verbatim
+LinkedIn/Instagram input; append new batches there). Read it before writing any content. Metrics
+tagged [CV] are his own claims; never publish anything from the "Conflicts" list unconfirmed.
+If the folder is missing (another machine), ask the user — don't invent data.
+
 ## Coding conventions (kca rules)
 
 - Comments in **English** everywhere (Cyrillic quoted as data is fine). UI copy is Russian.

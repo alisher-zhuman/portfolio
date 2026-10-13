@@ -42,3 +42,6 @@ next-env.d.ts
 
 # The template is documentation, not a secret.
 !.env.example
+
+# Personal dossier (contacts, employer details) — local only, the repo is public.
+/docs/private/
