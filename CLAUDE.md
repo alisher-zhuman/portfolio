@@ -31,6 +31,7 @@ look at how kca does it.
   animation/theme/sound, SEO, deploy, anything backend.
 - Content: ask per stage; the answer is either «мокай» or real data.
 - After each stage: what was done, what to check, problems found. Report bugs and risks immediately.
+- Work **only on `main`** (remote: github.com/alisher-zhuman/portfolio) — no branches or PRs.
 - Conventional Commits, small steps. **Never** add `Co-Authored-By` or any AI mention to commits.
 - Verify claims in the built output or a real browser, not by reasoning (see Gotchas).
 
