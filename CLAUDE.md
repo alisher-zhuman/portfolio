@@ -63,6 +63,10 @@ Pinned to exact versions; `pnpm-lock.yaml` is committed. pnpm only.
   template used `@tailwindcss/turbopack`, which only has insiders builds — don't reintroduce it.
 - **ESLint 9.39.5** — v9 is EOL, but `eslint-plugin-react`/`-import`/`-jsx-a11y` inside
   eslint-config-next only declare support up to 9. Same as kca. Move to 10 when they do.
+- `@vercel/analytics` 2.0.1 — `<Analytics />` at the end of `<body>` in `app/layout.tsx` (added
+  2026-10-13 at the user's request; no deps, no install scripts). Its script
+  `/_vercel/insights/script.js` exists only on Vercel, so a local `next start` logs a 404 for it —
+  expected, ignore it in console/Lighthouse checks.
 - Prettier 3.9.9 (+ `eslint-config-prettier`), zustand 5.0.15, clsx + tailwind-merge (`cn()`),
   zod 4.6.5, steiger 0.7.0 + `@feature-sliced/steiger-plugin` 0.8.0,
   eslint-plugin-simple-import-sort 14.0.0, lefthook 2.1.14.
@@ -204,14 +208,8 @@ smallest possible islands layered on top.
 
 ## Deferred — decide later
 
-- **Deploy (not configured, the user will decide later).** Options proposed:
-  1. **Vercel** (recommended for now) — zero config, preview per branch, set `NEXT_PUBLIC_SITE_URL`
-     in project settings. Hobby tier is non-commercial (a personal portfolio fits).
-  2. **Static export** (`output: 'export'`) to Cloudflare Pages / GitHub Pages / nginx — cheap CDN;
-     security headers from `next.config.ts` don't apply and must be repeated in the host config;
-     check export compatibility with `cacheComponents` in the docs first.
-  3. **Own server / Docker** with `next start` (like kca on k8s) — full control, can sit next to the
-     future rating backend.
+- **Deploy: Vercel** — the repo is connected (2026-10-13), push to `main` deploys. Still to do:
+  set `NEXT_PUBLIC_SITE_URL` in the project settings once the domain is known.
 - Rating backend: replace the bodies of `getRating`/`submitRating` in
   `entities/rating/api/rating.ts` (the fetch version is in the comment there). Not via Next route
   handlers without agreement.

@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Golos_Text, Unbounded } from 'next/font/google'
 
+import { Analytics } from '@vercel/analytics/next'
+
 import { SITE_DESCRIPTION } from '@app/helpers'
 
 import { Footer, Header, Touchline } from '@widgets/layout'
@@ -106,6 +108,8 @@ const RootLayout = ({ children }: LayoutProps<'/'>) => (
       <CheatCodeListener />
 
       <Toaster />
+
+      <Analytics />
     </body>
   </html>
 )
