@@ -83,7 +83,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
             color: COLORS.navy,
           }}
         >
-          {t('Hero.window')}
+          {profile.transferWindow === 'open' ? t('Hero.windowOpen') : t('Hero.windowClosed')}
         </div>
       </div>
 
@@ -96,7 +96,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
           maxWidth: 900,
         }}
       >
-        {t('Hero.title', { name: t('Profile.name') })}
+        {t('Hero.title')}
       </div>
 
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
@@ -105,7 +105,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
             {profile.brandName}
           </div>
           <div style={{ display: 'flex', fontSize: 30, color: COLORS.muted }}>
-            {profile.role} · {t('Transfer.fromValue')} → {t('Transfer.toValue')}
+            {profile.role} · {t('Profile.club')}, {t('Profile.city')}
           </div>
         </div>
 
@@ -122,7 +122,6 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
           <div style={{ display: 'flex', fontFamily: 'Unbounded', fontSize: 72, lineHeight: 1 }}>
             {profile.rating}
           </div>
-          <div style={{ display: 'flex', fontSize: 24, color: COLORS.sun }}>{profile.position}</div>
         </div>
       </div>
     </div>,

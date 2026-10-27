@@ -1,6 +1,6 @@
 {
   "Metadata": {
-    "description": "Алишер Жуманов (Alisher Zhuman) — «Түндүктөгү» Middle Frontend Developer, Бишкек. React, Next.js, TypeScript; бэкендге өтүү: Node.js жана SQL.",
+    "description": "Алишер Жуманов (Alisher Zhuman) — «Түндүктөгү» Middle Frontend Developer, Бишкек. React, Next.js, TypeScript, Feature-Sliced Design.",
     "knowsAboutSecurity": "Маалыматтык коопсуздук"
   },
   "Profile": {
@@ -45,12 +45,14 @@
   "Contacts": {
     "label": "Байланыштар",
     "resume": "Резюме (PDF)",
-    "email": "Почта"
+    "email": "Почта",
+    "phone": "Телефон"
   },
   "Hero": {
     "flash": "Шашылыш",
-    "window": "Трансфердик терезе ачык",
-    "title": "{name} бэкендге өтүүгө жакын",
+    "windowOpen": "Трансфердик терезе ачык",
+    "windowClosed": "Сунуштар келип жатат",
+    "title": "Клубдар Алишерге көз салып жатышат",
     "quoteSource": "— оюнчуга жакын булак",
     "stageHint": "Чет сызыкта жылынып жатат. Оюнчуну басыңыз.",
     "playerLabel": "{number} номерлүү футболчу топ тээп жатат. Майрамдашы үчүн басыңыз"
@@ -59,8 +61,8 @@
     "from": "Кайдан",
     "to": "Кайда",
     "status": "Абалы",
-    "fromValue": "Frontend",
-    "toValue": "Backend",
+    "fromValue": "Түндүк",
+    "toValue": "Белгисиз",
     "statusValue": "Сүйлөшүүлөр жүрүп жатат"
   },
   "Card": {
@@ -69,6 +71,7 @@
     "front": "Карточканын бет жагы",
     "back": "Карточканын арт жагы",
     "club": "Клуб",
+    "city": "Шаар",
     "hometown": "Туулган жери",
     "stats": "Мүнөздөмөлөр",
     "flip": "Карточканы которуу",

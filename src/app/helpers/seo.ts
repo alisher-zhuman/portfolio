@@ -41,7 +41,9 @@ export const getPersonJsonLd = async () => {
         addressCountry: 'KG',
       },
     },
-    knowsAbout: [...profile.stack, 'Node.js', 'SQL', t('knowsAboutSecurity')],
+    knowsAbout: [...profile.stack, t('knowsAboutSecurity')],
+    email: `mailto:${profile.contacts.email}`,
+    telephone: profile.contacts.phone,
     sameAs: [profile.contacts.githubUrl, profile.contacts.telegramUrl],
   }
 }

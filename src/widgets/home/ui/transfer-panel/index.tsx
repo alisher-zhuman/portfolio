@@ -7,15 +7,19 @@ export const TransferPanel = () => {
 
   return (
     <div className="relative mt-5 max-w-md">
-      <dl className="grid grid-cols-2 gap-x-14 gap-y-2">
-        <div className="border-chalk min-w-0 rounded-md border-2 px-3 py-2.5">
+      <dl className="grid grid-cols-2 gap-x-10 gap-y-2 sm:gap-x-14">
+        <div className="border-chalk min-w-0 rounded-md border-2 px-2.5 py-2.5 sm:px-3">
           <dt className="text-on-pitch-muted text-sm">{t('from')}</dt>
-          <dd className="font-display text-lg font-bold sm:text-xl">{t('fromValue')}</dd>
+          <dd className="font-display text-base font-bold tracking-tight sm:text-xl sm:tracking-normal">
+            {t('fromValue')}
+          </dd>
         </div>
 
-        <div className="border-sun min-w-0 rounded-md border-2 px-3 py-2.5">
+        <div className="border-sun min-w-0 rounded-md border-2 px-2.5 py-2.5 sm:px-3">
           <dt className="text-on-pitch-muted text-sm">{t('to')}</dt>
-          <dd className="font-display text-lg font-bold sm:text-xl">{t('toValue')}</dd>
+          <dd className="font-display text-base font-bold tracking-tight sm:text-xl sm:tracking-normal">
+            {t('toValue')}
+          </dd>
         </div>
 
         <div className="col-span-2 flex items-baseline gap-2.5">

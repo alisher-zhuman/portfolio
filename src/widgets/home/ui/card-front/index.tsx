@@ -7,7 +7,7 @@ import { Crest } from '@shared/ui'
 export const CardFront = () => {
   const t = useTranslations('Card')
   const tProfile = useTranslations('Profile')
-  const { rating, position, stats } = profile
+  const { rating, stats } = profile
 
   return (
     <article
@@ -22,9 +22,6 @@ export const CardFront = () => {
           </span>
           <span className="font-display hidden text-6xl font-extrabold tracking-tighter group-data-[legend=true]:inline">
             99
-          </span>
-          <span className="font-display text-sun group-data-[legend=true]:text-navy mt-1.5 text-sm font-bold">
-            {position}
           </span>
         </p>
 
@@ -41,16 +38,14 @@ export const CardFront = () => {
         {tProfile('name')}
       </h3>
 
-      <dl className="mt-1.5 flex justify-center gap-4 text-sm">
-        <div className="flex gap-1.5">
-          <dt className="opacity-80">{t('club')}</dt>
-          <dd className="font-semibold">{tProfile('club')}</dd>
-        </div>
-
-        <div className="flex gap-1.5">
-          <dt className="opacity-80">{t('hometown')}</dt>
-          <dd className="font-semibold">{tProfile('hometown')}</dd>
-        </div>
+      {/* Label over value in three columns: side by side they no longer fit the card's width. */}
+      <dl className="mt-1.5 grid grid-cols-3 gap-2 text-center text-sm leading-tight">
+        {(['club', 'city', 'hometown'] as const).map((key) => (
+          <div key={key} className="flex flex-col-reverse gap-0.5">
+            <dd className="font-semibold">{tProfile(key)}</dd>
+            <dt className="text-xs opacity-80">{t(key)}</dt>
+          </div>
+        ))}
       </dl>
 
       <ul

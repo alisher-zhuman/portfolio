@@ -1,6 +1,6 @@
 import { type Profile } from './types'
 
-// Contacts and the resume are placeholders until the real ones are provided.
+// The resume is still a placeholder PDF.
 export const profile: Profile = {
   brandName: 'Alisher Zhuman',
   nameVariants: ['Алишер Жуманов', 'Алишер Жуманов Бакирович', 'Alizher Zhuman'],
@@ -8,7 +8,8 @@ export const profile: Profile = {
   familyName: 'Zhuman',
   role: 'Middle Frontend Developer',
   rating: 78,
-  position: 'FE → BE',
+  // Switch to 'open' when job hunting: the hero's flash then reads «Трансферное окно открыто».
+  transferWindow: 'closed',
   shirtNumber: 7,
   stats: [
     { key: 'REACT', value: 86 },
@@ -22,8 +23,10 @@ export const profile: Profile = {
   stack: ['React', 'Next.js', 'Svelte', 'TypeScript', 'Tailwind CSS', 'Vite', 'pnpm'],
   contacts: {
     resumeUrl: '/resume.pdf',
-    telegramUrl: 'https://t.me/alisher_dev',
-    githubUrl: 'https://github.com/alisher-dev',
-    email: 'alisher.dev@example.com',
+    telegramUrl: 'https://t.me/alisher_zh',
+    githubUrl: 'https://github.com/alisher-zhuman',
+    email: 'zumanovaliser814@gmail.com',
+    phone: '+996999101677',
+    phoneDisplay: '+996 999 101 677',
   },
 }

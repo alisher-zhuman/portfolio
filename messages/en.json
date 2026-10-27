@@ -1,6 +1,6 @@
 {
   "Metadata": {
-    "description": "Alisher Zhuman (Алишер Жуманов) — Middle Frontend Developer at Tunduk, Bishkek. React, Next.js, TypeScript; moving into backend: Node.js and SQL.",
+    "description": "Alisher Zhuman (Алишер Жуманов) — Middle Frontend Developer at Tunduk, Bishkek. React, Next.js, TypeScript, Feature-Sliced Design.",
     "knowsAboutSecurity": "Information security"
   },
   "Profile": {
@@ -45,12 +45,14 @@
   "Contacts": {
     "label": "Contacts",
     "resume": "Resume (PDF)",
-    "email": "Email"
+    "email": "Email",
+    "phone": "Phone"
   },
   "Hero": {
     "flash": "Breaking",
-    "window": "Transfer window open",
-    "title": "{name} close to a move into backend",
+    "windowOpen": "Transfer window open",
+    "windowClosed": "Offers coming in",
+    "title": "Clubs are circling Alisher",
     "quoteSource": "— a source close to the player",
     "stageHint": "Warming up on the touchline. Tap the player.",
     "playerLabel": "Player number {number} juggling a ball. Press to make him celebrate"
@@ -59,8 +61,8 @@
     "from": "From",
     "to": "To",
     "status": "Status",
-    "fromValue": "Frontend",
-    "toValue": "Backend",
+    "fromValue": "Tunduk",
+    "toValue": "Unknown",
     "statusValue": "Talks ongoing"
   },
   "Card": {
@@ -69,6 +71,7 @@
     "front": "Front of the card",
     "back": "Back of the card",
     "club": "Club",
+    "city": "City",
     "hometown": "Hometown",
     "stats": "Attributes",
     "flip": "Flip the card",

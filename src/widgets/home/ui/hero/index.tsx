@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import { ContactLinks, PlayerFigure } from '@entities/profile'
+import { ContactLinks, PlayerFigure, profile } from '@entities/profile'
 
 import { InsiderQuote } from '../insider-quote'
 import { PlayerStage } from '../player-stage'
@@ -8,7 +8,6 @@ import { TransferPanel } from '../transfer-panel'
 
 export const Hero = () => {
   const t = useTranslations('Hero')
-  const tProfile = useTranslations('Profile')
 
   return (
     <section
@@ -16,19 +15,21 @@ export const Hero = () => {
       aria-labelledby="hero-title"
       className="container-page grid gap-6 overflow-hidden pt-6 pb-12 lg:grid-cols-12 lg:items-center lg:py-20"
     >
-      <div className="lg:col-span-7">
+      <div className="min-w-0 lg:col-span-7">
         <p className="bg-panel text-panel-foreground inline-flex overflow-hidden rounded-md text-sm font-semibold">
           <span className="bg-kit text-kit-foreground font-display px-3 py-1.5 font-extrabold tracking-wide uppercase">
             {t('flash')}
           </span>
-          <span className="px-3 py-1.5">{t('window')}</span>
+          <span className="px-3 py-1.5">
+            {profile.transferWindow === 'open' ? t('windowOpen') : t('windowClosed')}
+          </span>
         </p>
 
         <h1
           id="hero-title"
           className="font-display mt-4 max-w-2xl text-4xl leading-tight font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl"
         >
-          {t('title', { name: tProfile('name') })}
+          {t('title')}
         </h1>
 
         <InsiderQuote />

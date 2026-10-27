@@ -1,6 +1,6 @@
 {
   "Metadata": {
-    "description": "Алишер Жуманов (Alisher Zhuman) — Middle Frontend Developer в «Түндүк», Бишкек. React, Next.js, TypeScript; переход в бэкенд: Node.js и SQL.",
+    "description": "Алишер Жуманов (Alisher Zhuman) — Middle Frontend Developer в «Түндүк», Бишкек. React, Next.js, TypeScript, Feature-Sliced Design.",
     "knowsAboutSecurity": "Информационная безопасность"
   },
   "Profile": {
@@ -45,12 +45,14 @@
   "Contacts": {
     "label": "Контакты",
     "resume": "Резюме (PDF)",
-    "email": "Почта"
+    "email": "Почта",
+    "phone": "Телефон"
   },
   "Hero": {
     "flash": "Срочно",
-    "window": "Трансферное окно открыто",
-    "title": "{name} близок к переходу в бэкенд",
+    "windowOpen": "Трансферное окно открыто",
+    "windowClosed": "Поступают предложения",
+    "title": "Клубы следят за Алишером",
     "quoteSource": "— источник, близкий к игроку",
     "stageHint": "Разминается у бровки. Нажмите на игрока.",
     "playerLabel": "Футболист с номером {number} чеканит мяч. Нажмите, чтобы он отпраздновал"
@@ -59,8 +61,8 @@
     "from": "Откуда",
     "to": "Куда",
     "status": "Статус",
-    "fromValue": "Frontend",
-    "toValue": "Backend",
+    "fromValue": "Түндүк",
+    "toValue": "Неизвестно",
     "statusValue": "Переговоры идут"
   },
   "Card": {
@@ -69,6 +71,7 @@
     "front": "Лицевая сторона карточки",
     "back": "Оборотная сторона карточки",
     "club": "Клуб",
+    "city": "Город",
     "hometown": "Родной город",
     "stats": "Характеристики",
     "flip": "Перевернуть карточку",

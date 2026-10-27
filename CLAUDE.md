@@ -102,13 +102,13 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 `@widgets`, `@features`, `@entities`, `@shared` (`@/*` → `src/*`).
 
 - **shared** — `audio/` (Web Audio, see below), `constants/` (`SITE_URL`, theme key), `effects/`
-  (confetti), `helpers/` (`cn`, `pluralRu`, theme init script), `hooks/` (`useInView`, `useMounted`,
+  (confetti), `helpers/` (`cn`, theme init script), `hooks/` (`useInView`, `useMounted`,
   `useReducedMotion`, `useResolvedTheme`), `stores/` (theme, sound, toast), `types/`, `ui/`
   (`Crest`, `InlineScript`, `JsonLd`, `LiveDot`, `OffscreenPause`, `SectionHeading`, `SkipLink`,
   `TagList`, `ThemeSync`, `Toaster`). Segment names follow kca, not FSD's official set
   (`fsd/segments-by-purpose` is off on purpose).
-- **entities** — typed data and its basic UI: `profile` (all personal data, contacts, stats, bio,
-  brand name variants), `career` (match events, commentary, `getFinalScore`), `project`, `rating`
+- **entities** — typed data and its basic UI: `profile` (contacts, stats, stack, brand name variants,
+  `transferWindow`), `career` (match events by id, `getFinalScore`), `project`, `rating`
   (`api/` with `getRating`/`submitRating`, `model/` zod schemas). Slice names are singular
   (steiger's `inconsistent-naming`).
 - **features** — `kick-ball` (physics ball), `cheat-code` (konami → gold «легенда» card),
@@ -123,7 +123,9 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 `src/entities/*/model/data.ts`.** Add a key to all three files — `ru.json` is the typed source, so
 a key missing there fails typecheck, but nothing checks ky/en for completeness. Lists use
 `t.raw()`; plurals use ICU in the messages. Kyrgyz is drafted by Claude and proofread by Alisher.
-Contacts, resume (`public/resume.pdf`) and most texts are still placeholders.
+Contacts are real (Telegram, GitHub, email, phone); the resume (`public/resume.pdf`) is still a
+placeholder. The hero and the card front follow the 2026-10-27 decisions; bio, scout report, career,
+projects, rating and footer still carry the old backend-transfer copy until each is reworked.
 
 **Real data about Alisher lives in `docs/private/` (gitignored — the repo is public):**
 `dossier.md` (career, every project with stack/URL/commit counts, metrics, contacts, site ideas,
@@ -250,6 +252,7 @@ smallest possible islands layered on top.
   `entities/rating/api/rating.ts` (the fetch version is in the comment there). Not via Next route
   handlers without agreement.
 - Next 16.4.3 from 2026-11-06.
-- Real contacts, resume PDF, texts; confirm or drop `birthPlace`.
+- Real resume PDF; rework the other blocks one stage at a time (list in `docs/private/chat-history.md`);
+  confirm or drop `birthPlace`.
 - ESLint 10 once eslint-config-next's plugins support it.
 - `README.md` is still the create-next-app template — rewrite it (setup, scripts, structure).

@@ -10,7 +10,13 @@ export interface Contacts {
   telegramUrl: string
   githubUrl: string
   email: string
+  // E.164, for the tel: link; `phoneDisplay` is how it reads on the page.
+  phone: string
+  phoneDisplay: string
 }
+
+// 'closed' while he is employed and only hears offers; 'open' when he is actively looking.
+export type TransferWindow = 'open' | 'closed'
 
 // Only what reads the same in every language. Translated copy (name, club, city, bio, the scout's
 // notes, the transfer) lives in messages/*.json under Profile, Card, Scout and Transfer.
@@ -23,7 +29,7 @@ export interface Profile {
   familyName: string
   role: string
   rating: number
-  position: string
+  transferWindow: TransferWindow
   shirtNumber: number
   stats: PlayerStat[]
   strongFoot: string

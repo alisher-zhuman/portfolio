@@ -65,7 +65,6 @@ export const generateMetadata = async ({ params }: LayoutProps<'/[locale]'>): Pr
       ...profile.nameVariants,
       profile.role,
       'Frontend',
-      'Backend',
       'React',
       'Next.js',
       'TypeScript',
