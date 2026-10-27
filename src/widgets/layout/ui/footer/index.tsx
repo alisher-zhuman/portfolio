@@ -1,22 +1,23 @@
+import { useTranslations } from 'next-intl'
+
 import { ContactLinks } from '@entities/profile'
 
-export const Footer = () => (
-  <footer aria-labelledby="footer-title" className="section-shell mt-16 pb-20">
-    <h2 id="footer-title" className="font-display text-3xl font-bold sm:text-4xl">
-      Финальный свисток
-    </h2>
+export const Footer = () => {
+  const t = useTranslations('Footer')
 
-    <p className="text-on-pitch-muted mt-2.5 max-w-prose">
-      Если нужен разработчик, который не боится перейти на другую позицию, напишите.
-    </p>
+  return (
+    <footer aria-labelledby="footer-title" className="section-shell mt-16 pb-20">
+      <h2 id="footer-title" className="font-display text-3xl font-bold sm:text-4xl">
+        {t('title')}
+      </h2>
 
-    <ContactLinks emailLabel="short" className="mt-6" />
+      <p className="text-on-pitch-muted mt-2.5 max-w-prose">{t('text')}</p>
 
-    <p className="text-on-pitch-muted mt-7 text-sm">
-      Говорят, на этом сайте работает чит-код из старых приставок.{' '}
-      <span aria-label="Вверх, вверх, вниз, вниз, влево, вправо, влево, вправо, B, A">
-        ↑ ↑ ↓ ↓ ← → ← → B A
-      </span>
-    </p>
-  </footer>
-)
+      <ContactLinks emailLabel="short" className="mt-6" />
+
+      <p className="text-on-pitch-muted mt-7 text-sm">
+        {t('cheat')} <span aria-label={t('cheatLabel')}>↑ ↑ ↓ ↓ ← → ← → B A</span>
+      </p>
+    </footer>
+  )
+}

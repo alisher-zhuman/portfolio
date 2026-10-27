@@ -1,8 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-
-import { profile } from '@entities/profile'
+import { useTranslations } from 'next-intl'
 
 import { playBoo, playWhistle } from '@shared/audio'
 import { cn } from '@shared/helpers'
@@ -10,18 +9,9 @@ import { useToastStore } from '@shared/stores'
 
 import { useMatchStore } from '../../stores'
 
-// What the referee says on each click on «Баги». The last line repeats once they are off.
-const FOULS = [
-  {
-    text: 'Жёлтая карточка команде «Баги» за симуляцию: «на моей машине работает».',
-    kind: 'yellow',
-  },
-  {
-    text: 'Вторая жёлтая — красная! Баги удалены с поля. До следующего релиза.',
-    kind: 'red',
-  },
-  { text: 'Баги уже в раздевалке. Судья просит не беспокоить.', kind: 'info' },
-] as const
+// What the referee shows on each click on «Баги», matching Match.fouls in the messages line for line.
+// The last one repeats once they are off.
+const FOULS = ['yellow', 'red', 'info'] as const
 
 // The store starts at full time, so the first render matches the server HTML exactly.
 export const Scoreboard = () => {
@@ -30,17 +20,21 @@ export const Scoreboard = () => {
   const goalFlash = useMatchStore((state) => state.goalFlash)
   const showToast = useToastStore((state) => state.showToast)
   const [fouls, setFouls] = useState(0)
+  const t = useTranslations('Match')
+  const tProfile = useTranslations('Profile')
 
   const sentOff = fouls >= 2
 
   const book = () => {
-    const foul = FOULS[Math.min(fouls, FOULS.length - 1)]
+    const index = Math.min(fouls, FOULS.length - 1)
+    const kind = FOULS[index] ?? 'info'
+    const text = (t.raw('fouls') as string[])[index]
 
-    if (foul) showToast(foul.text, foul.kind)
+    if (text) showToast(text, kind)
 
     playWhistle([0.12, 0.12])
 
-    if (foul?.kind === 'red') playBoo()
+    if (kind === 'red') playBoo()
 
     setFouls((count) => count + 1)
   }
@@ -48,11 +42,11 @@ export const Scoreboard = () => {
   return (
     <div
       role="group"
-      aria-label="Табло матча"
+      aria-label={t('scoreboard')}
       className="text-board-foreground font-display flex items-center gap-3 px-3 py-2.5 sm:gap-4 sm:px-4"
     >
       <span className="min-w-0 flex-1 truncate text-right text-sm font-bold sm:text-base">
-        {profile.name}
+        {tProfile('name')}
       </span>
 
       {/* Keyed on goalFlash so each goal remounts the span and replays the flash. */}
@@ -70,13 +64,13 @@ export const Scoreboard = () => {
         <button
           type="button"
           onClick={book}
-          title={sentOff ? 'Удалены с поля' : 'Не трогайте баги'}
+          title={sentOff ? t('bugsSentOff') : t('bugsTitle')}
           className={cn(
             '-ml-2 cursor-pointer rounded-md px-2 py-0.5 text-sm font-bold hover:bg-board-foreground/10 sm:text-base',
             sentOff && 'line-through opacity-60'
           )}
         >
-          Баги
+          {t('bugs')}
         </button>
       </span>
 

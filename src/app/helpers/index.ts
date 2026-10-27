@@ -1,1 +1,1 @@
-export { getPersonJsonLd, SITE_DESCRIPTION } from './seo'
+export { getPersonJsonLd } from './seo'

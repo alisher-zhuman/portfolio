@@ -1,6 +1,7 @@
 'use client'
 
 import { type ReactNode, useEffect, useRef } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { careerEvents } from '@entities/career'
 
@@ -34,6 +35,10 @@ export const MatchTimeline = ({ children, className }: Props) => {
   // Start tracking a little before the list scrolls into view.
   const near = useInView(ref, '0px 0px 200px 0px')
   const celebratedRef = useRef(false)
+  const t = useTranslations('Match')
+  const goalToast = bigGoal
+    ? t('goalToast', { minute: bigGoal.minute, title: t(`events.${bigGoal.id}.title`) })
+    : ''
 
   useEffect(() => {
     const list = ref.current
@@ -62,9 +67,7 @@ export const MatchTimeline = ({ children, className }: Props) => {
           celebratedRef.current = true
           playGoal()
           fireConfetti()
-          useToastStore
-            .getState()
-            .showToast(`ГОЛ! ${bigGoal.minute}-я минута: ${bigGoal.title}.`, 'goal')
+          useToastStore.getState().showToast(goalToast, 'goal')
         } else {
           playWhistle([0.15])
         }
@@ -126,7 +129,7 @@ export const MatchTimeline = ({ children, className }: Props) => {
       window.cancelAnimationFrame(frame)
       window.clearTimeout(goalTimer)
     }
-  }, [near])
+  }, [near, goalToast])
 
   return (
     <ol ref={ref} className={className}>

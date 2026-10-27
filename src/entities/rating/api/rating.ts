@@ -1,5 +1,6 @@
 import { type z } from 'zod'
 
+import { RatingError } from '../model/errors'
 import { RatingSummarySchema, RatingValueSchema, StoredRatingSchema } from '../model/schemas'
 import { type RatingSummary } from '../model/types'
 
@@ -8,7 +9,7 @@ import { type RatingSummary } from '../model/types'
 //
 //   export const getRating = async () => {
 //     const response = await fetch(`${API_URL}/rating`)
-//     if (!response.ok) throw new Error('Не удалось загрузить оценки.')
+//     if (!response.ok) throw new RatingError('loadFailed')
 //     return RatingSummarySchema.parse(await response.json())
 //   }
 //
@@ -18,7 +19,7 @@ import { type RatingSummary } from '../model/types'
 //       headers: { 'Content-Type': 'application/json' },
 //       body: JSON.stringify({ value: RatingValueSchema.parse(value) }),
 //     })
-//     if (!response.ok) throw new Error('Не удалось отправить оценку.')
+//     if (!response.ok) throw new RatingError('submitFailed')
 //     return RatingSummarySchema.parse(await response.json())
 //   }
 
@@ -49,7 +50,8 @@ const write = (state: StoredRating) => {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
   } catch {
-    throw new Error('Браузер не даёт сохранить оценку. Проверьте, не включён ли приватный режим.')
+    // Storage blocked (private mode, site data disabled).
+    throw new RatingError('storageUnavailable')
   }
 }
 
@@ -70,7 +72,7 @@ export const getRating = async (): Promise<RatingSummary> => {
 export const submitRating = async (value: number): Promise<RatingSummary> => {
   const parsed = RatingValueSchema.safeParse(value)
 
-  if (!parsed.success) throw new Error('Оценка должна быть целым числом от 1 до 10.')
+  if (!parsed.success) throw new RatingError('invalidValue')
 
   await wait(LATENCY_MS)
 

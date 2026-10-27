@@ -1,20 +1,29 @@
 'use client'
 
 import { type FormEvent, useEffect, useRef, useState } from 'react'
+import { useFormatter, useTranslations } from 'next-intl'
 
-import { type RatingSummary } from '@entities/rating'
+import { type RatingError, type RatingErrorCode, type RatingSummary } from '@entities/rating'
 
 import { playBoo, playGoal } from '@shared/audio'
 import { fireConfetti } from '@shared/effects'
-import { cn, pluralRu } from '@shared/helpers'
+import { cn } from '@shared/helpers'
 import { useInView } from '@shared/hooks'
 import { useToastStore } from '@shared/stores'
 
 const SCALE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-type Status = { kind: 'idle' } | { kind: 'sending' } | { kind: 'sent' | 'error'; message: string }
+type Status =
+  | { kind: 'idle' }
+  | { kind: 'sending' }
+  | { kind: 'sent'; value: number }
+  | { kind: 'pick-first' }
+  | { kind: 'error'; code: RatingErrorCode }
 
-const formatAverage = (average: number) => average.toFixed(1).replace('.', ',')
+// The API throws RatingError with a code; anything else (a chunk that failed to load, say) counts
+// as a generic failure.
+const errorCode = (error: unknown, fallback: RatingErrorCode): RatingErrorCode =>
+  error instanceof Error && 'code' in error ? (error as RatingError).code : fallback
 
 // The rating API carries zod, which would otherwise ride in the first-load bundle for a section at
 // the very bottom of the page. Loaded on demand instead — see the effect below. Type imports above
@@ -22,16 +31,16 @@ const formatAverage = (average: number) => average.toFixed(1).replace('.', ',')
 const loadRatingApi = () => import('@entities/rating')
 
 // The extremes get a reaction from the stands.
-const react = (value: number) => {
+const react = (value: number, lines: { ten: string; one: string }) => {
   const { showToast } = useToastStore.getState()
 
   if (value === 10) {
     playGoal()
     fireConfetti()
-    showToast('Десятка! Трибуны встают.', 'goal')
+    showToast(lines.ten, 'goal')
   } else if (value === 1) {
     playBoo()
-    showToast('Жёлтая карточка за жестокость к игроку.', 'yellow')
+    showToast(lines.one, 'yellow')
   }
 }
 
@@ -45,6 +54,8 @@ export const RateForm = () => {
   // Start fetching a screen or so before the section scrolls into view.
   const near = useInView(ref, '600px 0px', false)
   const [requested, setRequested] = useState(false)
+  const t = useTranslations('Rate')
+  const format = useFormatter()
 
   if (near && !requested) setRequested(true)
 
@@ -74,7 +85,7 @@ export const RateForm = () => {
     event.preventDefault()
 
     if (selected === null) {
-      setStatus({ kind: 'error', message: 'Выберите оценку от 1 до 10.' })
+      setStatus({ kind: 'pick-first' })
 
       return
     }
@@ -85,13 +96,10 @@ export const RateForm = () => {
       const { submitRating } = await loadRatingApi()
 
       setSummary(await submitRating(selected))
-      setStatus({ kind: 'sent', message: `Оценка ${selected} принята. Спасибо!` })
-      react(selected)
+      setStatus({ kind: 'sent', value: selected })
+      react(selected, { ten: t('ten'), one: t('one') })
     } catch (error) {
-      setStatus({
-        kind: 'error',
-        message: error instanceof Error ? error.message : 'Не удалось отправить оценку.',
-      })
+      setStatus({ kind: 'error', code: errorCode(error, 'submitFailed') })
     }
   }
 
@@ -101,7 +109,7 @@ export const RateForm = () => {
     <div ref={ref} className="flex flex-col gap-7 md:flex-row md:items-start md:gap-12">
       <form onSubmit={(event) => void handleSubmit(event)} noValidate className="min-w-0 md:flex-1">
         <fieldset>
-          <legend className="sr-only">Ваша оценка от 1 до 10</legend>
+          <legend className="sr-only">{t('legend')}</legend>
 
           <div className="grid max-w-xl grid-cols-5 gap-2 sm:grid-cols-10">
             {SCALE.map((value) => (
@@ -131,18 +139,19 @@ export const RateForm = () => {
         </fieldset>
 
         <button type="submit" disabled={status.kind === 'sending'} className="btn-primary mt-4.5">
-          {status.kind === 'sending'
-            ? 'Отправляем…'
-            : hasVoted
-              ? 'Изменить оценку'
-              : 'Отправить оценку'}
+          {status.kind === 'sending' ? t('sending') : hasVoted ? t('change') : t('send')}
         </button>
 
         <p
           role="status"
-          className={cn('mt-3 min-h-6 font-medium', status.kind === 'error' && 'text-sun')}
+          className={cn(
+            'mt-3 min-h-6 font-medium',
+            (status.kind === 'error' || status.kind === 'pick-first') && 'text-sun'
+          )}
         >
-          {(status.kind === 'sent' || status.kind === 'error') && status.message}
+          {status.kind === 'sent' && t('accepted', { value: status.value })}
+          {status.kind === 'pick-first' && t('pickFirst')}
+          {status.kind === 'error' && t(`errors.${status.code}`)}
         </p>
       </form>
 
@@ -151,18 +160,20 @@ export const RateForm = () => {
         className="bg-board text-board-foreground min-w-50 shrink-0 self-start rounded-md px-6 py-4.5"
       >
         <p className="font-display text-board-ink text-5xl font-extrabold">
-          {summary?.average != null ? formatAverage(summary.average) : '–'}
+          {summary?.average != null
+            ? format.number(summary.average, { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+            : '–'}
           <small className="text-board-foreground/70 ml-1 text-lg">/10</small>
         </p>
 
         <p className="text-board-foreground/80 mt-1.5">
           {loadFailed
-            ? 'Не удалось загрузить оценки.'
+            ? t('errors.loadFailed')
             : summary === null
-              ? 'Загружаем оценки…'
+              ? t('loading')
               : summary.count === 0
-                ? 'Пока нет оценок. Поставьте первую.'
-                : `${summary.count} ${pluralRu(summary.count, ['голос', 'голоса', 'голосов'])}`}
+                ? t('empty')
+                : t('votes', { count: summary.count })}
         </p>
       </div>
     </div>

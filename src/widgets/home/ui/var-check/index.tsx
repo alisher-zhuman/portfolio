@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { playWhistle } from '@shared/audio'
 
@@ -11,6 +12,7 @@ type Status = 'idle' | 'checking' | 'done'
 // A mock VAR review of the 67' goal. The verdict is always the same — that's the joke.
 export const VarCheck = () => {
   const [status, setStatus] = useState<Status>('idle')
+  const t = useTranslations('Match')
 
   useEffect(() => {
     if (status !== 'checking') return
@@ -31,12 +33,12 @@ export const VarCheck = () => {
         }}
         className="btn min-h-9 px-3.5 py-1.5 disabled:cursor-progress disabled:opacity-60"
       >
-        Проверить VAR
+        {t('varButton')}
       </button>
 
       <span role="status" className="font-semibold">
-        {status === 'checking' && 'Проверяем повтор…'}
-        {status === 'done' && 'Гол засчитан: офсайда нет, коммит подписан.'}
+        {status === 'checking' && t('varChecking')}
+        {status === 'done' && t('varDone')}
       </span>
     </div>
   )

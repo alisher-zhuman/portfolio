@@ -23,6 +23,16 @@
   @apply container-page border-chalk border-t-2 py-16 sm:py-20;
 }
 
+/* A <summary> without the disclosure triangle (list-style for Chrome/Firefox, the pseudo-element
+   for Safari), for when the summary is styled as a button. */
+@utility summary-plain {
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
 /* Pill buttons and links. Base is the outlined chalk pill; btn-primary is the sun-yellow CTA. */
 @utility btn {
   @apply border-chalk text-on-pitch inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border-2 px-4.5 py-2.5 text-sm font-semibold transition-colors hover:bg-on-pitch/10 active:translate-y-px motion-reduce:transition-none;

@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { playBoo, playGoal, playKick, playWhistle } from '@shared/audio'
 import { fireConfetti } from '@shared/effects'
@@ -8,31 +9,21 @@ import { cn } from '@shared/helpers'
 
 import { Keeper } from '../keeper'
 
-// Six target zones: three columns by two rows. The keeper saves if he dives to the same column —
-// a one-in-three chance, enough to make a goal feel earned without making the 404 a chore.
+// Six target zones: three columns by two rows, in the same order as Penalty.zones in the messages.
+// The keeper saves if he dives to the same column — a one-in-three chance, enough to make a goal
+// feel earned without making the 404 a chore.
 const ZONES = [
-  { col: 0, row: 0, label: 'Левый верхний угол' },
-  { col: 1, row: 0, label: 'По центру, верхом' },
-  { col: 2, row: 0, label: 'Правый верхний угол' },
-  { col: 0, row: 1, label: 'Левый нижний угол' },
-  { col: 1, row: 1, label: 'По центру, низом' },
-  { col: 2, row: 1, label: 'Правый нижний угол' },
+  { col: 0, row: 0 },
+  { col: 1, row: 0 },
+  { col: 2, row: 0 },
+  { col: 0, row: 1 },
+  { col: 1, row: 1 },
+  { col: 2, row: 1 },
 ] as const
-
-const GOAL_LINES = [
-  'Гоооол! Страница всё ещё не найдена, зато счёт открыт.',
-  'Гол! Вратарь угадал стадион, но не угол.',
-  'В девятку! Можно возвращаться на главную героем.',
-]
-
-const SAVE_LINES = [
-  'Сейв! Вратарь прочитал удар. Попробуйте ещё раз.',
-  'Отбил! 404 защищается лучше, чем кажется.',
-]
 
 const FLIGHT_MS = 520
 
-const pick = (lines: string[]) => lines[Math.floor(Math.random() * lines.length)] ?? ''
+const pickIndex = (length: number) => Math.floor(Math.random() * length)
 
 // The keeper picks a corner at random, independent of the shot.
 const randomDive = () => ({
@@ -55,8 +46,15 @@ export const PenaltyGame = () => {
   const [busy, setBusy] = useState(false)
   const [taken, setTaken] = useState(false)
   const [scored, setScored] = useState(false)
-  const [status, setStatus] = useState('Выберите угол.')
+  const [status, setStatus] = useState<'pick' | 'goal' | 'save'>('pick')
+  // Which of the goal or save lines to show; picked per shot.
+  const [line, setLine] = useState(0)
   const [score, setScore] = useState({ goals: 0, shots: 0 })
+  const t = useTranslations('Penalty')
+
+  const zoneLabels = t.raw('zones') as string[]
+  const goalLines = t.raw('goals') as string[]
+  const saveLines = t.raw('saves') as string[]
 
   const shoot = async (index: number) => {
     const zone = ZONES[index]
@@ -119,12 +117,14 @@ export const PenaltyGame = () => {
 
     if (saved) {
       playBoo()
-      setStatus(pick(SAVE_LINES))
+      setStatus('save')
+      setLine(pickIndex(saveLines.length))
     } else {
       playGoal()
       fireConfetti({ originY: 0.3 })
       setScored(true)
-      setStatus(pick(GOAL_LINES))
+      setStatus('goal')
+      setLine(pickIndex(goalLines.length))
     }
 
     setScore((current) => ({
@@ -140,7 +140,7 @@ export const PenaltyGame = () => {
     animations.current.splice(0).forEach((animation) => animation.cancel())
     setTaken(false)
     setScored(false)
-    setStatus('Выберите угол.')
+    setStatus('pick')
     playWhistle([0.15])
     // The zones are still disabled until React applies setTaken(false), so focus on the next frame.
     window.requestAnimationFrame(() => zoneRefs.current[1]?.focus())
@@ -160,17 +160,17 @@ export const PenaltyGame = () => {
 
           <div
             role="group"
-            aria-label="Выберите угол для удара"
+            aria-label={t('groupLabel')}
             className="absolute inset-0 z-20 grid grid-cols-3 grid-rows-2"
           >
             {ZONES.map((zone, index) => (
               <button
-                key={zone.label}
+                key={`${zone.col}-${zone.row}`}
                 ref={(element) => {
                   zoneRefs.current[index] = element
                 }}
                 type="button"
-                aria-label={zone.label}
+                aria-label={zoneLabels[index]}
                 disabled={taken}
                 onClick={() => void shoot(index)}
                 className="hover:bg-sun/30 focus-visible:bg-sun/30 cursor-crosshair rounded-sm transition-colors focus-visible:-outline-offset-4 disabled:cursor-default disabled:bg-transparent motion-reduce:transition-none"
@@ -206,12 +206,12 @@ export const PenaltyGame = () => {
       </div>
 
       <p role="status" className="font-display mt-5 min-h-16 text-xl font-bold text-balance">
-        {status}
+        {status === 'pick' && t('pick')}
+        {status === 'goal' && goalLines[line]}
+        {status === 'save' && saveLines[line]}
       </p>
 
-      <p className="text-on-pitch-muted mt-1">
-        Голов: {score.goals} из {score.shots}
-      </p>
+      <p className="text-on-pitch-muted mt-1">{t('score', score)}</p>
 
       <button
         ref={againRef}
@@ -220,7 +220,7 @@ export const PenaltyGame = () => {
         onClick={reset}
         className="btn mt-5"
       >
-        Ещё удар
+        {t('again')}
       </button>
     </div>
   )

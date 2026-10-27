@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { playFinalWhistle, playGoal } from '@shared/audio'
 import { fireConfetti } from '@shared/effects'
@@ -30,6 +31,9 @@ const keyOf = (event: KeyboardEvent) =>
   event.key.startsWith('Arrow') ? event.key : event.code.replace('Key', '').toLowerCase()
 
 export const CheatCodeListener = () => {
+  const t = useTranslations('CheatCode')
+  const toast = t('toast')
+
   useEffect(() => {
     let position = 0
     let goalTimer = 0
@@ -52,9 +56,7 @@ export const CheatCodeListener = () => {
       playFinalWhistle()
       goalTimer = window.setTimeout(playGoal, GOAL_DELAY_MS)
       fireConfetti({ count: 220 })
-      useToastStore
-        .getState()
-        .showToast('Чит-код принят: рейтинг 99. Только на этот матч.', 'goal', 5000)
+      useToastStore.getState().showToast(toast, 'goal', 5000)
       document.getElementById('card')?.scrollIntoView({ block: 'start' })
     }
 
@@ -64,7 +66,7 @@ export const CheatCodeListener = () => {
       window.removeEventListener('keydown', onKeyDown)
       window.clearTimeout(goalTimer)
     }
-  }, [])
+  }, [toast])
 
   return null
 }

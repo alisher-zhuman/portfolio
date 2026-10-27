@@ -12,35 +12,21 @@ export interface Contacts {
   email: string
 }
 
+// Only what reads the same in every language. Translated copy (name, club, city, bio, the scout's
+// notes, the transfer) lives in messages/*.json under Profile, Card, Scout and Transfer.
 export interface Profile {
-  // How the site addresses him in copy: «Алишер».
-  name: string
   // The public brand, used in titles, previews and structured data.
   brandName: string
   // Other spellings people search for; feed JSON-LD alternateName.
   nameVariants: string[]
   givenName: string
   familyName: string
-  city: string
   role: string
-  club: string
-  hometown: string
   rating: number
   position: string
   shirtNumber: number
   stats: PlayerStat[]
-  bio: string[]
   strongFoot: string
-  scout: {
-    strengths: string
-    growing: string
-    stack: string[]
-    note: string
-  }
-  transfer: {
-    from: string
-    to: string
-    status: string
-  }
+  stack: string[]
   contacts: Contacts
 }

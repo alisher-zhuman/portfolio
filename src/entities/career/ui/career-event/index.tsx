@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { cn } from '@shared/helpers'
 import { LiveDot } from '@shared/ui'
@@ -15,7 +16,8 @@ interface Props {
 // widgets/home rewrites data-passed and data-live directly on these nodes on the client; the
 // group-data-* classes below are what those attributes drive.
 export const CareerEvent = ({ event, children }: Props) => {
-  const { minute, title, text, kind } = event
+  const t = useTranslations('Match')
+  const { id, minute, kind } = event
   const isGoal = kind === 'goal' || kind === 'big-goal'
 
   return (
@@ -59,15 +61,15 @@ export const CareerEvent = ({ event, children }: Props) => {
         >
           {kind === 'big-goal' && (
             <span className="bg-sun text-sun-foreground mr-1.5 inline-block -rotate-3 rounded-md px-2.5 py-0.5">
-              ГОЛ!
+              {t('goalBadge')}
             </span>
           )}
-          {title}
+          {t(`events.${id}.title`)}
         </h3>
 
         <p className="text-on-pitch-muted mt-1.5 max-w-prose">
           {kind === 'substitution' && <LiveDot />}
-          {text}
+          {t(`events.${id}.text`)}
         </p>
 
         {children}

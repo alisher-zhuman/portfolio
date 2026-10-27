@@ -2,7 +2,7 @@
 
 Personal portfolio of Alisher Zhuman (Middle Frontend Developer at «Түндүк», moving to backend),
 styled as a football matchday: the page is a pitch, the hero is transfer news, the career is a match
-timeline. Russian-language site. Ported from a plain HTML/CSS/JS prototype to Next.js; the prototype
+timeline. Kyrgyz (default), Russian and English via next-intl. Ported from a plain HTML/CSS/JS prototype to Next.js; the prototype
 is no longer in the repo.
 
 For Next.js specifics read @AGENTS.md first: it points to `node_modules/next/dist/docs/`, the docs
@@ -76,13 +76,18 @@ Pinned to exact versions; `pnpm-lock.yaml` is committed. pnpm only.
 - Prettier 3.9.9 (+ `eslint-config-prettier`), zustand 5.0.15, clsx + tailwind-merge (`cn()`),
   zod 4.6.6, steiger 0.7.0 + `@feature-sliced/steiger-plugin` 0.8.0,
   eslint-plugin-simple-import-sort 14.0.0, lefthook 2.1.14.
+- **next-intl 4.14.9** (added 2026-10-27), set up like kca: `src/i18n/` (`routing`, `request`,
+  `navigation`), `src/proxy.ts`, `messages/{ky,ru,en}.json`. Differences from kca: the locale comes
+  from `next/root-params` (no `setRequestLocale`), and `src/i18n/global.d.ts` types every key
+  against `ru.json`.
 
 ## Dependency posture
 
 - `pnpm-workspace.yaml` sets `minimumReleaseAge: 20160` (14 days) for **all** packages, transitive
   included. Exceptions are listed in `minimumReleaseAgeExclude` (only Next 16.4.1 today).
 - Install scripts are blocked unless listed in `allowBuilds`. Allowed: `lefthook` (postinstall only
-  runs `lefthook install`). Blocked: `sharp`, `unrs-resolver`.
+  runs `lefthook install`). Blocked: `sharp`, `unrs-resolver`, and `@parcel/watcher` + `@swc/core`
+  (they come with next-intl and only serve its unused message extractor).
 - Every new dependency: justify it (why, can we do without, alternative), check the exact name,
   ≥14 days old, no surprise install scripts, then run `pnpm audit` and report.
 - `overrides` in `pnpm-workspace.yaml`: `source-map-js ^1.2.2` (build-time DoS via postcss).
@@ -110,10 +115,15 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
   `rate-player` (rating form), `penalty-shootout` (404 game).
 - **widgets** — `layout` (header with nav, theme switcher, sound toggle; footer; touchline) and
   `home` (all homepage sections, the match store, scroll clock, section whistle).
-- **app** — routing files plus `helpers/` (SEO description, Person JSON-LD) and `styles/`.
+- **app** — everything routable is under `[locale]/` (layout, page, not-found, `[...rest]`, OG
+  image); `sitemap.ts`, `robots.ts`, `icon.svg` stay at the root. Plus `helpers/` (Person JSON-LD)
+  and `styles/`. `src/i18n/` sits beside the layers, as in kca, imported as `@/i18n/*`.
 
-**To change texts, contacts or projects, edit `src/entities/*/model/data.ts` only.** Contacts,
-resume (`public/resume.pdf`) and most texts are still placeholders.
+**Texts live in `messages/{ky,ru,en}.json`; structure (ids, numbers, links, stack) in
+`src/entities/*/model/data.ts`.** Add a key to all three files — `ru.json` is the typed source, so
+a key missing there fails typecheck, but nothing checks ky/en for completeness. Lists use
+`t.raw()`; plurals use ICU in the messages. Kyrgyz is drafted by Claude and proofread by Alisher.
+Contacts, resume (`public/resume.pdf`) and most texts are still placeholders.
 
 **Real data about Alisher lives in `docs/private/` (gitignored — the repo is public):**
 `dossier.md` (career, every project with stack/URL/commit counts, metrics, contacts, site ideas,
@@ -125,7 +135,8 @@ If the folder is missing (another machine), ask the user — don't invent data.
 
 ## Coding conventions (kca rules)
 
-- Comments in **English** everywhere (Cyrillic quoted as data is fine). UI copy is Russian.
+- Comments in **English** everywhere (Cyrillic quoted as data is fine). UI copy goes in `messages/`, never in components (`shared/` takes translated strings as props, so
+  it stays free of next-intl).
 - Arrow functions only, no `function` declarations — route files included.
 - **One component per file, one per folder**: `ui/<kebab-name>/index.tsx`.
 - Colours only through CSS variables mapped in `@theme inline` (`src/app/styles/theme.css`); a value
@@ -179,16 +190,18 @@ smallest possible islands layered on top.
 
 - Brand **Alisher Zhuman**; variants (Алишер Жуманов, Алишер Жуманов Бакирович, Alizher Zhuman) go
   to description, keywords and JSON-LD `alternateName`. All from `entities/profile`.
-- Metadata in `app/layout.tsx`; **canonical only in `app/page.tsx`** — a layout canonical would be
-  stamped onto the 404. `not-found.tsx` exports its own title; Next adds `noindex` itself
-  (verified in built HTML).
-- `opengraph-image.tsx` (next/og, built statically). Satori can't use next/font's WOFF2, so static
+- Metadata in `[locale]/layout.tsx` (description and `og:locale` per language); **canonical and
+  hreflang (`alternates.languages`, x-default → /ky) only in `[locale]/page.tsx`** — a layout
+  canonical would be stamped onto the 404. next-intl's hreflang `Link` header is off
+  (`alternateLinks: false`) so there is one source. Next adds `noindex` to the 404 itself.
+- `[locale]/opengraph-image.tsx` (next/og), one static PNG per locale — needs its own
+  `generateStaticParams`, or the `[locale]` param makes it render on demand. Satori can't use next/font's WOFF2, so static
   TTFs live in `assets/fonts/` with their OFL licences.
-- `sitemap.ts`, `robots.ts`, Person JSON-LD via `JsonLd` (escapes `<` per Next's guide).
+- `sitemap.ts` lists /ky, /ru, /en, each with all three as alternates. `robots.ts`, Person JSON-LD via `JsonLd` (escapes `<` per Next's guide).
 - Origin from `NEXT_PUBLIC_SITE_URL` (`.env.example`), fallback `https://alisher-zhuman.vercel.app` (the production domain).
 - `birthPlace: Талас` is an interpretation of «родом из Таласа» — not confirmed by the user.
 
-## Lighthouse (2026-10-12, Lighthouse 13.5.0, production build)
+## Lighthouse (2026-10-12, Lighthouse 13.5.0, production build — before i18n, re-measure)
 
 | Page                 | Perf     | A11y | BP  | SEO |
 | -------------------- | -------- | ---- | --- | --- |
@@ -219,6 +232,14 @@ smallest possible islands layered on top.
   inside SVG, like the shirt number).
 - Headless Chrome has a ~500px minimum window width; emulate mobile via CDP
   `Emulation.setDeviceMetricsOverride` or an iframe.
+- **404 under Cache Components is JS-only.** Unknown paths reach `[locale]/[...rest]`, whose
+  `notFound()` leaves no prerendered shell: the server sends status 404 with an empty document and
+  the client renders the localized page. Tried and rejected: awaiting `params` (status becomes 200),
+  `NextResponse.rewrite(…, { status: 404 })` in the proxy (status ignored), no catch-all (Next's
+  bare English 404), `global-not-found` (experimental). `generateMetadata` in `[locale]/not-found`
+  is ignored, so the 404 has the site's default title.
+- Kyrgyz strings run long: the theme switcher shows icons below `sm` because «Күндүз / Авто /
+  Кечинде» pushed the header past 390px. Check new header/UI copy in ky on a phone width.
 
 ## Deferred — decide later
 

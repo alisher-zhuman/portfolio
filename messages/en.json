@@ -1,0 +1,243 @@
+{
+  "Metadata": {
+    "description": "Alisher Zhuman (Алишер Жуманов) — Middle Frontend Developer at Tunduk, Bishkek. React, Next.js, TypeScript; moving into backend: Node.js and SQL.",
+    "knowsAboutSecurity": "Information security"
+  },
+  "Profile": {
+    "name": "Alisher",
+    "club": "Tunduk",
+    "city": "Bishkek",
+    "hometown": "Talas"
+  },
+  "A11y": {
+    "skipToContent": "Skip to content"
+  },
+  "Header": {
+    "homeLabel": "{name}, back to the top"
+  },
+  "Nav": {
+    "label": "Sections",
+    "card": "Player",
+    "match": "Career",
+    "projects": "Projects",
+    "rate": "Rating"
+  },
+  "Theme": {
+    "label": "Colour theme",
+    "light": "Day",
+    "lightTitle": "Day match",
+    "system": "Auto",
+    "systemTitle": "Follow the system",
+    "dark": "Night",
+    "darkTitle": "Evening match under the floodlights"
+  },
+  "Sound": {
+    "label": "Sound",
+    "on": "on",
+    "off": "off"
+  },
+  "Locale": {
+    "label": "Language",
+    "ky": "Кыргызча",
+    "ru": "Русский",
+    "en": "English"
+  },
+  "Contacts": {
+    "label": "Contacts",
+    "resume": "Resume (PDF)",
+    "email": "Email"
+  },
+  "Hero": {
+    "flash": "Breaking",
+    "window": "Transfer window open",
+    "title": "{name} close to a move into backend",
+    "quoteSource": "— a source close to the player",
+    "stageHint": "Warming up on the touchline. Tap the player.",
+    "playerLabel": "Player number {number} juggling a ball. Press to make him celebrate"
+  },
+  "Transfer": {
+    "from": "From",
+    "to": "To",
+    "status": "Status",
+    "fromValue": "Frontend",
+    "toValue": "Backend",
+    "statusValue": "Talks ongoing"
+  },
+  "Card": {
+    "title": "Player card",
+    "lead": "Hover over the card or tap it to flip it.",
+    "front": "Front of the card",
+    "back": "Back of the card",
+    "club": "Club",
+    "hometown": "Hometown",
+    "stats": "Attributes",
+    "flip": "Flip the card",
+    "bioTitle": "Biography",
+    "bio": [
+      "From Talas, lives in Bishkek. Middle Frontend Developer at Tunduk, building government services used by people all over the country.",
+      "Studies information security at college, so he thinks not only about how a form looks but also about what someone might send through it.",
+      "Has already closed backend tasks on a work project, and wants to play in that position for good."
+    ],
+    "strongFoot": "Stronger foot: {foot}"
+  },
+  "Scout": {
+    "title": "Scouting report",
+    "strengthsLabel": "Strengths",
+    "strengths": "Careful typing, responsive layouts, accessible interfaces, an eye for form security.",
+    "growingLabel": "Developing",
+    "growing": "Node.js, SQL, API design and working with databases.",
+    "squadLabel": "Starting line-up",
+    "stackLabel": "Stack",
+    "noteLabel": "Note",
+    "note": "Sometimes writes CSS at 3 a.m. The coaching staff are aware."
+  },
+  "Match": {
+    "title": "Career as a match",
+    "lead": "Scroll down: the clock on the scoreboard runs with you.",
+    "scoreboard": "Match scoreboard",
+    "bugs": "Bugs",
+    "bugsTitle": "Leave the bugs alone",
+    "bugsSentOff": "Sent off",
+    "fouls": [
+      "Yellow card to Bugs for diving: “works on my machine”.",
+      "Second yellow, that’s red! Bugs are sent off. Until the next release.",
+      "Bugs are already in the dressing room. The referee asks not to disturb them."
+    ],
+    "commentator": "Commentator",
+    "commentary": [
+      "Alisher beats three bugs and is one on one with production!",
+      "The referee shows a yellow card for !important in CSS.",
+      "VAR is checking: bug or feature? Feature. Play on.",
+      "The coach shouts from the touchline: “Type it!”",
+      "The stands are chanting: “S-Q-L! S-Q-L!”",
+      "The ball hits the post. The post turns out to be legacy code.",
+      "Match stats: zero console.log in production. Almost."
+    ],
+    "goalBadge": "GOAL!",
+    "goalToast": "GOAL! {minute}th minute: {title}.",
+    "varButton": "Check VAR",
+    "varChecking": "Checking the replay…",
+    "varDone": "Goal stands: no offside, commit signed.",
+    "events": {
+      "kickoff": {
+        "title": "Kick-off: Talas",
+        "text": "His hometown, where the opening whistle blew."
+      },
+      "bishkek": {
+        "title": "Transfer to Bishkek",
+        "text": "A move to the capital: more opportunities, more IT."
+      },
+      "college": {
+        "title": "College, information security",
+        "text": "Networks, cryptography and a habit of looking at a system through an attacker’s eyes."
+      },
+      "react": {
+        "title": "First React projects",
+        "text": "First components, pet projects and a first deploy. Off the mark."
+      },
+      "tunduk": {
+        "title": "Middle Frontend Developer at Tunduk",
+        "text": "Government services: a public portal and an admin panel."
+      },
+      "backendTasks": {
+        "title": "First backend tasks",
+        "text": "Endpoints and database work in kca-backend on a work project. Liked it."
+      },
+      "substitution": {
+        "title": "Substitution: on in a backend role",
+        "text": "In progress… Node.js, SQL, API design."
+      }
+    }
+  },
+  "Projects": {
+    "title": "Projects",
+    "lead": "What he has worked on, in brief.",
+    "stackLabel": "Stack",
+    "closedCode": "Closed source",
+    "codeOnGithub": "Code on GitHub",
+    "items": {
+      "kcaPublic": {
+        "context": "Work project at Tunduk",
+        "description": "The public portal of a government service. Application forms with validation, a personal account and a responsive layout that works as well on a phone as on a desktop."
+      },
+      "kcaAdmin": {
+        "context": "Work project at Tunduk",
+        "description": "An internal panel for staff: sortable, filterable tables, roles and permissions. Also where he took his first backend tasks, in kca-backend."
+      },
+      "weather": {
+        "context": "Pet project",
+        "description": "Weather for the cities of Kyrgyzstan: temperature and precipitation charts, dark theme."
+      },
+      "portfolio": {
+        "context": "This site",
+        "description": "Next.js with static generation: content is rendered on the server and interactivity is layered on top. Every sound is synthesised in the browser with the Web Audio API."
+      }
+    }
+  },
+  "Rate": {
+    "title": "Rate the player",
+    "lead": "Like a post-match report: from 1 to 10.",
+    "legend": "Your rating from 1 to 10",
+    "pickFirst": "Choose a rating from 1 to 10.",
+    "accepted": "Rating {value} received. Thank you!",
+    "sending": "Sending…",
+    "change": "Change rating",
+    "send": "Submit rating",
+    "loading": "Loading ratings…",
+    "empty": "No ratings yet. Be the first.",
+    "votes": "{count, plural, one {# vote} other {# votes}}",
+    "ten": "A perfect ten! The stands are on their feet.",
+    "one": "Yellow card for cruelty to the player.",
+    "errors": {
+      "loadFailed": "Couldn’t load the ratings.",
+      "submitFailed": "Couldn’t submit the rating.",
+      "storageUnavailable": "The browser won’t let us save the rating. Check whether private mode is on.",
+      "invalidValue": "The rating must be a whole number from 1 to 10."
+    }
+  },
+  "Footer": {
+    "title": "Final whistle",
+    "text": "If you need a developer who isn’t afraid to switch positions, get in touch.",
+    "cheat": "Rumour has it a cheat code from old consoles works on this site.",
+    "cheatLabel": "Up, up, down, down, left, right, left, right, B, A"
+  },
+  "CheatCode": {
+    "toast": "Cheat code accepted: rating 99. This match only."
+  },
+  "Ball": {
+    "label": "Ball. Press Enter to kick it",
+    "hatTrick": "A hat-trick on the ball. The ball begs for mercy.",
+    "yellow": "Yellow card for mistreating the ball."
+  },
+  "NotFound": {
+    "title": "404: the ball went into the stands",
+    "text": "This page doesn’t exist. While the referee looks for the ball, take a penalty: pick a corner of the goal with the mouse, a tap or the Tab and Enter keys.",
+    "home": "Back to home"
+  },
+  "Penalty": {
+    "groupLabel": "Pick a corner to shoot at",
+    "zones": [
+      "Top left corner",
+      "Centre, high",
+      "Top right corner",
+      "Bottom left corner",
+      "Centre, low",
+      "Bottom right corner"
+    ],
+    "pick": "Pick a corner.",
+    "goals": [
+      "Gooooal! The page still isn’t found, but you’re off the mark.",
+      "Goal! The keeper guessed the stadium, not the corner.",
+      "Top bins! You can head back home a hero."
+    ],
+    "saves": [
+      "Saved! The keeper read it. Try again.",
+      "Parried! The 404 defends better than it looks."
+    ],
+    "score": "Goals: {goals} of {shots}",
+    "again": "Another shot"
+  },
+  "OpenGraph": {
+    "flash": "BREAKING"
+  }
+}

@@ -1,6 +1,7 @@
 'use client'
 
 import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { profile } from '@entities/profile'
 
@@ -25,6 +26,7 @@ export const PlayerStage = ({ children }: Props) => {
   const ref = useRef<HTMLButtonElement>(null)
   const inView = useInView(ref)
   const [celebrating, setCelebrating] = useState(false)
+  const t = useTranslations('Hero')
 
   useEffect(() => {
     const stage = ref.current
@@ -77,7 +79,7 @@ export const PlayerStage = ({ children }: Props) => {
       type="button"
       // Includes the shirt number: it is visible text inside the drawing, and WCAG 2.5.3 wants
       // visible text to be part of the accessible name.
-      aria-label={`Футболист с номером ${profile.shirtNumber} чеканит мяч. Нажмите, чтобы он отпраздновал`}
+      aria-label={t('playerLabel', { number: profile.shirtNumber })}
       data-paused={!inView}
       data-celebrating={celebrating}
       onClick={() => {

@@ -2,17 +2,25 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 import { ImageResponse } from 'next/og'
+import { hasLocale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
+
+import { routing } from '@/i18n/routing'
 
 import { profile } from '@entities/profile'
 
 // Link preview for Telegram, LinkedIn and the rest, styled as the hero's transfer-news flash.
-// Generated once at build time (no request-time APIs here), so it is a static PNG in production.
+// Generated once per locale at build time (no request-time APIs here), so each is a static PNG.
 
-export const alt = `${profile.brandName} — ${profile.role}. Срочно: близок к переходу в бэкенд.`
+// Static, so the same in every language: the brand and the role read the same everywhere.
+export const alt = `${profile.brandName} — ${profile.role}`
 
 export const size = { width: 1200, height: 630 }
 
 export const contentType = 'image/png'
+
+// Prerenders one image per locale; without it the [locale] param makes the route render on demand.
+export const generateStaticParams = () => routing.locales.map((locale) => ({ locale }))
 
 // Satori renders text only with fonts it is handed, and only TTF/OTF/WOFF — next/font's WOFF2
 // can't be reused. Static instances live in /assets/fonts with their OFL licences.
@@ -34,8 +42,13 @@ const COLORS = {
   panel: '#f3f7f1',
 }
 
-const OpenGraphImage = async () =>
-  new ImageResponse(
+const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> }) => {
+  const { locale: requested } = await params
+  const locale = hasLocale(routing.locales, requested) ? requested : routing.defaultLocale
+  // Root params aren't available to metadata image routes, so the locale is passed explicitly.
+  const t = await getTranslations({ locale })
+
+  return new ImageResponse(
     <div
       style={{
         width: '100%',
@@ -60,7 +73,7 @@ const OpenGraphImage = async () =>
             letterSpacing: 1,
           }}
         >
-          СРОЧНО
+          {t('OpenGraph.flash')}
         </div>
         <div
           style={{
@@ -70,7 +83,7 @@ const OpenGraphImage = async () =>
             color: COLORS.navy,
           }}
         >
-          Трансферное окно открыто
+          {t('Hero.window')}
         </div>
       </div>
 
@@ -83,7 +96,7 @@ const OpenGraphImage = async () =>
           maxWidth: 900,
         }}
       >
-        {profile.name} близок к переходу в бэкенд
+        {t('Hero.title', { name: t('Profile.name') })}
       </div>
 
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
@@ -92,7 +105,7 @@ const OpenGraphImage = async () =>
             {profile.brandName}
           </div>
           <div style={{ display: 'flex', fontSize: 30, color: COLORS.muted }}>
-            {profile.role} · {profile.transfer.from} → {profile.transfer.to}
+            {profile.role} · {t('Transfer.fromValue')} → {t('Transfer.toValue')}
           </div>
         </div>
 
@@ -121,5 +134,6 @@ const OpenGraphImage = async () =>
       ],
     }
   )
+}
 
 export default OpenGraphImage

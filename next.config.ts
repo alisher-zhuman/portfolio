@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import createNextIntlPlugin from 'next-intl/plugin'
 
 // The site is static with no third-party embeds or cross-origin forms, so the CSP only closes
 // clickjacking, base-URL hijacking and plugins without touching resource loading.
@@ -25,4 +26,7 @@ const nextConfig: NextConfig = {
   headers: async () => [{ source: '/:path*', headers: SECURITY_HEADERS }],
 }
 
-export default nextConfig
+// Points next-intl at src/i18n/request.ts (its default location).
+const withNextIntl = createNextIntlPlugin()
+
+export default withNextIntl(nextConfig)

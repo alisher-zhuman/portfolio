@@ -1,6 +1,7 @@
 'use client'
 
 import { type ReactNode, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { useLegendStore } from '@features/cheat-code'
 
@@ -15,6 +16,7 @@ interface Props {
 //   is still over the card leaves it showing the back until the pointer leaves — hover still holds.
 export const CardFlip = ({ front, back }: Props) => {
   const [pinned, setPinned] = useState(false)
+  const t = useTranslations('Card')
   // The cheat code's gold edition; the faces restyle themselves off data-legend.
   const legend = useLegendStore((state) => state.active)
 
@@ -43,7 +45,7 @@ export const CardFlip = ({ front, back }: Props) => {
         onClick={toggle}
         className="cursor-pointer rounded-sm px-2 py-1 text-sm font-semibold underline underline-offset-4"
       >
-        Перевернуть карточку
+        {t('flip')}
       </button>
     </div>
   )

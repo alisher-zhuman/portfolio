@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 import { cn } from '@shared/helpers'
 import { TagList } from '@shared/ui'
 
@@ -8,8 +10,8 @@ interface Props {
 }
 
 export const ProjectCard = ({ project }: Props) => {
-  const { number, title, context, isWork, description, stack, backendRepo, link, linkNote } =
-    project
+  const t = useTranslations('Projects')
+  const { id, number, title, isWork, stack, backendRepo, codeUrl } = project
 
   return (
     <article className="bg-panel text-panel-foreground relative flex h-full flex-col gap-2.5 overflow-hidden rounded-md py-6 pr-6 pl-7">
@@ -28,29 +30,29 @@ export const ProjectCard = ({ project }: Props) => {
 
       <h3 className="font-display relative pr-14 text-xl font-bold">{title}</h3>
 
-      <p className="text-kit-ink relative text-sm font-semibold">{context}</p>
+      <p className="text-kit-ink relative text-sm font-semibold">{t(`items.${id}.context`)}</p>
 
-      <p className="max-w-prose">{description}</p>
+      <p className="max-w-prose">{t(`items.${id}.description`)}</p>
 
       <TagList
-        label="Стек"
+        label={t('stackLabel')}
         items={backendRepo ? [...stack, backendRepo] : stack}
         highlighted={backendRepo ? [backendRepo] : []}
         className="text-panel-muted mt-1"
       />
 
       <p className="text-panel-muted mt-auto pt-2 text-sm font-semibold">
-        {link ? (
+        {codeUrl ? (
           <a
-            href={link.href}
+            href={codeUrl}
             target="_blank"
             rel="noopener"
             className="text-panel-foreground underline underline-offset-3"
           >
-            {link.label}
+            {t('codeOnGithub')}
           </a>
         ) : (
-          linkNote
+          t('closedCode')
         )}
       </p>
     </article>

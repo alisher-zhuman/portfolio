@@ -1,13 +1,17 @@
+import { useTranslations } from 'next-intl'
+
 import { PlayerPortrait, profile } from '@entities/profile'
 
 import { Crest } from '@shared/ui'
 
 export const CardFront = () => {
-  const { name, rating, position, club, hometown, stats } = profile
+  const t = useTranslations('Card')
+  const tProfile = useTranslations('Profile')
+  const { rating, position, stats } = profile
 
   return (
     <article
-      aria-label="Лицевая сторона карточки"
+      aria-label={t('front')}
       className="card-notched card-front-surface text-kit-foreground group-data-[legend=true]:card-front-legend group-data-[legend=true]:text-navy absolute inset-0 flex flex-col p-5 backface-hidden"
     >
       <div className="flex items-start justify-between">
@@ -33,22 +37,24 @@ export const CardFront = () => {
         <PlayerPortrait />
       </div>
 
-      <h3 className="font-display mt-3.5 text-center text-2xl font-extrabold">{name}</h3>
+      <h3 className="font-display mt-3.5 text-center text-2xl font-extrabold">
+        {tProfile('name')}
+      </h3>
 
       <dl className="mt-1.5 flex justify-center gap-4 text-sm">
         <div className="flex gap-1.5">
-          <dt className="opacity-80">Клуб</dt>
-          <dd className="font-semibold">{club}</dd>
+          <dt className="opacity-80">{t('club')}</dt>
+          <dd className="font-semibold">{tProfile('club')}</dd>
         </div>
 
         <div className="flex gap-1.5">
-          <dt className="opacity-80">Родной город</dt>
-          <dd className="font-semibold">{hometown}</dd>
+          <dt className="opacity-80">{t('hometown')}</dt>
+          <dd className="font-semibold">{tProfile('hometown')}</dd>
         </div>
       </dl>
 
       <ul
-        aria-label="Характеристики"
+        aria-label={t('stats')}
         className="border-kit-foreground/40 mt-auto grid grid-cols-3 gap-x-3 gap-y-2.5 border-t pt-3"
       >
         {stats.map(({ key, value }) => (

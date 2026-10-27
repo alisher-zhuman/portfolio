@@ -1,6 +1,7 @@
 'use client'
 
 import { type PointerEvent as ReactPointerEvent, useEffect, useRef } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { playKick } from '@shared/audio'
 import { useToastStore } from '@shared/stores'
@@ -43,6 +44,7 @@ export const Ball = () => {
   const loop = useRef({ frame: 0, last: 0 })
   const drag = useRef<{ pointerId: number; start: Sample; samples: Sample[] } | null>(null)
   const kicks = useRef(0)
+  const t = useTranslations('Ball')
 
   const floor = () => window.innerHeight - RADIUS - FLOOR_OFFSET
 
@@ -137,8 +139,8 @@ export const Ball = () => {
     kicks.current += 1
     const { showToast } = useToastStore.getState()
 
-    if (kicks.current === 3) showToast('Хет-трик по мячу. Мяч просит пощады.', 'info')
-    if (kicks.current === 10) showToast('Жёлтая карточка за жестокое обращение с мячом.', 'yellow')
+    if (kicks.current === 3) showToast(t('hatTrick'), 'info')
+    if (kicks.current === 10) showToast(t('yellow'), 'yellow')
 
     wake()
   }
@@ -222,7 +224,7 @@ export const Ball = () => {
     <button
       ref={ref}
       type="button"
-      aria-label="Мяч. Нажмите Enter, чтобы пнуть"
+      aria-label={t('label')}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}

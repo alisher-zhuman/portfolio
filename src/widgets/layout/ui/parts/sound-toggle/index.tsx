@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { cn } from '@shared/helpers'
 import { useSoundStore } from '@shared/stores'
@@ -13,6 +14,7 @@ export const SoundToggle = () => {
   const enabled = useSoundStore((state) => state.enabled)
   const toggle = useSoundStore((state) => state.toggle)
   const release = useSoundStore((state) => state.release)
+  const t = useTranslations('Sound')
 
   // Free the audio device when the page goes away (including into the back/forward cache).
   useEffect(() => {
@@ -47,10 +49,10 @@ export const SoundToggle = () => {
         )}
       </svg>
 
-      <span className="max-sm:sr-only">Звук</span>
+      <span className="max-sm:sr-only">{t('label')}</span>
 
       <span aria-hidden="true" className="-ml-1 max-sm:hidden">
-        {enabled ? 'вкл.' : 'выкл.'}
+        {enabled ? t('on') : t('off')}
       </span>
     </button>
   )

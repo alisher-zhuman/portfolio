@@ -1,28 +1,28 @@
-import { profile } from '@entities/profile'
+import { useTranslations } from 'next-intl'
 
 import { LiveDot } from '@shared/ui'
 
 export const TransferPanel = () => {
-  const { from, to, status } = profile.transfer
+  const t = useTranslations('Transfer')
 
   return (
     <div className="relative mt-5 max-w-md">
       <dl className="grid grid-cols-2 gap-x-14 gap-y-2">
         <div className="border-chalk min-w-0 rounded-md border-2 px-3 py-2.5">
-          <dt className="text-on-pitch-muted text-sm">Откуда</dt>
-          <dd className="font-display text-lg font-bold sm:text-xl">{from}</dd>
+          <dt className="text-on-pitch-muted text-sm">{t('from')}</dt>
+          <dd className="font-display text-lg font-bold sm:text-xl">{t('fromValue')}</dd>
         </div>
 
         <div className="border-sun min-w-0 rounded-md border-2 px-3 py-2.5">
-          <dt className="text-on-pitch-muted text-sm">Куда</dt>
-          <dd className="font-display text-lg font-bold sm:text-xl">{to}</dd>
+          <dt className="text-on-pitch-muted text-sm">{t('to')}</dt>
+          <dd className="font-display text-lg font-bold sm:text-xl">{t('toValue')}</dd>
         </div>
 
         <div className="col-span-2 flex items-baseline gap-2.5">
-          <dt className="text-on-pitch-muted text-sm">Статус</dt>
+          <dt className="text-on-pitch-muted text-sm">{t('status')}</dt>
           <dd className="font-semibold">
             <LiveDot />
-            {status}
+            {t('statusValue')}
           </dd>
         </div>
       </dl>
