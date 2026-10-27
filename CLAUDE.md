@@ -59,9 +59,11 @@ regenerates route types (`LayoutProps` etc.) if typecheck complains about missin
 
 Pinned to exact versions; `pnpm-lock.yaml` is committed. pnpm only.
 
-- **Next 16.3.8** (App Router, Turbopack, `cacheComponents` + `partialPrefetching` on). 16.3.8 is a
-  security-only patch (SSRF in Image Optimization, metadata image route disclosure, cache poisoning);
-  approved as an exception to the 14-day rule. `eslint-config-next` must always match `next`.
+- **Next 16.4.1** (App Router, Turbopack, `cacheComponents` + `partialPrefetching` on). 16.4.1 is
+  the first release fixing two critical RCEs (Image Optimization with SVG, `use cache` with typed
+  arrays) and a Server Actions DoS; the 16.3 line got no patch. Installed at 13 days old as an
+  approved exception (2026-10-27). Move to 16.4.3 from 2026-11-06 (bug fixes only, incl. one for
+  `proxy.ts`). `eslint-config-next` must always match `next`.
 - **React 19.3.0**, **TypeScript 6.0.3** — not 7: `typescript-eslint` requires `<6.1`.
 - **Tailwind 4.3.3 via `@tailwindcss/postcss`** (per Tailwind's docs). The create-next-app 16.4
   template used `@tailwindcss/turbopack`, which only has insiders builds — don't reintroduce it.
@@ -72,22 +74,21 @@ Pinned to exact versions; `pnpm-lock.yaml` is committed. pnpm only.
   `/_vercel/insights/script.js` exists only on Vercel, so a local `next start` logs a 404 for it —
   expected, ignore it in console/Lighthouse checks.
 - Prettier 3.9.9 (+ `eslint-config-prettier`), zustand 5.0.15, clsx + tailwind-merge (`cn()`),
-  zod 4.6.5, steiger 0.7.0 + `@feature-sliced/steiger-plugin` 0.8.0,
+  zod 4.6.6, steiger 0.7.0 + `@feature-sliced/steiger-plugin` 0.8.0,
   eslint-plugin-simple-import-sort 14.0.0, lefthook 2.1.14.
 
 ## Dependency posture
 
 - `pnpm-workspace.yaml` sets `minimumReleaseAge: 20160` (14 days) for **all** packages, transitive
-  included. Exceptions are listed in `minimumReleaseAgeExclude` (only the Next 16.3.8 patch today).
+  included. Exceptions are listed in `minimumReleaseAgeExclude` (only Next 16.4.1 today).
 - Install scripts are blocked unless listed in `allowBuilds`. Allowed: `lefthook` (postinstall only
   runs `lefthook install`). Blocked: `sharp`, `unrs-resolver`.
 - Every new dependency: justify it (why, can we do without, alternative), check the exact name,
   ≥14 days old, no surprise install scripts, then run `pnpm audit` and report.
-- `pnpm audit` as of 2026-10-12: **2 high, both build-time DoS**, not shipped to the browser:
-  - `source-map-js <1.2.2` (via postcss). Fix 1.2.2 was released 2026-09-30 → add an `overrides`
-    entry once it is 14 days old (from 2026-10-14).
-  - `braces <=3.0.3` — no patched version is published yet. Nothing to do but wait.
-    Re-run the command before quoting these numbers; they drift.
+- `overrides` in `pnpm-workspace.yaml`: `source-map-js ^1.2.2` (build-time DoS via postcss).
+- `pnpm audit` as of 2026-10-27: **1 high**, dev tooling only — `zod <4.6.6` inside
+  `eslint-plugin-react-hooks` (4.6.5) and `steiger` (3.25.76, no fix on the 3.x line). They only
+  parse our own config, never untrusted input. Re-run the command before quoting numbers.
 
 ## Architecture: Feature-Sliced Design
 
@@ -227,7 +228,7 @@ smallest possible islands layered on top.
 - Rating backend: replace the bodies of `getRating`/`submitRating` in
   `entities/rating/api/rating.ts` (the fetch version is in the comment there). Not via Next route
   handlers without agreement.
-- `source-map-js` override after 2026-10-14; watch for a `braces` fix.
+- Next 16.4.3 from 2026-11-06.
 - Real contacts, resume PDF, texts; confirm or drop `birthPlace`.
 - ESLint 10 once eslint-config-next's plugins support it.
 - `README.md` is still the create-next-app template — rewrite it (setup, scripts, structure).

@@ -1,16 +1,26 @@
 # Refuse any package published less than 14 days ago: freshly published releases are where
 # compromised versions usually surface, before the registry pulls them.
 minimumReleaseAge: 20160
-# Exception, approved by hand: Next.js 16.3.8 is a security-only patch on the 16.3 line
-# (SSRF in Image Optimization, metadata image route disclosure, cache poisoning).
+# Exception, approved by hand: Next.js 16.4.1 is the first release with the fixes for two critical
+# RCEs (Image Optimization with SVG, `use cache` with typed arrays) and a Server Actions DoS;
+# the 16.3 line got no patch. It was 13 days old when installed. Move to 16.4.3 from 2026-11-06.
 minimumReleaseAgeExclude:
-  - next@16.3.8
-  - eslint-config-next@16.3.8
+  - next@16.4.1
+  - eslint-config-next@16.4.1
   - '@next/*'
 
 # Install scripts stay blocked unless allowed here explicitly.
 allowBuilds:
   # postinstall only runs `lefthook install`, which writes the git hooks.
   lefthook: true
+  # Both come with next-intl and serve only its message extractor (`experimental.extract`), which
+  # we don't use; their prebuilt binaries install as optional dependencies anyway.
+  '@parcel/watcher': false
+  '@swc/core': false
   sharp: false
   unrs-resolver: false
+
+overrides:
+  # postcss (via next) pulls source-map-js 1.2.1, which has an event-loop DoS on crafted source
+  # maps (build time only). 1.2.2 fixes it; postcss's own range already allows it.
+  source-map-js: '^1.2.2'
