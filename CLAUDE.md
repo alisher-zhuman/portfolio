@@ -116,8 +116,9 @@ resume (`public/resume.pdf`) and most texts are still placeholders.
 
 **Real data about Alisher lives in `docs/private/` (gitignored — the repo is public):**
 `dossier.md` (career, every project with stack/URL/commit counts, metrics, contacts, site ideas,
-and a list of conflicting facts to confirm before publishing) and `linkedin-raw.md` (verbatim
-LinkedIn/Instagram input; append new batches there). Read it before writing any content. Metrics
+and a list of conflicting facts to confirm before publishing), `linkedin-raw.md` (verbatim
+LinkedIn/Instagram input; append new batches there) and `chat-history.md` (what earlier sessions
+did and the open items — read it when picking the work back up). Read it before writing any content. Metrics
 tagged [CV] are his own claims; never publish anything from the "Conflicts" list unconfirmed.
 If the folder is missing (another machine), ask the user — don't invent data.
 
