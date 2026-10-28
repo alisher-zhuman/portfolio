@@ -40,7 +40,10 @@
     "label": "Тил",
     "ky": "Кыргызча",
     "ru": "Русский",
-    "en": "English"
+    "en": "English",
+    "kyShort": "КР",
+    "ruShort": "РУ",
+    "enShort": "EN"
   },
   "Contacts": {
     "label": "Байланыштар",

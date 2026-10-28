@@ -7,29 +7,62 @@
   @apply mx-auto w-full max-w-6xl px-4 sm:px-8;
 }
 
-/* Pill-shaped segment inside a bordered track (theme switcher, later the sound toggle). The
-   pressed state is a nested selector so base and active live in one place. */
-@utility pill-segment {
-  @apply text-on-pitch-muted hover:text-on-pitch rounded-full px-3 py-1.5 text-sm font-medium;
-
-  &[aria-pressed='true'] {
-    @apply bg-on-pitch text-pitch font-semibold;
-  }
-}
-
 /* Shared shell for every homepage section after the hero: content width, vertical rhythm, and the
    chalk halfway line that separates one zone of the pitch from the next. */
 @utility section-shell {
   @apply container-page border-chalk border-t-2 py-16 sm:py-20;
 }
 
-/* A <summary> without the disclosure triangle (list-style for Chrome/Firefox, the pseudo-element
-   for Safari), for when the summary is styled as a button. */
-@utility summary-plain {
+/* Header dropdowns (language, theme): a <details> whose <summary> is the pill button and whose
+   list is the menu. The open/active looks are nested selectors, so both menus share one recipe. */
+@utility menu-trigger {
+  @apply border-chalk inline-flex min-h-10 cursor-pointer items-center gap-1.5 rounded-full border-2 px-2.5 text-sm font-semibold transition-colors sm:px-3;
+
+  /* No disclosure triangle: list-style for Chrome/Firefox, the pseudo-element for Safari. */
   list-style: none;
 
   &::-webkit-details-marker {
     display: none;
+  }
+
+  /* Hover only while closed: the open pill is solid, and a translucent hover would hide its text. */
+  details:not([open]) > &:hover {
+    @apply bg-on-pitch/10;
+  }
+
+  details[open] > & {
+    @apply bg-on-pitch text-pitch;
+  }
+}
+
+@utility menu-panel {
+  @apply bg-board text-board-foreground border-chalk animate-menu-in absolute top-full right-0 z-30 mt-2 grid min-w-48 origin-top-right gap-0.5 rounded-xl border-2 p-1.5 shadow-xl;
+}
+
+/* A link (aria-current) or a button (aria-pressed) in a menu; the active one is highlighted. */
+@utility menu-item {
+  @apply hover:bg-board-foreground/10 flex w-full cursor-pointer items-center gap-3 rounded-lg px-2.5 py-2 text-left text-sm font-medium;
+
+  &:is([aria-current='true'], [aria-pressed='true']) {
+    @apply bg-board-foreground/10 font-semibold;
+  }
+}
+
+/* Kit-style badge at the start of a menu item; the active item's wears the sun colour. */
+@utility menu-badge {
+  @apply font-display border-board-foreground/30 grid h-7 w-9 shrink-0 place-items-center rounded-md border text-xs font-extrabold;
+
+  :is([aria-current='true'], [aria-pressed='true']) > & {
+    @apply bg-sun text-sun-foreground border-transparent;
+  }
+}
+
+/* Check mark at the end of a menu item, shown only on the active one. */
+@utility menu-check {
+  @apply text-sun ml-auto hidden size-4 shrink-0 fill-none stroke-current;
+
+  :is([aria-current='true'], [aria-pressed='true']) > & {
+    @apply block;
   }
 }
 
