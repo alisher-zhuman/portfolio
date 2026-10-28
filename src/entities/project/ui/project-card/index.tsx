@@ -1,8 +1,8 @@
-import { useTranslations } from 'next-intl'
+import { useFormatter, useTranslations } from 'next-intl'
 
 import { TagList } from '@shared/ui'
 
-import { type Project } from '../../model/types'
+import { type Project, type YearMonth } from '../../model/types'
 import { ProjectFlip } from '../project-flip'
 
 interface Props {
@@ -11,11 +11,23 @@ interface Props {
   number: number
 }
 
-// Front: what the project is. Back: what Alisher did on it (from his LinkedIn) and its links.
+// Front: what the project is and its link. Back: what Alisher did on it (from his LinkedIn).
 export const ProjectCard = ({ project, number }: Props) => {
   const t = useTranslations('Projects')
-  const { id, title, club, years, stack, url, codeUrl } = project
+  const format = useFormatter()
+  const { id, title, club, from, to, stack, url, codeUrl } = project
   const name = title ?? t(`items.${id}.title` as 'items.kca.title')
+
+  // "Aug 2025" / "авг. 2025": the month alone, then the year, which keeps Russian's «г.» out.
+  const month = (value: YearMonth) => {
+    const year = Number(value.slice(0, 4))
+    const date = new Date(Date.UTC(year, Number(value.slice(5, 7)) - 1))
+
+    return `${format.dateTime(date, { month: 'short', timeZone: 'UTC' })} ${year}`
+  }
+  const period = to
+    ? `${month(from)} – ${to === 'present' ? t('present') : month(to)}`
+    : month(from)
 
   return (
     <article className="h-full">
@@ -34,33 +46,14 @@ export const ProjectCard = ({ project, number }: Props) => {
             <h3 className="font-display relative pr-14 text-xl font-bold">{name}</h3>
 
             <p className="text-kit-ink relative text-sm font-semibold">
-              {t(`clubs.${club}`)} · {years}
+              {t(`clubs.${club}`)} · {period}
             </p>
 
             <p className="max-w-prose">{t(`items.${id}.description`)}</p>
 
             <TagList label={t('stackLabel')} items={stack} className="text-panel-muted mt-1" />
-          </>
-        }
-        back={
-          <>
-            <p className="font-display text-xl font-bold">{name}</p>
 
-            <p className="text-kit-ink text-sm font-semibold">{t('did')}</p>
-
-            {/* The list scrolls inside the card; tabIndex lets keyboard users scroll it too. */}
-            <div
-              tabIndex={0}
-              className="-mr-3 min-h-0 flex-1 overflow-y-auto overscroll-contain pr-3"
-            >
-              <ul className="grid list-disc gap-2 pl-5 text-sm">
-                {(t.raw(`items.${id}.did`) as string[]).map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            <p className="flex flex-wrap gap-x-4 gap-y-2 pt-1 text-sm font-semibold">
+            <p className="mt-auto flex flex-wrap gap-x-4 gap-y-2 pt-2 text-sm font-semibold">
               {/* No live link means the product is shut down or the URL is dead. */}
               {url ? (
                 <a
@@ -85,6 +78,26 @@ export const ProjectCard = ({ project, number }: Props) => {
                 </a>
               )}
             </p>
+          </>
+        }
+        back={
+          <>
+            <p className="font-display text-xl font-bold">{name}</p>
+
+            <p className="text-kit-ink text-sm font-semibold">{t('did')}</p>
+
+            {/* The list scrolls inside the card; tabIndex lets keyboard users scroll it too. */}
+            <div
+              tabIndex={0}
+              data-face="back"
+              className="-mr-3 min-h-0 flex-1 overflow-y-auto overscroll-contain pr-3"
+            >
+              <ul className="grid list-disc gap-2 pl-5 text-sm">
+                {(t.raw(`items.${id}.did`) as string[]).map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </>
         }
       />

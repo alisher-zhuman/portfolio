@@ -20,24 +20,27 @@ const FACE =
 const FRONT = cn(FACE, 'relative h-full overflow-hidden')
 const BACK = cn(FACE, 'absolute inset-0 rotate-y-180')
 
-// Flips on hover (Tailwind's hover only applies on devices that can hover) and while keyboard
-// focus is inside, so keyboard users reach the back's links. :focus-visible, not :focus-within: a
-// click or tap focuses the scrolling list, and the card would stay flipped after the mouse left.
-// Touch has no hover: a tap flips it instead.
+// A click or tap on the card flips it; another flips it back; a click on a link just follows it.
+// Keyboard users flip it by tabbing into the back's list (marked data-face="back"). The front's
+// links don't flip it, and it's :focus-visible, not :focus-within: a click focuses the list too,
+// and the card couldn't be flipped back while it held focus.
 export const ProjectFlip = ({ front, back, stripeClassName }: Props) => {
   const [flipped, setFlipped] = useState(false)
 
   const onClick = (event: MouseEvent) => {
-    // A mouse already flips on hover, and a tap on a link should just follow it.
-    if ((event.nativeEvent as PointerEvent).pointerType === 'mouse') return
+    // A click on a link should just follow it.
     if ((event.target as Element).closest('a')) return
 
     setFlipped((value) => !value)
   }
 
   return (
-    <div onClick={onClick} data-flipped={flipped} className="group h-full perspective-distant">
-      <div className="relative h-full transition-transform duration-700 ease-out transform-3d group-has-focus-visible:rotate-y-180 group-hover:rotate-y-180 group-data-[flipped=true]:rotate-y-180 motion-reduce:transition-none">
+    <div
+      onClick={onClick}
+      data-flipped={flipped}
+      className="group h-full cursor-pointer perspective-distant"
+    >
+      <div className="relative h-full transition-transform duration-700 ease-out transform-3d group-has-[[data-face=back]:focus-visible]:rotate-y-180 group-data-[flipped=true]:rotate-y-180 motion-reduce:transition-none">
         <div className={cn(FRONT, stripeClassName)}>{front}</div>
 
         <div className={cn(BACK, stripeClassName)}>{back}</div>

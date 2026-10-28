@@ -28,14 +28,18 @@ export type ProjectId =
   | 'peaksoftLms'
   | 'gadgetarium'
 
+// 'YYYY-MM', formatted per language on the card.
+export type YearMonth = `${number}-${number}`
+
 export interface Project {
   id: ProjectId
   // Product names stay as they are in every language. Left out for the one name that is
   // translated, which then comes from Projects.items.<id>.title.
   title?: string
   club: ProjectClub
-  // Reads the same in every language, e.g. "2024–2025".
-  years: string
+  // As on his LinkedIn, month by month; to is left out for a one-month project.
+  from: YearMonth
+  to?: YearMonth | 'present'
   stack: string[]
   // The live product (a site or a Telegram bot); left out for projects that are no longer live.
   url?: string
