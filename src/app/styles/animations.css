@@ -240,6 +240,17 @@
 
 /* ---- Commentary ticker (widgets/home/ui/commentary-ticker) ---- */
 
+/* Lines fade in from the right and out under the «live» tag, as on a broadcast bar. */
+.commentary-ticker__viewport {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 2rem,
+    black calc(100% - 3rem),
+    transparent
+  );
+}
+
 .commentary-ticker:hover .commentary-ticker__track,
 .commentary-ticker:focus-within .commentary-ticker__track {
   animation-play-state: paused;
@@ -249,7 +260,11 @@
 @media (prefers-reduced-motion: reduce) {
   .commentary-ticker {
     max-height: 7.5em;
+  }
+
+  .commentary-ticker__viewport {
     overflow-y: auto;
+    mask-image: none;
   }
 
   .commentary-ticker__track {
