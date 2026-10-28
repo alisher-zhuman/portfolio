@@ -171,26 +171,91 @@
   },
   "Projects": {
     "title": "Projects",
-    "lead": "What he has worked on, in brief.",
+    "lead": "What he has worked on, club by club.",
+    "filterLabel": "Club",
+    "all": "All",
+    "clubs": {
+      "tunduk": "Tunduk",
+      "own": "Own",
+      "clickfood": "ClickFood",
+      "freelance": "Freelance",
+      "codify": "Codify Lab",
+      "peaksoft": "Peaksoft"
+    },
+    "showAll": "Show all projects ({count})",
     "stackLabel": "Stack",
-    "closedCode": "Closed source",
+    "site": "Visit site",
     "codeOnGithub": "Code on GitHub",
     "items": {
-      "kcaPublic": {
-        "context": "Work project at Tunduk",
-        "description": "The public portal of a government service. Application forms with validation, a personal account and a responsive layout that works as well on a phone as on a desktop."
+      "kca": {
+        "title": "KCA E-Accreditation",
+        "description": "E-Accreditation for the Kyrgyz Center of Accreditation: a public portal with registries and news, and a staff dashboard with step-by-step applications and access roles."
       },
-      "kcaAdmin": {
-        "context": "Work project at Tunduk",
-        "description": "An internal panel for staff: sortable, filterable tables, roles and permissions. Also where he took his first backend tasks, in kca-backend."
+      "kuttukTime": {
+        "description": "A gift certificate for a coffee shop, spa or salon with no sign-up: the code can be sent to a friend and the merchant redeems it in their dashboard. Includes an admin for merchants and categories."
       },
-      "weather": {
-        "context": "Pet project",
-        "description": "Weather for the cities of Kyrgyzstan: temperature and precipitation charts, dark theme."
+      "kiu": {
+        "description": "Site and CMS for the Kyrgyz Islamic University in three languages: news, faculties, timetables and a section for applicants. Staff manage the content themselves."
       },
-      "portfolio": {
-        "context": "This site",
-        "description": "Next.js with static generation: content is rendered on the server and interactivity is layered on top. Every sound is synthesised in the browser with the Web Audio API."
+      "bilimBulak": {
+        "description": "A psychological diagnostics platform for teachers, built for the Ministry of Education and the Teachers’ Union: tests, burnout detection and personal recommendations."
+      },
+      "quant": {
+        "description": "Smart water meters: a landing page in three languages and a dispatcher dashboard with consumption charts and remote valve control."
+      },
+      "clickfood": {
+        "description": "Food delivery in Telegram: restaurant search sorted by distance, a cart with modifiers, promo codes and cashback, and a partner dashboard with a stop list."
+      },
+      "turan": {
+        "description": "An admin panel for smart meters: users, devices, readings, remote water shut-off, access roles and Excel import."
+      },
+      "billingCenter": {
+        "description": "Utility bills paid in four steps: provider, account number, amount due and a QR payment. Plain JavaScript, without a single library."
+      },
+      "codifyLms": {
+        "description": "CRM and LMS for training centres: homework with a code editor, leaderboards and coins, reports to parents over WhatsApp."
+      },
+      "codifyGo": {
+        "description": "Micro-lessons in HTML, CSS and cybersecurity: a code editor right in the browser, levels and streaks, a subscription and an olympiad for schoolchildren."
+      },
+      "virtualAccelerate": {
+        "description": "A platform for accelerators: startup selection on a kanban board, investor voting, a form builder and 8 languages including RTL."
+      },
+      "jobCodify": {
+        "description": "A careers platform: jobs, courses, an AI résumé helper and a sandbox for running code in the browser."
+      },
+      "codifyAcademy": {
+        "description": "A site for programming, design and management courses for children and adults: enrolment, a free lesson and a career aptitude test."
+      },
+      "codifyTeens": {
+        "description": "A landing page for a coding academy for ages 7–17 in three languages: a fee calculator, a map and an application form."
+      },
+      "startupNation": {
+        "description": "The landing page of Central Asia’s largest hackathon: registration, speakers, mentors and the prize fund."
+      },
+      "codifyLab": {
+        "description": "A development studio’s site: case studies and services from a CMS, a brief form with attachments, Russian and English."
+      },
+      "alphaCargo": {
+        "description": "Cargo between Kyrgyzstan and Russia: shipment tracking by waybill, a rate calculator and a contract wizard for businesses."
+      },
+      "shine": {
+        "description": "An admin panel for an aesthetic clinic: doctors, procedures, reviews and news with a rich text editor."
+      },
+      "peaksoftHouse": {
+        "description": "An IT course site: online enrolment, course pages, student projects and an admin panel for two offices."
+      },
+      "bilingual": {
+        "description": "English testing: 9 question types, voice recording and anti-cheating protection."
+      },
+      "airbnb": {
+        "description": "Home rentals in Kyrgyzstan: filters and search, moderated listings, favourites."
+      },
+      "healthCheck": {
+        "description": "A medical service: booking a doctor in five steps, test results online and doctors’ schedules for the admin."
+      },
+      "gadgetarium": {
+        "description": "An online gadget store: catalogue, comparison, wishlist, Stripe checkout and a product admin."
       }
     }
   },

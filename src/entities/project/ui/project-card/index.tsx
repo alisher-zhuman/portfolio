@@ -7,18 +7,20 @@ import { type Project } from '../../model/types'
 
 interface Props {
   project: Project
+  // Shirt number printed in the corner. Decorative only.
+  number: number
 }
 
-export const ProjectCard = ({ project }: Props) => {
+export const ProjectCard = ({ project, number }: Props) => {
   const t = useTranslations('Projects')
-  const { id, number, title, isWork, stack, backendRepo, codeUrl } = project
+  const { id, title, club, years, stack, backendRepo, url, codeUrl } = project
 
   return (
     <article className="bg-panel text-panel-foreground relative flex h-full flex-col gap-2.5 overflow-hidden rounded-md py-6 pr-6 pl-7">
-      {/* Kit stripe down the left edge: red for work projects, yellow for personal ones. */}
+      {/* Kit stripe down the left edge: yellow for his own products, red for everything else. */}
       <span
         aria-hidden="true"
-        className={cn('absolute inset-y-0 left-0 w-1.5', isWork ? 'bg-kit' : 'bg-sun')}
+        className={cn('absolute inset-y-0 left-0 w-1.5', club === 'own' ? 'bg-sun' : 'bg-kit')}
       />
 
       <span
@@ -28,9 +30,13 @@ export const ProjectCard = ({ project }: Props) => {
         {number}
       </span>
 
-      <h3 className="font-display relative pr-14 text-xl font-bold">{title}</h3>
+      <h3 className="font-display relative pr-14 text-xl font-bold">
+        {title ?? t(`items.${id}.title` as 'items.kca.title')}
+      </h3>
 
-      <p className="text-kit-ink relative text-sm font-semibold">{t(`items.${id}.context`)}</p>
+      <p className="text-kit-ink relative text-sm font-semibold">
+        {t(`clubs.${club}`)} · {years}
+      </p>
 
       <p className="max-w-prose">{t(`items.${id}.description`)}</p>
 
@@ -41,20 +47,25 @@ export const ProjectCard = ({ project }: Props) => {
         className="text-panel-muted mt-1"
       />
 
-      <p className="text-panel-muted mt-auto pt-2 text-sm font-semibold">
-        {codeUrl ? (
-          <a
-            href={codeUrl}
-            target="_blank"
-            rel="noopener"
-            className="text-panel-foreground underline underline-offset-3"
-          >
-            {t('codeOnGithub')}
-          </a>
-        ) : (
-          t('closedCode')
-        )}
-      </p>
+      {(url || codeUrl) && (
+        <p className="mt-auto flex flex-wrap gap-x-4 pt-2 text-sm font-semibold">
+          {url && (
+            <a href={url} target="_blank" rel="noopener" className="underline underline-offset-3">
+              {t('site')}
+            </a>
+          )}
+          {codeUrl && (
+            <a
+              href={codeUrl}
+              target="_blank"
+              rel="noopener"
+              className="underline underline-offset-3"
+            >
+              {t('codeOnGithub')}
+            </a>
+          )}
+        </p>
+      )}
     </article>
   )
 }
