@@ -17,7 +17,7 @@ look at how kca does it.
 ## Documentation tools (installed plugins — use them)
 
 - **context7** (`context7@claude-plugins-official`, MCP): current docs for any library — React,
-  Tailwind, zod, zustand, Next.js. Use it before relying on memory for an API. Needs auth: if its
+  Tailwind, zustand, Next.js. Use it before relying on memory for an API. Needs auth: if its
   tools are missing in a session, it is disconnected — authorise via `/mcp`, and meanwhile fall back
   to `node_modules/next/dist/docs/` (Next), the official sites, and the npm registry for versions.
 - **claude-md-management** (`claude-md-management@claude-plugins-official`):
@@ -74,7 +74,7 @@ Pinned to exact versions; `pnpm-lock.yaml` is committed. pnpm only.
   `/_vercel/insights/script.js` exists only on Vercel, so a local `next start` logs a 404 for it —
   expected, ignore it in console/Lighthouse checks.
 - Prettier 3.9.9 (+ `eslint-config-prettier`), zustand 5.0.15, clsx + tailwind-merge (`cn()`),
-  zod 4.6.6, steiger 0.7.0 + `@feature-sliced/steiger-plugin` 0.8.0,
+  steiger 0.7.0 + `@feature-sliced/steiger-plugin` 0.8.0,
   eslint-plugin-simple-import-sort 14.0.0, lefthook 2.1.14.
 - **next-intl 4.14.9** (added 2026-10-27), set up like kca: `src/i18n/` (`routing`, `request`,
   `navigation`), `src/proxy.ts`, `messages/{ky,ru,en}.json`. Differences from kca: the locale comes
@@ -108,11 +108,11 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
   `TagList`, `ThemeSync`, `Toaster`). Segment names follow kca, not FSD's official set
   (`fsd/segments-by-purpose` is off on purpose).
 - **entities** — typed data and its basic UI: `profile` (contacts, stats, stack, brand name variants,
-  `transferWindow`), `career` (match events by id, `getFinalScore`), `project`, `rating`
-  (`api/` with `getRating`/`submitRating`, `model/` zod schemas). Slice names are singular
+  `transferWindow`), `career` (match events by id, `getFinalScore`), `project`. Slice names are singular
   (steiger's `inconsistent-naming`).
 - **features** — `kick-ball` (physics ball), `cheat-code` (konami → gold «легенда» card),
-  `rate-player` (rating form), `penalty-shootout` (404 game).
+  `penalty-shootout` (404 game). The «Оцени игрока» rating block was removed on 2026-10-28 at
+  Alisher's request, together with `entities/rating`, `features/rate-player` and zod.
 - **widgets** — `layout` (header with nav, theme/language menus, sound toggle; footer; touchline),
   `home` (all homepage sections, the match store, scroll clock, section whistle; projects show the
   newest 6) and `projects` (the /projects page: every project with the club filter).
@@ -126,7 +126,7 @@ a key missing there fails typecheck, but nothing checks ky/en for completeness. 
 `t.raw()`; plurals use ICU in the messages. Kyrgyz is drafted by Claude and proofread by Alisher.
 Contacts are real (Telegram, GitHub, email, phone); the resume (`public/resume.pdf`) is still a
 placeholder. The hero and the card front follow the 2026-10-27 decisions; bio, scout report, career,
-projects, rating and footer still carry the old backend-transfer copy until each is reworked.
+projects and footer still carry the old backend-transfer copy until each is reworked.
 
 **Real data about Alisher lives in `docs/private/` (gitignored — the repo is public):**
 `dossier.md` (career, every project with stack/URL/commit counts, metrics, contacts, site ideas,
@@ -185,7 +185,7 @@ smallest possible islands layered on top.
   first-load bundle. Module singleton outside React (StrictMode/HMR safe); released on `pagehide`.
 - **Heavy parts load lazily**: ball and penalty game via `next/dynamic({ ssr: false })` (allowed only
   inside a Client Component); ball isn't loaded at all under reduced motion. Confetti is a dynamic
-  `import()`. The rating API (and zod) is imported when the rate section is within 600px.
+  `import()`.
 - `OffscreenPause` sets `data-paused` → CSS pauses all animations inside while off screen.
 - `useInView(ref, rootMargin, initial)`: `initial` defaults to `true` (for pausing); pass `false`
   for deferred loading, or the work starts immediately.
@@ -260,9 +260,6 @@ smallest possible islands layered on top.
 - **Deploy: Vercel** — the repo is connected (2026-10-13), push to `main` deploys to
   https://alisher-zhuman.vercel.app (also the `SITE_URL` fallback, so no env var is needed there).
   On a custom domain, change the fallback or set `NEXT_PUBLIC_SITE_URL` in the project settings.
-- Rating backend: replace the bodies of `getRating`/`submitRating` in
-  `entities/rating/api/rating.ts` (the fetch version is in the comment there). Not via Next route
-  handlers without agreement.
 - Next 16.4.3 from 2026-11-06.
 - Real resume PDF; rework the other blocks one stage at a time (list in `docs/private/chat-history.md`);
   confirm or drop `birthPlace`.

@@ -19,8 +19,7 @@
     "label": "Sections",
     "card": "Player",
     "match": "Career",
-    "projects": "Projects",
-    "rate": "Rating"
+    "projects": "Projects"
   },
   "Theme": {
     "label": "Colour theme",
@@ -265,27 +264,6 @@
       "gadgetarium": {
         "description": "An online gadget store: catalogue, comparison, wishlist, Stripe checkout and a product admin."
       }
-    }
-  },
-  "Rate": {
-    "title": "Rate the player",
-    "lead": "Like a post-match report: from 1 to 10.",
-    "legend": "Your rating from 1 to 10",
-    "pickFirst": "Choose a rating from 1 to 10.",
-    "accepted": "Rating {value} received. Thank you!",
-    "sending": "Sending…",
-    "change": "Change rating",
-    "send": "Submit rating",
-    "loading": "Loading ratings…",
-    "empty": "No ratings yet. Be the first.",
-    "votes": "{count, plural, one {# vote} other {# votes}}",
-    "ten": "A perfect ten! The stands are on their feet.",
-    "one": "Yellow card for cruelty to the player.",
-    "errors": {
-      "loadFailed": "Couldn’t load the ratings.",
-      "submitFailed": "Couldn’t submit the rating.",
-      "storageUnavailable": "The browser won’t let us save the rating. Check whether private mode is on.",
-      "invalidValue": "The rating must be a whole number from 1 to 10."
     }
   },
   "Footer": {

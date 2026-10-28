@@ -4,14 +4,7 @@ import { routing } from '@/i18n/routing'
 
 import { getPersonJsonLd } from '@app/helpers'
 
-import {
-  Hero,
-  MatchSection,
-  PlayerSection,
-  ProjectsSection,
-  RateSection,
-  SectionWhistle,
-} from '@widgets/home'
+import { Hero, MatchSection, PlayerSection, ProjectsSection, SectionWhistle } from '@widgets/home'
 
 import { JsonLd } from '@shared/ui'
 
@@ -41,8 +34,6 @@ const HomePage = async () => (
     <MatchSection />
 
     <ProjectsSection />
-
-    <RateSection />
 
     <SectionWhistle />
   </main>

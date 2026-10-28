@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation'
 
 // In-page anchors to the homepage sections; each key is both the section id and its label in Nav.
 // Hidden below lg, where the header has no room for it and the page is short enough to scroll.
-const NAV_ITEMS = ['card', 'match', 'projects', 'rate'] as const
+const NAV_ITEMS = ['card', 'match', 'projects'] as const
 
 export const Nav = () => {
   const t = useTranslations('Nav')
