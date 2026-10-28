@@ -190,6 +190,7 @@
     "site": "Открыть сайт",
     "telegram": "Открыть в Telegram",
     "codeOnGithub": "Код на GitHub",
+    "inactive": "Неактивен",
     "items": {
       "kca": {
         "title": "Кыргызский центр аккредитации",

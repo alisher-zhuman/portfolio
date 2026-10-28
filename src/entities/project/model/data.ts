@@ -55,7 +55,6 @@ export const projects: Project[] = [
     club: 'freelance',
     years: '2025',
     stack: ['React'],
-    url: 'https://turan.l.mycloud.kg',
   },
   {
     id: 'billingCenter',
@@ -78,7 +77,6 @@ export const projects: Project[] = [
     club: 'codify',
     years: '2024–2025',
     stack: ['Next.js'],
-    url: 'https://go.codifylab.com',
   },
   {
     id: 'virtualAccelerate',
@@ -172,7 +170,6 @@ export const projects: Project[] = [
     club: 'peaksoft',
     years: '2023',
     stack: ['React'],
-    url: 'https://lms.peaksoft.house',
   },
   {
     id: 'gadgetarium',

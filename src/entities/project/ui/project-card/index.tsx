@@ -42,25 +42,21 @@ export const ProjectCard = ({ project, number }: Props) => {
 
       <TagList label={t('stackLabel')} items={stack} className="text-panel-muted mt-1" />
 
-      {(url || codeUrl) && (
-        <p className="mt-auto flex flex-wrap gap-x-4 pt-2 text-sm font-semibold">
-          {url && (
-            <a href={url} target="_blank" rel="noopener" className="underline underline-offset-3">
-              {url.startsWith('https://t.me/') ? t('telegram') : t('site')}
-            </a>
-          )}
-          {codeUrl && (
-            <a
-              href={codeUrl}
-              target="_blank"
-              rel="noopener"
-              className="underline underline-offset-3"
-            >
-              {t('codeOnGithub')}
-            </a>
-          )}
-        </p>
-      )}
+      <p className="mt-auto flex flex-wrap gap-x-4 pt-2 text-sm font-semibold">
+        {/* No live link means the product is shut down or the URL is dead. */}
+        {url ? (
+          <a href={url} target="_blank" rel="noopener" className="underline underline-offset-3">
+            {url.startsWith('https://t.me/') ? t('telegram') : t('site')}
+          </a>
+        ) : (
+          <span className="text-panel-muted">{t('inactive')}</span>
+        )}
+        {codeUrl && (
+          <a href={codeUrl} target="_blank" rel="noopener" className="underline underline-offset-3">
+            {t('codeOnGithub')}
+          </a>
+        )}
+      </p>
     </article>
   )
 }
