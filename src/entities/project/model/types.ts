@@ -36,8 +36,6 @@ export interface Project {
   // Reads the same in every language, e.g. "2024–2025".
   years: string
   stack: string[]
-  // A backend repository touched alongside the frontend work, highlighted in the stack list.
-  backendRepo?: string
   // The live product, only where the address is confirmed.
   url?: string
   // Public source code.

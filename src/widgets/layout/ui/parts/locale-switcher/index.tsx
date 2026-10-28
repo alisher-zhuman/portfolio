@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 
-import { Link } from '@/i18n/navigation'
+import { Link, usePathname } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 
 import { useDetailsDismiss } from '@shared/hooks'
@@ -13,10 +13,11 @@ import { MenuChevron } from '../menu-chevron'
 
 // A native <details> disclosure: opens and works without JavaScript, and takes one pill's width in
 // the header, which has no room for three more segments on a phone. Each language links to the
-// homepage in that language — the site has a single page.
+// current page in that language.
 export const LocaleSwitcher = () => {
   const ref = useRef<HTMLDetailsElement>(null)
   const locale = useLocale()
+  const pathname = usePathname()
   const t = useTranslations('Locale')
 
   useDetailsDismiss(ref)
@@ -47,7 +48,7 @@ export const LocaleSwitcher = () => {
         {routing.locales.map((code) => (
           <li key={code}>
             <Link
-              href="/"
+              href={pathname}
               locale={code}
               lang={code}
               hrefLang={code}

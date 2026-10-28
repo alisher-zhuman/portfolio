@@ -4,20 +4,27 @@ import { routing } from '@/i18n/routing'
 
 import { SITE_URL } from '@shared/constants'
 
-const languages = Object.fromEntries(
-  routing.locales.map((locale) => [locale, `${SITE_URL}/${locale}`])
-)
-
-// The homepage in each language, each entry listing all three as alternates. The 404 is
+// Every page in each language, each entry listing all three languages as alternates. The 404 is
 // deliberately absent — it is noindex by design.
 // No lastModified: `new Date()` would make this route dynamic under Cache Components, and a date
 // that just tracks the last build would misreport content changes to crawlers anyway.
+const PAGES = [
+  { path: '', priority: 1 },
+  { path: '/projects', priority: 0.8 },
+]
+
 const sitemap = (): MetadataRoute.Sitemap =>
-  routing.locales.map((locale) => ({
-    url: `${SITE_URL}/${locale}`,
-    changeFrequency: 'monthly',
-    priority: 1,
-    alternates: { languages },
-  }))
+  PAGES.flatMap(({ path, priority }) =>
+    routing.locales.map((locale) => ({
+      url: `${SITE_URL}/${locale}${path}`,
+      changeFrequency: 'monthly' as const,
+      priority,
+      alternates: {
+        languages: Object.fromEntries(
+          routing.locales.map((code) => [code, `${SITE_URL}/${code}${path}`])
+        ),
+      },
+    }))
+  )
 
 export default sitemap

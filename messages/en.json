@@ -172,6 +172,10 @@
   "Projects": {
     "title": "Projects",
     "lead": "What he has worked on, club by club.",
+    "allLink": "All projects ({count})",
+    "pageLead": "Every project, club by club: from the first training ones to today’s.",
+    "metaDescription": "Projects by Alisher Zhuman (Алишер Жуманов): GovTech, food delivery, EdTech, IoT and his own product. React, Next.js, TypeScript.",
+    "backHome": "Back to home",
     "filterLabel": "Club",
     "all": "All",
     "clubs": {
@@ -182,7 +186,6 @@
       "codify": "Codify Lab",
       "peaksoft": "Peaksoft"
     },
-    "showAll": "Show all projects ({count})",
     "stackLabel": "Stack",
     "site": "Visit site",
     "codeOnGithub": "Code on GitHub",

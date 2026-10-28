@@ -113,10 +113,11 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
   (steiger's `inconsistent-naming`).
 - **features** — `kick-ball` (physics ball), `cheat-code` (konami → gold «легенда» card),
   `rate-player` (rating form), `penalty-shootout` (404 game).
-- **widgets** — `layout` (header with nav, theme switcher, sound toggle; footer; touchline) and
-  `home` (all homepage sections, the match store, scroll clock, section whistle).
-- **app** — everything routable is under `[locale]/` (layout, page, not-found, `[...rest]`, OG
-  image); `sitemap.ts`, `robots.ts`, `icon.svg` stay at the root. Plus `helpers/` (Person JSON-LD)
+- **widgets** — `layout` (header with nav, theme/language menus, sound toggle; footer; touchline),
+  `home` (all homepage sections, the match store, scroll clock, section whistle; projects show the
+  newest 6) and `projects` (the /projects page: every project with the club filter).
+- **app** — everything routable is under `[locale]/` (layout, page, `projects/page`, not-found,
+  `[...rest]`, OG image); `sitemap.ts`, `robots.ts`, `icon.svg` stay at the root. Plus `helpers/` (Person JSON-LD)
   and `styles/`. `src/i18n/` sits beside the layers, as in kca, imported as `@/i18n/*`.
 
 **Texts live in `messages/{ky,ru,en}.json`; structure (ids, numbers, links, stack) in
@@ -194,13 +195,14 @@ smallest possible islands layered on top.
 - Brand **Alisher Zhuman**; variants (Алишер Жуманов, Алишер Жуманов Бакирович, Alizher Zhuman) go
   to description, keywords and JSON-LD `alternateName`. All from `entities/profile`.
 - Metadata in `[locale]/layout.tsx` (description and `og:locale` per language); **canonical and
-  hreflang (`alternates.languages`, x-default → /ky) only in `[locale]/page.tsx`** — a layout
+  hreflang (`alternates.languages`, x-default → /ky) only in each page's `generateMetadata`** — a layout
   canonical would be stamped onto the 404. next-intl's hreflang `Link` header is off
   (`alternateLinks: false`) so there is one source. Next adds `noindex` to the 404 itself.
 - `[locale]/opengraph-image.tsx` (next/og), one static PNG per locale — needs its own
   `generateStaticParams`, or the `[locale]` param makes it render on demand. Satori can't use next/font's WOFF2, so static
   TTFs live in `assets/fonts/` with their OFL licences.
-- `sitemap.ts` lists /ky, /ru, /en, each with all three as alternates. `robots.ts`, Person JSON-LD via `JsonLd` (escapes `<` per Next's guide).
+- `sitemap.ts` lists every page (`PAGES`: home, /projects) in all three languages, each with its
+  alternates. Add new pages there. The language menu links to the current path (`usePathname`). `robots.ts`, Person JSON-LD via `JsonLd` (escapes `<` per Next's guide).
 - Origin from `NEXT_PUBLIC_SITE_URL` (`.env.example`), fallback `https://alisher-zhuman.vercel.app` (the production domain).
 - `birthPlace: Талас` is an interpretation of «родом из Таласа» — not confirmed by the user.
 

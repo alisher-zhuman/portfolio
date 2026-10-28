@@ -172,6 +172,10 @@
   "Projects": {
     "title": "Долбоорлор",
     "lead": "Эмне менен иштеген — клубдар боюнча.",
+    "allLink": "Бардык долбоорлор ({count})",
+    "pageLead": "Бардык долбоорлор клубдар боюнча: алгачкы окуу долбоорлорунан бүгүнкүгө чейин.",
+    "metaDescription": "Алишер Жумановдун (Alisher Zhuman) долбоорлору: GovTech, тамак жеткирүү, EdTech, IoT жана өз продуктусу. React, Next.js, TypeScript.",
+    "backHome": "Башкы бетке",
     "filterLabel": "Клуб",
     "all": "Баары",
     "clubs": {
@@ -182,7 +186,6 @@
       "codify": "Codify Lab",
       "peaksoft": "Peaksoft"
     },
-    "showAll": "Бардык долбоорлорду көрсөтүү ({count})",
     "stackLabel": "Стек",
     "site": "Сайтты ачуу",
     "codeOnGithub": "GitHub’дагы код",

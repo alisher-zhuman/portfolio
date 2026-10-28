@@ -13,7 +13,7 @@ interface Props {
 
 export const ProjectCard = ({ project, number }: Props) => {
   const t = useTranslations('Projects')
-  const { id, title, club, years, stack, backendRepo, url, codeUrl } = project
+  const { id, title, club, years, stack, url, codeUrl } = project
 
   return (
     <article className="bg-panel text-panel-foreground relative flex h-full flex-col gap-2.5 overflow-hidden rounded-md py-6 pr-6 pl-7">
@@ -40,12 +40,7 @@ export const ProjectCard = ({ project, number }: Props) => {
 
       <p className="max-w-prose">{t(`items.${id}.description`)}</p>
 
-      <TagList
-        label={t('stackLabel')}
-        items={backendRepo ? [...stack, backendRepo] : stack}
-        highlighted={backendRepo ? [backendRepo] : []}
-        className="text-panel-muted mt-1"
-      />
+      <TagList label={t('stackLabel')} items={stack} className="text-panel-muted mt-1" />
 
       {(url || codeUrl) && (
         <p className="mt-auto flex flex-wrap gap-x-4 pt-2 text-sm font-semibold">

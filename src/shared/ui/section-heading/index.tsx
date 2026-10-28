@@ -3,13 +3,15 @@ interface Props {
   id: string
   title: string
   lead?: string
+  // h1 on a page whose main heading this is; h2 for a homepage section.
+  as?: 'h1' | 'h2'
 }
 
-export const SectionHeading = ({ id, title, lead }: Props) => (
+export const SectionHeading = ({ id, title, lead, as: Heading = 'h2' }: Props) => (
   <div className="mb-8 max-w-prose">
-    <h2 id={id} className="font-display text-3xl font-bold text-balance sm:text-4xl">
+    <Heading id={id} className="font-display text-3xl font-bold text-balance sm:text-4xl">
       {title}
-    </h2>
+    </Heading>
 
     {lead && <p className="text-on-pitch-muted mt-2.5">{lead}</p>}
   </div>

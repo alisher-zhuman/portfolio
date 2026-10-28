@@ -1,14 +1,14 @@
 import { type Project, type ProjectClub } from './types'
 
 // Newest first. Only projects from his LinkedIn, plus the KCA portal and KuttukTime. Descriptions
-// are in messages/*.json under Projects.items; no metrics from the CVs, which disagree.
+// are in messages/*.json under Projects.items; no metrics from the CVs, which disagree. The stack is
+// the technology LinkedIn lists for the project, not the full dependency list.
 export const projects: Project[] = [
   {
     id: 'kca',
     club: 'tunduk',
     years: '2026',
-    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'MUI', 'React Query', 'Zod'],
-    backendRepo: 'kca-backend',
+    stack: ['Next.js', 'React'],
     url: 'https://kca.tunduk.kg',
   },
   {
@@ -16,7 +16,7 @@ export const projects: Project[] = [
     title: 'KuttukTime',
     club: 'own',
     years: '2026',
-    stack: ['React', 'TypeScript', 'Telegram Mini App', 'NestJS', 'PostgreSQL'],
+    stack: ['React', 'NestJS'],
     url: 'https://kuttuk-time.vercel.app',
   },
   {
@@ -24,21 +24,21 @@ export const projects: Project[] = [
     title: 'Kyrgyz Islamic University',
     club: 'freelance',
     years: '2026',
-    stack: ['Next.js', 'TypeScript', 'next-intl', 'React Query', 'AWS S3'],
+    stack: ['Next.js'],
   },
   {
     id: 'bilimBulak',
     title: 'Bilim Bulak',
     club: 'freelance',
     years: '2026',
-    stack: ['Next.js', 'TypeScript', 'React Hook Form', 'Zod', 'next-intl'],
+    stack: ['Next.js'],
   },
   {
     id: 'quant',
     title: 'Quant',
     club: 'freelance',
     years: '2025–2026',
-    stack: ['Next.js', 'React', 'TypeScript', 'React Query', 'Recharts'],
+    stack: ['Next.js', 'React'],
     url: 'https://quant.kg',
   },
   {
@@ -46,14 +46,14 @@ export const projects: Project[] = [
     title: 'ClickFood',
     club: 'clickfood',
     years: '2025–2026',
-    stack: ['React', 'TypeScript', 'Telegram Mini App', 'React Query', 'Zod'],
+    stack: ['React'],
   },
   {
     id: 'turan',
     title: 'Turan',
     club: 'freelance',
     years: '2025',
-    stack: ['React', 'TypeScript', 'Vite', 'React Query', 'Zod'],
+    stack: ['React'],
   },
   {
     id: 'billingCenter',
@@ -67,14 +67,14 @@ export const projects: Project[] = [
     title: 'Codify CRM/LMS',
     club: 'codify',
     years: '2024–2025',
-    stack: ['Next.js', 'React', 'TypeScript', 'Zustand', 'TipTap'],
+    stack: ['Next.js', 'React'],
   },
   {
     id: 'codifyGo',
     title: 'Codify GO',
     club: 'codify',
     years: '2024–2025',
-    stack: ['Next.js', 'Zustand', 'SWR', 'CodeMirror', 'Stripe'],
+    stack: ['Next.js'],
     url: 'https://go.codifylab.com',
   },
   {
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     title: 'Virtual Accelerate',
     club: 'codify',
     years: '2024–2025',
-    stack: ['React', 'Next.js', 'Redux', 'CASL'],
+    stack: ['Next.js', 'React'],
     url: 'https://app.virtualaccelerate.com',
   },
   {
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     title: 'Job Codify',
     club: 'codify',
     years: '2024–2025',
-    stack: ['Next.js', 'TypeScript', 'Redux', 'NextAuth.js'],
+    stack: ['Next.js'],
     url: 'https://letscodify.io',
   },
   {
@@ -98,14 +98,14 @@ export const projects: Project[] = [
     title: 'Codify Academy',
     club: 'codify',
     years: '2024–2025',
-    stack: ['Svelte', 'Sapper', 'i18next'],
+    stack: ['Svelte'],
   },
   {
     id: 'codifyTeens',
     title: 'Codify Teens',
     club: 'codify',
     years: '2024–2025',
-    stack: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'React Hook Form'],
+    stack: ['Next.js'],
     url: 'https://teens.codifylab.com',
   },
   {
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     title: 'Startup Nation',
     club: 'codify',
     years: '2024–2025',
-    stack: ['Next.js', 'GSAP'],
+    stack: ['Next.js'],
     url: 'https://www.startupnation.asia',
   },
   {
@@ -121,14 +121,14 @@ export const projects: Project[] = [
     title: 'Codify Lab',
     club: 'codify',
     years: '2024–2025',
-    stack: ['React', 'i18next'],
+    stack: ['Next.js'],
   },
   {
     id: 'alphaCargo',
     title: 'Alpha Cargo',
     club: 'freelance',
     years: '2024–2025',
-    stack: ['React', 'TypeScript', 'React Hook Form'],
+    stack: ['React'],
     url: 'https://www.alpha-cargo.kg',
   },
   {
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     title: 'Shine',
     club: 'freelance',
     years: '2024',
-    stack: ['Next.js', 'React Hook Form', 'CKEditor'],
+    stack: ['Next.js'],
     url: 'https://shinebeautyclinic.kg',
   },
   {
@@ -144,7 +144,7 @@ export const projects: Project[] = [
     title: 'Peaksoft House',
     club: 'peaksoft',
     years: '2023–2024',
-    stack: ['Next.js', 'Framer Motion', 'AWS S3'],
+    stack: ['Next.js'],
     url: 'https://peaksoft.house',
   },
   {
@@ -152,28 +152,28 @@ export const projects: Project[] = [
     title: 'Bilingual',
     club: 'peaksoft',
     years: '2023',
-    stack: ['React', 'Redux', 'Framer Motion'],
+    stack: ['React'],
   },
   {
     id: 'airbnb',
     title: 'AirBNB Kyrgyzstan',
     club: 'peaksoft',
     years: '2023',
-    stack: ['React', 'React Hook Form', 'Firebase'],
+    stack: ['React'],
   },
   {
     id: 'healthCheck',
     title: 'HealthCheck',
     club: 'peaksoft',
     years: '2023',
-    stack: ['React', 'Firebase'],
+    stack: ['React'],
   },
   {
     id: 'gadgetarium',
     title: 'Gadgetarium',
     club: 'peaksoft',
     years: '2023',
-    stack: ['React', 'Redux', 'MUI', 'Stripe'],
+    stack: ['React'],
   },
 ]
 

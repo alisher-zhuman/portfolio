@@ -172,6 +172,10 @@
   "Projects": {
     "title": "Проекты",
     "lead": "Над чем работал — по клубам.",
+    "allLink": "Все проекты ({count})",
+    "pageLead": "Все проекты по клубам: от первых учебных до сегодняшних.",
+    "metaDescription": "Проекты Алишера Жуманова (Alisher Zhuman): GovTech, доставка еды, EdTech, IoT и свой продукт. React, Next.js, TypeScript.",
+    "backHome": "На главную",
     "filterLabel": "Клуб",
     "all": "Все",
     "clubs": {
@@ -182,7 +186,6 @@
       "codify": "Codify Lab",
       "peaksoft": "Peaksoft"
     },
-    "showAll": "Показать все проекты ({count})",
     "stackLabel": "Стек",
     "site": "Открыть сайт",
     "codeOnGithub": "Код на GitHub",
