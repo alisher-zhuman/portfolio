@@ -30,8 +30,6 @@ export const profile: Profile = {
     'Next.js',
     'TypeScript',
     'Tailwind CSS',
-    'MUI',
-    'shadcn/ui',
     'Zustand',
     'React Query',
     'Zod',
