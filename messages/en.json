@@ -79,7 +79,6 @@
     "city": "City",
     "hometown": "Hometown",
     "stats": "Attributes",
-    "flip": "Flip the card",
     "bioTitle": "Biography",
     "bio": [
       "From Talas, lives in Bishkek. Middle Frontend Developer at Tunduk.",
@@ -410,9 +409,7 @@
         ]
       }
     },
-    "did": "What I did",
-    "flip": "What I did",
-    "flipBack": "About the project"
+    "did": "What I did"
   },
   "Footer": {
     "title": "Final whistle",

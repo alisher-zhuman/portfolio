@@ -196,9 +196,12 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
 - **Project cards flip** (`entities/project/ui/project-flip`): front = what the project is, back =
   what he did (`items.<id>.did`): **every LinkedIn bullet as he wrote it** (en verbatim, ru/ky
   close translations, his numbers kept except ones on the dossier's Conflicts list); KCA and
-  KuttukTime aren't on LinkedIn, theirs come from the dossier. The front sets the height, the back
-  scrolls inside it. Flip only by button (cards hold links); the hidden face is `inert`, focus moves
-  to the other face's button with `preventScroll`.
+  KuttukTime aren't on LinkedIn, theirs come from the dossier. The front sets the height, the back's
+  list scrolls inside it; the links live on the back.
+- **Both card flips (project and player) are hover-only, no buttons** (Alisher, 2026-10-28). Tailwind's
+  `hover:` applies only on devices that can hover; on touch a tap toggles `data-flipped` (clicks with
+  `pointerType === 'mouse'` are ignored, so a click can't pin it). Project cards also flip on
+  `:focus-visible` inside, not `:focus-within` — a click focuses the scrolling list and kept it flipped.
 - `OffscreenPause` sets `data-paused` → CSS pauses all animations inside while off screen.
 - `useInView(ref, rootMargin, initial)`: `initial` defaults to `true` (for pausing); pass `false`
   for deferred loading, or the work starts immediately.

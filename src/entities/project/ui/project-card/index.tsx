@@ -11,7 +11,7 @@ interface Props {
   number: number
 }
 
-// Front: what the project is. Back: what Alisher did on it (from his LinkedIn).
+// Front: what the project is. Back: what Alisher did on it (from his LinkedIn) and its links.
 export const ProjectCard = ({ project, number }: Props) => {
   const t = useTranslations('Projects')
   const { id, title, club, years, stack, url, codeUrl } = project
@@ -20,8 +20,6 @@ export const ProjectCard = ({ project, number }: Props) => {
   return (
     <article className="h-full">
       <ProjectFlip
-        flipLabel={t('flip')}
-        backLabel={t('flipBack')}
         // Kit stripe: yellow for his own products, red for everything else.
         stripeClassName={club === 'own' ? 'border-sun' : 'border-kit'}
         front={
@@ -44,39 +42,49 @@ export const ProjectCard = ({ project, number }: Props) => {
             <TagList label={t('stackLabel')} items={stack} className="text-panel-muted mt-1" />
           </>
         }
-        links={
-          <>
-            {/* No live link means the product is shut down or the URL is dead. */}
-            {url ? (
-              <a href={url} target="_blank" rel="noopener" className="underline underline-offset-3">
-                {url.startsWith('https://t.me/') ? t('telegram') : t('site')}
-              </a>
-            ) : (
-              <span className="text-panel-muted">{t('inactive')}</span>
-            )}
-            {codeUrl && (
-              <a
-                href={codeUrl}
-                target="_blank"
-                rel="noopener"
-                className="underline underline-offset-3"
-              >
-                {t('codeOnGithub')}
-              </a>
-            )}
-          </>
-        }
         back={
           <>
             <p className="font-display text-xl font-bold">{name}</p>
 
             <p className="text-kit-ink text-sm font-semibold">{t('did')}</p>
 
-            <ul className="grid list-disc gap-2 pl-5 text-sm">
-              {(t.raw(`items.${id}.did`) as string[]).map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            {/* The list scrolls inside the card; tabIndex lets keyboard users scroll it too. */}
+            <div
+              tabIndex={0}
+              className="-mr-3 min-h-0 flex-1 overflow-y-auto overscroll-contain pr-3"
+            >
+              <ul className="grid list-disc gap-2 pl-5 text-sm">
+                {(t.raw(`items.${id}.did`) as string[]).map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <p className="flex flex-wrap gap-x-4 gap-y-2 pt-1 text-sm font-semibold">
+              {/* No live link means the product is shut down or the URL is dead. */}
+              {url ? (
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener"
+                  className="underline underline-offset-3"
+                >
+                  {url.startsWith('https://t.me/') ? t('telegram') : t('site')}
+                </a>
+              ) : (
+                <span className="text-panel-muted">{t('inactive')}</span>
+              )}
+              {codeUrl && (
+                <a
+                  href={codeUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className="underline underline-offset-3"
+                >
+                  {t('codeOnGithub')}
+                </a>
+              )}
+            </p>
           </>
         }
       />

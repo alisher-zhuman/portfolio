@@ -1,7 +1,6 @@
 'use client'
 
-import { type ReactNode, useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { type MouseEvent, type ReactNode, useState } from 'react'
 
 import { useLegendStore } from '@features/cheat-code'
 
@@ -10,43 +9,32 @@ interface Props {
   back: ReactNode
 }
 
-// Two ways to flip, layered so neither fights the other:
-// - hovering with a mouse flips it in pure CSS (works before hydration, and without JS at all);
-// - a click, tap or the button below *pins* it flipped via data-flipped. Unpinning while the mouse
-//   is still over the card leaves it showing the back until the pointer leaves — hover still holds.
+// Flips on hover in pure CSS (Tailwind's hover only applies on devices that can hover, and it
+// works before hydration). Touch has no hover, so there a tap flips it instead.
 export const CardFlip = ({ front, back }: Props) => {
-  const [pinned, setPinned] = useState(false)
-  const t = useTranslations('Card')
+  const [flipped, setFlipped] = useState(false)
   // The cheat code's gold edition; the faces restyle themselves off data-legend.
   const legend = useLegendStore((state) => state.active)
 
-  const toggle = () => setPinned((value) => !value)
+  const onClick = (event: MouseEvent) => {
+    // A mouse already flips on hover; a click shouldn't pin it on top of that.
+    if ((event.nativeEvent as PointerEvent).pointerType === 'mouse') return
+
+    setFlipped((value) => !value)
+  }
 
   return (
-    <div className="grid w-full justify-items-center gap-3">
-      {/* Clicking the card is a pointer convenience only; the button below is the keyboard and
-          screen-reader path to the same toggle. */}
-      <div
-        onClick={toggle}
-        data-flipped={pinned}
-        data-legend={legend}
-        className="group aspect-2/3 w-full cursor-pointer perspective-distant"
-      >
-        <div className="relative size-full transition-transform duration-700 ease-out transform-3d group-hover:rotate-y-180 group-data-[flipped=true]:rotate-y-180 motion-reduce:transition-none">
-          {front}
+    <div
+      onClick={onClick}
+      data-flipped={flipped}
+      data-legend={legend}
+      className="group aspect-2/3 w-full perspective-distant"
+    >
+      <div className="relative size-full transition-transform duration-700 ease-out transform-3d group-hover:rotate-y-180 group-data-[flipped=true]:rotate-y-180 motion-reduce:transition-none">
+        {front}
 
-          {back}
-        </div>
+        {back}
       </div>
-
-      <button
-        type="button"
-        aria-pressed={pinned}
-        onClick={toggle}
-        className="cursor-pointer rounded-sm px-2 py-1 text-sm font-semibold underline underline-offset-4"
-      >
-        {t('flip')}
-      </button>
     </div>
   )
 }
