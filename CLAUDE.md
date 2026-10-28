@@ -196,13 +196,14 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
 - **Project cards flip** (`entities/project/ui/project-flip`): front = what the project is, back =
   what he did (`items.<id>.did`): **every LinkedIn bullet as he wrote it** (en verbatim, ru/ky
   close translations, his numbers kept except ones on the dossier's Conflicts list); KCA and
-  KuttukTime aren't on LinkedIn, theirs come from the dossier. The front sets the height, the back's
-  list scrolls inside it. Links and «Неактивен» are on the front.
+  KuttukTime aren't on LinkedIn, theirs come from the dossier. Both faces share one grid cell (card =
+  height of the longer face), back text is `text-xs`, **nothing scrolls inside a card** — an inner
+  scroller on the hidden face swallowed the page's wheel scrolling. The hidden face gets
+  `pointer-events-none`. Links and «Неактивен» are on the front.
 - **Both card flips (project and player) flip on click/tap, not hover, and have no visible
   buttons** (Alisher, 2026-10-28: tried hover-only first, then asked for click). A click on a link
   just follows it. Keyboard: the player card has a visually hidden «Перевернуть карточку» button
-  that shows on focus; a project card flips while its back's list (`data-face="back"`) has
-  `:focus-visible` — not `:focus-within`, which a click also triggers and which kept it flipped.
+  that shows on focus; project cards have the same (labelled «Что делал»).
 - Project dates are month ranges as on his LinkedIn (`from`/`to` 'YYYY-MM' | 'present', formatted
   per language); KCA = his «Түндүк» job dates, KuttukTime = first commit (neither is in LinkedIn's
   Projects).

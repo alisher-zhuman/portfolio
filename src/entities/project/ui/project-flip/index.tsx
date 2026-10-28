@@ -9,42 +9,67 @@ interface Props {
   back: ReactNode
   // Colour of the kit stripe down the left edge of both faces.
   stripeClassName: string
+  // Name of the keyboard-only flip button.
+  flipLabel: string
 }
 
-// The kit stripe is a left border, not an overlay, so it stays put while the back scrolls.
+// The kit stripe is a left border, so both faces carry it. Both faces share one grid cell: the card
+// is as tall as the longer face, and nothing scrolls inside it.
 const FACE =
-  'bg-panel text-panel-foreground flex flex-col gap-2.5 rounded-md border-l-6 py-6 pr-6 pl-5.5 backface-hidden'
-
-// The front sets the card's height; the back is laid over it, so a long back doesn't leave a
-// tall, empty front.
-const FRONT = cn(FACE, 'relative h-full overflow-hidden')
-const BACK = cn(FACE, 'absolute inset-0 rotate-y-180')
+  'bg-panel text-panel-foreground col-start-1 row-start-1 flex flex-col gap-2.5 rounded-md border-l-6 py-6 pr-6 pl-5.5 backface-hidden'
 
 // A click or tap on the card flips it; another flips it back; a click on a link just follows it.
-// Keyboard users flip it by tabbing into the back's list (marked data-face="back"). The front's
-// links don't flip it, and it's :focus-visible, not :focus-within: a click focuses the list too,
-// and the card couldn't be flipped back while it held focus.
-export const ProjectFlip = ({ front, back, stripeClassName }: Props) => {
+// The hidden face takes no pointer events: it sits in the same place, and would otherwise catch
+// clicks and wheel scrolling meant for the visible one. The card itself can't be a button (that
+// would hide its links), so keyboard users get a visually hidden button that shows on focus.
+export const ProjectFlip = ({ front, back, stripeClassName, flipLabel }: Props) => {
   const [flipped, setFlipped] = useState(false)
 
-  const onClick = (event: MouseEvent) => {
-    // A click on a link should just follow it.
-    if ((event.target as Element).closest('a')) return
+  const toggle = () => setFlipped((value) => !value)
 
-    setFlipped((value) => !value)
+  const onClick = (event: MouseEvent) => {
+    // Links follow, and the flip button toggles on its own.
+    if ((event.target as Element).closest('a, button')) return
+
+    toggle()
   }
 
   return (
     <div
       onClick={onClick}
       data-flipped={flipped}
-      className="group h-full cursor-pointer perspective-distant"
+      className="group relative h-full cursor-pointer perspective-distant"
     >
-      <div className="relative h-full transition-transform duration-700 ease-out transform-3d group-has-[[data-face=back]:focus-visible]:rotate-y-180 group-data-[flipped=true]:rotate-y-180 motion-reduce:transition-none">
-        <div className={cn(FRONT, stripeClassName)}>{front}</div>
+      <div className="grid h-full transition-transform duration-700 ease-out transform-3d group-data-[flipped=true]:rotate-y-180 motion-reduce:transition-none">
+        <div
+          className={cn(
+            FACE,
+            'relative overflow-hidden group-data-[flipped=true]:pointer-events-none',
+            stripeClassName
+          )}
+        >
+          {front}
+        </div>
 
-        <div className={cn(BACK, stripeClassName)}>{back}</div>
+        <div
+          className={cn(
+            FACE,
+            'pointer-events-none rotate-y-180 group-data-[flipped=true]:pointer-events-auto',
+            stripeClassName
+          )}
+        >
+          {back}
+        </div>
       </div>
+
+      <button
+        type="button"
+        aria-pressed={flipped}
+        onClick={toggle}
+        className="bg-panel text-panel-foreground sr-only rounded-sm px-2 py-1 text-sm font-semibold underline underline-offset-3 focus-visible:not-sr-only focus-visible:absolute focus-visible:right-4 focus-visible:bottom-4"
+      >
+        {flipLabel}
+      </button>
     </div>
   )
 }

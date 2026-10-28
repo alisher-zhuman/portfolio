@@ -34,6 +34,7 @@ export const ProjectCard = ({ project, number }: Props) => {
       <ProjectFlip
         // Kit stripe: yellow for his own products, red for everything else.
         stripeClassName={club === 'own' ? 'border-sun' : 'border-kit'}
+        flipLabel={t('did')}
         front={
           <>
             <span
@@ -86,18 +87,11 @@ export const ProjectCard = ({ project, number }: Props) => {
 
             <p className="text-kit-ink text-sm font-semibold">{t('did')}</p>
 
-            {/* The list scrolls inside the card; tabIndex lets keyboard users scroll it too. */}
-            <div
-              tabIndex={0}
-              data-face="back"
-              className="-mr-3 min-h-0 flex-1 overflow-y-auto overscroll-contain pr-3"
-            >
-              <ul className="grid list-disc gap-2 pl-5 text-sm">
-                {(t.raw(`items.${id}.did`) as string[]).map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+            <ul className="grid list-disc gap-1.5 pl-4 text-xs leading-snug">
+              {(t.raw(`items.${id}.did`) as string[]).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </>
         }
       />
