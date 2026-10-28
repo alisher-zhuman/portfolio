@@ -14,21 +14,30 @@ export const CardFront = () => {
       aria-label={t('front')}
       className="card-notched card-front-surface text-kit-foreground group-data-[legend=true]:card-front-legend group-data-[legend=true]:text-navy absolute inset-0 flex flex-col p-5 backface-hidden"
     >
-      <div className="flex items-start justify-between">
-        <p className="grid leading-none">
-          {/* Both ratings are in the HTML; the cheat code only swaps which one is displayed. */}
-          <span className="font-display text-6xl font-extrabold tracking-tighter group-data-[legend=true]:hidden">
-            {rating}
-          </span>
-          <span className="font-display hidden text-6xl font-extrabold tracking-tighter group-data-[legend=true]:inline">
-            99
-          </span>
-        </p>
+      {/* Rating, position and crest overlay the portrait's top corners, as on a FIFA card. */}
+      <div className="absolute inset-x-5 top-5 z-10 flex items-start justify-between">
+        <div className="grid justify-items-center gap-1">
+          <p className="grid leading-none">
+            {/* Both ratings are in the HTML; the cheat code only swaps which one is displayed. */}
+            <span className="font-display text-6xl font-extrabold tracking-tighter group-data-[legend=true]:hidden">
+              {rating}
+            </span>
+            <span className="font-display hidden text-6xl font-extrabold tracking-tighter group-data-[legend=true]:inline">
+              99
+            </span>
+          </p>
+
+          {/* Position code under the rating, as on a FIFA card; the full name is for screen readers. */}
+          <p className="font-display text-xl leading-none font-extrabold tracking-wide">
+            <span aria-hidden="true">{t('positionCode')}</span>
+            <span className="sr-only">{t('position')}</span>
+          </p>
+        </div>
 
         <Crest className="text-sun group-data-[legend=true]:text-navy size-9.5" />
       </div>
 
-      <div className="relative mx-auto -mt-3 grid aspect-6/5 w-4/5 place-items-end">
+      <div className="relative mx-auto mt-11 grid aspect-6/5 w-4/5 place-items-end">
         <span aria-hidden="true" className="sun-rays absolute -inset-x-4 -top-2 bottom-4" />
 
         <PlayerPortrait />
