@@ -151,6 +151,10 @@
         "title": "Трансфер в ClickFood",
         "text": "Middle Frontend. Доставка еды в Telegram Mini App: каталог и корзина для клиентов, кабинет ресторанов, отчёты для бухгалтерии."
       },
+      "kuttukTime": {
+        "title": "Сольный проход: KuttukTime",
+        "text": "Свой продукт: подарочные сертификаты местного бизнеса в Telegram Mini App. Фронтенд и бэкенд целиком сам — с онлайн-оплатой и 150+ тестами."
+      },
       "tunduk": {
         "title": "Middle Frontend Developer в «Түндүк»",
         "text": "Е-Аккредитация: публичный портал и кабинет сотрудников — почти целиком своими силами."
@@ -161,7 +165,7 @@
       },
       "substitution": {
         "title": "Замена: выход на бэкенд-позицию",
-        "text": "В процессе… Node.js, NestJS, SQL и PostgreSQL."
+        "text": "В процессе… Java, Node.js, NestJS, SQL и PostgreSQL."
       }
     }
   },

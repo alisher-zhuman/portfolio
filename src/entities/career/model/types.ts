@@ -4,7 +4,15 @@ export type CareerEventKind = 'regular' | 'goal' | 'big-goal' | 'assist' | 'subs
 
 // Keys of Match.events in messages/*.json, where each event's title and text live.
 export type CareerEventId =
-  'kickoff' | 'academy' | 'peaksoft' | 'codify' | 'clickfood' | 'tunduk' | 'assist' | 'substitution'
+  | 'kickoff'
+  | 'academy'
+  | 'peaksoft'
+  | 'codify'
+  | 'clickfood'
+  | 'kuttukTime'
+  | 'tunduk'
+  | 'assist'
+  | 'substitution'
 
 export interface CareerEvent {
   id: CareerEventId
