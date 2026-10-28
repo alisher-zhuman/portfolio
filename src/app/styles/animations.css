@@ -280,12 +280,14 @@
   transform: scaleX(var(--progress, 0));
 }
 
+/* The flip comes after the translate in one transform. A separate `scale: -1 1` is applied on top
+   of the translate and mirrors it too, throwing the runner off the left edge on the way back. */
 .touchline__runner {
-  transform: translateX(calc(var(--progress, 0) * (100vw - 24px)));
+  transform: translateX(calc(var(--progress, 0) * (100vw - 24px))) scaleX(var(--facing, 1));
 }
 
 .touchline[data-direction='back'] .touchline__runner {
-  scale: -1 1;
+  --facing: -1;
 }
 
 .touchline__runner path {
