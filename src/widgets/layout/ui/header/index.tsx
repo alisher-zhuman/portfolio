@@ -14,11 +14,12 @@ export const Header = () => {
   const name = useTranslations('Profile')('name')
 
   return (
-    <header className="bg-header border-chalk sticky top-0 z-20 border-b-2">
+    <header className="site-header bg-header border-chalk sticky top-0 z-20 border-b-2">
       <div className="container-page flex h-15 items-center gap-3">
         <Link
           href="/#top"
           prefetch={false}
+          transitionTypes={['nav-back']}
           aria-label={t('homeLabel', { name })}
           className="font-display flex items-center gap-2.5 font-bold"
         >

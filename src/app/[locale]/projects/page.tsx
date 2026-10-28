@@ -7,6 +7,8 @@ import { routing } from '@/i18n/routing'
 
 import { ProjectsCatalog } from '@widgets/projects'
 
+import { PageTransition } from '@shared/ui'
+
 export const generateMetadata = async ({
   params,
 }: PageProps<'/[locale]/projects'>): Promise<Metadata> => {
@@ -30,9 +32,11 @@ export const generateMetadata = async ({
 }
 
 const ProjectsPage = () => (
-  <main id="main">
-    <ProjectsCatalog />
-  </main>
+  <PageTransition>
+    <main id="main">
+      <ProjectsCatalog />
+    </main>
+  </PageTransition>
 )
 
 export default ProjectsPage

@@ -8,7 +8,7 @@ export const ScoutReport = () => {
   const t = useTranslations('Scout')
 
   return (
-    <div className="max-w-prose">
+    <div className="reveal max-w-prose">
       <h3 className="font-display text-2xl font-bold">{t('title')}</h3>
 
       <dl className="mt-5 grid gap-4.5">

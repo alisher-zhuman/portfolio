@@ -13,7 +13,7 @@ export const PlayerSection = () => {
       <SectionHeading id="card-title" title={t('title')} lead={t('lead')} />
 
       <div className="flex flex-col items-center gap-10 md:flex-row md:items-start md:gap-16">
-        <div className="w-full max-w-80 shrink-0">
+        <div className="reveal w-full max-w-80 shrink-0">
           <PlayerCard />
         </div>
 

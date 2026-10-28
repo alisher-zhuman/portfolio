@@ -16,6 +16,7 @@ export const ProjectsCatalog = () => {
     <section aria-labelledby="projects-title" className="container-page py-10 sm:py-14">
       <Link
         href="/#projects"
+        transitionTypes={['nav-back']}
         className="text-on-pitch-muted hover:text-on-pitch mb-6 inline-block text-sm font-semibold underline underline-offset-3"
       >
         ← {t('backHome')}
@@ -26,7 +27,7 @@ export const ProjectsCatalog = () => {
       <ProjectsFilter>
         <ul className="grid gap-4 md:grid-cols-2 md:gap-5">
           {projects.map((project, index) => (
-            <li key={project.id} data-club={project.club}>
+            <li key={project.id} data-club={project.club} className="reveal">
               <ProjectCard project={project} number={index + 1} />
             </li>
           ))}

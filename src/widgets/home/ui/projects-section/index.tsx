@@ -18,13 +18,13 @@ export const ProjectsSection = () => {
 
       <ul className="grid gap-4 md:grid-cols-2 md:gap-5">
         {projects.slice(0, PREVIEW_COUNT).map((project, index) => (
-          <li key={project.id}>
+          <li key={project.id} className="reveal">
             <ProjectCard project={project} number={index + 1} />
           </li>
         ))}
       </ul>
 
-      <Link href="/projects" className="btn mt-6">
+      <Link href="/projects" transitionTypes={['nav-forward']} className="btn mt-6 reveal">
         {t('allLink', { count: projects.length })} →
       </Link>
     </section>

@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const SectionHeading = ({ id, title, lead, as: Heading = 'h2' }: Props) => (
-  <div className="mb-8 max-w-prose">
+  <div className="reveal mb-8 max-w-prose">
     <Heading id={id} className="font-display text-3xl font-bold text-balance sm:text-4xl">
       {title}
     </Heading>

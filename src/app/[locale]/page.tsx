@@ -6,7 +6,7 @@ import { getPersonJsonLd } from '@app/helpers'
 
 import { Hero, MatchSection, PlayerSection, ProjectsSection, SectionWhistle } from '@widgets/home'
 
-import { JsonLd } from '@shared/ui'
+import { JsonLd, PageTransition } from '@shared/ui'
 
 // Canonical and hreflang live here, not in the layout, so the 404 doesn't inherit them.
 export const generateMetadata = async ({ params }: PageProps<'/[locale]'>): Promise<Metadata> => {
@@ -24,19 +24,21 @@ export const generateMetadata = async ({ params }: PageProps<'/[locale]'>): Prom
 }
 
 const HomePage = async () => (
-  <main id="main">
-    <JsonLd data={await getPersonJsonLd()} />
+  <PageTransition>
+    <main id="main">
+      <JsonLd data={await getPersonJsonLd()} />
 
-    <Hero />
+      <Hero />
 
-    <PlayerSection />
+      <PlayerSection />
 
-    <MatchSection />
+      <MatchSection />
 
-    <ProjectsSection />
+      <ProjectsSection />
 
-    <SectionWhistle />
-  </main>
+      <SectionWhistle />
+    </main>
+  </PageTransition>
 )
 
 export default HomePage

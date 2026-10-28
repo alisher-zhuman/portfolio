@@ -17,6 +17,8 @@ export const Nav = () => {
           href={`/#${id}`}
           // Same-page anchors: prefetching would just fetch the page we are already on.
           prefetch={false}
+          // From /projects these lead back home; on the homepage they are plain anchors.
+          transitionTypes={['nav-back']}
           className="text-on-pitch-muted hover:text-on-pitch hover:bg-on-pitch/10 rounded-full px-3 py-2 font-medium"
         >
           {t(id)}
