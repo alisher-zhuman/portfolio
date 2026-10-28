@@ -47,6 +47,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
   const locale = hasLocale(routing.locales, requested) ? requested : routing.defaultLocale
   // Root params aren't available to metadata image routes, so the locale is passed explicitly.
   const t = await getTranslations({ locale })
+  const isWindowOpen = profile.transferWindow === 'open'
 
   return new ImageResponse(
     <div
@@ -71,9 +72,10 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
             backgroundColor: COLORS.kit,
             fontFamily: 'Unbounded',
             letterSpacing: 1,
+            textTransform: 'uppercase',
           }}
         >
-          {t('OpenGraph.flash')}
+          {isWindowOpen ? t('Hero.flashOpen') : t('Hero.flashClosed')}
         </div>
         <div
           style={{
@@ -83,7 +85,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
             color: COLORS.navy,
           }}
         >
-          {profile.transferWindow === 'open' ? t('Hero.windowOpen') : t('Hero.windowClosed')}
+          {isWindowOpen ? t('Hero.windowOpen') : t('Hero.windowClosed')}
         </div>
       </div>
 

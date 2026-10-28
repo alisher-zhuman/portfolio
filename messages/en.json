@@ -49,9 +49,10 @@
     "phone": "Phone"
   },
   "Hero": {
-    "flash": "Breaking",
+    "flashOpen": "Breaking",
+    "flashClosed": "Rumour",
     "windowOpen": "Transfer window open",
-    "windowClosed": "Offers coming in",
+    "windowClosed": "Happy at the club, but will listen to offers",
     "title": "Clubs are circling Alisher",
     "quoteSource": "— a source close to the player",
     "stageHint": "Warming up on the touchline. Tap the player.",
@@ -239,8 +240,5 @@
     ],
     "score": "Goals: {goals} of {shots}",
     "again": "Another shot"
-  },
-  "OpenGraph": {
-    "flash": "BREAKING"
   }
 }

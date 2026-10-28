@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl'
 
+import { profile } from '@entities/profile'
+
 import { LiveDot } from '@shared/ui'
 
 export const TransferPanel = () => {
@@ -22,13 +24,16 @@ export const TransferPanel = () => {
           </dd>
         </div>
 
-        <div className="col-span-2 flex items-baseline gap-2.5">
-          <dt className="text-on-pitch-muted text-sm">{t('status')}</dt>
-          <dd className="font-semibold">
-            <LiveDot />
-            {t('statusValue')}
-          </dd>
-        </div>
+        {/* Live talks only while he is actually looking; otherwise the hero plate says it calmly. */}
+        {profile.transferWindow === 'open' && (
+          <div className="col-span-2 flex items-baseline gap-2.5">
+            <dt className="text-on-pitch-muted text-sm">{t('status')}</dt>
+            <dd className="font-semibold">
+              <LiveDot />
+              {t('statusValue')}
+            </dd>
+          </div>
+        )}
       </dl>
 
       {/* Sits in the gap between the two boxes. Outside the <dl>, which may only hold dt/dd groups. */}
