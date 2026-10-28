@@ -53,9 +53,9 @@ export const CardFront = () => {
         className="border-kit-foreground/40 mt-auto grid grid-cols-3 gap-x-3 gap-y-2.5 border-t pt-3"
       >
         {stats.map(({ key, value }) => (
-          <li key={key} className="flex flex-wrap items-baseline gap-x-1.5">
+          <li key={key} className="flex flex-col">
             <span className="font-display text-xl leading-none font-extrabold">{value}</span>
-            <span className="text-xs font-semibold tracking-wide">{key}</span>
+            <span className="mt-1 text-xs font-semibold tracking-wide">{key}</span>
 
             <span
               aria-hidden="true"

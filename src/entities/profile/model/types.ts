@@ -32,7 +32,6 @@ export interface Profile {
   transferWindow: TransferWindow
   shirtNumber: number
   stats: PlayerStat[]
-  strongFoot: string
   stack: string[]
   contacts: Contacts
 }

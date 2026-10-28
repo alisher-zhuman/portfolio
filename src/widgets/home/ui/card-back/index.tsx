@@ -1,7 +1,5 @@
 import { useTranslations } from 'next-intl'
 
-import { profile } from '@entities/profile'
-
 export const CardBack = () => {
   const t = useTranslations('Card')
 
@@ -16,9 +14,7 @@ export const CardBack = () => {
         <p key={paragraph}>{paragraph}</p>
       ))}
 
-      <p className="text-sun mt-auto font-semibold">
-        {t('strongFoot', { foot: profile.strongFoot })}
-      </p>
+      <p className="text-sun mt-auto font-semibold">{t('strongFoot')}</p>
     </article>
   )
 }

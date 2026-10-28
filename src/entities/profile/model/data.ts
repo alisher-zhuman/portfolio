@@ -1,4 +1,17 @@
-import { type Profile } from './types'
+import { type PlayerStat, type Profile } from './types'
+
+const stats: PlayerStat[] = [
+  { key: 'REACT', value: 86 },
+  { key: 'TS', value: 80 },
+  { key: 'CSS', value: 88 },
+  { key: 'NEXT', value: 82 },
+  { key: 'PERF', value: 86 },
+  { key: 'A11Y', value: 80 },
+]
+
+// The card's overall rating is the rounded mean of the stats, so it can't drift from them.
+const getOverallRating = (list: PlayerStat[]) =>
+  Math.round(list.reduce((sum, { value }) => sum + value, 0) / list.length)
 
 // The resume is still a placeholder PDF.
 export const profile: Profile = {
@@ -7,19 +20,11 @@ export const profile: Profile = {
   givenName: 'Alisher',
   familyName: 'Zhuman',
   role: 'Middle Frontend Developer',
-  rating: 78,
+  rating: getOverallRating(stats),
   // Switch to 'open' when job hunting: the hero's flash then reads «Трансферное окно открыто».
   transferWindow: 'closed',
   shirtNumber: 7,
-  stats: [
-    { key: 'REACT', value: 86 },
-    { key: 'TS', value: 80 },
-    { key: 'CSS', value: 88 },
-    { key: 'NODE', value: 55 },
-    { key: 'SQL', value: 50 },
-    { key: 'SEC', value: 62 },
-  ],
-  strongFoot: 'TypeScript',
+  stats,
   stack: ['React', 'Next.js', 'Svelte', 'TypeScript', 'Tailwind CSS', 'Vite', 'pnpm'],
   contacts: {
     resumeUrl: '/resume.pdf',
