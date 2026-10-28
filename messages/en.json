@@ -193,78 +193,201 @@
     "items": {
       "kca": {
         "title": "Kyrgyz Center of Accreditation",
-        "description": "E-Accreditation: a public portal with registries and news, and a staff dashboard with step-by-step applications and access roles."
+        "description": "E-Accreditation: a public portal with registries and news, and a staff dashboard with step-by-step applications and access roles.",
+        "did": [
+          "Public portal on Next.js: static generation, SEO markup, dark theme, Kyrgyz and Russian.",
+          "Staff dashboard on React and MUI: data tables, validated step-by-step forms, a rich text editor.",
+          "Feature-Sliced Design with automated checks, tests in Vitest and Playwright."
+        ]
       },
       "kuttukTime": {
-        "description": "A gift certificate for a coffee shop, spa or salon with no sign-up: the code can be sent to a friend and the merchant redeems it in their dashboard. Includes an admin for merchants and categories."
+        "description": "A gift certificate for a coffee shop, spa or salon with no sign-up: the code can be sent to a friend and the merchant redeems it in their dashboard. Includes an admin for merchants and categories.",
+        "did": [
+          "Backend on NestJS and PostgreSQL: sign-in via the Telegram signature, JWT and roles.",
+          "Payments through Finik: signed requests, verified webhooks, repeated deliveries never double-charge.",
+          "The React Mini App: buying a certificate, a code to share, the partner dashboard."
+        ]
       },
       "kiu": {
-        "description": "Site and CMS for the Kyrgyz Islamic University in three languages: news, faculties, timetables and a section for applicants. Staff manage the content themselves."
+        "description": "Site and CMS for the Kyrgyz Islamic University in three languages: news, faculties, timetables and a section for applicants. Staff manage the content themselves.",
+        "did": [
+          "Three languages with next-intl: localized URLs, hreflang in the sitemap, the locale passed to the API.",
+          "A CMS for staff: news, schedules, faculties, file uploads to AWS S3.",
+          "Server-side prefetching with React Query, Feature-Sliced Design."
+        ]
       },
       "bilimBulak": {
-        "description": "A psychological diagnostics platform for teachers, built for the Ministry of Education and the Teachers’ Union: tests, burnout detection and personal recommendations."
+        "description": "A psychological diagnostics platform for teachers, built for the Ministry of Education and the Teachers’ Union: tests, burnout detection and personal recommendations.",
+        "did": [
+          "Tests that keep answers through failures: local saving, a single attempt, auto-submit on timeout.",
+          "Step-by-step sign-up with OTP and cascading choices: region, district, organization type, institution.",
+          "Kyrgyz and Russian with next-intl, forms on React Hook Form and Zod."
+        ]
       },
       "quant": {
-        "description": "Smart water meters: a landing page in three languages and a dispatcher dashboard with consumption charts and remote valve control."
+        "description": "Smart water meters: a landing page in three languages and a dispatcher dashboard with consumption charts and remote valve control.",
+        "did": [
+          "A landing page in three languages: hreflang, OpenGraph, lazy-loaded heavy modules, light media.",
+          "The dispatcher dashboard: consumption charts in Recharts and remote valve commands.",
+          "Hover-intent prefetching with React Query, Feature-Sliced Design."
+        ]
       },
       "clickfood": {
-        "description": "Food delivery in Telegram: restaurant search sorted by distance, a cart with modifiers, promo codes and cashback, and a partner dashboard with a stop list."
+        "description": "Food delivery in Telegram: restaurant search sorted by distance, a cart with modifiers, promo codes and cashback, and a partner dashboard with a stop list.",
+        "did": [
+          "A Telegram Mini App on React and TypeScript: Feature-Sliced Design, React Query and Zod.",
+          "Checkout: dish modifiers, promo codes, cashback, delivery zone checks on the map.",
+          "Restaurant search by distance and a partner dashboard with a stop list and iiko integration."
+        ]
       },
       "turan": {
-        "description": "An admin panel for smart meters: users, devices, readings, remote water shut-off, access roles and Excel import."
+        "description": "An admin panel for smart meters: users, devices, readings, remote water shut-off, access roles and Excel import.",
+        "did": [
+          "Remote water shut-off and four levels of access roles.",
+          "Device import from Excel, search and filters that live in the page URL.",
+          "React Query caching for frequent readings, Zod validation, a Vite build."
+        ]
       },
       "billingCenter": {
-        "description": "Utility bills paid in four steps: provider, account number, amount due and a QR payment. Plain JavaScript, without a single library."
+        "description": "Utility bills paid in four steps: provider, account number, amount due and a QR payment. Plain JavaScript, without a single library.",
+        "did": [
+          "Payment in four steps: provider, account number, debt and a QR code that opens the banking app.",
+          "Three utility providers in one place and a PDF invoice.",
+          "Plain JavaScript with no npm packages, an accessible modal that closes on Escape."
+        ]
       },
       "codifyLms": {
-        "description": "CRM and LMS for training centres: homework with a code editor, leaderboards and coins, reports to parents over WhatsApp."
+        "description": "CRM and LMS for training centres: homework with a code editor, leaderboards and coins, reports to parents over WhatsApp.",
+        "did": [
+          "Monthly reports to parents: an editable table and WhatsApp delivery with retries.",
+          "Assignments in a TipTap editor with code highlighting, file uploads and mentor comments.",
+          "Course and global leaderboards, digital literacy tasks with text-to-speech."
+        ]
       },
       "codifyGo": {
-        "description": "Micro-lessons in HTML, CSS and cybersecurity: a code editor right in the browser, levels and streaks, a subscription and an olympiad for schoolchildren."
+        "description": "Micro-lessons in HTML, CSS and cybersecurity: a code editor right in the browser, levels and streaks, a subscription and an olympiad for schoolchildren.",
+        "did": [
+          "Gamification: XP and levels, coins, streaks and daily goals.",
+          "Stripe subscriptions: monthly and yearly, paid lessons and promo codes.",
+          "A CodeMirror editor with a live HTML and CSS preview, olympiad sign-up with a PDF certificate."
+        ]
       },
       "virtualAccelerate": {
-        "description": "A platform for accelerators: startup selection on a kanban board, investor voting, a form builder and 8 languages including RTL."
+        "description": "A platform for accelerators: startup selection on a kanban board, investor voting, a form builder and 8 languages including RTL.",
+        "did": [
+          "A Kanban board for selecting startups: drag and drop, bulk actions, scoring and comments.",
+          "A deal flow with investor voting, role permissions through CASL.",
+          "A no-code form builder, role-based analytics and 8 languages, including right-to-left Arabic."
+        ]
       },
       "jobCodify": {
-        "description": "A careers platform: jobs, courses, an AI résumé helper and a sandbox for running code in the browser."
+        "description": "A careers platform: jobs, courses, an AI résumé helper and a sandbox for running code in the browser.",
+        "did": [
+          "Job filters on Redux with API queries and state that survives SSR.",
+          "A sandbox that runs JavaScript, React and Python right in the browser.",
+          "Sign-in with Google, Telegram or a password on NextAuth, silent token refresh, Sentry monitoring."
+        ]
       },
       "codifyAcademy": {
-        "description": "A site for programming, design and management courses for children and adults: enrolment, a free lesson and a career aptitude test."
+        "description": "A site for programming, design and management courses for children and adults: enrolment, a free lesson and a career aptitude test.",
+        "did": [
+          "Five ways to apply: forms, a free lesson, a checklist and a career aptitude test.",
+          "Separate pages for adults and kids, international phone number validation.",
+          "Svelte instead of React for speed, content from a Django CMS, Russian and English."
+        ]
       },
       "codifyTeens": {
-        "description": "A landing page for a coding academy for ages 7–17 in three languages: a fee calculator, a map and an application form."
+        "description": "A landing page for a coding academy for ages 7–17 in three languages: a fee calculator, a map and an application form.",
+        "did": [
+          "A landing page on Next.js and Tailwind with meta tags in three languages via SSR.",
+          "Framer Motion animations, a school map, an Instagram feed and a price calculator.",
+          "An application form on React Hook Form with live validation."
+        ]
       },
       "startupNation": {
-        "description": "The landing page of Central Asia’s largest hackathon: registration, speakers, mentors and the prize fund."
+        "description": "The landing page of Central Asia’s largest hackathon: registration, speakers, mentors and the prize fund.",
+        "did": [
+          "A hackathon landing page with content from the API and a partner showcase.",
+          "A learning dashboard: courses, quizzes, assignments, a forum and a cart.",
+          "GSAP parallax and particles without the slowdown: server and client components kept apart."
+        ]
       },
       "codifyLab": {
-        "description": "A development studio’s site: case studies and services from a CMS, a brief form with attachments, Russian and English."
+        "description": "A development studio’s site: case studies and services from a CMS, a brief form with attachments, Russian and English.",
+        "did": [
+          "The site picks its language from the visitor’s browser, Russian or English.",
+          "Case studies and services from the CMS in a carousel: managers add projects without a developer.",
+          "A brief form with attachments and a layout that holds down to the narrowest screens."
+        ]
       },
       "alphaCargo": {
-        "description": "Cargo between Kyrgyzstan and Russia: shipment tracking by waybill, a rate calculator and a contract wizard for businesses."
+        "description": "Cargo between Kyrgyzstan and Russia: shipment tracking by waybill, a rate calculator and a contract wizard for businesses.",
+        "did": [
+          "Cargo tracking by waybill number with a timeline and a shareable link.",
+          "A tariff calculator and PDF waybills: viewed on desktop, downloaded on mobile.",
+          "A four-step contract wizard on React Hook Form."
+        ]
       },
       "shine": {
-        "description": "An admin panel for an aesthetic clinic: doctors, procedures, reviews and news with a rich text editor."
+        "description": "An admin panel for an aesthetic clinic: doctors, procedures, reviews and news with a rich text editor.",
+        "did": [
+          "An admin panel with JWT sign-in, protected pages and roles.",
+          "Doctors and procedures: categories, descriptions, before-and-after photos, three price tiers.",
+          "Reviews and news in a CKEditor5 editor, bulk photo uploads."
+        ]
       },
       "peaksoftHouse": {
-        "description": "An IT course site: online enrolment, course pages, student projects and an admin panel for two offices."
+        "description": "An IT course site: online enrolment, course pages, student projects and an admin panel for two offices.",
+        "did": [
+          "Apply from anywhere on the page: a countdown, modal forms, a WhatsApp button.",
+          "An admin panel for banners and promotions with roles for the Bishkek and Moscow offices.",
+          "SSR on Next.js, lazy images, scroll animations, meta tags in three languages."
+        ]
       },
       "bilingual": {
-        "description": "English testing: 9 question types, voice recording and anti-cheating protection."
+        "description": "English testing: 9 question types, voice recording and anti-cheating protection.",
+        "did": [
+          "9 question types and voice recording with a live waveform.",
+          "Anti-cheating on browser APIs: PrintScreen blocking, tab-switch detection.",
+          "Answers are saved as you go: after a reload the test resumes where it left off."
+        ]
       },
       "airbnb": {
-        "description": "Home rentals in Kyrgyzstan: filters and search, moderated listings, favourites."
+        "description": "Home rentals in Kyrgyzstan: filters and search, moderated listings, favourites.",
+        "did": [
+          "Filters by region, type, price and rating with instant search.",
+          "A listing form with photos and moderation statuses, an admin queue for requests.",
+          "Google sign-in on Firebase and favourites."
+        ]
       },
       "healthCheck": {
-        "description": "A medical service: booking a doctor in five steps, test results online and doctors’ schedules for the admin."
+        "description": "A medical service: booking a doctor in five steps, test results online and doctors’ schedules for the admin.",
+        "did": [
+          "Booking a doctor in five steps and a request queue in the admin panel.",
+          "Doctor schedules with bulk time-slot operations.",
+          "Roles and Google sign-in, Excel reports and test results as PDF."
+        ]
       },
       "peaksoftLms": {
-        "description": "A platform for managing courses, students and teachers: editors for course materials, graded assignments and importing students from Excel."
+        "description": "A platform for managing courses, students and teachers: editors for course materials, graded assignments and importing students from Excel.",
+        "did": [
+          "Three text editors for course materials, file and video uploads.",
+          "Student import from Excel, a trash bin for safe deletion, group management.",
+          "Graded assignments and student progress tracking."
+        ]
       },
       "gadgetarium": {
-        "description": "An online gadget store: catalogue, comparison, wishlist, Stripe checkout and a product admin."
+        "description": "An online gadget store: catalogue, comparison, wishlist, Stripe checkout and a product admin.",
+        "did": [
+          "Stripe checkout with form validation on Formik and Yup.",
+          "Lazy loading, debounced search and skeletons in the catalogue.",
+          "A product admin with a step-by-step wizard; favourites, history and comparison on Redux Persist."
+        ]
       }
-    }
+    },
+    "did": "What I did",
+    "flip": "What I did",
+    "flipBack": "About the project"
   },
   "Footer": {
     "title": "Final whistle",

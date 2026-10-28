@@ -186,6 +186,16 @@ smallest possible islands layered on top.
 - **Heavy parts load lazily**: ball and penalty game via `next/dynamic({ ssr: false })` (allowed only
   inside a Client Component); ball isn't loaded at all under reduced motion. Confetti is a dynamic
   `import()`.
+- **Page transitions**: React's `<ViewTransition>` via `shared/ui/PageTransition`, wrapped around
+  each page's `<main>` (not the layout, where enter/exit never fire). Links set the direction with
+  `transitionTypes={['nav-forward' | 'nav-back']}`; untagged navigations (browser back) swap
+  instantly. The header has `view-transition-name: site-header` and stays still. No library.
+- **Scroll reveal**: the `.reveal` class (animations.css) is a CSS view timeline (`animation-timeline:
+  view()`), no JS; browsers without it and reduced motion just show the content. Don't put it on
+  elements that animate `opacity`/`translate` themselves (the career events have their own clock).
+- **Project cards flip** (`entities/project/ui/project-flip`): front = what the project is, back =
+  what he did (`items.<id>.did`, from LinkedIn, no metrics). Flip only by button (cards hold
+  links); the hidden face is `inert`, focus moves to the other face's button.
 - `OffscreenPause` sets `data-paused` → CSS pauses all animations inside while off screen.
 - `useInView(ref, rootMargin, initial)`: `initial` defaults to `true` (for pausing); pass `false`
   for deferred loading, or the work starts immediately.
