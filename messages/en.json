@@ -90,9 +90,9 @@
   "Scout": {
     "title": "Scouting report",
     "strengthsLabel": "Strengths",
-    "strengths": "Careful typing, responsive layouts, accessible interfaces, an eye for form security.",
+    "strengths": "Careful typing, layouts that fit any screen, accessible interfaces, fast-loading pages, Feature-Sliced Design architecture and an eye for form security.",
     "growingLabel": "Developing",
-    "growing": "Node.js, SQL, API design and working with databases.",
+    "growing": "Backend: Node.js and NestJS, Java, SQL and PostgreSQL, API design and working with databases.",
     "squadLabel": "Starting line-up",
     "stackLabel": "Stack",
     "noteLabel": "Note",
