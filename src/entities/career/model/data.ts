@@ -1,13 +1,15 @@
 import { type CareerEvent } from './types'
 
-// Ordered by minute; the scoreboard and the scroll clock rely on that order. Titles and texts are
-// in messages/*.json under Match.events, as is the commentary.
+// Ordered by minute; the scoreboard and the scroll clock rely on that order. Minutes stand for the
+// years since 2022; the match is still on at 78′. Titles and texts are in messages/*.json under
+// Match.events, as is the commentary.
 export const careerEvents: CareerEvent[] = [
   { id: 'kickoff', minute: 1, kind: 'regular' },
-  { id: 'bishkek', minute: 23, kind: 'regular' },
-  { id: 'college', minute: 38, kind: 'regular' },
-  { id: 'react', minute: 52, kind: 'goal' },
-  { id: 'tunduk', minute: 67, kind: 'big-goal' },
-  { id: 'backendTasks', minute: 74, kind: 'regular' },
-  { id: 'substitution', minute: 78, kind: 'substitution' },
+  { id: 'academy', minute: 12, kind: 'regular', year: 2022 },
+  { id: 'peaksoft', minute: 20, kind: 'goal', year: 2023 },
+  { id: 'codify', minute: 38, kind: 'goal', year: 2024 },
+  { id: 'clickfood', minute: 55, kind: 'goal', year: 2025 },
+  { id: 'tunduk', minute: 67, kind: 'big-goal', year: 2026 },
+  { id: 'assist', minute: 72, kind: 'assist', year: 2026 },
+  { id: 'substitution', minute: 78, kind: 'substitution', year: 'now' },
 ]

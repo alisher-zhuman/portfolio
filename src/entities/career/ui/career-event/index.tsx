@@ -17,7 +17,7 @@ interface Props {
 // group-data-* classes below are what those attributes drive.
 export const CareerEvent = ({ event, children }: Props) => {
   const t = useTranslations('Match')
-  const { id, minute, kind } = event
+  const { id, minute, kind, year } = event
   const isGoal = kind === 'goal' || kind === 'big-goal'
 
   return (
@@ -27,14 +27,23 @@ export const CareerEvent = ({ event, children }: Props) => {
       data-passed="true"
       className="group relative flex gap-8 pb-11 last:pb-0 sm:gap-12"
     >
-      <span
-        className={cn(
-          'font-display w-14 shrink-0 text-right text-2xl sm:w-18 leading-none font-extrabold tabular-nums transition-colors',
-          'text-on-pitch-muted group-data-[passed=true]:text-on-pitch',
-          kind === 'substitution' && 'text-sun group-data-[passed=true]:text-sun'
+      <span className="grid w-14 shrink-0 content-start justify-items-end gap-1 sm:w-18">
+        <span
+          className={cn(
+            'font-display text-2xl leading-none font-extrabold tabular-nums transition-colors',
+            'text-on-pitch-muted group-data-[passed=true]:text-on-pitch',
+            kind === 'substitution' && 'text-sun group-data-[passed=true]:text-sun'
+          )}
+        >
+          {minute}′
+        </span>
+
+        {/* The real year behind the minute. */}
+        {year && (
+          <span className="text-on-pitch-muted text-xs font-semibold tabular-nums">
+            {year === 'now' ? t('now') : year}
+          </span>
         )}
-      >
-        {minute}′
       </span>
 
       {/* The ball marker, centred on the touchline rail that runs through the middle of the gap.
@@ -46,7 +55,9 @@ export const CareerEvent = ({ event, children }: Props) => {
           'border-on-pitch bg-pitch absolute top-1 left-15.5 size-5 sm:left-21.5 rounded-full border-3 transition motion-reduce:transition-none',
           isGoal
             ? 'group-data-[passed=true]:bg-sun group-data-[passed=true]:border-sun'
-            : 'group-data-[passed=true]:bg-on-pitch',
+            : kind === 'assist'
+              ? 'group-data-[passed=true]:border-sun group-data-[passed=true]:bg-pitch'
+              : 'group-data-[passed=true]:bg-on-pitch',
           // The event the clock is currently on.
           'group-data-[live=true]:bg-sun group-data-[live=true]:border-sun group-data-[live=true]:scale-125'
         )}
@@ -62,6 +73,11 @@ export const CareerEvent = ({ event, children }: Props) => {
           {kind === 'big-goal' && (
             <span className="bg-sun text-sun-foreground mr-1.5 inline-block -rotate-3 rounded-md px-2.5 py-0.5">
               {t('goalBadge')}
+            </span>
+          )}
+          {kind === 'assist' && (
+            <span className="border-sun text-sun mr-1.5 inline-block -rotate-3 rounded-md border-2 px-2 py-0.5 text-base">
+              {t('assistBadge')}
             </span>
           )}
           {t(`events.${id}.title`)}

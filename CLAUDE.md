@@ -166,7 +166,7 @@ Lighthouse as described below.
 
 ## How the interactive parts work
 
-**Server first.** Every section renders on the server in its final state (scoreboard 2:0 at 78′,
+**Server first.** Every section renders on the server in its final state (scoreboard 4:0 at 78′,
 all events played), so crawlers and no-JS visitors get full content. Client components are the
 smallest possible islands layered on top.
 
