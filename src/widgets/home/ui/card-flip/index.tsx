@@ -1,6 +1,6 @@
 'use client'
 
-import { type ReactNode, useState } from 'react'
+import { type MouseEvent, type ReactNode, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { useLegendStore } from '@features/cheat-code'
@@ -10,9 +10,10 @@ interface Props {
   back: ReactNode
 }
 
-// A click or tap on the card flips it; another flips it back. The card itself can't be a button
-// (a button's content is hidden from screen readers), so keyboard users get a visually hidden
-// button that appears when it takes focus.
+// Flips on hover in pure CSS (Tailwind's hover only applies on devices that can hover, and it works
+// before hydration). Touch has no hover, so there a tap flips it. Keyboard users get a visually
+// hidden button that shows on focus: the card itself can't be a button, which would hide its text
+// from screen readers.
 export const CardFlip = ({ front, back }: Props) => {
   const [flipped, setFlipped] = useState(false)
   const t = useTranslations('Card')
@@ -21,15 +22,22 @@ export const CardFlip = ({ front, back }: Props) => {
 
   const toggle = () => setFlipped((value) => !value)
 
+  const onClick = (event: MouseEvent) => {
+    // A mouse already flips on hover; a click shouldn't pin it on top of that.
+    if ((event.nativeEvent as PointerEvent).pointerType === 'mouse') return
+
+    toggle()
+  }
+
   return (
     <div className="grid w-full justify-items-center gap-3">
       <div
-        onClick={toggle}
+        onClick={onClick}
         data-flipped={flipped}
         data-legend={legend}
-        className="group aspect-2/3 w-full cursor-pointer perspective-distant"
+        className="group aspect-2/3 w-full perspective-distant"
       >
-        <div className="relative size-full transition-transform duration-700 ease-out transform-3d group-data-[flipped=true]:rotate-y-180 motion-reduce:transition-none">
+        <div className="relative size-full transition-transform duration-700 ease-out transform-3d group-hover:rotate-y-180 group-data-[flipped=true]:rotate-y-180 motion-reduce:transition-none">
           {front}
 
           {back}

@@ -70,7 +70,7 @@
   },
   "Card": {
     "title": "Player card",
-    "lead": "Tap or click the card to flip it.",
+    "lead": "Hover over the card or tap it to flip it.",
     "flip": "Flip the card",
     "front": "Front of the card",
     "back": "Back of the card",
@@ -195,224 +195,78 @@
     "items": {
       "kca": {
         "title": "Kyrgyz Center of Accreditation",
-        "description": "E-Accreditation: a public portal with registries and news, and a staff dashboard with step-by-step applications and access roles.",
-        "did": [
-          "Public portal on Next.js: static generation, SEO markup, dark theme, Kyrgyz and Russian.",
-          "Staff dashboard on React and MUI: data tables, validated step-by-step forms, a rich text editor.",
-          "Feature-Sliced Design with automated checks, tests in Vitest and Playwright."
-        ]
+        "description": "E-Accreditation: a public portal with registries and news, and a staff dashboard with step-by-step applications and access roles."
       },
       "kuttukTime": {
-        "description": "A gift certificate for a coffee shop, spa or salon with no sign-up: the code can be sent to a friend and the merchant redeems it in their dashboard. Includes an admin for merchants and categories.",
-        "did": [
-          "Backend on NestJS and PostgreSQL: sign-in via the Telegram signature, JWT and roles.",
-          "Payments through Finik: signed requests, verified webhooks, repeated deliveries never double-charge.",
-          "The React Mini App: buying a certificate, a code to share, the partner dashboard."
-        ]
+        "description": "A gift certificate for a coffee shop, spa or salon with no sign-up: the code can be sent to a friend and the merchant redeems it in their dashboard. Includes an admin for merchants and categories."
       },
       "kiu": {
-        "description": "Site and CMS for the Kyrgyz Islamic University in three languages: news, faculties, timetables and a section for applicants. Staff manage the content themselves.",
-        "did": [
-          "Engineered a trilingual SEO-optimized platform (KG/RU/EN) using next-intl, dynamic hreflang sitemaps, and locale-aware Axios interceptors, achieving top-tier Lighthouse scores (99 Performance, 100 SEO/Accessibility).",
-          "Developed a comprehensive multi-language Admin CMS empowering university staff to manage dynamic content (news, schedules, faculty directories) and securely upload assets directly to AWS S3, reducing content publishing cycle times by 80%.",
-          "Accelerated Time-to-First-Byte (TTFB) and search engine indexing for applicants by implementing a hybrid rendering strategy combining server-side React Query prefetching with client-side dashboard caching.",
-          "Enforced strict architectural discipline across a 300+ file codebase using Feature-Sliced Design (FSD) to maintain unidirectional data flow, strict layer separation, and reusable domain primitives."
-        ]
+        "description": "Site and CMS for the Kyrgyz Islamic University in three languages: news, faculties, timetables and a section for applicants. Staff manage the content themselves."
       },
       "bilimBulak": {
-        "description": "A psychological diagnostics platform for teachers, built for the Ministry of Education and the Teachers’ Union: tests, burnout detection and personal recommendations.",
-        "did": [
-          "Developed critical national digital infrastructure for psychological health in partnership with the Ministry of Education, scaling across 2,000+ educational institutions nationwide with a 98% test completion rate.",
-          "Engineered fault-tolerant diagnostic flows preventing data loss during technical failures via local persistence, strict clinical one-attempt policies, automated timeout submissions, and rigorous schema validation (React Hook Form + Zod).",
-          "Implemented robust locale-first routing (KG/RU) via next-intl, maintaining synchronized language context across client views, form validations, and dedicated regional API endpoints.",
-          "Designed a complex multi-step onboarding system featuring a 4-level cascading geographical dropdown structure (Region, District, Org Type, Institution) powered by dependent React Query hooks and secure OTP authentication."
-        ]
+        "description": "A psychological diagnostics platform for teachers, built for the Ministry of Education and the Teachers’ Union: tests, burnout detection and personal recommendations."
       },
       "quant": {
-        "description": "Smart water meters: a landing page in three languages and a dispatcher dashboard with consumption charts and remote valve control.",
-        "did": [
-          "Expanded IoT product market reach by implementing a trilingual ecosystem (RU/KG/EN) using next-intl, locale-first routing, dynamic sitemap generation with hreflang alternates, and robust OpenGraph metadata.",
-          "Optimized landing page performance and Time-to-Interactive (TTI) by strategically applying Next.js dynamic imports, lazy loading for heavy modules, optimized WebP/video assets, and custom scroll restoration hooks.",
-          "Engineered a real-time dispatcher dashboard for water infrastructure control, integrating Recharts for time-series consumption analytics, remote valve management commands, and hover-intent React Query prefetching.",
-          "Scaled both the public landing and the administration cabinet using a clean, multi-layered architecture featuring Feature-Sliced Design (FSD) for stateful views, Atomic Design, and strict type-safe internationalization."
-        ]
+        "description": "Smart water meters: a landing page in three languages and a dispatcher dashboard with consumption charts and remote valve control."
       },
       "clickfood": {
-        "description": "Food delivery in Telegram: restaurant search sorted by distance, a cart with modifiers, promo codes and cashback, and a partner dashboard with a stop list.",
-        "did": [
-          "Scaled a high-load Telegram Mini App for food delivery servicing 30k+ active users and 150+ partner restaurants using React 19, TypeScript, and native Telegram WebApp SDK integration.",
-          "Designed a modular, maintainable frontend architecture utilizing Feature-Sliced Design (FSD), type-safe data fetching via React Query, runtime schema validation with Zod, and strategic code splitting.",
-          "Engineered a complex multi-step checkout flow handling dynamic dish modifiers, promo engines, cashback logic, auto-fill, and Yandex Map API delivery zone validation.",
-          "Built high-performance restaurant discovery utilizing Turf.js for client-side geospatial sorting, infinite scrolling, and optimized debounced search queries.",
-          "Eliminated scroll jank and achieved smooth 60fps performance in large dish catalogs by synchronizing section navigation via IntersectionObserver.",
-          "Developed a full-featured B2B partner dashboard featuring real-time stop-list management, POS iiko integration, sales analytics, and strict role-based access control.",
-          "Established a robust, decoupled state management strategy for persistent carts, multi-shop address handling, and secure token injection, eliminating session desynchronization."
-        ]
+        "description": "Food delivery in Telegram: restaurant search sorted by distance, a cart with modifiers, promo codes and cashback, and a partner dashboard with a stop list."
       },
       "turan": {
-        "description": "An admin panel for smart meters: users, devices, readings, remote water shut-off, access roles and Excel import.",
-        "did": [
-          "Eliminated physical site visits for utility operators by engineering a secure remote valve control system coupled with a granular 4-tier Role-Based Access Control (RBAC) architecture.",
-          "Streamlined heavy operational workflows by implementing bulk device data import via Excel spreadsheets and robust, URL-synchronized search/filter state management.",
-          "Ensured a responsive real-time dashboard under high-frequency meter reading updates by implementing differentiated React Query caching strategies, pagination state preservation, and strict runtime Zod validation.",
-          "Optimized production bundle delivery and long-term codebase scalability through strategic Vite vendor chunk splitting and a decoupled domain architecture utilizing Feature-Sliced Design (FSD)."
-        ]
+        "description": "An admin panel for smart meters: users, devices, readings, remote water shut-off, access roles and Excel import."
       },
       "billingCenter": {
-        "description": "Utility bills paid in four steps: provider, account number, amount due and a QR payment. Plain JavaScript, without a single library.",
-        "did": [
-          "Moved utility bill payments to online format: implemented 4-step self-service flow (provider selection → account entry → debt display → QR payment) with deeplink to banking apps and payment validation; reduced time-to-payment by 35%, cut payment errors by 42%.",
-          "Consolidated 3 utility providers into single interface: implemented provider-selection with POST request to billing API (ners.billing.kg), instant debt, address, and period display; PDF invoice downloaded without support calls (Vodkanal, Teploset, Tazalyk).",
-          "Ensured reliability without external dependencies: implemented fully functional SPA in vanilla JavaScript (Fetch API, DOM manipulation) with zero npm packages; 13 KB JS + 11 KB CSS bundle, local fonts without CDN, zero technical debt.",
-          "Implemented accessibility and cross-platform support: modal meets ARIA standards (aria-modal, aria-labelledby), closes on Escape; PDF opens in new tab on desktop and downloads on mobile; increased mobile payment success by 27%, first-attempt completion by 18%."
-        ]
+        "description": "Utility bills paid in four steps: provider, account number, amount due and a QR payment. Plain JavaScript, without a single library."
       },
       "codifyLms": {
-        "description": "CRM and LMS for training centres: homework with a code editor, leaderboards and coins, reports to parents over WhatsApp.",
-        "did": [
-          "Automated personalized monthly parent reports: implemented Smart Reports system with phone validation, editable table via TanStack React Table + React Hook Form, and retry mechanism for WhatsApp; educators see communication gaps before sending; reduced reporting time by 50%.",
-          "Shortened mentor-student feedback cycle on assignments: implemented task submission with TipTap WYSIWYG editor (syntax highlighting for HTML/CSS/JS/Python), 75MB file uploads, solution history with statuses, and mentor comments with avatars; instant redirect with earned Code Coins; increased completion by 30%.",
-          "Increased daily student engagement through competitive gamification: implemented local leaderboards (top-10 per course) and global with 60-second auto-rotation, progress connection line via custom hook; PostHog event tracking; increased engagement and retention by 30%.",
-          "Expanded learning formats without bundle bloat: implemented 4 types of digital literacy activities (vocabulary flashcards, picture quiz MCQ, drag-drop with Web Speech API text-to-speech, theory with tooltips); Feature-Sliced Design, Next.js 15 / Vite + React 19 + TypeScript strict + Zustand + SWR."
-        ]
+        "description": "CRM and LMS for training centres: homework with a code editor, leaderboards and coins, reports to parents over WhatsApp."
       },
       "codifyGo": {
-        "description": "Micro-lessons in HTML, CSS and cybersecurity: a code editor right in the browser, levels and streaks, a subscription and an olympiad for schoolchildren.",
-        "did": [
-          "Increased daily student activity through multi-level gamification: implemented XP progression with level-up notifications, Code Coins exchangeable for merchandise (stickers, socks, backpacks), activity streaks, and daily goals; React Circular Progressbar + SWR caching; increased engagement by 30%.",
-          "Monetized content through Stripe subscription without losing free-tier users: implemented checkout (monthly/yearly with 17% savings badge), paywall for Pro lessons, promocode system with auto-renewal; subscription status checked in root layout shows upgrade prompt at right moment.",
-          "Lowered entry barrier to zero through in-browser code editor: embedded CodeMirror 6 with live iframe-preview of HTML/CSS, file tabs, and theme-aware syntax highlighting - students write, see preview, and submit assignments without IDE installation; improved comprehension speed by 10%.",
-          "Expanded reach to Kyrgyzstan school students through Codify Balajan Olympiad: implemented enrollment (name, school, grade 1–11, region from 7 provinces), anti-duplicate checking, and PDF certificates with QR via client-side jsPDF; scales without backend load."
-        ]
+        "description": "Micro-lessons in HTML, CSS and cybersecurity: a code editor right in the browser, levels and streaks, a subscription and an olympiad for schoolchildren."
       },
       "virtualAccelerate": {
-        "description": "A platform for accelerators: startup selection on a kanban board, investor voting, a form builder and 8 languages including RTL.",
-        "did": [
-          "Replaced Excel and emails with unified Kanban tool for startup selection: developed Selection Board with drag-drop, bulk operations, scoring forms, and comments - entire selection cycle in one interface; multi-tenant architecture.",
-          "Accelerated investment decisions and eliminated ad-hoc communication: implemented Deal Flow pipeline with analyst assignment, investor voting, and Approval Committee workflow - every decision is documented and formally approved.",
-          "Opened platform to Central Asia and Middle East markets: implemented support for 8 languages (EN, RU, KY, TG, UR, SY, AR, PT) with RTL rendering; granular permissions for 5+ roles via CASL.",
-          "Eliminated developer dependency for form and analytics creation: implemented no-code Form Builder with drag-drop fields + Analytics Dashboard with 6 role-based tabs (Program, Business, Investment, Learning, Team, Reports) via Apexcharts/Recharts."
-        ]
+        "description": "A platform for accelerators: startup selection on a kanban board, investor voting, a form builder and 8 languages including RTL."
       },
       "jobCodify": {
-        "description": "A careers platform: jobs, courses, an AI résumé helper and a sandbox for running code in the browser.",
-        "did": [
-          "Optimized technical job discovery by engineering a multi-dimensional filtering system backed by Redux state management, dynamic API query generation, and persistent SSR hydration states.",
-          "Architected a multi-sided marketplace platform supporting dual-role workflows for job seekers and employers across diverse service verticals (jobs, freelance, courses, events) utilizing role-based SSG/SSR and PWA offline capabilities.",
-          "Developed an in-browser code execution sandbox integrating Monaco and CodeMirror editors, client-side runners (`react-runner` for JS/React, `react-py` for Python), console output capture, and interactive learning pipelines.",
-          "Engineered a robust authentication and session-recovery workflow utilizing NextAuth.js (Google, Telegram, credentials) with a queue-based API interceptor for silent token refreshing without user disruption, paired with Sentry error monitoring."
-        ]
+        "description": "A careers platform: jobs, courses, an AI résumé helper and a sandbox for running code in the browser."
       },
       "codifyAcademy": {
-        "description": "A site for programming, design and management courses for children and adults: enrolment, a free lesson and a career aptitude test.",
-        "did": [
-          "Maximized lead capture through 5 conversion points: implemented FindEducation form on hero, EnrollForCourse in footer, free lesson registration, PDF checklist download, and 3-step career aptitude test; context-aware messages based on business hours - each user receives relevant response without manual triage.",
-          "Reduced off-target bounce through segmented funnels: developed isolated pages for adults (JS, Java, Python, QA, UX/UI, PM) and children 7–17 (CODIFY Kids); international phone validation via libphonenumber-js reduces invalid leads.",
-          "Accelerated Time-to-Interactive using Svelte + Sapper instead of React: zero runtime overhead, WebP images with fetchpriority=\"high\" on hero and loading=\"lazy\" on others; GA4 and Facebook Pixel load only after user interaction.",
-          "Eliminated content update dependency on developers: all content (partners, employer logos, testimonials, FAQ) loaded from Django REST API via Axios; content manager updates data in CMS without redeploys; i18next localization for RU/EN."
-        ]
+        "description": "A site for programming, design and management courses for children and adults: enrolment, a free lesson and a career aptitude test."
       },
       "codifyTeens": {
-        "description": "A landing page for a coding academy for ages 7–17 in three languages: a fee calculator, a map and an application form.",
-        "did": [
-          "Built high-performance academy landing page from scratch using Next.js and Tailwind CSS: SSR for meta tags in 3 languages (RU / EN / KY) ensures high SEO visibility.",
-          "Optimized layout for mobile and desktop, reducing bounce rate by 20%: media queries and dynamic components via Framer Motion for smooth experience across all devices.",
-          "Increased user engagement: integrated Yandex Maps for school location, embedded Instagram feed for social proof, added interactive tuition cost calculator.",
-          "Increased lead conversion by 15%: developed application form with real-time validation via React Hook Form, automatic confirmation, and gift notification push upon registration; backend API integration for lead persistence."
-        ]
+        "description": "A landing page for a coding academy for ages 7–17 in three languages: a fee calculator, a map and an application form."
       },
       "startupNation": {
-        "description": "The landing page of Central Asia’s largest hackathon: registration, speakers, mentors and the prize fund.",
-        "did": [
-          "Boosted registration conversion by developing a high-performance event landing page featuring dynamic API-driven content and a multi-tier partner showcase.",
-          "Extended platform lifecycle into a long-term learning ecosystem by architecting a comprehensive LMS dashboard (20+ views including courses, quizzes, assignments, and forums) with an integrated shopping cart.",
-          "Minimized Time-to-Interactive (TTI) for a graphically heavy site (GSAP parallax, Particles.js) using Next.js 13 Server/Client component separation and advanced asset optimization.",
-          "Streamlined dynamic content updates by implementing a centralized Axios wrapper architecture for seamless REST API consumption."
-        ]
+        "description": "The landing page of Central Asia’s largest hackathon: registration, speakers, mentors and the prize fund."
       },
       "codifyLab": {
-        "description": "A development studio’s site: case studies and services from a CMS, a brief form with attachments, Russian and English.",
-        "did": [
-          "Expanded reach to English-speaking clients without manual language selection: integrated i18next with browser-languagedetector - visitors see site in their language automatically; language passed to API requests for localized content (RU/EN) without code duplication.",
-          "Eliminated portfolio dependency on developers: all dynamic content (case studies, services, technologies) loaded from API via Axios - manager adds project to CMS, it instantly appears in React Slick carousel; useMemo prevents unnecessary re-renders on language switch.",
-          "Increased lead quality through detailed project brief in form: implemented multi-field contact form (name, email, industry, budget, timeline, description) with file upload for requirements via FormData; animated success message confirms submission without page reload.",
-          "Prevented mobile lead loss through 10 responsive breakpoints (1150px to 311px): responsive workflow-timeline, mobile menu with overlay, touch-friendly carousel; Web Vitals monitoring (CLS, LCP, FCP, FID) ensures production performance."
-        ]
+        "description": "A development studio’s site: case studies and services from a CMS, a brief form with attachments, Russian and English."
       },
       "alphaCargo": {
-        "description": "Cargo between Kyrgyzstan and Russia: shipment tracking by waybill, a rate calculator and a contract wizard for businesses.",
-        "did": [
-          "Reduced support load from status inquiries: implemented tracking page with timeline visualization, debounced search by waybill number, and shareable URL - customers send link to recipients with pre-filled tracking, eliminating calls to manager.",
-          "Increased conversion through instant cost calculation: developed tariff calculator (origin city, cargo type) with real-time useMemo-filtered tariff rates - customers see exact price and delivery timeframe before booking; covers B2C shippers + e-commerce (Wildberries/Ozon).",
-          "Automated waybill issuance: implemented base64 PDF to Blob conversion via react-pdf with adaptive behavior (desktop = embedded viewer, mobile = forced download); customers receive documents instantly from dashboard without support requests.",
-          "Accelerated corporate client onboarding for LTL services: developed 4-step contract wizard (Service → Cargo → Parameters → Agreement) with React Hook Form + TypeScript validation; ModalManagerProvider (Context) manages 10+ modal types without prop drilling; libphonenumber-js phone validation."
-        ]
+        "description": "Cargo between Kyrgyzstan and Russia: shipment tracking by waybill, a rate calculator and a contract wizard for businesses."
       },
       "shine": {
-        "description": "An admin panel for an aesthetic clinic: doctors, procedures, reviews and news with a rich text editor.",
-        "did": [
-          "Developed secure admin panel for clinic content management: implemented JWT authentication with protected routes and role-based access control for administrators.",
-          "Simplified doctor and procedure management: implemented full CRUD for 50+ doctors and 100+ medical procedures with categorization, descriptions, and portfolio photo uploads; doctor form includes qualifications, certifications, and experience.",
-          "Accelerated clinic content management by 40%: implemented patient reviews, news, and pages management with rich text editor (CKEditor5) and bulk image uploads via react-dropzone.",
-          "Reduced category management errors by 30%: implemented dynamic category system with multi-input fields for related procedures, before/after photos, and 3-tier pricing; React Hook Form + Yup validation prevents duplicates."
-        ]
+        "description": "An admin panel for an aesthetic clinic: doctors, procedures, reviews and news with a rich text editor."
       },
       "peaksoftHouse": {
-        "description": "An IT course site: online enrolment, course pages, student projects and an admin panel for two offices.",
-        "did": [
-          "Increased lead capture through multi-channel conversion system: implemented countdown timer, modal forms via createPortal, floating WhatsApp button, and toast notifications - potential students submit applications from anywhere; backend API integration with multipart upload and Bearer token auth.",
-          "Built trust and reduced bounce rate: implemented CountUp animations for key metrics (100+ graduates, 300+ active students, 70% employment rate), Swiper coverflow 3D team carousel, and 8+ testimonials with job positions and employers of alumni.",
-          "Eliminated marketing dependency on developers: built Admin Panel with CRUD management for banners and promotions, separate roles for two offices (Bishkek / Moscow) - marketing manager updates campaigns independently without redeploys.",
-          "Accelerated page load and improved SEO visibility: leveraged Next.js 13 SSR, next/image lazy loading, AWS S3 CDN for 105+ images, Framer Motion scroll animations without layout thrashing; meta tags in 3 languages (KY/RU/EN) + GA4 + CircleCI deployment."
-        ]
+        "description": "An IT course site: online enrolment, course pages, student projects and an admin panel for two offices."
       },
       "bilingual": {
-        "description": "English testing: 9 question types, voice recording and anti-cheating protection.",
-        "did": [
-          "Expanded language testing to cover all 4 skills in single interface: implemented 9 question types with dynamic component loading, Web Audio API for audio recording with waveform visualization, transcription, and word-count validation.",
-          "Reduced cheating attempts: implemented multi-level anti-cheat protection - PrintScreen blocking, tab-switch detection via Visibility API (4 violations → force test completion), and beforeunload warning; all using native Browser APIs without third-party proctoring.",
-          "Eliminated progress loss on page refresh: implemented dual storage strategy (Redux + sessionStorage) with incremental answer saving - test resumes from checkpoint without data loss on technical failures.",
-          "Increased sign-up rate by 15%: implemented Google OAuth authentication with smooth Framer Motion animations; developed Admin evaluation pipeline with unified interface for viewing and grading all answer formats with automatic email results."
-        ]
+        "description": "English testing: 9 question types, voice recording and anti-cheating protection."
       },
       "airbnb": {
-        "description": "Home rentals in Kyrgyzstan: filters and search, moderated listings, favourites.",
-        "did": [
-          "Reduced time-to-find accommodation by 25%: implemented multi-filter system (region, type, price, rating, geolocation) with debounced real-time search (500ms) - API requests reduced by 10x; chip-based filter removal.",
-          "Simplified listing process for hosts: developed form with up to 4 photo uploads, 8 Kyrgyzstan region selection, React Hook Form + Yup validation, and status system (APPROVED / ON_MODERATION / BLOCKED).",
-          "Accelerated moderation for admins: implemented Admin Dashboard with request queue, approve/reject workflow with personalized rejection messages, and bulk operations (block/delete).",
-          "Increased sign-up rate by 15% and improved retention: integrated Google OAuth via Firebase (one-click registration), added favorites system with toggle synchronization, and role-based code splitting."
-        ]
+        "description": "Home rentals in Kyrgyzstan: filters and search, moderated listings, favourites."
       },
       "healthCheck": {
-        "description": "A medical service: booking a doctor in five steps, test results online and doctors’ schedules for the admin.",
-        "did": [
-          "Reduced patient appointment booking cycle and eliminated lost requests: implemented 5-step appointment flow (select department → doctor → date → time → verification) with Admin Dashboard queue for tracking each application.",
-          "Simplified doctor schedule management: developed Schedule Dashboard with bulk time-slot operations, debounced doctor search, and specialist status management for 30+ doctors.",
-          "Reduced unnecessary consultations: implemented catalog of 22 medical specialties with descriptions, 3-tier pricing, and doctor filtering - patients see exact cost before booking.",
-          "Ensured secure access to medical data: implemented role-based routing with Google OAuth and email/password authentication via Firebase; Excel reports for admins and PDF functionality for test results."
-        ]
+        "description": "A medical service: booking a doctor in five steps, test results online and doctors’ schedules for the admin."
       },
       "peaksoftLms": {
-        "description": "A platform for managing courses, students and teachers: editors for course materials, graded assignments and importing students from Excel.",
-        "did": [
-          "Lowered barrier to content creation for teachers: implemented flexible system of 3 rich text editors (CKEditor5, TipTap, Lexical) for different formats; added drag-and-drop file uploads, video, presentations, and external links support.",
-          "Accelerated admin workflow by 30%: implemented bulk student import via Excel, soft delete system (trash) for safe deletion, and flexible group management with course assignment and access control.",
-          "Automated assignment checking and grading: implemented assignment management, automated grading, and real-time progress tracking for 2,000+ students.",
-          "Increased student engagement by 40%: optimized interface clarity and usability, added interactive tests, collaborative tasks, and analytics for progress tracking."
-        ]
+        "description": "A platform for managing courses, students and teachers: editors for course materials, graded assignments and importing students from Excel."
       },
       "gadgetarium": {
-        "description": "An online gadget store: catalogue, comparison, wishlist, Stripe checkout and a product admin.",
-        "did": [
-          "Reduced cart abandonment: implemented Stripe checkout with auto-fill, real-time validation via Formik + Yup.",
-          "Accelerated catalog load time by 60%: leveraged code splitting with React.lazy() + debounced search, skeleton screens, and 96+ memoizations.",
-          "Simplified product management for team: built Admin Dashboard with bulk operations, multi-step wizard, and drag-and-drop image uploads.",
-          "Increased retention: implemented wishlist, browsing history, product comparison, and smart recommendations with Redux Persist."
-        ]
+        "description": "An online gadget store: catalogue, comparison, wishlist, Stripe checkout and a product admin."
       }
-    },
-    "did": "What I did"
+    }
   },
   "Footer": {
     "title": "Final whistle",
