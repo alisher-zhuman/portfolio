@@ -100,7 +100,9 @@
   --color-board-ink: var(--board-ink);
 
   --font-sans: var(--font-golos);
-  --font-display: var(--font-unbounded);
+  --font-display: var(--font-science-gothic);
+  /* Slightly wide by default, for the broadcast look; 100 is the font's normal width. */
+  --font-display--font-variation-settings: 'wdth' 110;
 
   --animate-marquee: marquee 60s linear infinite;
   --animate-live-pulse: live-pulse 1.6s infinite;

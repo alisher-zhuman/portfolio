@@ -23,9 +23,11 @@ export const contentType = 'image/png'
 export const generateStaticParams = () => routing.locales.map((locale) => ({ locale }))
 
 // Satori renders text only with fonts it is handed, and only TTF/OTF/WOFF — next/font's WOFF2
-// can't be reused. Static instances live in /assets/fonts with their OFL licences.
-const [unbounded, golos] = await Promise.all([
-  readFile(join(process.cwd(), 'assets/fonts/Unbounded-ExtraBold.ttf')),
+// can't be reused, and Satori doesn't read variable fonts. Static instances live in /assets/fonts
+// with their OFL licences; Science Gothic is cut from the variable font at wght 800, wdth 110 — the
+// site's headline setting.
+const [scienceGothic, golos] = await Promise.all([
+  readFile(join(process.cwd(), 'assets/fonts/ScienceGothic-ExtraBold-Wide.ttf')),
   readFile(join(process.cwd(), 'assets/fonts/GolosText-SemiBold.ttf')),
 ])
 
@@ -70,7 +72,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
             display: 'flex',
             padding: '8px 18px',
             backgroundColor: COLORS.kit,
-            fontFamily: 'Unbounded',
+            fontFamily: 'Science Gothic',
             letterSpacing: 1,
             textTransform: 'uppercase',
           }}
@@ -92,7 +94,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
       <div
         style={{
           display: 'flex',
-          fontFamily: 'Unbounded',
+          fontFamily: 'Science Gothic',
           fontSize: 76,
           lineHeight: 1.08,
           maxWidth: 900,
@@ -103,7 +105,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
 
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ display: 'flex', fontFamily: 'Unbounded', fontSize: 40 }}>
+          <div style={{ display: 'flex', fontFamily: 'Science Gothic', fontSize: 40 }}>
             {profile.brandName}
           </div>
           <div style={{ display: 'flex', fontSize: 30, color: COLORS.muted }}>
@@ -121,7 +123,9 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
             border: `4px solid ${COLORS.sun}`,
           }}
         >
-          <div style={{ display: 'flex', fontFamily: 'Unbounded', fontSize: 72, lineHeight: 1 }}>
+          <div
+            style={{ display: 'flex', fontFamily: 'Science Gothic', fontSize: 72, lineHeight: 1 }}
+          >
             {profile.rating}
           </div>
         </div>
@@ -130,7 +134,7 @@ const OpenGraphImage = async ({ params }: { params: Promise<{ locale: string }> 
     {
       ...size,
       fonts: [
-        { name: 'Unbounded', data: unbounded, style: 'normal', weight: 800 },
+        { name: 'Science Gothic', data: scienceGothic, style: 'normal', weight: 800 },
         { name: 'Golos', data: golos, style: 'normal', weight: 600 },
       ],
     }

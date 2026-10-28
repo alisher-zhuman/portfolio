@@ -146,7 +146,8 @@ If the folder is missing (another machine), ask the user — don't invent data.
   (`w-[55px]`) — use the spacing scale. In SVG use presentation attributes (`strokeWidth`,
   `fontSize`) rather than arbitrary classes. `group-data-[x=true]:` variants are fine.
 - Repeated class combos → `@utility` in `styles/utilities.css` (`container-page`, `section-shell`,
-  `btn`, `btn-primary`, `tag`, `pill-segment`, `card-notched`, `card-front-surface`,
+  `btn`, `btn-primary`, `tag`, `menu-trigger`/`-panel`/`-item`/`-badge`/`-check` (header
+  dropdowns), `card-notched`, `card-front-surface`,
   `card-front-legend`, `sun-rays`, `goal-net`).
 - Keyframes live in `styles/animations.css`, each with its own `prefers-reduced-motion` answer next
   to it.
@@ -240,6 +241,15 @@ smallest possible islands layered on top.
   `NextResponse.rewrite(…, { status: 404 })` in the proxy (status ignored), no catch-all (Next's
   bare English 404), `global-not-found` (experimental). `generateMetadata` in `[locale]/not-found`
   is ignored, so the 404 has the site's default title.
+- **Fonts must have the Kyrgyz letters Ң Ө Ү** (U+04A2/04E8/04AE + lowercase). A `cyrillic-ext`
+  subset doesn't guarantee them: Unbounded has it and still lacks them, so the browser silently
+  mixed in a fallback. Check the font's cmap (fontTools) before adopting one. Headlines use Science
+  Gothic (variable, `axes: ['wdth']`, width 110 via `--font-display--font-variation-settings`); the
+  OG image uses a static instance cut with `fontTools.varLib.instancer`. The build warning «Failed
+  to find font override values for font `Science Gothic`» is harmless (`adjustFontFallback: false`
+  doesn't silence it).
+- Header menus (language, theme) are `<details>` + `useDetailsDismiss` (outside click, a chosen
+  link/button, Escape). The open pill is solid, so its hover must not apply while open.
 - Kyrgyz strings run long: the theme switcher shows icons below `sm` because «Күндүз / Авто /
   Кечинде» pushed the header past 390px. Check new header/UI copy in ky on a phone width.
 

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Golos_Text, Unbounded } from 'next/font/google'
+import { Golos_Text, Science_Gothic } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
@@ -23,9 +23,12 @@ import '../styles/index.css'
 
 // `cyrillic-ext` is not optional: the Kyrgyz letters ү ө ң (as in «Түндүк») live outside the
 // basic `cyrillic` range, and without a preload they fall back to another face mid-word.
-const unbounded = Unbounded({
+// Headlines. Unlike Unbounded, which it replaces, it has the Kyrgyz letters Ң, Ө and Ү. The width
+// axis lets one file serve both wide headlines and narrow scoreboard labels.
+const scienceGothic = Science_Gothic({
   subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
-  variable: '--font-unbounded',
+  axes: ['wdth'],
+  variable: '--font-science-gothic',
 })
 
 const golos = Golos_Text({
@@ -107,7 +110,7 @@ const LocaleLayout = async ({ children, params }: LayoutProps<'/[locale]'>) => {
       lang={locale}
       // Lets Next turn smooth scrolling off during route transitions and back on afterwards.
       data-scroll-behavior="smooth"
-      className={`${unbounded.variable} ${golos.variable} antialiased`}
+      className={`${scienceGothic.variable} ${golos.variable} antialiased`}
       suppressHydrationWarning
     >
       <head>
