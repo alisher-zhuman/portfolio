@@ -46,7 +46,7 @@ export const ProjectCard = ({ project, number }: Props) => {
         <p className="mt-auto flex flex-wrap gap-x-4 pt-2 text-sm font-semibold">
           {url && (
             <a href={url} target="_blank" rel="noopener" className="underline underline-offset-3">
-              {t('site')}
+              {url.startsWith('https://t.me/') ? t('telegram') : t('site')}
             </a>
           )}
           {codeUrl && (

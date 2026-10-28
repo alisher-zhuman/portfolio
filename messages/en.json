@@ -188,6 +188,7 @@
     },
     "stackLabel": "Stack",
     "site": "Visit site",
+    "telegram": "Open in Telegram",
     "codeOnGithub": "Code on GitHub",
     "items": {
       "kca": {
@@ -256,6 +257,9 @@
       },
       "healthCheck": {
         "description": "A medical service: booking a doctor in five steps, test results online and doctors’ schedules for the admin."
+      },
+      "peaksoftLms": {
+        "description": "A platform for managing courses, students and teachers: editors for course materials, graded assignments and importing students from Excel."
       },
       "gadgetarium": {
         "description": "An online gadget store: catalogue, comparison, wishlist, Stripe checkout and a product admin."

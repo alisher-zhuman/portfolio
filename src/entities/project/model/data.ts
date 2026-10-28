@@ -17,7 +17,7 @@ export const projects: Project[] = [
     club: 'own',
     years: '2026',
     stack: ['React', 'NestJS'],
-    url: 'https://kuttuk-time.vercel.app',
+    url: 'https://t.me/kuttuk_time_bot',
   },
   {
     id: 'kiu',
@@ -25,6 +25,7 @@ export const projects: Project[] = [
     club: 'freelance',
     years: '2026',
     stack: ['Next.js'],
+    url: 'https://kiu.kg',
   },
   {
     id: 'bilimBulak',
@@ -39,7 +40,6 @@ export const projects: Project[] = [
     club: 'freelance',
     years: '2025–2026',
     stack: ['Next.js', 'React'],
-    url: 'https://quant.kg',
   },
   {
     id: 'clickfood',
@@ -47,6 +47,7 @@ export const projects: Project[] = [
     club: 'clickfood',
     years: '2025–2026',
     stack: ['React'],
+    url: 'https://t.me/clickfood_bot',
   },
   {
     id: 'turan',
@@ -54,6 +55,7 @@ export const projects: Project[] = [
     club: 'freelance',
     years: '2025',
     stack: ['React'],
+    url: 'https://turan.l.mycloud.kg',
   },
   {
     id: 'billingCenter',
@@ -68,6 +70,7 @@ export const projects: Project[] = [
     club: 'codify',
     years: '2024–2025',
     stack: ['Next.js', 'React'],
+    url: 'https://lms.codifylab.com',
   },
   {
     id: 'codifyGo',
@@ -83,7 +86,6 @@ export const projects: Project[] = [
     club: 'codify',
     years: '2024–2025',
     stack: ['Next.js', 'React'],
-    url: 'https://app.virtualaccelerate.com',
   },
   {
     id: 'jobCodify',
@@ -99,6 +101,7 @@ export const projects: Project[] = [
     club: 'codify',
     years: '2024–2025',
     stack: ['Svelte'],
+    url: 'https://codifylab.com',
   },
   {
     id: 'codifyTeens',
@@ -106,7 +109,6 @@ export const projects: Project[] = [
     club: 'codify',
     years: '2024–2025',
     stack: ['Next.js'],
-    url: 'https://teens.codifylab.com',
   },
   {
     id: 'startupNation',
@@ -114,7 +116,6 @@ export const projects: Project[] = [
     club: 'codify',
     years: '2024–2025',
     stack: ['Next.js'],
-    url: 'https://www.startupnation.asia',
   },
   {
     id: 'codifyLab',
@@ -129,7 +130,6 @@ export const projects: Project[] = [
     club: 'freelance',
     years: '2024–2025',
     stack: ['React'],
-    url: 'https://www.alpha-cargo.kg',
   },
   {
     id: 'shine',
@@ -137,7 +137,6 @@ export const projects: Project[] = [
     club: 'freelance',
     years: '2024',
     stack: ['Next.js'],
-    url: 'https://shinebeautyclinic.kg',
   },
   {
     id: 'peaksoftHouse',
@@ -145,7 +144,6 @@ export const projects: Project[] = [
     club: 'peaksoft',
     years: '2023–2024',
     stack: ['Next.js'],
-    url: 'https://peaksoft.house',
   },
   {
     id: 'bilingual',
@@ -167,6 +165,14 @@ export const projects: Project[] = [
     club: 'peaksoft',
     years: '2023',
     stack: ['React'],
+  },
+  {
+    id: 'peaksoftLms',
+    title: 'Peaksoft LMS',
+    club: 'peaksoft',
+    years: '2023',
+    stack: ['React'],
+    url: 'https://lms.peaksoft.house',
   },
   {
     id: 'gadgetarium',

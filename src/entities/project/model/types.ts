@@ -25,6 +25,7 @@ export type ProjectId =
   | 'bilingual'
   | 'airbnb'
   | 'healthCheck'
+  | 'peaksoftLms'
   | 'gadgetarium'
 
 export interface Project {
@@ -36,7 +37,7 @@ export interface Project {
   // Reads the same in every language, e.g. "2024–2025".
   years: string
   stack: string[]
-  // The live product, only where the address is confirmed.
+  // The live product (a site or a Telegram bot); left out for projects that are no longer live.
   url?: string
   // Public source code.
   codeUrl?: string
