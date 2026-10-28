@@ -40,6 +40,7 @@ export const projects: Project[] = [
     club: 'freelance',
     years: '2025–2026',
     stack: ['Next.js', 'React'],
+    url: 'https://quant.kg',
   },
   {
     id: 'clickfood',
@@ -84,6 +85,7 @@ export const projects: Project[] = [
     club: 'codify',
     years: '2024–2025',
     stack: ['Next.js', 'React'],
+    url: 'https://www.virtualaccelerate.com',
   },
   {
     id: 'jobCodify',
