@@ -9,8 +9,8 @@ export const careerEvents: CareerEvent[] = [
   { id: 'peaksoft', minute: 20, kind: 'goal', year: 2023 },
   { id: 'codify', minute: 38, kind: 'goal', year: 2024 },
   { id: 'clickfood', minute: 55, kind: 'goal', year: 2025 },
-  { id: 'kuttukTime', minute: 63, kind: 'goal', year: 2026 },
   { id: 'tunduk', minute: 67, kind: 'big-goal', year: 2026 },
   { id: 'assist', minute: 72, kind: 'assist', year: 2026 },
+  { id: 'kuttukTime', minute: 75, kind: 'goal', year: 2026 },
   { id: 'substitution', minute: 78, kind: 'substitution', year: 'now' },
 ]

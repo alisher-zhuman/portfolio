@@ -151,10 +151,6 @@
         "title": "Transfer to ClickFood",
         "text": "Middle Frontend. Food delivery as a Telegram Mini App: catalogue and cart for customers, a restaurant dashboard, reports for accounting."
       },
-      "kuttukTime": {
-        "title": "Solo run: KuttukTime",
-        "text": "His own product: gift certificates from local businesses in a Telegram Mini App. Front end and backend entirely his own, with online payments and 150+ tests."
-      },
       "tunduk": {
         "title": "Middle Frontend Developer at Tunduk",
         "text": "E-Accreditation: the public portal and the staff dashboard, almost entirely on his own."
@@ -162,6 +158,10 @@
       "assist": {
         "title": "Moves the team",
         "text": "Gathers the requirements for the backend, chases design and testing. When the team isn’t around, he’s his own designer, backend and analyst."
+      },
+      "kuttukTime": {
+        "title": "Solo run: KuttukTime",
+        "text": "His own product: gift certificates from local businesses in a Telegram Mini App. Front end and backend entirely his own, with online payments."
       },
       "substitution": {
         "title": "Substitution: on in a backend role",
