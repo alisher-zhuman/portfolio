@@ -191,11 +191,14 @@ smallest possible islands layered on top.
   `transitionTypes={['nav-forward' | 'nav-back']}`; untagged navigations (browser back) swap
   instantly. The header has `view-transition-name: site-header` and stays still. No library.
 - **Scroll reveal**: the `.reveal` class (animations.css) is a CSS view timeline (`animation-timeline:
-  view()`), no JS; browsers without it and reduced motion just show the content. Don't put it on
+view()`), no JS; browsers without it and reduced motion just show the content. Don't put it on
   elements that animate `opacity`/`translate` themselves (the career events have their own clock).
 - **Project cards flip** (`entities/project/ui/project-flip`): front = what the project is, back =
-  what he did (`items.<id>.did`, from LinkedIn, no metrics). Flip only by button (cards hold
-  links); the hidden face is `inert`, focus moves to the other face's button.
+  what he did (`items.<id>.did`): **every LinkedIn bullet as he wrote it** (en verbatim, ru/ky
+  close translations, his numbers kept except ones on the dossier's Conflicts list); KCA and
+  KuttukTime aren't on LinkedIn, theirs come from the dossier. The front sets the height, the back
+  scrolls inside it. Flip only by button (cards hold links); the hidden face is `inert`, focus moves
+  to the other face's button with `preventScroll`.
 - `OffscreenPause` sets `data-paused` → CSS pauses all animations inside while off screen.
 - `useInView(ref, rootMargin, initial)`: `initial` defaults to `true` (for pausing); pass `false`
   for deferred loading, or the work starts immediately.
