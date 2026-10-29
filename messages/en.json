@@ -70,7 +70,7 @@
   },
   "Card": {
     "title": "Player card",
-    "lead": "Hover over the card or tap it to flip it.",
+    "lead": "Hover or tap to flip it: the back has what the stats don't show.",
     "flip": "Flip the card",
     "front": "Front of the card",
     "back": "Back of the card",
@@ -117,7 +117,7 @@
   },
   "Match": {
     "title": "Career as a match",
-    "lead": "Scroll down: the clock on the scoreboard runs with you.",
+    "lead": "Scroll down — the match is live. Well, almost.",
     "scoreboard": "Match scoreboard",
     "bugs": "Bugs",
     "bugsTitle": "Leave the bugs alone",
@@ -185,11 +185,11 @@
       }
     },
     "currentClub": "Current club · since July 2026",
-    "more": "The details of each job are in the <resume>resume</resume> and on <linkedin>LinkedIn</linkedin>."
+    "more": "The full match report is in the <resume>resume</resume> and on <linkedin>LinkedIn</linkedin>."
   },
   "Coaches": {
     "title": "In the coaches' words",
-    "lead": "What the people he played under say about him.",
+    "lead": "Coaches don't have to praise. These ones do.",
     "translated": "Translated from Russian.",
     "full": "Full recommendations on LinkedIn",
     "items": {
@@ -213,9 +213,9 @@
   },
   "Projects": {
     "title": "Projects",
-    "lead": "What he has worked on, club by club.",
+    "lead": "Goals by club. Replays at the links.",
     "allLink": "All projects ({count})",
-    "pageLead": "Every project, club by club: from the first training ones to today’s.",
+    "pageLead": "Full stats: from the first academy matches to today.",
     "metaDescription": "Projects by Alisher Zhuman (Алишер Жуманов): GovTech, food delivery, EdTech, IoT and his own product. React, Next.js, TypeScript.",
     "backHome": "Back to home",
     "filterLabel": "Club",
