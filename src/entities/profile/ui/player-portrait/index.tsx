@@ -1,24 +1,23 @@
-// Head-and-shoulders version of the player for the collectible card, in the navy away kit so it
-// reads against the red card face. Decorative.
+// Faceless head-and-shoulders silhouette for the collectible card, like the placeholder a FIFA card
+// shows before a photo exists: one flat navy shape and the sun-yellow V-neck, no features to draw
+// crooked. Decorative.
 export const PlayerPortrait = () => (
   <svg viewBox="0 0 120 100" aria-hidden="true" className="relative w-full">
-    <path d="M18 100q4-30 42-34 38 4 42 34z" className="fill-navy" />
     <path
-      d="M50 66l10 12 10-12"
+      d="M6 100C8 84 22 76 42 71C48 69.5 51.5 66 52 58L68 58C68.5 66 72 69.5 78 71C98 76 112 84 114 100Z"
+      className="fill-navy"
+    />
+    <path
+      d="M43 33C42 17 50 9 60 9C70 9 78 17 77 33C76.5 46 70 57 60 59C50 57 43.5 46 43 33Z"
+      className="fill-navy"
+    />
+    <ellipse cx="43" cy="37" rx="3" ry="5.5" className="fill-navy" />
+    <ellipse cx="77" cy="37" rx="3" ry="5.5" className="fill-navy" />
+    <path
+      d="M48 70L60 83L72 70"
       strokeWidth={4}
       strokeLinejoin="round"
       className="stroke-sun fill-none"
-    />
-    <rect x="53" y="52" width="14" height="16" className="fill-skin" />
-    <circle cx="60" cy="38" r="22" className="fill-skin" />
-    <path d="M38 36q-1-27 24-26 21 1 20 23-8-9-21-8-13-1-23 11z" className="fill-hair" />
-    <circle cx="53" cy="40" r="2.4" className="fill-hair" />
-    <circle cx="68" cy="40" r="2.4" className="fill-hair" />
-    <path
-      d="M54 50q6 4 12 0"
-      strokeWidth={2.2}
-      strokeLinecap="round"
-      className="stroke-mouth fill-none"
     />
   </svg>
 )

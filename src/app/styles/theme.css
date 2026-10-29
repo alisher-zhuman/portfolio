@@ -13,10 +13,9 @@
   --navy: #13233a;
   --card-red: #e11d3a;
 
-  /* The drawn character. Same in both themes — he doesn't change skin under floodlights. */
+  /* The 404 keeper. Same in both themes — he doesn't change skin under floodlights. */
   --skin: #d9a57a;
   --hair: #1b1b22;
-  --mouth: #6b3a22;
   --sock: #f3f7f1;
   --ball: #ffffff;
   --ground-shadow: rgb(0 0 0 / 0.22);
@@ -82,7 +81,6 @@
   --color-card-red: var(--card-red);
   --color-skin: var(--skin);
   --color-hair: var(--hair);
-  --color-mouth: var(--mouth);
   --color-sock: var(--sock);
   --color-ball: var(--ball);
   --color-ground-shadow: var(--ground-shadow);
