@@ -82,9 +82,10 @@
     "stats": "Attributes",
     "bioTitle": "Biography",
     "bio": [
-      "From Talas, lives in Bishkek. Middle Frontend Developer at Tunduk.",
-      "Graduated from college in information security, so he thinks not only about how a form looks but also about what someone might send through it. Now studying business informatics at university.",
-      "Has already closed backend tasks on a work project — and liked it. Wants to make that position his own."
+      "From Talas, lives in Bishkek. Middle Frontend at Tunduk.",
+      "A college degree in infosec: he looks not only at how a form looks, but at what gets sent through it. Now studying business informatics at university.",
+      "A Bishkek Arena volunteer: at the World Nomad Games and Shakira's concert he let people in through Face ID. So he's at the stadium for real, too.",
+      "Has tried backend at work — and liked it. Settling into the position."
     ],
     "strongFoot": "Stronger foot: vision"
   },
@@ -149,35 +150,35 @@
     "events": {
       "kickoff": {
         "title": "Kick-off: in IT since 14",
-        "text": "First code, long before the first job."
+        "text": "First code long before the first paycheck."
       },
       "academy": {
         "title": "Peaksoft academy",
-        "text": "Front-end courses: HTML, CSS, JavaScript, React. First training projects."
+        "text": "HTML, CSS, JS, React. The ball starts to listen."
       },
       "peaksoft": {
         "title": "First-team debut: Peaksoft",
-        "text": "Intern, then Junior Frontend. A gadget store, clinic bookings, an English testing platform. Taught students on the side."
+        "text": "Intern → Junior. A gadget store, a clinic, English tests. And already teaching newcomers."
       },
       "codify": {
         "title": "Transfer to Codify Lab",
-        "text": "Lead author of Codify GO: interactive coding lessons, points and levels, certificates, payments. Plus a student LMS and reports for curators."
+        "text": "Lead author of Codify GO: coding lessons with points, levels and certificates."
       },
       "clickfood": {
         "title": "Transfer to ClickFood",
-        "text": "Middle Frontend. Food delivery as a Telegram Mini App: catalogue and cart for customers, a restaurant dashboard, reports for accounting."
+        "text": "Middle. Food delivery right inside Telegram, from the cart to the restaurant's dashboard."
       },
       "tunduk": {
         "title": "Middle Frontend Developer at Tunduk",
-        "text": "E-Accreditation: the public portal and the staff dashboard, almost entirely on his own."
+        "text": "E-Accreditation: the portal and the dashboard — almost single-handed."
       },
       "assist": {
         "title": "Moves the team",
-        "text": "Gathers the requirements for the backend, chases design and testing. When the team isn’t around, he’s his own designer, backend and analyst."
+        "text": "No designer? He's the designer. No analyst? He's the analyst. The team keeps moving."
       },
       "kuttukTime": {
         "title": "Solo run: KuttukTime",
-        "text": "His own product, alongside Tunduk: gift certificates from local businesses in a Telegram Mini App. Front end and backend entirely his own, with online payments."
+        "text": "His own product, alongside Tunduk: gift certificates in Telegram. Front end, back end and payments — all his."
       },
       "substitution": {
         "title": "Position change: backend",
