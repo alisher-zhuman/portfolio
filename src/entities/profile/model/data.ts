@@ -41,6 +41,7 @@ export const profile: Profile = {
   ],
   contacts: {
     resumeUrl: '/resume.pdf',
+    linkedinUrl: 'https://www.linkedin.com/in/alisher-zhuman',
     telegramUrl: 'https://t.me/alisher_zh',
     githubUrl: 'https://github.com/alisher-zhuman',
     email: 'zumanovaliser814@gmail.com',

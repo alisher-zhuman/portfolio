@@ -7,6 +7,7 @@ export interface PlayerStat {
 
 export interface Contacts {
   resumeUrl: string
+  linkedinUrl: string
   telegramUrl: string
   githubUrl: string
   email: string

@@ -44,6 +44,10 @@ export const getPersonJsonLd = async () => {
     knowsAbout: [...profile.stack, t('knowsAboutSecurity')],
     email: `mailto:${profile.contacts.email}`,
     telephone: profile.contacts.phone,
-    sameAs: [profile.contacts.githubUrl, profile.contacts.telegramUrl],
+    sameAs: [
+      profile.contacts.linkedinUrl,
+      profile.contacts.githubUrl,
+      profile.contacts.telegramUrl,
+    ],
   }
 }

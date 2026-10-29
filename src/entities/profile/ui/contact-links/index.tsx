@@ -12,13 +12,20 @@ interface Props {
 
 export const ContactLinks = ({ emailLabel = 'address', className }: Props) => {
   const t = useTranslations('Contacts')
-  const { resumeUrl, telegramUrl, githubUrl, email, phone, phoneDisplay } = profile.contacts
+  const { resumeUrl, linkedinUrl, telegramUrl, githubUrl, email, phone, phoneDisplay } =
+    profile.contacts
 
   return (
     <ul aria-label={t('label')} className={cn('flex flex-wrap gap-2', className)}>
       <li>
         <a className="btn-primary" href={resumeUrl} target="_blank" rel="noopener">
           {t('resume')}
+        </a>
+      </li>
+
+      <li>
+        <a className="btn" href={linkedinUrl} target="_blank" rel="noopener">
+          LinkedIn
         </a>
       </li>
 
