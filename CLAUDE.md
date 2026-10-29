@@ -207,7 +207,8 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
 - **Hero = a tactics board** (`widgets/home/ui/tactics-board`, 2026-10-29): 4-3-3, #7 as the holding
   midfielder; the ball loops through #7 in CSS (`.tactics-board__ball`, view-box units), a click on
   `PlayerStage` (data-celebrating) shoots at goal. It replaced a drawn juggling player — Alisher
-  found hand-drawn figures crooked; don't bring a drawn character back.
+  found hand-drawn figures crooked; don't bring a drawn character back. Same on the card front: the
+  portrait was replaced (2026-10-29) by the shirt number in a sun disc over the rays.
 - `OffscreenPause` sets `data-paused` → CSS pauses all animations inside while off screen.
 - `useInView(ref, rootMargin, initial)`: `initial` defaults to `true` (for pausing); pass `false`
   for deferred loading, or the work starts immediately.
