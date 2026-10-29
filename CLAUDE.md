@@ -178,7 +178,6 @@ smallest possible islands layered on top.
 - **Per-frame work never goes through React state.** The scroll clock (`MatchTimeline`) writes
   `data-passed`/`data-live` directly onto the server-rendered `<li>`s; only minute and score go
   through `useMatchStore`, and only when they change. The touchline writes one `--progress` var.
-  The player's eyes write `--eye-x/--eye-y/--tilt` on the wrapper.
 - The 67′ goal celebrates once and only if it is still on screen 400 ms later (anchor jumps and
   flings don't trigger it).
 - **Sound**: off on every visit. `shared/audio/index.ts` is a thin API; the synthesiser
@@ -202,6 +201,10 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
 - Project dates are month ranges as on his LinkedIn (`from`/`to` 'YYYY-MM' | 'present', formatted
   per language); KCA = his «Түндүк» job dates, KuttukTime = first commit (neither is in LinkedIn's
   Projects).
+- **Hero = a tactics board** (`widgets/home/ui/tactics-board`, 2026-10-29): 4-3-3, #7 as the holding
+  midfielder; the ball loops through #7 in CSS (`.tactics-board__ball`, view-box units), a click on
+  `PlayerStage` (data-celebrating) shoots at goal. It replaced a drawn juggling player — Alisher
+  found hand-drawn figures crooked; don't bring a drawn character back.
 - `OffscreenPause` sets `data-paused` → CSS pauses all animations inside while off screen.
 - `useInView(ref, rootMargin, initial)`: `initial` defaults to `true` (for pausing); pass `false`
   for deferred loading, or the work starts immediately.
