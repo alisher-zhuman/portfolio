@@ -17,7 +17,7 @@ interface Props {
 // group-data-* classes below are what those attributes drive.
 export const CareerEvent = ({ event, children }: Props) => {
   const t = useTranslations('Match')
-  const { id, minute, kind, year, roles } = event
+  const { id, minute, kind, year, roles, current } = event
   const isGoal = kind === 'goal' || kind === 'big-goal'
 
   return (
@@ -87,6 +87,13 @@ export const CareerEvent = ({ event, children }: Props) => {
           {kind === 'substitution' && <LiveDot />}
           {t(`events.${id}.text`)}
         </p>
+
+        {current && (
+          <p className="border-sun text-on-pitch mt-3 inline-flex items-center rounded-full border-2 px-3 py-1 text-sm font-semibold">
+            <LiveDot />
+            {t('currentClub')}
+          </p>
+        )}
 
         {/* His LinkedIn bullets for this job. A native <details>: no JS, and the text is in the
             HTML for crawlers even while closed. */}

@@ -194,7 +194,7 @@
       },
       "kuttukTime": {
         "title": "Solo run: KuttukTime",
-        "text": "His own product: gift certificates from local businesses in a Telegram Mini App. Front end and backend entirely his own, with online payments.",
+        "text": "His own product, alongside Tunduk: gift certificates from local businesses in a Telegram Mini App. Front end and backend entirely his own, with online payments.",
         "did": [
           [
             "Built a Telegram Mini App for buying and gifting gift certificates from local venues: the buyer pays through Finik, gets an 8-digit code with a QR and gifts it to a friend in a chat; the venue's owner redeems it at the counter.",
@@ -207,12 +207,13 @@
         ]
       },
       "substitution": {
-        "title": "Substitution: on in a backend role",
-        "text": "In progress… Java, Node.js, NestJS, SQL and PostgreSQL."
+        "title": "Position change: backend",
+        "text": "Same club. In progress… Java, Node.js, NestJS, SQL and PostgreSQL."
       }
     },
     "details": "Details",
-    "hide": "Hide"
+    "hide": "Hide",
+    "currentClub": "Current club · since July 2026"
   },
   "Coaches": {
     "title": "In the coaches' words",

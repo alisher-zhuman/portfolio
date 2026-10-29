@@ -23,4 +23,6 @@ export interface CareerEvent {
   // His job titles there, as on LinkedIn (KuttukTime, his own product, isn't there), newest first. Each one's bullets are under
   // Match.events.<id>.did in the same order, shown behind a «Подробнее» toggle.
   roles?: string[]
+  // His club today: marked so the events after it don't read as him having left.
+  current?: true
 }
