@@ -194,7 +194,17 @@
       },
       "kuttukTime": {
         "title": "Solo run: KuttukTime",
-        "text": "His own product: gift certificates from local businesses in a Telegram Mini App. Front end and backend entirely his own, with online payments."
+        "text": "His own product: gift certificates from local businesses in a Telegram Mini App. Front end and backend entirely his own, with online payments.",
+        "did": [
+          [
+            "Built a Telegram Mini App for buying and gifting gift certificates from local venues: the buyer pays through Finik, gets an 8-digit code with a QR and gifts it to a friend in a chat; the venue's owner redeems it at the counter.",
+            "Developed the backend on NestJS, PostgreSQL and TypeORM: Telegram initData signature check (HMAC-SHA256) with JWT, roles for buyers, venue owners and admins, every route closed unless explicitly public.",
+            "Integrated Finik payments with his own request signer on node:crypto and a webhook that verifies signatures and audits every request; SELECT … FOR UPDATE makes repeated deliveries harmless — one payment, one certificate.",
+            "Implemented weekly payouts to venues: a report computed in SQL in Bishkek time, two independent guards against paying twice, and bot notifications to owners.",
+            "Covered the backend with unit, property-based (fast-check) and integration tests against a real PostgreSQL in Testcontainers; CI on GitHub Actions runs lint, types, tests and npm audit.",
+            "Built the Mini App on React 19, TypeScript and TanStack Query with Feature-Sliced Design: venue catalog, checkout, an owner's cabinet with QR scanning and an admin panel."
+          ]
+        ]
       },
       "substitution": {
         "title": "Substitution: on in a backend role",
@@ -326,41 +336,6 @@
         "description": "An online gadget store: catalogue, comparison, wishlist, Stripe checkout and a product admin."
       }
     }
-  },
-  "Backend": {
-    "title": "Switching positions: backend",
-    "lead": "KuttukTime is his own product. He wrote the frontend and the backend entirely himself: 600+ commits, all his.",
-    "product": "Gift certificates from local venues right inside Telegram: the buyer picks a coffee shop or a spa and an amount, pays through Finik and gets an 8-digit code with a QR to gift to a friend in a chat. The venue's owner redeems the code at the counter, and the platform pays out 90% to the venue every week.",
-    "items": {
-      "auth": {
-        "title": "Telegram log-in",
-        "text": "The server verifies the initData signature (HMAC-SHA256) and issues a JWT. Roles: buyer, venue owner and admin; every route is closed unless explicitly marked public."
-      },
-      "payments": {
-        "title": "Finik payments",
-        "text": "His own request signer on node:crypto. The webhook checks the signature, and every incoming request is audited in a form whose signature can be re-verified later."
-      },
-      "idempotency": {
-        "title": "No double charges",
-        "text": "The order is locked with SELECT … FOR UPDATE, so a repeated webhook can't issue a second certificate: in production Finik once sent the same payment twice, and one certificate came out. If the amount doesn't match, the order goes to manual review."
-      },
-      "payouts": {
-        "title": "Payouts",
-        "text": "The weekly report is computed in SQL in Bishkek time. Two independent guards against paying twice, and the owner gets a message from the bot."
-      },
-      "data": {
-        "title": "Database",
-        "text": "PostgreSQL and TypeORM, migrations run on start. Rules that must never break are enforced by the database itself with CHECK constraints, not only by the code."
-      },
-      "tests": {
-        "title": "Tests and CI",
-        "text": "300+ tests: unit, property-based with fast-check, and integration tests against a real PostgreSQL in Testcontainers. GitHub Actions runs lint, types, tests and npm audit."
-      }
-    },
-    "stackLabel": "Stack",
-    "open": "Open in Telegram",
-    "backendCode": "Backend code",
-    "frontendCode": "Frontend code"
   },
   "Footer": {
     "title": "Final whistle",

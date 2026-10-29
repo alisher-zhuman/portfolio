@@ -201,7 +201,8 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
   are kept in `docs/private/project-did.json`.
 - **Career events with a job** (Peaksoft, Codify, ClickFood) carry `roles` in `entities/career`
   data and his LinkedIn Experience bullets under `Match.events.<id>.did` (one list per role, same
-  order), behind a native `<details>` «Подробнее» — no JS, text in the HTML.
+  order), behind a native `<details>` «Подробнее» — no JS, text in the HTML. It animates open/closed
+  with `::details-content` + `interpolate-size` (`.career-details`, animations.css).
 - Project dates are month ranges as on his LinkedIn (`from`/`to` 'YYYY-MM' | 'present', formatted
   per language); KCA = his «Түндүк» job dates, KuttukTime = first commit (neither is in LinkedIn's
   Projects).

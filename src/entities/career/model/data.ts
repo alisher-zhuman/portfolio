@@ -29,6 +29,12 @@ export const careerEvents: CareerEvent[] = [
   },
   { id: 'tunduk', minute: 67, kind: 'big-goal', year: 2026 },
   { id: 'assist', minute: 72, kind: 'assist', year: 2026 },
-  { id: 'kuttukTime', minute: 75, kind: 'goal', year: 2026 },
+  {
+    id: 'kuttukTime',
+    minute: 75,
+    kind: 'goal',
+    year: 2026,
+    roles: ['Founder · Full-stack Developer'],
+  },
   { id: 'substitution', minute: 78, kind: 'substitution', year: 'now' },
 ]
