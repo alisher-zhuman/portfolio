@@ -1,13 +1,13 @@
 import { useTranslations } from 'next-intl'
 
-import { profile } from '@entities/profile'
+import { PlayerPortrait, profile } from '@entities/profile'
 
 import { Crest } from '@shared/ui'
 
 export const CardFront = () => {
   const t = useTranslations('Card')
   const tProfile = useTranslations('Profile')
-  const { rating, shirtNumber, stats } = profile
+  const { rating, stats } = profile
 
   return (
     <article
@@ -37,16 +37,10 @@ export const CardFront = () => {
         <Crest className="text-sun group-data-[legend=true]:text-navy size-9.5" />
       </div>
 
-      {/* No drawn player: the sun from the flag with the shirt number in it. */}
-      <div
-        aria-hidden="true"
-        className="relative mx-auto mt-11 grid aspect-6/5 w-4/5 place-items-center"
-      >
-        <span className="sun-rays absolute -inset-x-4 -inset-y-2" />
+      <div className="relative mx-auto mt-11 grid aspect-6/5 w-4/5 place-items-end">
+        <span aria-hidden="true" className="sun-rays absolute -inset-x-4 -top-2 bottom-4" />
 
-        <span className="bg-sun text-navy group-data-[legend=true]:bg-navy group-data-[legend=true]:text-sun font-display relative grid size-28 place-items-center rounded-full text-7xl font-extrabold">
-          {shirtNumber}
-        </span>
+        <PlayerPortrait />
       </div>
 
       <h3 className="font-display mt-3.5 text-center text-2xl font-extrabold">
