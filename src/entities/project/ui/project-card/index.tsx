@@ -9,9 +9,11 @@ interface Props {
   project: Project
   // Shirt number printed in the corner. Decorative only.
   number: number
+  // h3 under a section heading on the home page; h2 straight under the h1 on /projects.
+  headingAs?: 'h2' | 'h3'
 }
 
-export const ProjectCard = ({ project, number }: Props) => {
+export const ProjectCard = ({ project, number, headingAs: Heading = 'h3' }: Props) => {
   const t = useTranslations('Projects')
   const format = useFormatter()
   const { id, title, club, from, to, stack, url, codeUrl } = project
@@ -43,7 +45,7 @@ export const ProjectCard = ({ project, number }: Props) => {
         {number}
       </span>
 
-      <h3 className="font-display relative pr-14 text-xl font-bold">{name}</h3>
+      <Heading className="font-display relative pr-14 text-xl font-bold">{name}</Heading>
 
       <p className="text-kit-ink relative text-sm font-semibold">
         {t(`clubs.${club}`)} · {period}

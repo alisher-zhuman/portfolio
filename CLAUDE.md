@@ -231,14 +231,18 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
 - Origin from `NEXT_PUBLIC_SITE_URL` (`.env.example`), fallback `https://alisher-zhuman.vercel.app` (the production domain).
 - `birthPlace: Талас` is an interpretation of «родом из Таласа» — not confirmed by the user.
 
-## Lighthouse (2026-10-12, Lighthouse 13.5.0, production build — before i18n, re-measure)
+## Lighthouse (2026-10-29, Lighthouse 13.5.0, production build)
 
-| Page                 | Perf     | A11y | BP  | SEO |
-| -------------------- | -------- | ---- | --- | --- |
-| Home mobile          | 92       | 100  | 100 | 100 |
-| Home desktop         | 100      | 100  | 100 | 100 |
-| 404 mobile / desktop | 92 / 100 | 100  | 96  | 54  |
+| Page              | Perf | A11y | BP  | SEO |
+| ----------------- | ---- | ---- | --- | --- |
+| Home (ky) mobile  | 86   | 100  | 96  | 100 |
+| Home (ky) desktop | 100  | 100  | 96  | 100 |
+| /projects mobile  | 88   | 96   | 96  | 100 |
+| 404 mobile        | 86   | 100  | 96  | 54  |
 
+BP 96 everywhere locally is only the `_vercel/insights` 404 in the console (see Stack). /projects
+A11y 96 is axe catching `.reveal` cards mid-fade (partial opacity at the viewport edge), not the
+palette. Mobile Perf is the Lantern LCP estimate (see Gotchas).
 404's SEO/BP losses are by design (status 404, noindex, the 404 console line). Measure 404 with
 `--ignore-status-code`. Run: `pnpm dlx lighthouse@13.5.0 <url> --chrome-flags=--headless=new`
 (not a project dependency). First-load JS is ~164 KB gzip, almost all React + Next router.
