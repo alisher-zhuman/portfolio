@@ -131,13 +131,13 @@
     "live": "Live",
     "commentary": [
       "Alisher beats three bugs and is one on one with production!",
-      "The referee shows a yellow card for !important in CSS.",
+      "Transfer rumours: Tunduk says the player is not for sale.",
       "VAR is checking: bug or feature? Feature. Play on.",
+      "The webhook came in twice, one certificate came out. A clean sheet for the defence.",
       "Trusts the team, but re-checks staging after them — and is right more often than the backend would like.",
-      "The coach shouts from the touchline: “Type it!”",
-      "The stands are chanting: “S-Q-L! S-Q-L!”",
-      "The ball hits the post. The post turns out to be legacy code.",
-      "Match stats: zero console.log in production. Almost."
+      "A pass to the backend with a sample request and response. The backend controls it cleanly.",
+      "He's renaming a variable again. Third time this half.",
+      "After his main shift, the player stays behind for extra training with NestJS."
     ],
     "goalBadge": "GOAL!",
     "assistBadge": "ASSIST",
