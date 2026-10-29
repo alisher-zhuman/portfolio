@@ -61,13 +61,15 @@ export const PlayerFigure = ({ className }: Props) => (
         className={LINE}
       />
 
+      {/* Each arm carries its own sleeve, so a raised arm (the celebration) keeps it. */}
       <g className="player-figure__arm-back">
-        <path d="M80 106Q66 128 62 150" strokeWidth={11} className="stroke-on-pitch fill-none" />
-        <path d="M80 106Q66 128 62 150" strokeWidth={6.6} className="stroke-pitch fill-none" />
+        <path d="M65 130Q61 140 60 150" strokeWidth={11} className="stroke-on-pitch fill-none" />
+        <path d="M65 130Q61 140 60 150" strokeWidth={6.6} className="stroke-pitch fill-none" />
+        <path d="M84 97Q70 99 65 108L58 124Q62 130 71 132L78 118Z" className={LINE} />
       </g>
 
       <path
-        d="M80 96Q106 88 132 96L136 128L136 164Q106 171 76 164L75 128L71 132Q62 130 58 124L65 108Q70 99 80 96Z"
+        d="M80 96Q106 88 132 96Q137 98 137 106L136 164Q106 171 76 164L75 106Q75 98 80 96Z"
         className={LINE}
       />
       <path d="M97 92L106 102L115 92" strokeWidth={3.5} className="stroke-sun fill-none" />
@@ -81,7 +83,6 @@ export const PlayerFigure = ({ className }: Props) => (
         {profile.shirtNumber}
       </text>
 
-      {/* The front sleeve moves with the arm, so a raised arm keeps its sleeve. */}
       <g className="player-figure__arm-front">
         <path d="M147 130Q151 140 152 150" strokeWidth={11} className="stroke-on-pitch fill-none" />
         <path d="M147 130Q151 140 152 150" strokeWidth={6.6} className="stroke-pitch fill-none" />
