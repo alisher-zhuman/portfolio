@@ -104,7 +104,7 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 - **shared** — `audio/` (Web Audio, see below), `constants/` (`SITE_URL`, theme key), `effects/`
   (confetti), `helpers/` (`cn`, theme init script), `hooks/` (`useInView`, `useMounted`,
   `useReducedMotion`, `useResolvedTheme`), `stores/` (theme, sound, toast), `types/`, `ui/`
-  (`Crest`, `InlineScript`, `JsonLd`, `LiveDot`, `OffscreenPause`, `SectionHeading`, `SkipLink`,
+  (`Crest` (tunduk badge on the card), `InlineScript`, `JsonLd`, `LiveDot`, `Logo` (header), `OffscreenPause`, `SectionHeading`, `SkipLink`,
   `TagList`, `ThemeSync`, `Toaster`). Segment names follow kca, not FSD's official set
   (`fsd/segments-by-purpose` is off on purpose).
 - **entities** — typed data and its basic UI: `profile` (contacts, stats, stack, brand name variants,
@@ -118,7 +118,10 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
   verbatim in ru and translated in ky/en with a note —, the match store, scroll clock, section whistle; projects show the
   newest 6) and `projects` (the /projects page: every project with the club filter).
 - **app** — everything routable is under `[locale]/` (layout, page, `projects/page`, not-found,
-  `[...rest]`, OG image); `sitemap.ts`, `robots.ts`, `icon.svg` stay at the root. Plus `helpers/` (Person JSON-LD)
+  `[...rest]`, OG image); `sitemap.ts`, `robots.ts`, `icon.svg` + `apple-icon.png` stay at the root. The logo (2026-10-29)
+  is «AZ» + a yellow 7 on a red rounded square, letters as paths from Science Gothic with a 12%
+  margin; `shared/ui/Logo` and `icon.svg` are the same drawing, `apple-icon.png` is it full-bleed
+  at 180px. Theme: Kyrgyzstan national team colours, number 7 as a nod to Ronaldo. Plus `helpers/` (Person JSON-LD)
   and `styles/`. `src/i18n/` sits beside the layers, as in kca, imported as `@/i18n/*`.
 
 **Texts live in `messages/{ky,ru,en}.json`; structure (ids, numbers, links, stack) in

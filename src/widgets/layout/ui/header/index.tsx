@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { Link } from '@/i18n/navigation'
 
-import { Crest } from '@shared/ui'
+import { Logo } from '@shared/ui'
 
 import { Nav } from '../nav'
 import { LocaleSwitcher } from '../parts/locale-switcher'
@@ -23,7 +23,7 @@ export const Header = () => {
           aria-label={t('homeLabel', { name })}
           className="font-display flex items-center gap-2.5 font-bold"
         >
-          <Crest className="size-7.5" />
+          <Logo className="size-8" />
 
           <span className="max-sm:sr-only">{name}</span>
         </Link>
