@@ -1,4 +1,4 @@
-// Head-and-shoulders version of the player for the collectible card: a flat, calm illustration in
+// Head-and-shoulders version of the player for the collectible card: a flat, friendly illustration in
 // the navy away kit so it reads against the red card face. Decorative.
 export const PlayerPortrait = () => (
   <svg
@@ -21,12 +21,12 @@ export const PlayerPortrait = () => (
       className="fill-skin"
     />
     <path
-      d="M41.5 33C40 16 49 7.5 61 7.5C72 7.5 80.5 15 78.5 31.5C77.5 26 75.5 22.5 72.5 20.5C66 22.5 55 22.5 47.5 20.5C44.5 23 42.5 27 41.5 33Z"
+      d="M40.5 39C37.5 18 47.5 5.5 61 6C74.5 6.5 83 16 79.5 39C78.5 31.5 77 27 75 24C71 27.5 64.5 27.5 60 25.5C55 28.5 48 28.5 45 25C42.5 29 41 34 40.5 39Z"
       className="fill-hair"
     />
 
     <path
-      d="M48.5 32.5Q52.5 30.5 56.5 31.8M63.5 31.8Q67.5 30.5 71.5 32.5"
+      d="M48.5 32Q52.5 29.8 56.5 31.2M63.5 31.2Q67.5 29.8 71.5 32"
       strokeWidth={1.8}
       className="stroke-hair fill-none"
     />
@@ -38,6 +38,6 @@ export const PlayerPortrait = () => (
       strokeOpacity={0.35}
       className="stroke-hair fill-none"
     />
-    <path d="M56.5 50.3Q60 51.4 63.5 50.3" strokeWidth={1.5} className="stroke-mouth fill-none" />
+    <path d="M54.5 48.8Q60 53.6 65.5 48.8" strokeWidth={1.7} className="stroke-mouth fill-none" />
   </svg>
 )

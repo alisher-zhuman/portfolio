@@ -208,7 +208,7 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
   midfielder; the ball loops through #7 in CSS (`.tactics-board__ball`, view-box units), a click on
   `PlayerStage` (data-celebrating) shoots at goal. It replaced a drawn juggling player — Alisher
   found hand-drawn figures crooked; don't bring a drawn character back. The card-front portrait
-  (`PlayerPortrait`) stays: a calm flat illustration — a cartoon face, a faceless silhouette and a
+  (`PlayerPortrait`) stays: a calm flat illustration with a smile and a fringe — a cartoon face, a faceless silhouette and a
   bare number were each rejected (2026-10-29).
 - `OffscreenPause` sets `data-paused` → CSS pauses all animations inside while off screen.
 - `useInView(ref, rootMargin, initial)`: `initial` defaults to `true` (for pausing); pass `false`
