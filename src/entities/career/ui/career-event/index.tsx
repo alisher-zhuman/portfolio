@@ -113,7 +113,7 @@ export const CareerEvent = ({ event, children }: Props) => {
 
             {(t.raw(`events.${id}.did` as 'events.peaksoft.did') as string[][]).map(
               (items, index) => (
-                <div key={roles[index]} className="mt-4">
+                <div key={roles[index]} className="pt-4">
                   <h4 className="text-sm font-semibold">{roles[index]}</h4>
 
                   <ul className="text-on-pitch-muted mt-2 flex list-disc flex-col gap-2 pl-5">
