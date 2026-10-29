@@ -90,14 +90,30 @@
   },
   "Scout": {
     "title": "Scouting report",
-    "strengthsLabel": "Strengths",
-    "strengths": "Careful typing, layouts that fit any screen, accessible interfaces, fast-loading pages, Feature-Sliced Design architecture and an eye for form security.",
-    "growingLabel": "Developing",
-    "growing": "Backend: Node.js and NestJS, Java, SQL and PostgreSQL, API design and working with databases.",
+    "traits": [
+      {
+        "label": "Passing",
+        "text": "Hands the backend its requirements with a sample request and response — hard to misread."
+      },
+      {
+        "label": "Heading",
+        "text": "Thinks like a product manager: “why” first, then “how”."
+      },
+      {
+        "label": "Tackling",
+        "text": "Doesn't take things on trust: re-checks the staging server and is usually right."
+      },
+      {
+        "label": "Developing",
+        "text": "NestJS and PostgreSQL already in the starting line-up, Java still in training."
+      },
+      {
+        "label": "Weak spot",
+        "text": "Perfectionism: spots a stray pixel from the stands."
+      }
+    ],
     "squadLabel": "Starting line-up",
-    "stackLabel": "Stack",
-    "noteLabel": "Note",
-    "note": "Sometimes sweats the small stuff: a stray pixel in the layout, a variable name. The coaching staff ask him not to hold on to the ball."
+    "stackLabel": "Stack"
   },
   "Match": {
     "title": "Career as a match",
@@ -296,7 +312,7 @@
   },
   "Footer": {
     "title": "Final whistle",
-    "text": "If you need a developer who isn’t afraid to switch positions, get in touch.",
+    "text": "The final whistle, but not for the career. The player has no agent — write to him directly.",
     "cheat": "Rumour has it a cheat code from old consoles works on this site.",
     "cheatLabel": "Up, up, down, down, left, right, left, right, B, A"
   },
