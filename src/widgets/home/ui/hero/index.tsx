@@ -1,9 +1,10 @@
 import { useTranslations } from 'next-intl'
 
-import { ContactLinks, PlayerFigure, profile } from '@entities/profile'
+import { ContactLinks, profile } from '@entities/profile'
 
 import { InsiderQuote } from '../insider-quote'
 import { PlayerStage } from '../player-stage'
+import { TacticsBoard } from '../tactics-board'
 import { TransferPanel } from '../transfer-panel'
 
 export const Hero = () => {
@@ -38,15 +39,10 @@ export const Hero = () => {
         <ContactLinks className="mt-6" />
       </div>
 
-      {/* The centre circle of the pitch, with the player warming up inside it. */}
+      {/* The coach's tactics board: number 7 in the middle of every move. */}
       <div className="relative grid justify-items-center gap-2 lg:col-span-5">
-        <span
-          aria-hidden="true"
-          className="border-chalk absolute top-1/2 left-1/2 aspect-square w-full max-w-90 -translate-x-1/2 -translate-y-1/2 rounded-full border-2"
-        />
-
-        <PlayerStage>
-          <PlayerFigure className="w-full" />
+        <PlayerStage label={t('boardLabel', { number: profile.shirtNumber })}>
+          <TacticsBoard />
         </PlayerStage>
 
         <p className="text-on-pitch-muted relative text-sm">{t('stageHint')}</p>

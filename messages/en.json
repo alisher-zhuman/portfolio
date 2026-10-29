@@ -57,8 +57,8 @@
     "windowClosed": "Happy at the club, but will listen to offers",
     "title": "Clubs are circling Alisher",
     "quoteSource": "— a source close to the player",
-    "stageHint": "Warming up on the touchline. Tap the player.",
-    "playerLabel": "Player number {number} juggling a ball. Press to make him celebrate"
+    "stageHint": "Today's tactics: everything goes through number seven. Tap the board.",
+    "boardLabel": "Tactics board: number {number} spreads the passes. Click to shoot at goal"
   },
   "Transfer": {
     "from": "From",

@@ -238,6 +238,108 @@
   }
 }
 
+/* ---- Tactics board in the hero (widgets/home/ui/tactics-board) ----
+   The ball loops through number 7: out to a teammate and back, in view-box units (CSS transforms
+   on SVG elements use the user space). A click sets data-celebrating, and the ball goes for goal. */
+
+.tactics-board * {
+  transform-box: view-box;
+}
+
+.tactics-board__ball {
+  transform: translate(120px, 200px);
+  animation: tactics-pass 9s ease-in-out infinite;
+}
+
+.tactics-board__ring {
+  transform-origin: 120px 200px;
+  animation: tactics-ring 2s ease-out infinite;
+}
+
+.tactics-board__goal {
+  fill-opacity: 0.35;
+}
+
+[data-celebrating='true'] .tactics-board__ball {
+  animation: tactics-shot 0.8s cubic-bezier(0.3, 0, 0.2, 1) forwards;
+}
+
+[data-celebrating='true'] .tactics-board__goal {
+  animation: tactics-goal 1.3s ease-out;
+}
+
+/* Holds on number 7 between passes: the playmaker keeps the ball for a beat. */
+@keyframes tactics-pass {
+  0%,
+  6% {
+    transform: translate(120px, 200px);
+  }
+  18%,
+  24% {
+    transform: translate(70px, 168px);
+  }
+  36%,
+  42% {
+    transform: translate(120px, 200px);
+  }
+  56%,
+  62% {
+    transform: translate(190px, 95px);
+  }
+  74%,
+  80% {
+    transform: translate(120px, 80px);
+  }
+  100% {
+    transform: translate(120px, 200px);
+  }
+}
+
+@keyframes tactics-ring {
+  from {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+@keyframes tactics-shot {
+  from {
+    transform: translate(120px, 200px);
+  }
+  /* Minus the 9,9 offset of the ball's group: lands in the middle of the goal. */
+  to {
+    transform: translate(111px, 2px);
+  }
+}
+
+@keyframes tactics-goal {
+  0%,
+  55% {
+    fill-opacity: 0.35;
+  }
+  65% {
+    fill-opacity: 1;
+  }
+  100% {
+    fill-opacity: 0.35;
+  }
+}
+
+/* Reduced motion: the ball rests at number 7's feet, the ring stays still. */
+@media (prefers-reduced-motion: reduce) {
+  .tactics-board * {
+    animation: none !important;
+  }
+
+  .tactics-board__ring {
+    opacity: 0.5;
+  }
+}
+
 /* ---- Commentary ticker (widgets/home/ui/commentary-ticker) ---- */
 
 /* Lines fade in from the right and out under the «live» tag, as on a broadcast bar. */
