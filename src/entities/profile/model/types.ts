@@ -6,7 +6,8 @@ export interface PlayerStat {
 }
 
 export interface Contacts {
-  resumeUrl: string
+  // His CV comes in Russian and English only; Kyrgyz pages get the Russian one.
+  resumeUrls: { ru: string; en: string }
   linkedinUrl: string
   telegramUrl: string
   githubUrl: string

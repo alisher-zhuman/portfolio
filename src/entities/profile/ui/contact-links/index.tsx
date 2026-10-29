@@ -1,8 +1,8 @@
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { cn } from '@shared/helpers'
 
-import { profile } from '../../model/data'
+import { getResumeUrl, profile } from '../../model/data'
 
 interface Props {
   // The hero spells the email and phone out; the footer just says «Почта» and «Телефон».
@@ -12,8 +12,8 @@ interface Props {
 
 export const ContactLinks = ({ emailLabel = 'address', className }: Props) => {
   const t = useTranslations('Contacts')
-  const { resumeUrl, linkedinUrl, telegramUrl, githubUrl, email, phone, phoneDisplay } =
-    profile.contacts
+  const resumeUrl = getResumeUrl(useLocale())
+  const { linkedinUrl, telegramUrl, githubUrl, email, phone, phoneDisplay } = profile.contacts
 
   return (
     <ul aria-label={t('label')} className={cn('flex flex-wrap gap-2', className)}>

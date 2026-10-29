@@ -13,7 +13,6 @@ const stats: PlayerStat[] = [
 const getOverallRating = (list: PlayerStat[]) =>
   Math.round(list.reduce((sum, { value }) => sum + value, 0) / list.length)
 
-// The resume is still a placeholder PDF.
 export const profile: Profile = {
   brandName: 'Alisher Zhuman',
   nameVariants: ['Алишер Жуманов', 'Алишер Жуманов Бакирович', 'Alizher Zhuman'],
@@ -40,7 +39,7 @@ export const profile: Profile = {
     'pnpm',
   ],
   contacts: {
-    resumeUrl: '/resume.pdf',
+    resumeUrls: { ru: '/resume-ru.pdf', en: '/resume-en.pdf' },
     linkedinUrl: 'https://www.linkedin.com/in/alisher-zhuman',
     telegramUrl: 'https://t.me/alisher_zh',
     githubUrl: 'https://github.com/alisher-zhuman',
@@ -49,3 +48,6 @@ export const profile: Profile = {
     phoneDisplay: '+996 999 101 677',
   },
 }
+
+export const getResumeUrl = (locale: string) =>
+  locale === 'en' ? profile.contacts.resumeUrls.en : profile.contacts.resumeUrls.ru
