@@ -144,9 +144,9 @@
         "text": "Intern, then Junior Frontend. A gadget store, clinic bookings, an English testing platform. Taught students on the side.",
         "did": [
           [
-            "Contributed to 6 production-grade products (marketplace, e-commerce, booking, education, and testing domains) by implementing multi-channel lead capture, optimizing checkout/booking flows, and integrating trust-building elements (social proof, testimonials, real-time metrics).",
+            "Contributed to 6 production-grade products (10k+ users across marketplace, e-commerce, booking, education, and testing domains) by implementing multi-channel lead capture, optimizing checkout/booking flows, and integrating trust-building elements (social proof, testimonials, real-time metrics).",
             "Scaled education platform for 2,000+ students - increased engagement by 40%, teacher productivity by 30%, through rich content tools (3 WYSIWYG editors), interactive tests, automated grading, and real-time progress analytics.",
-            "Implemented security-critical systems with advanced anti-fraud - maintained 15% sign-up growth, through PrintScreen blocking, tab-switch detection (Visibility API), dual storage (Redux + sessionStorage), and compliance-ready admin pipeline.",
+            "Implemented security-critical systems with advanced anti-fraud - reduced cheating attempts by 40%, maintained 15% sign-up growth, through PrintScreen blocking, tab-switch detection (Visibility API), dual storage (Redux + sessionStorage), and compliance-ready admin pipeline.",
             "Accelerated frontend performance across all products - 60% faster load time, WCAG accessibility, multi-language SEO (KY/RU/EN), high Lighthouse scores, integrated Stripe payments, Firebase Auth, CircleCI deployment - zero critical bugs.",
             "Empowered non-technical teams with self-service admin panels - enabled marketers, teachers, and moderators to manage content, schedules, and moderation independently without developer involvement or redeploys."
           ],
@@ -167,7 +167,7 @@
             "Automated teacher reporting and parent communication via WhatsApp, reducing report preparation time by 50% through a Smart Reports system with editable tables and retry mechanisms.",
             "Increased student engagement by 30–40% using gamification features - implemented XP progression, leaderboards, Code Coins as real rewards, and competitive challenges across all platforms.",
             "Monetized education via Stripe subscriptions - implemented monthly/yearly plans (17% savings for annual), Pro content paywalls, and promo code systems without reducing free-tier user growth.",
-            "Achieved high performance and conversion metrics - increased lead conversion by 15% and reduced bounce rate by 20% through multi-channel lead capture and segmented funnels."
+            "Achieved high performance and conversion metrics - 96% Lighthouse score on desktop, 95%+ on mobile, increased lead conversion by 15%, and reduced bounce rate by 20% through multi-channel lead capture and segmented funnels."
           ]
         ]
       },
@@ -326,6 +326,41 @@
         "description": "An online gadget store: catalogue, comparison, wishlist, Stripe checkout and a product admin."
       }
     }
+  },
+  "Backend": {
+    "title": "Switching positions: backend",
+    "lead": "KuttukTime is his own product. He wrote the frontend and the backend entirely himself: 600+ commits, all his.",
+    "product": "Gift certificates from local venues right inside Telegram: the buyer picks a coffee shop or a spa and an amount, pays through Finik and gets an 8-digit code with a QR to gift to a friend in a chat. The venue's owner redeems the code at the counter, and the platform pays out 90% to the venue every week.",
+    "items": {
+      "auth": {
+        "title": "Telegram log-in",
+        "text": "The server verifies the initData signature (HMAC-SHA256) and issues a JWT. Roles: buyer, venue owner and admin; every route is closed unless explicitly marked public."
+      },
+      "payments": {
+        "title": "Finik payments",
+        "text": "His own request signer on node:crypto. The webhook checks the signature, and every incoming request is audited in a form whose signature can be re-verified later."
+      },
+      "idempotency": {
+        "title": "No double charges",
+        "text": "The order is locked with SELECT … FOR UPDATE, so a repeated webhook can't issue a second certificate: in production Finik once sent the same payment twice, and one certificate came out. If the amount doesn't match, the order goes to manual review."
+      },
+      "payouts": {
+        "title": "Payouts",
+        "text": "The weekly report is computed in SQL in Bishkek time. Two independent guards against paying twice, and the owner gets a message from the bot."
+      },
+      "data": {
+        "title": "Database",
+        "text": "PostgreSQL and TypeORM, migrations run on start. Rules that must never break are enforced by the database itself with CHECK constraints, not only by the code."
+      },
+      "tests": {
+        "title": "Tests and CI",
+        "text": "300+ tests: unit, property-based with fast-check, and integration tests against a real PostgreSQL in Testcontainers. GitHub Actions runs lint, types, tests and npm audit."
+      }
+    },
+    "stackLabel": "Stack",
+    "open": "Open in Telegram",
+    "backendCode": "Backend code",
+    "frontendCode": "Frontend code"
   },
   "Footer": {
     "title": "Final whistle",

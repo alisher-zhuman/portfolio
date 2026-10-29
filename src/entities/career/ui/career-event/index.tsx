@@ -91,10 +91,24 @@ export const CareerEvent = ({ event, children }: Props) => {
         {/* His LinkedIn bullets for this job. A native <details>: no JS, and the text is in the
             HTML for crawlers even while closed. */}
         {roles && (
-          <details className="group/details mt-3 max-w-prose">
-            <summary className="text-on-pitch w-fit cursor-pointer text-sm font-semibold underline underline-offset-3">
+          <details className="career-details group/details mt-3 max-w-prose">
+            <summary className="details-toggle">
               <span className="group-open/details:hidden">{t('details')}</span>
               <span className="hidden group-open/details:inline">{t('hide')}</span>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                className="size-4 transition-transform duration-300 group-open/details:rotate-180 motion-reduce:transition-none"
+              >
+                <path
+                  d="M4 6l4 4 4-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </summary>
 
             {(t.raw(`events.${id}.did` as 'events.peaksoft.did') as string[][]).map(

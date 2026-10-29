@@ -288,6 +288,35 @@
   }
 }
 
+/* ---- «Подробнее» on career events (entities/career/ui/career-event) ----
+   The <details> body grows from 0 to its natural height and fades in, both ways. Needs
+   ::details-content and interpolate-size; other browsers open it instantly, which is fine. */
+
+.career-details {
+  interpolate-size: allow-keywords;
+}
+
+.career-details::details-content {
+  block-size: 0;
+  opacity: 0;
+  overflow-y: clip;
+  transition:
+    block-size 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.3s ease,
+    content-visibility 0.4s allow-discrete;
+}
+
+.career-details[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .career-details::details-content {
+    transition: none;
+  }
+}
+
 /* ---- Touchline scroll progress (widgets/layout/ui/touchline) ----
    Bar and runner are both transforms of one --progress value set on scroll. */
 
