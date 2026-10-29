@@ -35,17 +35,6 @@
   }
 }
 
-/* «Подробнее» on a career event: a text link with a chevron that turns when the <details> opens. */
-@utility details-toggle {
-  @apply text-on-pitch hover:text-sun inline-flex w-fit cursor-pointer items-center gap-1 text-sm font-semibold underline underline-offset-3 transition-colors;
-
-  list-style: none;
-
-  &::-webkit-details-marker {
-    display: none;
-  }
-}
-
 @utility menu-panel {
   @apply bg-board text-board-foreground border-chalk animate-menu-in absolute top-full right-0 z-30 mt-2 grid min-w-48 origin-top-right gap-0.5 rounded-xl border-2 p-1.5 shadow-xl;
 }

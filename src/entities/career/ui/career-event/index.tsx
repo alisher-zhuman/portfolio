@@ -17,7 +17,7 @@ interface Props {
 // group-data-* classes below are what those attributes drive.
 export const CareerEvent = ({ event, children }: Props) => {
   const t = useTranslations('Match')
-  const { id, minute, kind, year, roles, current } = event
+  const { id, minute, kind, year, current } = event
   const isGoal = kind === 'goal' || kind === 'big-goal'
 
   return (
@@ -93,45 +93,6 @@ export const CareerEvent = ({ event, children }: Props) => {
             <LiveDot />
             {t('currentClub')}
           </p>
-        )}
-
-        {/* His LinkedIn bullets for this job. A native <details>: no JS, and the text is in the
-            HTML for crawlers even while closed. */}
-        {roles && (
-          <details className="career-details group/details mt-3 max-w-prose">
-            <summary className="details-toggle">
-              <span className="group-open/details:hidden">{t('details')}</span>
-              <span className="hidden group-open/details:inline">{t('hide')}</span>
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 16 16"
-                className="size-4 transition-transform duration-300 group-open/details:rotate-180 motion-reduce:transition-none"
-              >
-                <path
-                  d="M4 6l4 4 4-4"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </summary>
-
-            {(t.raw(`events.${id}.did` as 'events.peaksoft.did') as string[][]).map(
-              (items, index) => (
-                <div key={roles[index]} className="pt-4">
-                  <h4 className="text-sm font-semibold">{roles[index]}</h4>
-
-                  <ul className="text-on-pitch-muted mt-2 flex list-disc flex-col gap-2 pl-5">
-                    {items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            )}
-          </details>
         )}
 
         {children}

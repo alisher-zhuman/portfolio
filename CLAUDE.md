@@ -125,8 +125,8 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 `src/entities/*/model/data.ts`.** Add a key to all three files — `ru.json` is the typed source, so
 a key missing there fails typecheck, but nothing checks ky/en for completeness. Lists use
 `t.raw()`; plurals use ICU in the messages. Kyrgyz is drafted by Claude and proofread by Alisher.
-Contacts are real (LinkedIn, Telegram, GitHub, email, phone); the resume (`public/resume.pdf`) is still a
-placeholder. The hero and the card front follow the 2026-10-27 decisions; bio, scout report, career,
+Contacts are real (LinkedIn, Telegram, GitHub, email, phone); the resume is `public/resume-{ru,en}.pdf` (his CVs from
+`~/Desktop/resources`, July 2026 — outdated, no «Түндүк»; ky gets the RU one). The hero and the card front follow the 2026-10-27 decisions; bio, scout report, career,
 projects and footer still carry the old backend-transfer copy until each is reworked.
 
 **Real data about Alisher lives in `docs/private/` (gitignored — the repo is public):**
@@ -199,10 +199,6 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
   карточку» button for the keyboard. **Project cards are one-sided** — a flip with «Что делал»
   (his LinkedIn bullets) was tried on 2026-10-28 and dropped at his request; the translated bullets
   are kept in `docs/private/project-did.json`.
-- **Career events with a job** (Peaksoft, Codify, ClickFood) carry `roles` in `entities/career`
-  data and his LinkedIn Experience bullets under `Match.events.<id>.did` (one list per role, same
-  order), behind a native `<details>` «Подробнее» — no JS, text in the HTML. It animates open/closed
-  with `::details-content` + `interpolate-size` (`.career-details`, animations.css).
 - Project dates are month ranges as on his LinkedIn (`from`/`to` 'YYYY-MM' | 'present', formatted
   per language); KCA = his «Түндүк» job dates, KuttukTime = first commit (neither is in LinkedIn's
   Projects).
