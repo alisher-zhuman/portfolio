@@ -199,6 +199,9 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
   карточку» button for the keyboard. **Project cards are one-sided** — a flip with «Что делал»
   (his LinkedIn bullets) was tried on 2026-10-28 and dropped at his request; the translated bullets
   are kept in `docs/private/project-did.json`.
+- **Career events with a job** (Peaksoft, Codify, ClickFood) carry `roles` in `entities/career`
+  data and his LinkedIn Experience bullets under `Match.events.<id>.did` (one list per role, same
+  order), behind a native `<details>` «Подробнее» — no JS, text in the HTML.
 - Project dates are month ranges as on his LinkedIn (`from`/`to` 'YYYY-MM' | 'present', formatted
   per language); KCA = his «Түндүк» job dates, KuttukTime = first commit (neither is in LinkedIn's
   Projects).

@@ -17,7 +17,7 @@ interface Props {
 // group-data-* classes below are what those attributes drive.
 export const CareerEvent = ({ event, children }: Props) => {
   const t = useTranslations('Match')
-  const { id, minute, kind, year } = event
+  const { id, minute, kind, year, roles } = event
   const isGoal = kind === 'goal' || kind === 'big-goal'
 
   return (
@@ -87,6 +87,31 @@ export const CareerEvent = ({ event, children }: Props) => {
           {kind === 'substitution' && <LiveDot />}
           {t(`events.${id}.text`)}
         </p>
+
+        {/* His LinkedIn bullets for this job. A native <details>: no JS, and the text is in the
+            HTML for crawlers even while closed. */}
+        {roles && (
+          <details className="group/details mt-3 max-w-prose">
+            <summary className="text-on-pitch w-fit cursor-pointer text-sm font-semibold underline underline-offset-3">
+              <span className="group-open/details:hidden">{t('details')}</span>
+              <span className="hidden group-open/details:inline">{t('hide')}</span>
+            </summary>
+
+            {(t.raw(`events.${id}.did` as 'events.peaksoft.did') as string[][]).map(
+              (items, index) => (
+                <div key={roles[index]} className="mt-4">
+                  <h4 className="text-sm font-semibold">{roles[index]}</h4>
+
+                  <ul className="text-on-pitch-muted mt-2 flex list-disc flex-col gap-2 pl-5">
+                    {items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            )}
+          </details>
+        )}
 
         {children}
       </div>

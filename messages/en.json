@@ -141,15 +141,48 @@
       },
       "peaksoft": {
         "title": "First-team debut: Peaksoft",
-        "text": "Intern, then Junior Frontend. A gadget store, clinic bookings, an English testing platform. Taught students on the side."
+        "text": "Intern, then Junior Frontend. A gadget store, clinic bookings, an English testing platform. Taught students on the side.",
+        "did": [
+          [
+            "Contributed to 6 production-grade products (marketplace, e-commerce, booking, education, and testing domains) by implementing multi-channel lead capture, optimizing checkout/booking flows, and integrating trust-building elements (social proof, testimonials, real-time metrics).",
+            "Scaled education platform for 2,000+ students - increased engagement by 40%, teacher productivity by 30%, through rich content tools (3 WYSIWYG editors), interactive tests, automated grading, and real-time progress analytics.",
+            "Implemented security-critical systems with advanced anti-fraud - maintained 15% sign-up growth, through PrintScreen blocking, tab-switch detection (Visibility API), dual storage (Redux + sessionStorage), and compliance-ready admin pipeline.",
+            "Accelerated frontend performance across all products - 60% faster load time, WCAG accessibility, multi-language SEO (KY/RU/EN), high Lighthouse scores, integrated Stripe payments, Firebase Auth, CircleCI deployment - zero critical bugs.",
+            "Empowered non-technical teams with self-service admin panels - enabled marketers, teachers, and moderators to manage content, schedules, and moderation independently without developer involvement or redeploys."
+          ],
+          [
+            "Reduced cart abandonment on e-commerce platform: implemented Stripe checkout with auto-fill, real-time validation via Formik + Yup; delivered production-ready payment flow independently.",
+            "Accelerated catalog load time by 60%: leveraged code splitting with React.lazy() + debounced search, skeleton screens, and 96+ memoizations; optimized performance despite handling 1000+ products.",
+            "Simplified product management for team: built Admin Dashboard with bulk operations, multi-step wizard, and drag-and-drop image uploads; enabled non-technical team to manage inventory without developer help.",
+            "Increased retention: implemented wishlist, browsing history, product comparison, and smart recommendations with Redux Persist; shipped features that directly improved user engagement metrics."
+          ]
+        ]
       },
       "codify": {
         "title": "Transfer to Codify Lab",
-        "text": "Lead author of Codify GO: interactive coding lessons, points and levels, certificates, payments. Plus a student LMS and reports for curators."
+        "text": "Lead author of Codify GO: interactive coding lessons, points and levels, certificates, payments. Plus a student LMS and reports for curators.",
+        "did": [
+          [
+            "Contributed to 6 educational products, developing new features for Codify GO, CRM, Academy, Job Codify, Startup Nation, and internal learning platforms.",
+            "Automated teacher reporting and parent communication via WhatsApp, reducing report preparation time by 50% through a Smart Reports system with editable tables and retry mechanisms.",
+            "Increased student engagement by 30–40% using gamification features - implemented XP progression, leaderboards, Code Coins as real rewards, and competitive challenges across all platforms.",
+            "Monetized education via Stripe subscriptions - implemented monthly/yearly plans (17% savings for annual), Pro content paywalls, and promo code systems without reducing free-tier user growth.",
+            "Achieved high performance and conversion metrics - increased lead conversion by 15% and reduced bounce rate by 20% through multi-channel lead capture and segmented funnels."
+          ]
+        ]
       },
       "clickfood": {
         "title": "Transfer to ClickFood",
-        "text": "Middle Frontend. Food delivery as a Telegram Mini App: catalogue and cart for customers, a restaurant dashboard, reports for accounting."
+        "text": "Middle Frontend. Food delivery as a Telegram Mini App: catalogue and cart for customers, a restaurant dashboard, reports for accounting.",
+        "did": [
+          [
+            "Developed a Telegram Mini App for food delivery serving 30k+ users and 150+ restaurants, fully integrated with the Telegram WebApp SDK to create a seamless in-messenger experience, increasing user retention by 25-30%.",
+            "Architected a scalable frontend using Feature-Sliced Design, type-safe React Query data layer, Zod validation, and strategic code splitting to support long-term product growth.",
+            "Built a multi-step checkout flow with dish modifiers, promo codes, cashback redemption, and Yandex delivery integration, increasing cart completion by 30% and average order value by 15% through a frictionless returning-user experience.",
+            "Implemented advanced multi-layer filtering (cuisine type, halal certification, delivery time, rating) and geo-based restaurant ranking, enabling 3-5 second search results, increasing restaurant click-through rate by 25%, and improving coverage for halal-conscious users.",
+            "Developed a partner dashboard for restaurants with CRUD menu management, item availability control (stop-list), and sales analytics, giving restaurants full control without developer involvement, reducing workflow complexity by 35% and eliminating menu-related errors."
+          ]
+        ]
       },
       "tunduk": {
         "title": "Middle Frontend Developer at Tunduk",
@@ -167,7 +200,9 @@
         "title": "Substitution: on in a backend role",
         "text": "In progress… Java, Node.js, NestJS, SQL and PostgreSQL."
       }
-    }
+    },
+    "details": "Details",
+    "hide": "Hide"
   },
   "Coaches": {
     "title": "In the coaches' words",
