@@ -12,7 +12,7 @@ export const CardFront = () => {
   return (
     <article
       aria-label={t('front')}
-      className="card-notched card-front-surface text-kit-foreground group-data-[legend=true]:card-front-legend group-data-[legend=true]:text-navy absolute inset-0 flex flex-col p-5 backface-hidden"
+      className="card-shape card-front-surface text-kit-foreground group-data-[legend=true]:card-front-legend group-data-[legend=true]:text-navy absolute inset-0 flex flex-col p-5 backface-hidden"
     >
       {/* Rating, position and crest overlay the portrait's top corners, as on a FIFA card. */}
       <div className="absolute inset-x-5 top-5 z-10 flex items-start justify-between">

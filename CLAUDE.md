@@ -149,7 +149,7 @@ If the folder is missing (another machine), ask the user — don't invent data.
   `fontSize`) rather than arbitrary classes. `group-data-[x=true]:` variants are fine.
 - Repeated class combos → `@utility` in `styles/utilities.css` (`container-page`, `section-shell`,
   `btn`, `btn-primary`, `tag`, `menu-trigger`/`-panel`/`-item`/`-badge`/`-check` (header
-  dropdowns), `card-notched`, `card-front-surface`,
+  dropdowns), `card-shape`, `card-front-surface`,
   `card-front-legend`, `sun-rays`, `goal-net`).
 - Keyframes live in `styles/animations.css`, each with its own `prefers-reduced-motion` answer next
   to it.

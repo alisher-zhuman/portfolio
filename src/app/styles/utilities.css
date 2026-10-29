@@ -80,20 +80,10 @@
   @apply rounded-full border border-current px-2.5 py-0.5 text-sm font-medium;
 }
 
-/* The collectible card's cut corners. A notch instead of a radius sets the card apart from every
-   other panel on the page. Applied per face, not on the rotating parent: clip-path on the parent
-   would flatten the 3D flip. */
-@utility card-notched {
-  clip-path: polygon(
-    18px 0,
-    calc(100% - 18px) 0,
-    100% 18px,
-    100% calc(100% - 18px),
-    calc(100% - 18px) 100%,
-    18px 100%,
-    0 calc(100% - 18px),
-    0 18px
-  );
+/* The player card's outline, both faces: soft rounded corners (clipped corners were dropped
+   2026-10-29 — Alisher didn't like the sharp look). */
+@utility card-shape {
+  @apply overflow-hidden rounded-3xl;
 }
 
 /* Two-tone kit red: the darker lower band holds the name and the stats. */

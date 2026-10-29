@@ -86,6 +86,16 @@
       "A college degree in infosec: he looks not only at how a form looks, but at what gets sent through it. Now studying business informatics at university.",
       "Has already closed backend tasks on a work project — and liked it. Wants to make that position his own."
     ],
+    "facts": [
+      {
+        "label": "Languages",
+        "text": "Kyrgyz, Russian, Kazakh, English — in training"
+      },
+      {
+        "label": "Off the pitch",
+        "text": "skiing, tennis, PlayStation"
+      }
+    ],
     "strongFoot": "Stronger foot: vision"
   },
   "Scout": {
