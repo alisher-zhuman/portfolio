@@ -1,3 +1,4 @@
+export { CoachQuotes } from './ui/coach-quotes'
 export { Hero } from './ui/hero'
 export { MatchSection } from './ui/match-section'
 export { PlayerSection } from './ui/player-section'

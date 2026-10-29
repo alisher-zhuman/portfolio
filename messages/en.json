@@ -169,6 +169,30 @@
       }
     }
   },
+  "Coaches": {
+    "title": "In the coaches' words",
+    "lead": "What the people he played under say about him.",
+    "translated": "Translated from Russian.",
+    "full": "Full recommendations on LinkedIn",
+    "items": {
+      "dinara": {
+        "name": "Dinara Bakirova",
+        "role": "Director of Peaksoft, his direct manager",
+        "quote": [
+          "Despite his age, Alisher quickly started working on real projects and handled his tasks with confidence.",
+          "I always liked that he approaches work calmly, learns fast and knows how to see tasks through to the result."
+        ]
+      },
+      "dina": {
+        "name": "Dina Ruslan",
+        "role": "CEO and founder of CODIFY",
+        "quote": [
+          "He proved to be an independent specialist: he calmly takes on tasks and sees them through to the result without constant supervision.",
+          "He also showed initiative in optimisation: he worked on the performance, accessibility and usability of interfaces, and it made a noticeable difference in the metrics."
+        ]
+      }
+    }
+  },
   "Projects": {
     "title": "Projects",
     "lead": "What he has worked on, club by club.",

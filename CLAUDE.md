@@ -114,7 +114,8 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
   `penalty-shootout` (404 game). The «Оцени игрока» rating block was removed on 2026-10-28 at
   Alisher's request, together with `entities/rating`, `features/rate-player` and zod.
 - **widgets** — `layout` (header with nav, theme/language menus, sound toggle; footer; touchline),
-  `home` (all homepage sections, the match store, scroll clock, section whistle; projects show the
+  `home` (all homepage sections incl. `coach-quotes` — his LinkedIn recommendations, quoted
+  verbatim in ru and translated in ky/en with a note —, the match store, scroll clock, section whistle; projects show the
   newest 6) and `projects` (the /projects page: every project with the club filter).
 - **app** — everything routable is under `[locale]/` (layout, page, `projects/page`, not-found,
   `[...rest]`, OG image); `sitemap.ts`, `robots.ts`, `icon.svg` stay at the root. Plus `helpers/` (Person JSON-LD)
@@ -124,7 +125,7 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 `src/entities/*/model/data.ts`.** Add a key to all three files — `ru.json` is the typed source, so
 a key missing there fails typecheck, but nothing checks ky/en for completeness. Lists use
 `t.raw()`; plurals use ICU in the messages. Kyrgyz is drafted by Claude and proofread by Alisher.
-Contacts are real (Telegram, GitHub, email, phone); the resume (`public/resume.pdf`) is still a
+Contacts are real (LinkedIn, Telegram, GitHub, email, phone); the resume (`public/resume.pdf`) is still a
 placeholder. The hero and the card front follow the 2026-10-27 decisions; bio, scout report, career,
 projects and footer still carry the old backend-transfer copy until each is reworked.
 
