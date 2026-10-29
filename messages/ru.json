@@ -151,7 +151,7 @@
     ],
     "goalBadge": "ГОЛ!",
     "assistBadge": "АССИСТ",
-    "goalToast": "ГОЛ! {minute}-я минута: {title}.",
+    "goalToast": "ГОЛ! {minute}-я минута: {title}. Siuuu!",
     "varButton": "Проверить VAR",
     "varChecking": "Проверяем повтор…",
     "varDone": "Гол засчитан: офсайда нет, коммит подписан.",

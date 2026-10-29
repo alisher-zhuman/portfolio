@@ -151,7 +151,7 @@
     ],
     "goalBadge": "GOAL!",
     "assistBadge": "ASSIST",
-    "goalToast": "GOAL! {minute}th minute: {title}.",
+    "goalToast": "GOAL! {minute}th minute: {title}. Siuuu!",
     "varButton": "Check VAR",
     "varChecking": "Checking the replay…",
     "varDone": "Goal stands: no offside, commit signed.",

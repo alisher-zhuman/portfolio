@@ -151,7 +151,7 @@
     ],
     "goalBadge": "ГОЛ!",
     "assistBadge": "АССИСТ",
-    "goalToast": "ГОЛ! {minute}-мүнөт: {title}.",
+    "goalToast": "ГОЛ! {minute}-мүнөт: {title}. Siuuu!",
     "varButton": "VAR текшерүү",
     "varChecking": "Кайталоону текшерип жатабыз…",
     "varDone": "Гол эсептелди: офсайд жок, коммитке кол коюлган.",
