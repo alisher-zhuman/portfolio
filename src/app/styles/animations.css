@@ -228,48 +228,22 @@
 }
 
 /* ---- Touchline scroll progress (widgets/layout/ui/touchline) ----
-   Bar and runner are both transforms of one --progress value set on scroll. */
+   Bar and ball are both transforms of one --progress value set on scroll. */
 
 .touchline__bar {
   transform: scaleX(var(--progress, 0));
 }
 
-/* The flip comes after the translate in one transform. A separate `scale: -1 1` is applied on top
-   of the translate and mirrors it too, throwing the runner off the left edge on the way back. */
-.touchline__runner {
-  transform: translateX(calc(var(--progress, 0) * (100vw - 24px))) scaleX(var(--facing, 1));
-}
-
-.touchline[data-direction='back'] .touchline__runner {
-  --facing: -1;
-}
-
-.touchline__runner path {
-  transform-box: view-box;
-  transform-origin: 11px 18px;
-}
-
-.touchline[data-running='true'] .touchline__leg-a {
-  animation: runner-stride 0.3s linear infinite alternate;
-}
-
-.touchline[data-running='true'] .touchline__leg-b {
-  animation: runner-stride 0.3s linear infinite alternate-reverse;
-}
-
-@keyframes runner-stride {
-  from {
-    transform: rotate(-35deg);
-  }
-  to {
-    transform: rotate(35deg);
-  }
+/* Rolls along the line: the spin follows the same progress, so it turns backwards on the way up. */
+.touchline__ball {
+  transform: translateX(calc(var(--progress, 0) * (100vw - 16px)))
+    rotate(calc(var(--progress, 0) * 30turn));
 }
 
 /* Reduced motion: keep the progress bar (it moves only with the user's own scroll), drop the
-   runner entirely. */
+   ball entirely. */
 @media (prefers-reduced-motion: reduce) {
-  .touchline__runner {
+  .touchline__ball {
     display: none;
   }
 }
