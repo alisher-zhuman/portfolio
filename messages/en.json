@@ -83,7 +83,7 @@
     "bioTitle": "Biography",
     "bio": [
       "From Talas, lives in Bishkek. Middle Frontend at Tunduk.",
-      "A college degree in infosec: he looks not only at how a form looks, but at what gets sent through it. Now studying business informatics at university.",
+      "A college degree in infosec: he looks not only at how a form looks, but at what gets sent through it. Now studying business informatics, aiming for the captain’s armband.",
       "Has already closed backend tasks on a work project — and liked it. Wants to make that position his own."
     ],
     "facts": [
@@ -328,7 +328,8 @@
     "title": "Final whistle",
     "text": "The final whistle, but not for the career. The player has no agent — write to him directly.",
     "cheat": "Rumour has it a cheat code from old consoles works on this site.",
-    "cheatLabel": "Up, up, down, down, left, right, left, right, B, A"
+    "cheatLabel": "Up, up, down, down, left, right, left, right, B, A",
+    "credit": "Player icon on the card: <author>Delapouite</author>, game-icons.net, CC BY 3.0."
   },
   "CheatCode": {
     "toast": "Cheat code accepted: rating 99. This match only."

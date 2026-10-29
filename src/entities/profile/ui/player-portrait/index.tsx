@@ -1,43 +1,16 @@
-// Head-and-shoulders version of the player for the collectible card: a flat, friendly illustration in
-// the navy away kit so it reads against the red card face. Decorative.
+// A player striking the ball, for the collectible card: "Soccer kick" by Delapouite from
+// game-icons.net (CC BY 3.0, credited in the footer), in the navy away kit so it reads against the
+// red card face. Decorative.
 export const PlayerPortrait = () => (
   <svg
-    viewBox="0 0 120 100"
+    viewBox="20 15 470 465"
+    preserveAspectRatio="xMaxYMax meet"
     aria-hidden="true"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="relative w-full"
+    className="absolute inset-0 size-full"
   >
-    <path d="M4 100C6 84 20 77 40 72L50 69H70L80 72C100 77 114 84 116 100Z" className="fill-navy" />
-    <path d="M51 50V68Q60 75 69 68V50Z" className="fill-skin" />
-    {/* The chin's shadow on the neck. */}
-    <path d="M51 54Q60 63 69 54V50H51Z" fillOpacity={0.18} className="fill-hair" />
-    <path d="M49 69L60 81L71 69" strokeWidth={3.5} className="stroke-sun fill-none" />
-
-    <ellipse cx="42.5" cy="37" rx="3.5" ry="5.5" className="fill-skin" />
-    <ellipse cx="77.5" cy="37" rx="3.5" ry="5.5" className="fill-skin" />
     <path
-      d="M42 33C42 18 50 11 60 11C70 11 78 18 78 33C78 46 72 55.5 60 57.5C48 55.5 42 46 42 33Z"
-      className="fill-skin"
+      d="M290.2 49.04c-15.7.1-32.3 13.83-38 35.81-6.5 25.15 4.7 47.85 22.1 52.35 17.4 4.5 38.2-9.9 44.7-35 6.5-25.16-4.6-47.82-22.1-52.33-2.2-.56-4.4-.84-6.7-.83zM89.04 68.3L77.5 87.31c32.4 15.99 63.1 33.49 96.4 46.49 9.5-3.8 18.8-7.8 28-12-40.2-15.4-76.7-33.69-112.86-53.5zm148.06 56.1c-47.8 25.4-97.9 41.6-153.64 61.1l8.08 16.4c51.96-16.1 111.26-32.9 161.16-56-6.9-5.5-12.1-12.9-15.6-21.5zm30.3 34.8c-22.5 10.8-46.8 20.2-71.4 28.7-20.3 45.6-27.7 94.9-36.8 140.1l-2.1 10.5-101.02-39.4-16.03 25.4 130.25 60.7c1-1.4 1.7-2.5 2.9-4.5 3.9-6.7 9.2-16.6 15.2-28.6 11.9-23.8 26.7-55.9 40.4-88.1 13.8-32.1 26.4-64.4 33.9-88.4 1.9-6.1 3.5-11.6 4.7-16.4zm-31.9 134.6c-5.5 12.5-11.1 24.8-16.5 36.3 25 37.4 57 79 94.9 109.2l23.3-17.6c-35.8-39.7-72.9-84.3-101.7-127.9zM423.9 367a48 48 0 0 0-48 48 48 48 0 0 0 48 48 48 48 0 0 0 48-48 48 48 0 0 0-48-48z"
+      className="fill-navy"
     />
-    <path
-      d="M40.5 39C37.5 18 47.5 5.5 61 6C74.5 6.5 83 16 79.5 39C78.5 31.5 77 27 75 24C71 27.5 64.5 27.5 60 25.5C55 28.5 48 28.5 45 25C42.5 29 41 34 40.5 39Z"
-      className="fill-hair"
-    />
-
-    <path
-      d="M48.5 32Q52.5 29.8 56.5 31.2M63.5 31.2Q67.5 29.8 71.5 32"
-      strokeWidth={1.8}
-      className="stroke-hair fill-none"
-    />
-    <ellipse cx="52.5" cy="37.5" rx="1.9" ry="1.5" className="fill-hair" />
-    <ellipse cx="67.5" cy="37.5" rx="1.9" ry="1.5" className="fill-hair" />
-    <path
-      d="M60.5 38.5L58.6 45.2Q60 46.2 61.8 45.6"
-      strokeWidth={1.3}
-      strokeOpacity={0.35}
-      className="stroke-hair fill-none"
-    />
-    <path d="M54.5 48.8Q60 53.6 65.5 48.8" strokeWidth={1.7} className="stroke-mouth fill-none" />
   </svg>
 )
