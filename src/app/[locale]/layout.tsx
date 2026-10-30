@@ -87,6 +87,8 @@ export const generateMetadata = async ({ params }: LayoutProps<'/[locale]'>): Pr
       title: `${profile.brandName} — ${profile.role}`,
       description,
     },
+    // Search Console ownership (URL-prefix property). The token is public by design.
+    verification: { google: 'HZtP262qceOniOXY_mL6wGY2dM2g5Mw4OXtvHIH1uQo' },
   }
 }
 
