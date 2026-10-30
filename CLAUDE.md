@@ -228,6 +228,8 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
   TTFs live in `assets/fonts/` with their OFL licences.
 - `sitemap.ts` lists every page (`PAGES`: home, /projects) in all three languages, each with its
   alternates. Add new pages there. The language menu links to the current path (`usePathname`). `robots.ts`, Person JSON-LD via `JsonLd` (escapes `<` per Next's guide).
+- `app/llms.txt/route.ts` — llmstxt.org summary for AI assistants, built from `entities/*` data and the
+  English messages (prerendered, like the sitemap). New pages go into its «Pages» list too.
 - Origin from `NEXT_PUBLIC_SITE_URL` (`.env.example`), fallback `https://alisher-zhuman.vercel.app` (the production domain).
 - `birthPlace: Талас` is an interpretation of «родом из Таласа» — not confirmed by the user.
 
