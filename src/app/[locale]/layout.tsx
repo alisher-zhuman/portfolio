@@ -11,7 +11,6 @@ import { routing } from '@/i18n/routing'
 import { Footer, Header, Touchline } from '@widgets/layout'
 
 import { CheatCodeListener } from '@features/cheat-code'
-import { BallLoader } from '@features/kick-ball'
 
 import { profile } from '@entities/profile'
 
@@ -134,8 +133,6 @@ const LocaleLayout = async ({ children, params }: LayoutProps<'/[locale]'>) => {
           <Footer />
 
           <Touchline />
-
-          <BallLoader />
 
           <CheatCodeListener />
 

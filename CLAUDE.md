@@ -106,14 +106,14 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 
 - **shared** — `audio/` (Web Audio, see below), `constants/` (`SITE_URL`, theme key), `effects/`
   (confetti), `helpers/` (`cn`, theme init script), `hooks/` (`useInView`, `useMounted`,
-  `useReducedMotion`, `useResolvedTheme`), `stores/` (theme, sound, toast), `types/`, `ui/`
+  `useResolvedTheme`), `stores/` (theme, sound, toast), `types/`, `ui/`
   (`Crest` (tunduk badge on the card), `InlineScript`, `JsonLd`, `LiveDot`, `Logo` (header), `OffscreenPause`, `SectionHeading`, `SkipLink`,
   `TagList`, `ThemeSync`, `Toaster`). Segment names follow kca, not FSD's official set
   (`fsd/segments-by-purpose` is off on purpose).
 - **entities** — typed data and its basic UI: `profile` (contacts, stats, stack, brand name variants,
   `transferWindow`), `career` (match events by id, `getFinalScore`), `project`. Slice names are singular
   (steiger's `inconsistent-naming`).
-- **features** — `kick-ball` (physics ball), `cheat-code` (konami → gold «легенда» card),
+- **features** — `cheat-code` (konami → gold «легенда» card),
   `penalty-shootout` (404 game). The «Оцени игрока» rating block was removed on 2026-10-28 at
   Alisher's request, together with `entities/rating`, `features/rate-player` and zod.
 - **widgets** — `layout` (header with nav, theme/language menus, sound toggle; footer; touchline),
@@ -193,8 +193,9 @@ smallest possible islands layered on top.
 - **Sound**: off on every visit. `shared/audio/index.ts` is a thin API; the synthesiser
   (`engine.ts`, ~300 lines) is a dynamic `import()` on the first switch-on, so it isn't in the
   first-load bundle. Module singleton outside React (StrictMode/HMR safe); released on `pagehide`.
-- **Heavy parts load lazily**: ball and penalty game via `next/dynamic({ ssr: false })` (allowed only
-  inside a Client Component); ball isn't loaded at all under reduced motion. Confetti is a dynamic
+- **Heavy parts load lazily**: the penalty game via `next/dynamic({ ssr: false })` (allowed only
+  inside a Client Component). The floating physics ball was removed on 2026-10-31 (a third ball that
+  covered content on phones). Confetti is a dynamic
   `import()`.
 - **Page transitions**: React's `<ViewTransition>` via `shared/ui/PageTransition`, wrapped around
   each page's `<main>` (not the layout, where enter/exit never fire). Links set the direction with

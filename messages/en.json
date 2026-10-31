@@ -334,11 +334,6 @@
   "CheatCode": {
     "toast": "Cheat code accepted: rating 99. This match only."
   },
-  "Ball": {
-    "label": "Ball. Press Enter to kick it",
-    "hatTrick": "A hat-trick on the ball. The ball begs for mercy.",
-    "yellow": "Yellow card for mistreating the ball."
-  },
   "NotFound": {
     "title": "404: the ball went into the stands",
     "text": "This page doesn’t exist. While the referee looks for the ball, take a penalty: pick a corner of the goal with the mouse, a tap or the Tab and Enter keys.",

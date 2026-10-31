@@ -58,7 +58,7 @@ src/
   app/             routes: [locale]/ pages, OG image, sitemap, robots, llms.txt
   i18n/            next-intl routing, request config, navigation
   widgets/         layout (header, footer), home sections, projects catalog
-  features/        kick-ball, cheat-code, penalty-shootout (the 404 game)
+  features/        cheat-code, penalty-shootout (the 404 game)
   entities/        profile, career, project — typed data and their basic UI
   shared/          ui kit, hooks, stores, audio, helpers
 assets/fonts/      static TTFs for the OG image, with their OFL licences
