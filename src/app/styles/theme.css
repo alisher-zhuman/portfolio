@@ -20,6 +20,9 @@
   --pitch-stripe: #1d6535;
   --on-pitch: #ffffff;
   --on-pitch-muted: #d9eedd;
+  /* The sun as INK on the pitch. The flag yellow is only 3.71:1 on the day pitch, so small yellow
+     text there takes this paler shade; fills and borders keep --sun. */
+  --sun-ink: #ffe28a;
   --chalk: rgb(255 255 255 / 0.6);
   --header: #1b5f33;
   --glow: transparent;
@@ -43,6 +46,7 @@
   --pitch-stripe: #0d2c1d;
   --on-pitch: #eef4fb;
   --on-pitch-muted: #b8cbbf;
+  --sun-ink: #f6c343;
   --chalk: rgb(230 240 250 / 0.4);
   --header: #0b2517;
   --glow: rgb(205 225 255 / 0.16);
@@ -78,6 +82,7 @@
   --color-pitch: var(--pitch);
   --color-on-pitch: var(--on-pitch);
   --color-on-pitch-muted: var(--on-pitch-muted);
+  --color-sun-ink: var(--sun-ink);
   --color-chalk: var(--chalk);
   --color-header: var(--header);
   --color-panel: var(--panel);

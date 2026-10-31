@@ -32,7 +32,7 @@ export const CareerEvent = ({ event, children }: Props) => {
           className={cn(
             'font-display text-2xl leading-none font-extrabold tabular-nums transition-colors',
             'text-on-pitch-muted group-data-[passed=true]:text-on-pitch',
-            kind === 'substitution' && 'text-sun group-data-[passed=true]:text-sun'
+            kind === 'substitution' && 'text-sun-ink group-data-[passed=true]:text-sun-ink'
           )}
         >
           {minute}′
@@ -76,7 +76,7 @@ export const CareerEvent = ({ event, children }: Props) => {
             </span>
           )}
           {kind === 'assist' && (
-            <span className="border-sun text-sun mr-1.5 inline-block -rotate-3 rounded-md border-2 px-2 py-0.5 text-base">
+            <span className="border-sun text-sun-ink mr-1.5 inline-block -rotate-3 rounded-md border-2 px-2 py-0.5 text-base">
               {t('assistBadge')}
             </span>
           )}

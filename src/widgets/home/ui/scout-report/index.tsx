@@ -20,13 +20,13 @@ export const ScoutReport = () => {
       <dl className="mt-5 grid gap-3.5">
         {(t.raw('traits') as Trait[]).map(({ label, text }) => (
           <div key={label}>
-            <dt className="text-sun font-semibold">{label}</dt>
+            <dt className="text-sun-ink font-semibold">{label}</dt>
             <dd className="mt-0.5">{text}</dd>
           </div>
         ))}
 
         <div>
-          <dt className="text-sun font-semibold">{t('squadLabel')}</dt>
+          <dt className="text-sun-ink font-semibold">{t('squadLabel')}</dt>
           <dd className="mt-1.5">
             <TagList label={t('stackLabel')} items={profile.stack} />
           </dd>

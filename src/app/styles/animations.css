@@ -195,6 +195,17 @@
   animation-play-state: paused;
 }
 
+/* The viewport takes focus, but its mask would fade the ring out, and the scoreboard clips anything
+   outside the bar: draw it inside the whole bar, in navy, since the site's sun ring vanishes on it. */
+.commentary-ticker__viewport:focus-visible {
+  outline: none;
+}
+
+.commentary-ticker:has(.commentary-ticker__viewport:focus-visible) {
+  outline: 3px solid var(--navy);
+  outline-offset: -3px;
+}
+
 /* Reduced motion: no scrolling at all — the lines wrap into a short scrollable list. */
 @media (prefers-reduced-motion: reduce) {
   .commentary-ticker {

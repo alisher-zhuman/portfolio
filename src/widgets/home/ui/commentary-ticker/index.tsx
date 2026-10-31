@@ -6,6 +6,8 @@ import { LiveDot } from '@shared/ui'
 // the lines scrolling past it and fading out at the edges. The list is rendered twice so the -50%
 // loop is seamless; the second copy is hidden from assistive tech. Pauses on hover/focus; under
 // reduced motion it becomes a plain wrapped list (styles/animations.css, .commentary-ticker).
+// The viewport is focusable, because nothing inside is: the keyboard's way to pause it (WCAG
+// 2.2.2) and, under reduced motion, to scroll the list.
 export const CommentaryTicker = () => {
   const t = useTranslations('Match')
   const commentary = t.raw('commentary') as string[]
@@ -21,7 +23,7 @@ export const CommentaryTicker = () => {
         {t('live')}
       </p>
 
-      <div className="commentary-ticker__viewport min-w-0 flex-1 overflow-hidden">
+      <div tabIndex={0} className="commentary-ticker__viewport min-w-0 flex-1 overflow-hidden">
         <div className="commentary-ticker__track animate-marquee flex w-max">
           {[false, true].map((isCopy) => (
             <ul key={String(isCopy)} aria-hidden={isCopy || undefined} className="flex">

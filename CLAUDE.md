@@ -162,6 +162,8 @@ If the folder is missing (another machine), ask the user — don't invent data.
 - Interfaces for object shapes, `type` for unions. Type-only imports (`import { type X }`).
 - Export only what something imports.
 - Every text pair in both themes passes WCAG AA (measured 4.99–14.58); re-measure new colours.
+  Yellow text on the pitch is `text-sun-ink`, not `text-sun` (the flag yellow is 3.71:1 on the day
+  pitch); `--sun` stays for fills, borders and the focus ring.
 
 ## Verifying changes
 
