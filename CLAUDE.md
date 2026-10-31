@@ -251,7 +251,14 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
 
 BP 96 everywhere locally is only the `_vercel/insights` 404 in the console (see Stack). /projects
 A11y 96 is axe catching `.reveal` cards mid-fade (partial opacity at the viewport edge), not the
-palette. Mobile Perf is the Lantern LCP estimate (see Gotchas).
+palette. Mobile Perf is the Lantern LCP estimate (see Gotchas): on localhost every request lands
+before the real LCP (136 ms, the hero h1), so Lantern counts all JS against it. **The same page on
+production scores 97–98 mobile** (2026-10-31, LCP 1.4–2.3 s) — judge Perf there, not locally.
+
+A11y pass 2026-10-31, beyond Lighthouse: Tab order on every page (all stops have a ring and a name),
+the accessibility tree, axe-core in both themes under reduced motion (0 violations), contrast over
+the striped pitch computed by hand (axe can't read gradients), no animation left running under
+reduced motion. Scratchpad scripts did it; rerun the same checks after UI changes.
 404's SEO/BP losses are by design (status 404, noindex, the 404 console line). Measure 404 with
 `--ignore-status-code`. Run: `pnpm dlx lighthouse@13.5.0 <url> --chrome-flags=--headless=new`
 (not a project dependency). First-load JS is ~164 KB gzip, almost all React + Next router.
