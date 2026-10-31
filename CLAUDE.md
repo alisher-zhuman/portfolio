@@ -189,7 +189,9 @@ smallest possible islands layered on top.
   `data-passed`/`data-live` directly onto the server-rendered `<li>`s; only minute and score go
   through `useMatchStore`, and only when they change. The touchline writes one `--progress` var.
 - The 67′ goal celebrates once and only if it is still on screen 400 ms later (anchor jumps and
-  flings don't trigger it).
+  flings don't trigger it): score flash, goal sound, the «Siuuu!» toast. No confetti there since
+  2026-10-31 — a passive scroll shouldn't throw a full-screen burst over the text; confetti is kept
+  for what the visitor triggers (cheat code, a penalty win).
 - **Sound**: off on every visit. `shared/audio/index.ts` is a thin API; the synthesiser
   (`engine.ts`, ~300 lines) is a dynamic `import()` on the first switch-on, so it isn't in the
   first-load bundle. Module singleton outside React (StrictMode/HMR safe); released on `pagehide`.

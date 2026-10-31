@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl'
 import { careerEvents } from '@entities/career'
 
 import { playGoal, playWhistle } from '@shared/audio'
-import { fireConfetti } from '@shared/effects'
 import { useInView } from '@shared/hooks'
 import { useToastStore } from '@shared/stores'
 
@@ -66,7 +65,6 @@ export const MatchTimeline = ({ children, className }: Props) => {
         if (bigGoal && minute === bigGoal.minute && !celebratedRef.current) {
           celebratedRef.current = true
           playGoal()
-          fireConfetti()
           useToastStore.getState().showToast(goalToast, 'goal')
         } else {
           playWhistle([0.15])
