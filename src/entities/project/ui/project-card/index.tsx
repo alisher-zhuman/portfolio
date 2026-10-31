@@ -55,11 +55,14 @@ export const ProjectCard = ({ project, number, headingAs: Heading = 'h3' }: Prop
 
       <TagList label={t('stackLabel')} items={stack} className="text-panel-muted mt-1" />
 
+      {/* Each link carries the project name for screen readers, whose link list would otherwise read
+          «Open site» several times over; the visible text still starts the name (WCAG 2.5.3). */}
       <p className="mt-auto flex flex-wrap gap-x-4 gap-y-2 pt-2 text-sm font-semibold">
         {/* No live link means the product is shut down or the URL is dead. */}
         {url ? (
           <a href={url} target="_blank" rel="noopener" className="underline underline-offset-3">
             {url.startsWith('https://t.me/') ? t('telegram') : t('site')}
+            <span className="sr-only"> — {name}</span>
           </a>
         ) : (
           <span className="text-panel-muted">{t('inactive')}</span>
@@ -67,6 +70,7 @@ export const ProjectCard = ({ project, number, headingAs: Heading = 'h3' }: Prop
         {codeUrl && (
           <a href={codeUrl} target="_blank" rel="noopener" className="underline underline-offset-3">
             {t('codeOnGithub')}
+            <span className="sr-only"> — {name}</span>
           </a>
         )}
       </p>
