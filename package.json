@@ -12,7 +12,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "steiger": "steiger ./src",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",
@@ -40,7 +42,9 @@
     "steiger": "0.7.0",
     "tailwindcss": "4.3.3",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.70.1"
+    "typescript-eslint": "8.70.1",
+    "vite": "8.3.4",
+    "vitest": "5.0.5"
   },
   "packageManager": "pnpm@11.9.0"
 }

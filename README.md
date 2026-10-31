@@ -34,17 +34,18 @@ Open [http://localhost:3000](http://localhost:3000). `.env.example` lists the on
 
 ## Commands
 
-| Command          | What it does                        |
-| ---------------- | ----------------------------------- |
-| `pnpm dev`       | Dev server                          |
-| `pnpm build`     | Production build                    |
-| `pnpm start`     | Serve the production build          |
-| `pnpm typecheck` | `tsc --noEmit`                      |
-| `pnpm lint`      | ESLint (`lint:fix` to fix)          |
-| `pnpm format`    | Prettier `--write` (`format:check`) |
-| `pnpm steiger`   | FSD architecture check              |
+| Command          | What it does                         |
+| ---------------- | ------------------------------------ |
+| `pnpm dev`       | Dev server                           |
+| `pnpm build`     | Production build                     |
+| `pnpm start`     | Serve the production build           |
+| `pnpm typecheck` | `tsc --noEmit`                       |
+| `pnpm lint`      | ESLint (`lint:fix` to fix)           |
+| `pnpm format`    | Prettier `--write` (`format:check`)  |
+| `pnpm steiger`   | FSD architecture check               |
+| `pnpm test`      | Vitest (`test:run` for a single run) |
 
-The `pre-push` hook runs `typecheck`, `lint`, `steiger` and `format:check` in parallel.
+The `pre-push` hook runs `typecheck`, `lint`, `steiger`, `format:check` and `test:run` in parallel.
 
 ## Structure
 

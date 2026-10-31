@@ -11,3 +11,5 @@ pre-push:
     # after the push it just approved. Fails loudly instead; `pnpm format` is the fix.
     format:
       run: pnpm format:check
+    test:
+      run: pnpm test:run

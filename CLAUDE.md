@@ -51,8 +51,9 @@ Setup: Node 24.17.0 (`.nvmrc`), pnpm 11. `pnpm install`, then `cp .env.example .
 | `pnpm typecheck`                         | `tsc --noEmit`                                              |
 | `pnpm format` / `pnpm format:check`      | Prettier write / check                                      |
 | `pnpm steiger`                           | FSD architecture lint over `src/`                           |
+| `pnpm test` / `pnpm test:run`            | Vitest in watch mode / once                                 |
 
-lefthook runs typecheck, lint, steiger and format:check on **pre-push**. `pnpm next typegen`
+lefthook runs typecheck, lint, steiger, format:check and test:run on **pre-push**. `pnpm next typegen`
 regenerates route types (`LayoutProps` etc.) if typecheck complains about missing globals.
 
 ## Stack and why these versions
@@ -75,7 +76,8 @@ Pinned to exact versions; `pnpm-lock.yaml` is committed. pnpm only.
   expected, ignore it in console/Lighthouse checks.
 - Prettier 3.9.9 (+ `eslint-config-prettier`), zustand 5.0.15, clsx + tailwind-merge (`cn()`),
   steiger 0.7.0 + `@feature-sliced/steiger-plugin` 0.8.0,
-  eslint-plugin-simple-import-sort 14.0.0, lefthook 2.1.14.
+  eslint-plugin-simple-import-sort 14.0.0, lefthook 2.1.14, vitest 5.0.5 + vite 8.3.4 (added
+  2026-10-31; vite is pinned so `resolve.tsconfigPaths` resolves the `@` aliases).
 - **next-intl 4.14.9** (added 2026-10-27), set up like kca: `src/i18n/` (`routing`, `request`,
   `navigation`), `src/proxy.ts`, `messages/{ky,ru,en}.json`. Differences from kca: the locale comes
   from `next/root-params` (no `setRequestLocale`), and `src/i18n/global.d.ts` types every key
@@ -91,9 +93,10 @@ Pinned to exact versions; `pnpm-lock.yaml` is committed. pnpm only.
 - Every new dependency: justify it (why, can we do without, alternative), check the exact name,
   ≥14 days old, no surprise install scripts, then run `pnpm audit` and report.
 - `overrides` in `pnpm-workspace.yaml`: `source-map-js ^1.2.2` (build-time DoS via postcss).
-- `pnpm audit` as of 2026-10-27: **1 high**, dev tooling only — `zod <4.6.6` inside
-  `eslint-plugin-react-hooks` (4.6.5) and `steiger` (3.25.76, no fix on the 3.x line). They only
-  parse our own config, never untrusted input. Re-run the command before quoting numbers.
+- `pnpm audit` as of 2026-10-31: **1 high, 1 moderate**, dev tooling only — `zod <4.6.6` inside
+  `eslint-plugin-react-hooks` (4.6.5) and `steiger` (3.25.76, no fix on the 3.x line), and
+  `minimatch <11.0.1` inside ESLint 9. They only parse our own config and globs, never untrusted
+  input. Re-run the command before quoting numbers.
 
 ## Architecture: Feature-Sliced Design
 
@@ -126,7 +129,7 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 
 **Texts live in `messages/{ky,ru,en}.json`; structure (ids, numbers, links, stack) in
 `src/entities/*/model/data.ts`.** Add a key to all three files — `ru.json` is the typed source, so
-a key missing there fails typecheck, but nothing checks ky/en for completeness. Lists use
+a key missing there fails typecheck, and `src/i18n/messages.test.ts` checks that ky/en have the same keys and ICU arguments/tags. Lists use
 `t.raw()`; plurals use ICU in the messages. Kyrgyz is drafted by Claude and proofread by Alisher (all current copy checked 2026-10-31).
 Contacts are real (LinkedIn, Telegram, GitHub, email, phone); the resume is `public/resume-{ru,en}.pdf` (his CVs from
 `~/Desktop/resources`, July 2026 — outdated, no «Түндүк»; ky gets the RU one). The hero and the card front follow the 2026-10-27 decisions; bio, scout report, career,
@@ -162,8 +165,10 @@ If the folder is missing (another machine), ask the user — don't invent data.
 
 ## Verifying changes
 
-There are no automated tests yet — the kca-style Vitest + Testing Library (later Playwright)
-setup is a separate stage after the real content is in (decided 2026-10-13). Verify against a production build in a real browser:
+Vitest (2026-10-31) covers logic and data only, in the node environment: `*.test.ts` next to the
+code — message parity across locales, every career event/project having its texts, project dates,
+the final score. jsdom + Testing Library come with the first component test, Playwright later.
+Everything visual is verified against a production build in a real browser:
 `pnpm build && pnpm start -p 3456`, then headless Chrome driven over CDP
 (`--remote-debugging-port`): check the console for errors and hydration warnings, emulate mobile
 (`Emulation.setDeviceMetricsOverride`) and `prefers-reduced-motion`, take screenshots of both themes.
