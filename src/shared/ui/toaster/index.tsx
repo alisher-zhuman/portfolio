@@ -20,10 +20,13 @@ export const Toaster = () => {
       aria-live="polite"
       className="pointer-events-none fixed bottom-6 left-1/2 z-40 grid w-full max-w-md -translate-x-1/2 gap-2 px-4"
     >
-      {toasts.map(({ id, text, kind }) => (
+      {toasts.map(({ id, text, kind, leaving }) => (
         <div
           key={id}
-          className="bg-board text-board-foreground border-chalk animate-toast-in flex items-center gap-3 rounded-md border-2 px-4 py-3 font-medium"
+          className={cn(
+            'bg-board text-board-foreground border-chalk flex items-center gap-3 rounded-md border-2 px-4 py-3 font-medium',
+            leaving ? 'animate-toast-out' : 'animate-toast-in'
+          )}
         >
           <span aria-hidden="true" className={cn('shrink-0', ICON_CLASS[kind])} />
 

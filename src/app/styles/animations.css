@@ -28,11 +28,18 @@
   }
 }
 
-/* Toast entrance: a short springy rise, like a referee pulling out a card. */
+/* Toasts rise in a little and fade out the same way — no spring, no pop. */
 @keyframes toast-in {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.9);
+    transform: translateY(8px);
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateY(4px);
   }
 }
 
@@ -44,9 +51,9 @@
   }
 }
 
-/* The score blinks white a few times when a goal goes in. */
+/* One soft flash when a goal goes in: the score turns white and eases back, as on a TV board. */
 @keyframes score-flash {
-  50% {
+  25% {
     color: var(--board-foreground);
   }
 }
@@ -64,6 +71,7 @@
   .animate-live-pulse,
   .animate-dash-flow,
   .animate-toast-in,
+  .animate-toast-out,
   .animate-menu-in,
   .animate-score-flash {
     animation: none;

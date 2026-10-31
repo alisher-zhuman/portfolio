@@ -101,8 +101,9 @@
   --animate-marquee: marquee 60s linear infinite;
   --animate-live-pulse: live-pulse 1.6s infinite;
   --animate-dash-flow: dash-flow 1s linear infinite;
-  --animate-toast-in: toast-in 0.35s cubic-bezier(0.3, 1.5, 0.5, 1);
+  --animate-toast-in: toast-in 0.25s ease-out;
+  --animate-toast-out: toast-out 0.2s ease-in forwards;
   --animate-menu-in: menu-in 0.16s ease-out;
-  --animate-score-flash: score-flash 0.25s steps(1) 6;
+  --animate-score-flash: score-flash 0.8s ease-out;
   --animate-net-ripple: net-ripple 0.5s ease-out;
 }
