@@ -44,7 +44,7 @@ export const TransferPanel = () => {
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeDasharray="8 6"
-        className="stroke-sun animate-dash-flow absolute top-7 left-1/2 w-10 -translate-x-1/2 fill-none"
+        className="stroke-sun absolute top-7 left-1/2 w-10 -translate-x-1/2 fill-none"
       >
         <path d="M2 10h70M62 3l10 7-10 7" />
       </svg>

@@ -1,7 +1,7 @@
 import { profile } from '@entities/profile'
 
 // A coach's tactics board instead of a drawn player: 4-3-3 going up the board, with number 7 as
-// the holding midfielder every pass goes through. The ball and the ring are CSS animations
+// the holding midfielder every pass goes through. The ball is a CSS animation
 // (styles/animations.css); a click on the surrounding PlayerStage sets data-celebrating, which
 // turns the passing loop into a shot at goal. Decorative: that wrapper carries the accessible name.
 
@@ -105,7 +105,8 @@ export const TacticsBoard = () => (
       cy={SEVEN.y}
       r="13"
       strokeWidth={2}
-      className="tactics-board__ring stroke-sun fill-none"
+      strokeOpacity={0.5}
+      className="stroke-sun fill-none"
     />
     <circle cx={SEVEN.x} cy={SEVEN.y} r="12" className="fill-sun" />
     <text

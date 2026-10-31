@@ -100,7 +100,6 @@
 
   --animate-marquee: marquee 60s linear infinite;
   --animate-live-pulse: live-pulse 1.6s infinite;
-  --animate-dash-flow: dash-flow 1s linear infinite;
   --animate-toast-in: toast-in 0.25s ease-out;
   --animate-toast-out: toast-out 0.2s ease-in forwards;
   --animate-menu-in: menu-in 0.16s ease-out;

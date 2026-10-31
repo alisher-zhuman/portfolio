@@ -21,13 +21,6 @@
   }
 }
 
-/* The dashed transfer arrow Frontend → Backend. */
-@keyframes dash-flow {
-  to {
-    stroke-dashoffset: -14;
-  }
-}
-
 /* Toasts rise in a little and fade out the same way — no spring, no pop. */
 @keyframes toast-in {
   from {
@@ -69,7 +62,6 @@
   .animate-net-ripple,
   .animate-marquee,
   .animate-live-pulse,
-  .animate-dash-flow,
   .animate-toast-in,
   .animate-toast-out,
   .animate-menu-in,
@@ -84,7 +76,8 @@
 }
 
 /* ---- Tactics board in the hero (widgets/home/ui/tactics-board) ----
-   The ball loops through number 7: out to a teammate and back, in view-box units (CSS transforms
+   The ball loops through number 7: out to a teammate and back — the board's only idle motion, so
+   the ring around 7 and the transfer arrow stay still (2026-10-31). In view-box units (CSS transforms
    on SVG elements use the user space). A click sets data-celebrating, and the ball goes for goal. */
 
 .tactics-board * {
@@ -94,11 +87,6 @@
 .tactics-board__ball {
   transform: translate(120px, 200px);
   animation: tactics-pass 9s ease-in-out infinite;
-}
-
-.tactics-board__ring {
-  transform-origin: 120px 200px;
-  animation: tactics-ring 2s ease-out infinite;
 }
 
 .tactics-board__goal {
@@ -140,17 +128,6 @@
   }
 }
 
-@keyframes tactics-ring {
-  from {
-    opacity: 0.9;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(1.8);
-  }
-}
-
 @keyframes tactics-shot {
   from {
     transform: translate(120px, 200px);
@@ -174,14 +151,10 @@
   }
 }
 
-/* Reduced motion: the ball rests at number 7's feet, the ring stays still. */
+/* Reduced motion: the ball rests at number 7's feet. */
 @media (prefers-reduced-motion: reduce) {
   .tactics-board * {
     animation: none !important;
-  }
-
-  .tactics-board__ring {
-    opacity: 0.5;
   }
 }
 
