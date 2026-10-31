@@ -127,7 +127,7 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 **Texts live in `messages/{ky,ru,en}.json`; structure (ids, numbers, links, stack) in
 `src/entities/*/model/data.ts`.** Add a key to all three files — `ru.json` is the typed source, so
 a key missing there fails typecheck, but nothing checks ky/en for completeness. Lists use
-`t.raw()`; plurals use ICU in the messages. Kyrgyz is drafted by Claude and proofread by Alisher.
+`t.raw()`; plurals use ICU in the messages. Kyrgyz is drafted by Claude and proofread by Alisher (all current copy checked 2026-10-31).
 Contacts are real (LinkedIn, Telegram, GitHub, email, phone); the resume is `public/resume-{ru,en}.pdf` (his CVs from
 `~/Desktop/resources`, July 2026 — outdated, no «Түндүк»; ky gets the RU one). The hero and the card front follow the 2026-10-27 decisions; bio, scout report, career,
 projects and footer still carry the old backend-transfer copy until each is reworked.
@@ -295,4 +295,3 @@ palette. Mobile Perf is the Lantern LCP estimate (see Gotchas).
 - Real resume PDF; rework the other blocks one stage at a time (list in `docs/private/chat-history.md`);
   confirm or drop `birthPlace`.
 - ESLint 10 once eslint-config-next's plugins support it.
-- `README.md` is still the create-next-app template — rewrite it (setup, scripts, structure).

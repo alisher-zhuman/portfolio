@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alisher Zhuman — portfolio
 
-## Getting Started
+Personal site of Alisher Zhuman, a frontend developer moving into backend, styled as a football
+matchday: the page is a pitch, the hero is a tactics board, the bio is a collectible player card
+and the career is a match timeline. In Kyrgyz (default), Russian and English.
 
-First, run the development server:
+Live: [alisher-zhuman.vercel.app](https://alisher-zhuman.vercel.app)
+
+## Stack
+
+- [Next.js](https://nextjs.org) 16 (App Router, Turbopack, Cache Components) + React 19 + TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [next-intl](https://next-intl.dev) — `ky`, `ru`, `en`
+- [Zustand](https://zustand.docs.pmnd.rs) — client state (theme, sound, toasts)
+- Feature-Sliced Design — `src/` architecture
+- pnpm, ESLint, Prettier, [Steiger](https://github.com/feature-sliced/steiger) (FSD linter),
+  [Lefthook](https://github.com/evilmartians/lefthook) (git hooks)
+- Deployed on [Vercel](https://vercel.com); every push to `main` goes to production
+
+No animation, sound or confetti libraries: the synthesiser is Web Audio, page transitions are
+React's `<ViewTransition>`, scroll reveals are CSS view timelines.
+
+## Getting started
+
+Requires the Node version from `.nvmrc` (`nvm use`) and pnpm 11.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). `.env.example` lists the only variable,
+`NEXT_PUBLIC_SITE_URL`; it is optional and falls back to the production domain.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command          | What it does                        |
+| ---------------- | ----------------------------------- |
+| `pnpm dev`       | Dev server                          |
+| `pnpm build`     | Production build                    |
+| `pnpm start`     | Serve the production build          |
+| `pnpm typecheck` | `tsc --noEmit`                      |
+| `pnpm lint`      | ESLint (`lint:fix` to fix)          |
+| `pnpm format`    | Prettier `--write` (`format:check`) |
+| `pnpm steiger`   | FSD architecture check              |
 
-## Learn More
+The `pre-push` hook runs `typecheck`, `lint`, `steiger` and `format:check` in parallel.
 
-To learn more about Next.js, take a look at the following resources:
+## Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feature-Sliced Design, layers bottom to top: `shared` → `entities` → `features` → `widgets` →
+`app`. A layer imports only from layers below it, through each slice's `index.ts`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+messages/          ky.json, ru.json (the typed source), en.json — all UI copy
+src/
+  app/             routes: [locale]/ pages, OG image, sitemap, robots, llms.txt
+  i18n/            next-intl routing, request config, navigation
+  widgets/         layout (header, footer), home sections, projects catalog
+  features/        kick-ball, cheat-code, penalty-shootout (the 404 game)
+  entities/        profile, career, project — typed data and their basic UI
+  shared/          ui kit, hooks, stores, audio, helpers
+assets/fonts/      static TTFs for the OG image, with their OFL licences
+```
 
-## Deploy on Vercel
+Texts live in `messages/`; structure (ids, dates, links, stack) lives in
+`src/entities/*/model/data.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Working with AI assistants
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`CLAUDE.md` and `AGENTS.md` at the root hold the full project context for Claude Code and similar
+tools: conventions, decisions and the gotchas that cost time.
+
+## Credits
+
+- Player icon on the card: «Soccer kick» by
+  [Delapouite](https://game-icons.net/1x1/delapouite/soccer-kick.html), game-icons.net, CC BY 3.0
+- Fonts: [Science Gothic](https://fonts.google.com/specimen/Science+Gothic) and
+  [Golos Text](https://fonts.google.com/specimen/Golos+Text), SIL Open Font License
