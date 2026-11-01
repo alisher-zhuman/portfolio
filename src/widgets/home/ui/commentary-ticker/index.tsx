@@ -19,7 +19,7 @@ export const CommentaryTicker = () => {
       className="commentary-ticker bg-sun text-sun-foreground flex text-sm font-semibold"
     >
       <p className="bg-board text-board-foreground font-display flex shrink-0 items-center px-3 text-xs tracking-wider uppercase sm:px-4">
-        <LiveDot />
+        <LiveDot pulse />
         {t('live')}
       </p>
 
