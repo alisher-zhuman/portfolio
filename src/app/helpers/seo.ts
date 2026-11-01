@@ -32,15 +32,8 @@ export const getPersonJsonLd = async () => {
         addressCountry: 'KG',
       },
     },
-    // «Родом из Таласа» — the town he comes from.
-    birthPlace: {
-      '@type': 'Place',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: tProfile('hometown'),
-        addressCountry: 'KG',
-      },
-    },
+    // No birthPlace: «родом из Таласа» is his hometown, not a confirmed place of birth (dropped
+    // 2026-11-01). The card shows the hometown as text.
     knowsAbout: [...profile.stack, t('knowsAboutSecurity')],
     email: `mailto:${profile.contacts.email}`,
     telephone: profile.contacts.phone,

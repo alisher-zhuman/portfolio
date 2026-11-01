@@ -241,7 +241,8 @@ view()`), no JS; browsers without it and reduced motion just show the content. D
 - `app/llms.txt/route.ts` — llmstxt.org summary for AI assistants, built from `entities/*` data and the
   English messages (prerendered, like the sitemap). New pages go into its «Pages» list too.
 - Origin from `NEXT_PUBLIC_SITE_URL` (`.env.example`), fallback `https://alisher-zhuman.vercel.app` (the production domain).
-- `birthPlace: Талас` is an interpretation of «родом из Таласа» — not confirmed by the user.
+- No `birthPlace` in JSON-LD: «родом из Таласа» is a hometown, not a confirmed birthplace (dropped
+  2026-11-01).
 
 ## Lighthouse (2026-10-29, Lighthouse 13.5.0, production build)
 
@@ -309,6 +310,6 @@ reduced motion. Scratchpad scripts did it; rerun the same checks after UI change
   https://alisher-zhuman.vercel.app (also the `SITE_URL` fallback, so no env var is needed there).
   On a custom domain, change the fallback or set `NEXT_PUBLIC_SITE_URL` in the project settings.
 - Next 16.4.3 from 2026-11-06.
-- Real resume PDF; rework the other blocks one stage at a time (list in `docs/private/chat-history.md`);
-  confirm or drop `birthPlace`.
+- Real resume PDF (he will update it himself); rework the other blocks one stage at a time (list in
+  `docs/private/chat-history.md`).
 - ESLint 10 once eslint-config-next's plugins support it.
