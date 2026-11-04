@@ -32,6 +32,9 @@ export const Hero = () => {
           {t('title')}
         </h1>
 
+        {/* Who he is, in one line: the headline and the transfer panel are the joke, this is the fact. */}
+        <p className="mt-4 max-w-xl text-lg text-balance sm:text-xl">{t('lead')}</p>
+
         <InsiderQuote />
 
         <TransferPanel />
