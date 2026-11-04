@@ -7,6 +7,7 @@ import { getPersonJsonLd } from '@app/helpers'
 import {
   CoachQuotes,
   Hero,
+  KitBag,
   MatchSection,
   PlayerSection,
   PressConference,
@@ -48,6 +49,8 @@ const HomePage = async () => (
       <ProjectsSection />
 
       <TrophyShelf />
+
+      <KitBag />
 
       <PressConference />
 

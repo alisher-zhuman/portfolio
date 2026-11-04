@@ -346,6 +346,37 @@
       }
     }
   },
+  "Kit": {
+    "title": "Kit bag",
+    "lead": "What's in the bag before kick-off.",
+    "items": {
+      "boots": {
+        "label": "Boots",
+        "value": "Laptop",
+        "note": "The home PC is on the bench, and match-fit too."
+      },
+      "shirt": {
+        "label": "Shirt",
+        "value": "VS Code",
+        "note": "The best. No debate."
+      },
+      "camp": {
+        "label": "Training camp",
+        "value": "Cursor and Antigravity",
+        "note": "Trying new formations, still plays in VS Code."
+      },
+      "bench": {
+        "label": "Bench",
+        "value": "Chair",
+        "note": "A very comfortable one. The most important kit after the laptop."
+      },
+      "locker": {
+        "label": "Locker room",
+        "value": "The desk",
+        "note": "Books, notes, pens, a thermos, a mug, headphones, chargers, laptop and phone stands — and a whole arsenal of wipes and cleaners: the screen must shine."
+      }
+    }
+  },
   "Press": {
     "title": "Press conference",
     "lead": "Questions asked before the contract is signed.",

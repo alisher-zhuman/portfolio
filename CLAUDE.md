@@ -119,7 +119,8 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 - **widgets** — `layout` (header with nav, theme/language menus, sound toggle; footer; touchline),
   `home` (all homepage sections incl. `coach-quotes` — his LinkedIn recommendations, quoted
   verbatim in ru and translated in ky/en with a note —, `trophy-shelf` (letter of appreciation,
-  hackathons, volunteering — participation only, no claimed wins), `press-conference` (recruiter
+  hackathons, volunteering — participation only, no claimed wins), `kit-bag` (his setup as a kit bag,
+  his own answers 2026-11-04), `press-conference` (recruiter
   Q&A; format, relocation and position are his own answers, 2026-11-04 — also in llms.txt), the match store, scroll clock, section whistle; projects show the
   newest 6) and `projects` (the /projects page: every project with the club filter).
 - **app** — everything routable is under `[locale]/` (layout, page, `projects/page`, not-found,

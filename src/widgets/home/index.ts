@@ -1,5 +1,6 @@
 export { CoachQuotes } from './ui/coach-quotes'
 export { Hero } from './ui/hero'
+export { KitBag } from './ui/kit-bag'
 export { MatchSection } from './ui/match-section'
 export { PlayerSection } from './ui/player-section'
 export { PRESS_QUESTIONS, PressConference } from './ui/press-conference'
