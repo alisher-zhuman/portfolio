@@ -11,6 +11,7 @@ import {
   PlayerSection,
   ProjectsSection,
   SectionWhistle,
+  TrophyShelf,
 } from '@widgets/home'
 
 import { JsonLd, PageTransition } from '@shared/ui'
@@ -44,6 +45,8 @@ const HomePage = async () => (
       <CoachQuotes />
 
       <ProjectsSection />
+
+      <TrophyShelf />
 
       <SectionWhistle />
     </main>

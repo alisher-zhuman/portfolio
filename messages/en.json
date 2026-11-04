@@ -325,6 +325,27 @@
       }
     }
   },
+  "Trophies": {
+    "title": "Trophy cabinet",
+    "lead": "Ronaldo has more trophies. For now.",
+    "items": {
+      "kiu": {
+        "title": "Letter of appreciation",
+        "meta": "Kyrgyz Islamic University · 2026",
+        "text": "The client said thank you officially, on paper."
+      },
+      "hackathons": {
+        "title": "Two Codify hackathons",
+        "meta": "Let'sGoDigital 2.0 and 3.0 · 2023",
+        "text": "Twice in a row, right from the kick-off of his career."
+      },
+      "volunteer": {
+        "title": "Volunteering",
+        "meta": "Bishkek Marathon, Chas Chistoty, New Generation · 2024",
+        "text": "Helped marathon runners in Ala-Archa and cleaned up the Issyk-Kul shore."
+      }
+    }
+  },
   "Footer": {
     "title": "Final whistle",
     "text": "The final whistle, but not for the career. The player has no agent — write to him directly.",
