@@ -2,6 +2,8 @@ import { getTranslations } from 'next-intl/server'
 
 import { routing } from '@/i18n/routing'
 
+import { PRESS_QUESTIONS } from '@widgets/home'
+
 import { careerEvents } from '@entities/career'
 import { profile } from '@entities/profile'
 import { projects } from '@entities/project'
@@ -29,6 +31,11 @@ export const GET = async () => {
     return `- ${heading} (${t(`Projects.clubs.${club}`)}, ${period}; ${tech.join(', ')}): ${t(`Projects.items.${id}.description`)}`
   })
 
+  // Work format, relocation and so on, as the homepage's press conference answers them.
+  const press = PRESS_QUESTIONS.map(
+    (id) => `- ${t(`Press.items.${id}.q`)} ${t(`Press.items.${id}.a`)}`
+  )
+
   const body = [
     `# ${brandName}`,
     '',
@@ -53,6 +60,10 @@ export const GET = async () => {
     `- [GitHub](${contacts.githubUrl})`,
     `- [Telegram](${contacts.telegramUrl})`,
     `- Email: ${contacts.email}`,
+    '',
+    '## Press conference',
+    '',
+    ...press,
     '',
     '## Stack',
     '',

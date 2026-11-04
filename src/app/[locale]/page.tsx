@@ -9,6 +9,7 @@ import {
   Hero,
   MatchSection,
   PlayerSection,
+  PressConference,
   ProjectsSection,
   SectionWhistle,
   TrophyShelf,
@@ -47,6 +48,8 @@ const HomePage = async () => (
       <ProjectsSection />
 
       <TrophyShelf />
+
+      <PressConference />
 
       <SectionWhistle />
     </main>

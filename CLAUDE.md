@@ -118,7 +118,9 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
   Alisher's request, together with `entities/rating`, `features/rate-player` and zod.
 - **widgets** — `layout` (header with nav, theme/language menus, sound toggle; footer; touchline),
   `home` (all homepage sections incl. `coach-quotes` — his LinkedIn recommendations, quoted
-  verbatim in ru and translated in ky/en with a note —, the match store, scroll clock, section whistle; projects show the
+  verbatim in ru and translated in ky/en with a note —, `trophy-shelf` (letter of appreciation,
+  hackathons, volunteering — participation only, no claimed wins), `press-conference` (recruiter
+  Q&A; format, relocation and position are his own answers, 2026-11-04 — also in llms.txt), the match store, scroll clock, section whistle; projects show the
   newest 6) and `projects` (the /projects page: every project with the club filter).
 - **app** — everything routable is under `[locale]/` (layout, page, `projects/page`, not-found,
   `[...rest]`, OG image); `sitemap.ts`, `robots.ts`, `icon.svg` + `apple-icon.png` stay at the root. The logo (2026-10-29)

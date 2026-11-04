@@ -346,6 +346,32 @@
       }
     }
   },
+  "Press": {
+    "title": "Press conference",
+    "lead": "Questions asked before the contract is signed.",
+    "items": {
+      "format": {
+        "q": "Remote or office?",
+        "a": "Hybrid. The office works too: home games are good games."
+      },
+      "relocation": {
+        "q": "Open to relocation?",
+        "a": "Yes. The city doesn't matter, the team does."
+      },
+      "position": {
+        "q": "Which position do you see yourself in?",
+        "a": "Frontend, full-stack, backend — wherever the coach puts me."
+      },
+      "backend": {
+        "q": "Why would a frontend developer need the backend?",
+        "a": "So business rules live on the server instead of being copied into the UI."
+      },
+      "goat": {
+        "q": "Ronaldo or Messi?",
+        "a": "Ronaldo. Next question."
+      }
+    }
+  },
   "Footer": {
     "title": "Final whistle",
     "text": "The final whistle, but not for the career. The player has no agent — write to him directly.",
