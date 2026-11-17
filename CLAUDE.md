@@ -60,11 +60,12 @@ regenerates route types (`LayoutProps` etc.) if typecheck complains about missin
 
 Pinned to exact versions; `pnpm-lock.yaml` is committed. pnpm only.
 
-- **Next 16.4.1** (App Router, Turbopack, `cacheComponents` + `partialPrefetching` on). 16.4.1 is
-  the first release fixing two critical RCEs (Image Optimization with SVG, `use cache` with typed
-  arrays) and a Server Actions DoS; the 16.3 line got no patch. Installed at 13 days old as an
-  approved exception (2026-10-27). Move to 16.4.3 from 2026-11-06 (bug fixes only, incl. one for
-  `proxy.ts`). `eslint-config-next` must always match `next`.
+- **Next 16.4.5** (App Router, Turbopack, `cacheComponents` + `partialPrefetching` on). 16.4.5 is
+  the first release fixing an information disclosure across root params in `'use cache'` functions
+  (16.3.0–16.4.4) — this site uses both. Installed 2026-11-17 at 13.5 days old as an exception
+  (16.4.1 had one too, for two critical RCEs). Next builds check the npm advisory database and warn
+  (once even failed the build) while the installed version is vulnerable — treat that warning as
+  urgent. Move to 16.4.6 from 2026-11-23. `eslint-config-next` must always match `next`.
 - **React 19.3.0**, **TypeScript 6.0.3** — not 7: `typescript-eslint` requires `<6.1`.
 - **Tailwind 4.3.3 via `@tailwindcss/postcss`** (per Tailwind's docs). The create-next-app 16.4
   template used `@tailwindcss/turbopack`, which only has insiders builds — don't reintroduce it.
@@ -86,7 +87,7 @@ Pinned to exact versions; `pnpm-lock.yaml` is committed. pnpm only.
 ## Dependency posture
 
 - `pnpm-workspace.yaml` sets `minimumReleaseAge: 20160` (14 days) for **all** packages, transitive
-  included. Exceptions are listed in `minimumReleaseAgeExclude` (only Next 16.4.1 today).
+  included. Exceptions are listed in `minimumReleaseAgeExclude` (only Next 16.4.5 today).
 - Install scripts are blocked unless listed in `allowBuilds`. Allowed: `lefthook` (postinstall only
   runs `lefthook install`). Blocked: `sharp`, `unrs-resolver`, and `@parcel/watcher` + `@swc/core`
   (they come with next-intl and only serve its unused message extractor).
@@ -313,7 +314,7 @@ reduced motion. Scratchpad scripts did it; rerun the same checks after UI change
 - **Deploy: Vercel** — the repo is connected (2026-10-13), push to `main` deploys to
   https://alisher-zhuman.vercel.app (also the `SITE_URL` fallback, so no env var is needed there).
   On a custom domain, change the fallback or set `NEXT_PUBLIC_SITE_URL` in the project settings.
-- Next 16.4.3 from 2026-11-06.
+- Next 16.4.6 from 2026-11-23.
 - Real resume PDF (he will update it himself); rework the other blocks one stage at a time (list in
   `docs/private/chat-history.md`).
 - ESLint 10 once eslint-config-next's plugins support it.
