@@ -23,7 +23,10 @@ export const getPersonJsonLd = async () => {
     description: t('description'),
     url: SITE_URL,
     image: `${SITE_URL}/${locale}/opengraph-image`,
-    worksFor: { '@type': 'Organization', name: tProfile('club') },
+    // «Түндүк & Кызмат»: the whole team moved from one to the other (2026-11), so both are named.
+    worksFor: tProfile('club')
+      .split(' & ')
+      .map((name) => ({ '@type': 'Organization', name })),
     homeLocation: {
       '@type': 'Place',
       address: {

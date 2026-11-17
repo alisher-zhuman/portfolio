@@ -51,7 +51,8 @@ export const CardFront = () => {
       <dl className="mt-1.5 grid grid-cols-3 gap-2 text-center text-sm leading-tight">
         {(['club', 'city', 'hometown'] as const).map((key) => (
           <div key={key} className="flex flex-col-reverse gap-0.5">
-            <dd className="font-semibold">{tProfile(key)}</dd>
+            {/* One name only: «Түндүк & Кызмат» takes two lines and pushes the stats off the card. */}
+            <dd className="font-semibold">{tProfile(key === 'club' ? 'currentClub' : key)}</dd>
             <dt className="text-xs opacity-80">{t(key)}</dt>
           </div>
         ))}
