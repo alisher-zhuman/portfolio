@@ -41,6 +41,7 @@ export const getPersonJsonLd = async () => {
       profile.contacts.linkedinUrl,
       profile.contacts.githubUrl,
       profile.contacts.telegramUrl,
+      profile.contacts.instagramUrl,
     ],
   }
 }

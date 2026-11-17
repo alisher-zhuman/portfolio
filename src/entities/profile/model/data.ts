@@ -42,6 +42,10 @@ export const profile: Profile = {
     resumeUrls: { ru: '/resume-ru.pdf', en: '/resume-en.pdf' },
     linkedinUrl: 'https://www.linkedin.com/in/alisher-zhuman',
     telegramUrl: 'https://t.me/alisher_zh',
+    // Same number as the phone, as on his GitHub profile.
+    whatsappUrl: 'https://wa.me/996999101677',
+    // Tech & lifestyle blog.
+    instagramUrl: 'https://www.instagram.com/alisher.zhx',
     githubUrl: 'https://github.com/alisher-zhuman',
     email: 'zumanovaliser814@gmail.com',
     phone: '+996999101677',

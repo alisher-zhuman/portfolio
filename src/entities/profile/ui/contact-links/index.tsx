@@ -13,7 +13,8 @@ interface Props {
 export const ContactLinks = ({ emailLabel = 'address', className }: Props) => {
   const t = useTranslations('Contacts')
   const resumeUrl = getResumeUrl(useLocale())
-  const { linkedinUrl, telegramUrl, githubUrl, email, phone, phoneDisplay } = profile.contacts
+  const { linkedinUrl, telegramUrl, whatsappUrl, githubUrl, email, phone, phoneDisplay } =
+    profile.contacts
 
   return (
     <ul aria-label={t('label')} className={cn('flex flex-wrap gap-2', className)}>
@@ -32,6 +33,12 @@ export const ContactLinks = ({ emailLabel = 'address', className }: Props) => {
       <li>
         <a className="btn" href={telegramUrl} target="_blank" rel="noopener">
           Telegram
+        </a>
+      </li>
+
+      <li>
+        <a className="btn" href={whatsappUrl} target="_blank" rel="noopener">
+          WhatsApp
         </a>
       </li>
 

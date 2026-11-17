@@ -59,6 +59,7 @@ export const GET = async () => {
     `- [LinkedIn](${contacts.linkedinUrl})`,
     `- [GitHub](${contacts.githubUrl})`,
     `- [Telegram](${contacts.telegramUrl})`,
+    `- [Instagram](${contacts.instagramUrl}) — tech & lifestyle; LinkedIn is where he is most active`,
     `- Email: ${contacts.email}`,
     '',
     '## Press conference',

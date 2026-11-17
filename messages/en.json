@@ -408,7 +408,18 @@
     "text": "The final whistle, but not for the career. The player has no agent — write to him directly.",
     "cheat": "Rumour has it a cheat code from old consoles works on this site.",
     "cheatLabel": "Up, up, down, down, left, right, left, right, B, A",
-    "credit": "Player icon on the card: <author>Delapouite</author>, game-icons.net, CC BY 3.0."
+    "credit": "Player icon on the card: <author>Delapouite</author>, game-icons.net, CC BY 3.0.",
+    "channelsTitle": "Where to watch",
+    "channels": {
+      "linkedin": {
+        "name": "Main broadcast",
+        "text": "Projects, news and the whole journey through the clubs."
+      },
+      "instagram": {
+        "name": "From the dressing room",
+        "text": "Tech and life off the pitch."
+      }
+    }
   },
   "CheatCode": {
     "toast": "Cheat code accepted: rating 99. This match only."

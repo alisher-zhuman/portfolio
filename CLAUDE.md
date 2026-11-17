@@ -134,7 +134,8 @@ below it, and only through a slice's/segment's `index.ts` (steiger enforces this
 `src/entities/*/model/data.ts`.** Add a key to all three files — `ru.json` is the typed source, so
 a key missing there fails typecheck, and `src/i18n/messages.test.ts` checks that ky/en have the same keys and ICU arguments/tags. Lists use
 `t.raw()`; plurals use ICU in the messages. Kyrgyz is drafted by Claude and proofread by Alisher (all current copy checked 2026-10-31).
-Contacts are real (LinkedIn, Telegram, GitHub, email, phone); the resume is `public/resume-{ru,en}.pdf` (his CVs from
+Contacts are real (LinkedIn, Telegram, WhatsApp, GitHub, email, phone; Instagram is in the footer's
+«Где смотреть» block with LinkedIn as «Основная трансляция», since 2026-11-17, as on his GitHub profile); the resume is `public/resume-{ru,en}.pdf` (his CVs from
 `~/Desktop/resources`, July 2026 — outdated, no «Түндүк»; ky gets the RU one). The hero and the card front follow the 2026-10-27 decisions; bio, scout report, career,
 projects and footer still carry the old backend-transfer copy until each is reworked.
 

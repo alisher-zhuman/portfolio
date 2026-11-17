@@ -10,6 +10,8 @@ export interface Contacts {
   resumeUrls: { ru: string; en: string }
   linkedinUrl: string
   telegramUrl: string
+  whatsappUrl: string
+  instagramUrl: string
   githubUrl: string
   email: string
   // E.164, for the tel: link; `phoneDisplay` is how it reads on the page.
